@@ -1,0 +1,14 @@
+[
+    {
+        "merged": "C:\\lab\\iWalkSafe\\object_detect\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\fragment_camera.xml",
+        "source": "C:\\lab\\iWalkSafe\\object_detect\\app\\src\\main\\res\\layout\\fragment_camera.xml"
+    },
+    {
+        "merged": "C:\\lab\\iWalkSafe\\object_detect\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\activity_main.xml",
+        "source": "C:\\lab\\iWalkSafe\\object_detect\\app\\src\\main\\res\\layout\\activity_main.xml"
+    },
+    {
+        "merged": "C:\\lab\\iWalkSafe\\object_detect\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\info_bottom_sheet.xml",
+        "source": "C:\\lab\\iWalkSafe\\object_detect\\app\\src\\main\\res\\layout\\info_bottom_sheet.xml"
+    }
+]
