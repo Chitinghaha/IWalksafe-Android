@@ -4,7 +4,6 @@ package org.tensorflow.lite.examples.objectdetection.databinding;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Switch;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -24,9 +23,6 @@ public final class InfoBottomSheetBinding implements ViewBinding {
 
   @NonNull
   public final NestedScrollView bottomSheetLayout;
-
-  @NonNull
-  public final Switch btnMain;
 
   @NonNull
   public final TextView inferenceTimeLabel;
@@ -68,17 +64,15 @@ public final class InfoBottomSheetBinding implements ViewBinding {
   public final TextView thresholdValue;
 
   private InfoBottomSheetBinding(@NonNull NestedScrollView rootView,
-      @NonNull NestedScrollView bottomSheetLayout, @NonNull Switch btnMain,
-      @NonNull TextView inferenceTimeLabel, @NonNull TextView inferenceTimeVal,
-      @NonNull AppCompatImageButton maxResultsMinus, @NonNull AppCompatImageButton maxResultsPlus,
-      @NonNull TextView maxResultsValue, @NonNull AppCompatSpinner spinnerDelegate,
-      @NonNull AppCompatSpinner spinnerModel, @NonNull AppCompatImageButton threadsMinus,
-      @NonNull AppCompatImageButton threadsPlus, @NonNull TextView threadsValue,
-      @NonNull AppCompatImageButton thresholdMinus, @NonNull AppCompatImageButton thresholdPlus,
-      @NonNull TextView thresholdValue) {
+      @NonNull NestedScrollView bottomSheetLayout, @NonNull TextView inferenceTimeLabel,
+      @NonNull TextView inferenceTimeVal, @NonNull AppCompatImageButton maxResultsMinus,
+      @NonNull AppCompatImageButton maxResultsPlus, @NonNull TextView maxResultsValue,
+      @NonNull AppCompatSpinner spinnerDelegate, @NonNull AppCompatSpinner spinnerModel,
+      @NonNull AppCompatImageButton threadsMinus, @NonNull AppCompatImageButton threadsPlus,
+      @NonNull TextView threadsValue, @NonNull AppCompatImageButton thresholdMinus,
+      @NonNull AppCompatImageButton thresholdPlus, @NonNull TextView thresholdValue) {
     this.rootView = rootView;
     this.bottomSheetLayout = bottomSheetLayout;
-    this.btnMain = btnMain;
     this.inferenceTimeLabel = inferenceTimeLabel;
     this.inferenceTimeVal = inferenceTimeVal;
     this.maxResultsMinus = maxResultsMinus;
@@ -122,12 +116,6 @@ public final class InfoBottomSheetBinding implements ViewBinding {
     int id;
     missingId: {
       NestedScrollView bottomSheetLayout = (NestedScrollView) rootView;
-
-      id = R.id.btnMain;
-      Switch btnMain = ViewBindings.findChildViewById(rootView, id);
-      if (btnMain == null) {
-        break missingId;
-      }
 
       id = R.id.inference_time_label;
       TextView inferenceTimeLabel = ViewBindings.findChildViewById(rootView, id);
@@ -207,7 +195,7 @@ public final class InfoBottomSheetBinding implements ViewBinding {
         break missingId;
       }
 
-      return new InfoBottomSheetBinding((NestedScrollView) rootView, bottomSheetLayout, btnMain,
+      return new InfoBottomSheetBinding((NestedScrollView) rootView, bottomSheetLayout,
           inferenceTimeLabel, inferenceTimeVal, maxResultsMinus, maxResultsPlus, maxResultsValue,
           spinnerDelegate, spinnerModel, threadsMinus, threadsPlus, threadsValue, thresholdMinus,
           thresholdPlus, thresholdValue);

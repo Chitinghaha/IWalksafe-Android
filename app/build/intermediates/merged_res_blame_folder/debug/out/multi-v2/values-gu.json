@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "C:\\lab\\iWalkSafe\\object_detect\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-gu\\values-gu.xml",
+            "outputFile": "C:\\lab\\iWalkSafe_android\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-gu\\values-gu.xml",
             "map": [
                 {
                     "source": "C:\\Users\\tnnd\\.gradle\\caches\\transforms-3\\22e584a398e49dc53a8e6a5e66f4da0c\\transformed\\core-1.6.0\\res\\values-gu\\values-gu.xml",
