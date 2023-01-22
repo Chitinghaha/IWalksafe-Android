@@ -1704,6 +1704,10 @@ mipmap ic_launcher
 mipmap ic_launcher_foreground
 mipmap ic_launcher_round
 navigation nav_graph
+raw beep1
+raw beep2
+raw beep3
+raw beep4
 raw cell_phone
 raw cup
 raw keyboard

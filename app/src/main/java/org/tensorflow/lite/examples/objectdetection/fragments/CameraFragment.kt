@@ -417,6 +417,8 @@ class CameraFragment : Fragment(), ObjectDetectorHelper.DetectorListener {
 
     }
 
+
+
     override fun onError(error: String) {
         activity?.runOnUiThread {
             Toast.makeText(requireContext(), error, Toast.LENGTH_SHORT).show()

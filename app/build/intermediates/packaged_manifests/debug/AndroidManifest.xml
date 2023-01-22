@@ -24,6 +24,9 @@
         android:minSdkVersion="21"
         android:targetSdkVersion="32" />
 
+    <!-- vibrator -->
+    <uses-permission android:name="android.permission.VIBRATE" />
+
     <!-- Enable instant app support -->
     <dist:module dist:instant="true" />
 

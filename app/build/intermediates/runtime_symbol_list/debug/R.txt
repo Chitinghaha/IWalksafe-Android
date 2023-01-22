@@ -1703,6 +1703,10 @@ int mipmap ic_launcher 0x7f0d0000
 int mipmap ic_launcher_foreground 0x7f0d0001
 int mipmap ic_launcher_round 0x7f0d0002
 int navigation nav_graph 0x7f0e0000
+int raw beep1 0x7f0f0008
+int raw beep2 0x7f0f0009
+int raw beep3 0x7f0f000a
+int raw beep4 0x7f0f000b
 int raw cell_phone 0x7f0f0000
 int raw cup 0x7f0f0001
 int raw keyboard 0x7f0f0002

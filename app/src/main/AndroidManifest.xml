@@ -20,6 +20,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="org.tensorflow.lite.examples.objectdetection">
 
+    <!--vibrator-->
+    <uses-permission android:name="android.permission.VIBRATE" />
+
     <!-- Enable instant app support -->
     <dist:module dist:instant="true" />
 

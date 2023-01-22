@@ -20,6 +20,10 @@
         "source": "C:\\lab\\iWalkSafe_android\\app\\src\\main\\res\\layout\\info_bottom_sheet.xml"
     },
     {
+        "merged": "C:\\lab\\iWalkSafe_android\\app\\build\\intermediates\\merged_res\\debug\\raw_beep3.mp3.flat",
+        "source": "C:\\lab\\iWalkSafe_android\\app\\src\\main\\res\\raw\\beep3.mp3"
+    },
+    {
         "merged": "C:\\lab\\iWalkSafe_android\\app\\build\\intermediates\\merged_res\\debug\\drawable_ic_minus.xml.flat",
         "source": "C:\\lab\\iWalkSafe_android\\app\\src\\main\\res\\drawable\\ic_minus.xml"
     },
@@ -46,6 +50,10 @@
     {
         "merged": "C:\\lab\\iWalkSafe_android\\app\\build\\intermediates\\merged_res\\debug\\raw_tv.mp3.flat",
         "source": "C:\\lab\\iWalkSafe_android\\app\\src\\main\\res\\raw\\tv.mp3"
+    },
+    {
+        "merged": "C:\\lab\\iWalkSafe_android\\app\\build\\intermediates\\merged_res\\debug\\raw_beep1.mp3.flat",
+        "source": "C:\\lab\\iWalkSafe_android\\app\\src\\main\\res\\raw\\beep1.mp3"
     },
     {
         "merged": "C:\\lab\\iWalkSafe_android\\app\\build\\intermediates\\merged_res\\debug\\raw_north.mp3.flat",
@@ -108,12 +116,20 @@
         "source": "C:\\lab\\iWalkSafe_android\\app\\src\\main\\res\\mipmap-xhdpi\\ic_launcher_round.png"
     },
     {
+        "merged": "C:\\lab\\iWalkSafe_android\\app\\build\\intermediates\\merged_res\\debug\\raw_beep4.mp3.flat",
+        "source": "C:\\lab\\iWalkSafe_android\\app\\src\\main\\res\\raw\\beep4.mp3"
+    },
+    {
         "merged": "C:\\lab\\iWalkSafe_android\\app\\build\\intermediates\\merged_res\\debug\\mipmap-anydpi-v26_ic_launcher_round.xml.flat",
         "source": "C:\\lab\\iWalkSafe_android\\app\\src\\main\\res\\mipmap-anydpi-v26\\ic_launcher_round.xml"
     },
     {
         "merged": "C:\\lab\\iWalkSafe_android\\app\\build\\intermediates\\merged_res\\debug\\mipmap-xxhdpi_ic_launcher_round.png.flat",
         "source": "C:\\lab\\iWalkSafe_android\\app\\src\\main\\res\\mipmap-xxhdpi\\ic_launcher_round.png"
+    },
+    {
+        "merged": "C:\\lab\\iWalkSafe_android\\app\\build\\intermediates\\merged_res\\debug\\raw_beep2.mp3.flat",
+        "source": "C:\\lab\\iWalkSafe_android\\app\\src\\main\\res\\raw\\beep2.mp3"
     },
     {
         "merged": "C:\\lab\\iWalkSafe_android\\app\\build\\intermediates\\merged_res\\debug\\mipmap-mdpi_ic_launcher.png.flat",
