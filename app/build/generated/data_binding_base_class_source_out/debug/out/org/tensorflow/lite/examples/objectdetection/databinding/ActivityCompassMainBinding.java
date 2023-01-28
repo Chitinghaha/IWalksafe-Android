@@ -5,9 +5,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.LinearLayout;
+import android.widget.ImageView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.viewbinding.ViewBinding;
 import androidx.viewbinding.ViewBindings;
 import java.lang.NullPointerException;
@@ -17,19 +18,24 @@ import org.tensorflow.lite.examples.objectdetection.R;
 
 public final class ActivityCompassMainBinding implements ViewBinding {
   @NonNull
-  private final LinearLayout rootView;
+  private final ConstraintLayout rootView;
 
   @NonNull
   public final Button button2;
 
-  private ActivityCompassMainBinding(@NonNull LinearLayout rootView, @NonNull Button button2) {
+  @NonNull
+  public final ImageView imgCompass;
+
+  private ActivityCompassMainBinding(@NonNull ConstraintLayout rootView, @NonNull Button button2,
+      @NonNull ImageView imgCompass) {
     this.rootView = rootView;
     this.button2 = button2;
+    this.imgCompass = imgCompass;
   }
 
   @Override
   @NonNull
-  public LinearLayout getRoot() {
+  public ConstraintLayout getRoot() {
     return rootView;
   }
 
@@ -60,7 +66,13 @@ public final class ActivityCompassMainBinding implements ViewBinding {
         break missingId;
       }
 
-      return new ActivityCompassMainBinding((LinearLayout) rootView, button2);
+      id = R.id.imgCompass;
+      ImageView imgCompass = ViewBindings.findChildViewById(rootView, id);
+      if (imgCompass == null) {
+        break missingId;
+      }
+
+      return new ActivityCompassMainBinding((ConstraintLayout) rootView, button2, imgCompass);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

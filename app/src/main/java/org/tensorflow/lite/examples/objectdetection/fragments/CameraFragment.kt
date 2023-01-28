@@ -338,8 +338,11 @@ class CameraFragment : Fragment(R.layout.fragment_camera), ObjectDetectorHelper.
                         }
 
                         detectObjects(image)
+                        image.close()
                     }
+
                 }
+
 
         // Must unbind the use-cases before rebinding them
         cameraProvider.unbindAll()
@@ -348,6 +351,7 @@ class CameraFragment : Fragment(R.layout.fragment_camera), ObjectDetectorHelper.
             // A variable number of use-cases can be passed here -
             // camera provides access to CameraControl & CameraInfo
             camera = cameraProvider.bindToLifecycle(this, cameraSelector, preview, imageAnalyzer)
+
 
             // Attach the viewfinder's surface provider to preview use case
             preview?.setSurfaceProvider(fragmentCameraBinding.viewFinder.surfaceProvider)
@@ -364,6 +368,8 @@ class CameraFragment : Fragment(R.layout.fragment_camera), ObjectDetectorHelper.
         val imageRotation = image.imageInfo.rotationDegrees
         // Pass Bitmap and rotation to the object detector helper for processing and detection
         objectDetectorHelper.detect(bitmapBuffer, imageRotation)
+        //avoid error："maxImages (4) has already been acquired, call #close before acquiring more."
+        image.close()
     }
 
     // 其中一個設定發生變更時，MyActivity 就不會重新啟動，而是 MyActivity 會收到對 onConfigurationChanged() 的呼叫
@@ -402,6 +408,7 @@ class CameraFragment : Fragment(R.layout.fragment_camera), ObjectDetectorHelper.
 
         // Force a redraw
         fragmentCameraBinding.overlay.invalidate()
+
 
     }
     fun sound_output( detectionResults: MutableList<Detection>)

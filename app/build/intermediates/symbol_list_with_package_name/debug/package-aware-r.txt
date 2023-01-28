@@ -1435,6 +1435,7 @@ id ifRoom
 id ignore
 id ignoreRequest
 id image
+id imgCompass
 id inference_time_label
 id inference_time_val
 id info
@@ -1705,6 +1706,7 @@ layout select_dialog_item_material
 layout select_dialog_multichoice_material
 layout select_dialog_singlechoice_material
 layout support_simple_spinner_dropdown_item
+mipmap compass
 mipmap ic_launcher
 mipmap ic_launcher_foreground
 mipmap ic_launcher_round
