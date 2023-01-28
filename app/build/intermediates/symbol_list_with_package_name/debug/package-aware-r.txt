@@ -811,6 +811,7 @@ color cardview_dark_background
 color cardview_light_background
 color cardview_shadow_end_color
 color cardview_shadow_start_color
+color compass
 color design_bottom_navigation_shadow_color
 color design_default_color_primary
 color design_default_color_primary_dark
@@ -1343,6 +1344,8 @@ id bottom
 id bottom_sheet_layout
 id bounce
 id btnMain
+id button1
+id button2
 id buttonPanel
 id cache_measures
 id camera_container
@@ -1571,6 +1574,7 @@ id text2
 id textSpacerNoButtons
 id textSpacerNoTitle
 id textStart
+id textView
 id textWatcher
 id text_input_password_toggle
 id textinput_counter
@@ -1587,7 +1591,6 @@ id title
 id titleDividerNoCustom
 id title_template
 id toggle
-id toolbar
 id top
 id topPanel
 id touch_outside
@@ -1604,7 +1607,7 @@ id uniform
 id unlabeled
 id up
 id useLogo
-id view_finder
+id viewFinder
 id view_offset_helper
 id view_tree_lifecycle_owner
 id view_tree_saved_state_registry_owner
@@ -1670,6 +1673,7 @@ layout abc_search_dropdown_item_icons_2line
 layout abc_search_view
 layout abc_select_dialog_material
 layout abc_tooltip
+layout activity_compass_main
 layout activity_main
 layout custom_dialog
 layout design_bottom_navigation_item
@@ -1687,6 +1691,7 @@ layout design_navigation_menu
 layout design_navigation_menu_item
 layout design_text_input_password_icon
 layout fragment_camera
+layout fragment_compass
 layout info_bottom_sheet
 layout mtrl_layout_snackbar
 layout mtrl_layout_snackbar_include
@@ -1716,6 +1721,10 @@ raw mouse
 raw north
 raw person
 raw tv
+string Camera
+string Compass
+string _1
+string _2
 string abc_action_bar_home_description
 string abc_action_bar_up_description
 string abc_action_menu_overflow_description
@@ -1755,6 +1764,7 @@ string appbar_scrolling_view_behavior
 string bottom_sheet_behavior
 string character_counter_content_description
 string character_counter_pattern
+string compass
 string fab_transformation_scrim_behavior
 string fab_transformation_sheet_behavior
 string hide_bottom_view_on_scroll_behavior
@@ -1774,7 +1784,9 @@ string path_password_eye_mask_strike_through
 string path_password_eye_mask_visible
 string path_password_strike_through
 string search_menu_title
+string sound_close
 string status_bar_notification_info_overflow
+string todo
 style AlertDialog_AppCompat
 style AlertDialog_AppCompat_Light
 style Animation_AppCompat_Dialog

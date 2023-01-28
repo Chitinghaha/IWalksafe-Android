@@ -16,7 +16,6 @@
 package org.tensorflow.lite.examples.objectdetection.fragments
 
 import android.annotation.SuppressLint
-import android.app.Activity
 import android.content.res.Configuration
 import android.graphics.Bitmap
 import android.media.MediaPlayer
@@ -27,37 +26,32 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.Toast
-import androidx.camera.core.AspectRatio
-import androidx.camera.core.Camera
-import androidx.camera.core.CameraSelector
-import androidx.camera.core.ImageAnalysis
+import androidx.camera.core.*
 import androidx.camera.core.ImageAnalysis.OUTPUT_IMAGE_FORMAT_RGBA_8888
-import androidx.camera.core.ImageProxy
-import androidx.camera.core.Preview
-import androidx.camera.core.impl.utils.ContextUtil.getApplicationContext
 import androidx.camera.lifecycle.ProcessCameraProvider
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.navigation.Navigation
-import org.tensorflow.lite.examples.objectdetection.MainActivity
-import java.util.LinkedList
-import java.util.concurrent.ExecutorService
-import java.util.concurrent.Executors
 import org.tensorflow.lite.examples.objectdetection.ObjectDetectorHelper
 import org.tensorflow.lite.examples.objectdetection.R
 import org.tensorflow.lite.examples.objectdetection.databinding.FragmentCameraBinding
 import org.tensorflow.lite.task.vision.detector.Detection
+import java.util.*
+import java.util.concurrent.ExecutorService
+import java.util.concurrent.Executors
 
 
 // fragment https://medium.com/@waynechen323/android-%E5%9F%BA%E7%A4%8E%E7%9A%84-fragment-%E4%BD%BF%E7%94%A8%E6%96%B9%E5%BC%8F-730858c12a43
 // fragment https://ithelp.ithome.com.tw/articles/10262921
 // Kotlin 繼承
-class CameraFragment : Fragment(), ObjectDetectorHelper.DetectorListener {
+class CameraFragment : Fragment(R.layout.fragment_camera), ObjectDetectorHelper.DetectorListener {
 
     private val TAG = "ObjectDetection"
 
+    // ?：做 null check 後，不為空的話再執行   !!：堅持不會是空值，執行就是了
     private var _fragmentCameraBinding: FragmentCameraBinding? = null
 
+    // getter,setter https://www.delftstack.com/zh-tw/howto/kotlin/kotlin-set/
     private val fragmentCameraBinding
         get() = _fragmentCameraBinding!!
 
@@ -83,30 +77,46 @@ class CameraFragment : Fragment(), ObjectDetectorHelper.DetectorListener {
     // private val MutableSet = mutableSetOf<String>("cell phone", "cup", "keyboard","laptop","mouse","person","tv")
 
     /** Blocking camera operations are performed using this executor */
+
+    //https://ithelp.ithome.com.tw/articles/10207124
     private lateinit var cameraExecutor: ExecutorService
 
 
     override fun onResume() {
         super.onResume()
         // Make sure that all permissions are still present, since the
-        // user could have removed them while the app was in paused stateㄎ
+        // user could have removed them while the app was in paused state
+        //確認fragment的權限
         if (!PermissionsFragment.hasPermissions(requireContext())) {
+            //Navigation 用於管理 fragment
+            //https://ithelp.ithome.com.tw/articles/10225937
             Navigation.findNavController(requireActivity(), R.id.fragment_container)
                 .navigate(CameraFragmentDirections.actionCameraToPermissions())
         }
+
     }
 
-    // Fragment即將被結束、保存
+    override  fun onPause(){
+        super.onPause()
+        cameraExecutor.shutdown()
+    }
+
+    override fun onStop() {
+        super.onStop()
+        cameraExecutor.shutdown()
+    }
+
+    // Fragment即將被結束
     override fun onDestroyView() {
         _fragmentCameraBinding = null
         super.onDestroyView()
 
         // Shut down our background executor
         cameraExecutor.shutdown()
-
     }
 
-    // 使用LayoutInflater內的inflate方法，將你所設定的布局包裝成一個view(視圖)並使用
+
+    // 使用LayoutInflater內的inflate方法，將你所設定的layout包裝成一個view(視圖)並使用
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -139,8 +149,6 @@ class CameraFragment : Fragment(), ObjectDetectorHelper.DetectorListener {
         // Toast.makeText(getContext() , "Hello", Toast.LENGTH_LONG).show()
 
 
-
-
         objectDetectorHelper = ObjectDetectorHelper(
             context = requireContext(),
             objectDetectorListener = this)
@@ -157,8 +165,6 @@ class CameraFragment : Fragment(), ObjectDetectorHelper.DetectorListener {
         // Attach listeners to UI control widgets
         initBottomSheetControls()
     }
-
-
 
     private fun initBottomSheetControls() {
 
@@ -375,8 +381,8 @@ class CameraFragment : Fragment(), ObjectDetectorHelper.DetectorListener {
         imageWidth: Int,
     ) {
         activity?.runOnUiThread {
-            fragmentCameraBinding.bottomSheetLayout.inferenceTimeVal.text =
-                String.format("%d ms", inferenceTime)
+           // fragmentCameraBinding.bottomSheetLayout.inferenceTimeVal.text =
+             //   String.format("%d ms", inferenceTime)
 
             // Pass necessary information to OverlayView for drawing on the canvas
             // draw box!!!
@@ -387,9 +393,12 @@ class CameraFragment : Fragment(), ObjectDetectorHelper.DetectorListener {
             )
 
         }
+
+
         if (results != null && fragmentCameraBinding.btnMain.text == "Sound_Open") {
             sound_output(results)
         }
+
 
         // Force a redraw
         fragmentCameraBinding.overlay.invalidate()
@@ -407,8 +416,6 @@ class CameraFragment : Fragment(), ObjectDetectorHelper.DetectorListener {
                 mp2?.start()
             } else if (result.categories[0].label == "cup") {
                 mp3?.start()
-            } else if (result.categories[0].label == "person" ) {
-                mp4?.start()
             } else if (result.categories[0].label == "tv" ) {
                 mp5?.start()
             }

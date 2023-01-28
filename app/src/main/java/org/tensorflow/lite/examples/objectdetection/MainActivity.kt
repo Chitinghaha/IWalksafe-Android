@@ -17,11 +17,12 @@
 package org.tensorflow.lite.examples.objectdetection
 
 
-import android.media.MediaPlayer
+import android.content.Intent
 import android.os.Build
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.Fragment
 import org.tensorflow.lite.examples.objectdetection.databinding.ActivityMainBinding
 
 /**
@@ -40,7 +41,44 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         activityMainBinding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(activityMainBinding.root)
+
+        //activity change to CompassMainActivity
+        activityMainBinding.button1.setOnClickListener{
+            finish()
+            val intent = Intent(this, CompassMainActivity::class.java)
+            startActivity(intent)
+        }
+
+
+
+//        //fragment init
+//        initFragment(CompassFragment())
+//
+//        //fragment change
+//        activityMainBinding.button1.setOnClickListener{
+//            replaceFragment(CameraFragment())
+//        }
+//
+//        activityMainBinding.button2.setOnClickListener{
+//            replaceFragment(CompassFragment())
+//        }
     }
+
+    private fun initFragment(fragment: Fragment) {
+        val fragmentManager = supportFragmentManager
+        val fragmentTransition = fragmentManager.beginTransaction()
+        fragmentTransition.add(R.id.fragment_container,fragment)
+        fragmentTransition.commit()
+    }
+
+    private fun replaceFragment(fragment: Fragment) {
+        val fragmentManager = supportFragmentManager
+        val fragmentTransition = fragmentManager.beginTransaction()
+        fragmentTransition.replace(R.id.fragment_container,fragment)
+        fragmentTransition.commit()
+    }
+
+
 
     //https://ithelp.ithome.com.tw/articles/10216949
     override fun onBackPressed() {
