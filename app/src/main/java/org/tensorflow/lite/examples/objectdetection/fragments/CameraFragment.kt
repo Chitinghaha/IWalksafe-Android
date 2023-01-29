@@ -368,7 +368,7 @@ class CameraFragment : Fragment(R.layout.fragment_camera), ObjectDetectorHelper.
         val imageRotation = image.imageInfo.rotationDegrees
         // Pass Bitmap and rotation to the object detector helper for processing and detection
         objectDetectorHelper.detect(bitmapBuffer, imageRotation)
-        //avoid error："maxImages (4) has already been acquired, call #close before acquiring more."
+        //prevent error："maxImages (4) has already been acquired, call #close before acquiring more."
         image.close()
     }
 

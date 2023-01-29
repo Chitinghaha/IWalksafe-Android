@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.constraintlayout.widget.ConstraintLayout;
@@ -26,11 +27,15 @@ public final class ActivityCompassMainBinding implements ViewBinding {
   @NonNull
   public final ImageView imgCompass;
 
+  @NonNull
+  public final TextView textView;
+
   private ActivityCompassMainBinding(@NonNull ConstraintLayout rootView, @NonNull Button button2,
-      @NonNull ImageView imgCompass) {
+      @NonNull ImageView imgCompass, @NonNull TextView textView) {
     this.rootView = rootView;
     this.button2 = button2;
     this.imgCompass = imgCompass;
+    this.textView = textView;
   }
 
   @Override
@@ -72,7 +77,14 @@ public final class ActivityCompassMainBinding implements ViewBinding {
         break missingId;
       }
 
-      return new ActivityCompassMainBinding((ConstraintLayout) rootView, button2, imgCompass);
+      id = R.id.textView;
+      TextView textView = ViewBindings.findChildViewById(rootView, id);
+      if (textView == null) {
+        break missingId;
+      }
+
+      return new ActivityCompassMainBinding((ConstraintLayout) rootView, button2, imgCompass,
+          textView);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

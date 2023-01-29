@@ -1,11 +1,11 @@
 [
     {
-        "merged": "C:\\lab\\iWalkSafe_android\\app\\build\\intermediates\\merged_res\\debug\\drawable_shape_circle.xml.flat",
-        "source": "C:\\lab\\iWalkSafe_android\\app\\src\\main\\res\\drawable\\shape_circle.xml"
-    },
-    {
         "merged": "C:\\lab\\iWalkSafe_android\\app\\build\\intermediates\\merged_res\\debug\\raw_cup.mp3.flat",
         "source": "C:\\lab\\iWalkSafe_android\\app\\src\\main\\res\\raw\\cup.mp3"
+    },
+    {
+        "merged": "C:\\lab\\iWalkSafe_android\\app\\build\\intermediates\\merged_res\\debug\\drawable_shape_circle.xml.flat",
+        "source": "C:\\lab\\iWalkSafe_android\\app\\src\\main\\res\\drawable\\shape_circle.xml"
     },
     {
         "merged": "C:\\lab\\iWalkSafe_android\\app\\build\\intermediates\\merged_res\\debug\\mipmap-xxhdpi_ic_launcher_foreground.png.flat",
@@ -126,6 +126,10 @@
     {
         "merged": "C:\\lab\\iWalkSafe_android\\app\\build\\intermediates\\merged_res\\debug\\raw_beep4.mp3.flat",
         "source": "C:\\lab\\iWalkSafe_android\\app\\src\\main\\res\\raw\\beep4.mp3"
+    },
+    {
+        "merged": "C:\\lab\\iWalkSafe_android\\app\\build\\intermediates\\merged_res\\debug\\layout-land_activity_compass_main.xml.flat",
+        "source": "C:\\lab\\iWalkSafe_android\\app\\src\\main\\res\\layout-land\\activity_compass_main.xml"
     },
     {
         "merged": "C:\\lab\\iWalkSafe_android\\app\\build\\intermediates\\merged_res\\debug\\mipmap-anydpi-v26_ic_launcher_round.xml.flat",

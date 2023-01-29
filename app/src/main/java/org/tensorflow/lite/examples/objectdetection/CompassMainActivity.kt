@@ -7,7 +7,10 @@ import android.hardware.Sensor
 import android.hardware.SensorEvent
 import android.hardware.SensorEventListener
 import android.hardware.SensorManager
+import android.os.Build
 import android.os.Bundle
+import android.os.VibrationEffect
+import android.os.Vibrator
 import android.view.animation.Animation
 import android.view.animation.RotateAnimation
 import android.widget.ImageView
@@ -46,6 +49,8 @@ class CompassMainActivity : Activity(), SensorEventListener {
 
     override fun onDestroy() {
         super.onDestroy()
+        mSensorManager?.unregisterListener(this,
+            mSensorManager?.getDefaultSensor(Sensor.TYPE_ORIENTATION))
     }
 
     override fun onResume() {
@@ -73,6 +78,24 @@ class CompassMainActivity : Activity(), SensorEventListener {
 
         activityCompassMainBinding.imgCompass.startAnimation(rotationAnimation)
         currentDegree=(-degree).toFloat()
+
+
+        var right_degree= -currentDegree
+        var print = (-currentDegree).toString()
+        activityCompassMainBinding.textView.setText(print)
+
+        if(right_degree > 355 || right_degree<5){
+            dovibrate()
+        }
+    }
+
+    private fun dovibrate() {
+        val vibrator = getSystemService(Context.VIBRATOR_SERVICE) as Vibrator
+        if (Build.VERSION.SDK_INT >= 26) {
+            vibrator.vibrate(VibrationEffect.createOneShot(200, VibrationEffect.DEFAULT_AMPLITUDE))
+        } else {
+            vibrator.vibrate(200)
+        }
     }
 
     override fun onAccuracyChanged(sensor: Sensor?, accuracy: Int) {
