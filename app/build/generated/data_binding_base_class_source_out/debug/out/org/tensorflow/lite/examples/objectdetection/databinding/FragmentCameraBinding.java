@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.RelativeLayout;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.camera.view.PreviewView;
@@ -28,23 +29,32 @@ public final class FragmentCameraBinding implements ViewBinding {
   public final Button btnMain;
 
   @NonNull
+  public final Button button3;
+
+  @NonNull
   public final CoordinatorLayout cameraContainer;
 
   @NonNull
   public final OverlayView overlay;
 
   @NonNull
+  public final RelativeLayout reLayout;
+
+  @NonNull
   public final PreviewView viewFinder;
 
   private FragmentCameraBinding(@NonNull CoordinatorLayout rootView,
       @NonNull InfoBottomSheetBinding bottomSheetLayout, @NonNull Button btnMain,
-      @NonNull CoordinatorLayout cameraContainer, @NonNull OverlayView overlay,
+      @NonNull Button button3, @NonNull CoordinatorLayout cameraContainer,
+      @NonNull OverlayView overlay, @NonNull RelativeLayout reLayout,
       @NonNull PreviewView viewFinder) {
     this.rootView = rootView;
     this.bottomSheetLayout = bottomSheetLayout;
     this.btnMain = btnMain;
+    this.button3 = button3;
     this.cameraContainer = cameraContainer;
     this.overlay = overlay;
+    this.reLayout = reLayout;
     this.viewFinder = viewFinder;
   }
 
@@ -88,11 +98,23 @@ public final class FragmentCameraBinding implements ViewBinding {
         break missingId;
       }
 
+      id = R.id.button3;
+      Button button3 = ViewBindings.findChildViewById(rootView, id);
+      if (button3 == null) {
+        break missingId;
+      }
+
       CoordinatorLayout cameraContainer = (CoordinatorLayout) rootView;
 
       id = R.id.overlay;
       OverlayView overlay = ViewBindings.findChildViewById(rootView, id);
       if (overlay == null) {
+        break missingId;
+      }
+
+      id = R.id.reLayout;
+      RelativeLayout reLayout = ViewBindings.findChildViewById(rootView, id);
+      if (reLayout == null) {
         break missingId;
       }
 
@@ -103,7 +125,7 @@ public final class FragmentCameraBinding implements ViewBinding {
       }
 
       return new FragmentCameraBinding((CoordinatorLayout) rootView, binding_bottomSheetLayout,
-          btnMain, cameraContainer, overlay, viewFinder);
+          btnMain, button3, cameraContainer, overlay, reLayout, viewFinder);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

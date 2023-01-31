@@ -43,6 +43,8 @@
     <string name="_1">1</string>
     <string name="Compass">Compass</string>
     <string name="Camera">Camera</string>
+    <string name="sent_massege">sent_massege</string>
+    <string name="found_it">found_it</string>
 
     <string-array name="delegate_spinner_titles">
         <item>CPU</item>

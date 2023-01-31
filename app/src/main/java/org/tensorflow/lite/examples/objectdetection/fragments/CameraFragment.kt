@@ -16,10 +16,14 @@
 package org.tensorflow.lite.examples.objectdetection.fragments
 
 import android.annotation.SuppressLint
+import android.content.Context
 import android.content.res.Configuration
 import android.graphics.Bitmap
 import android.media.MediaPlayer
+import android.os.Build
 import android.os.Bundle
+import android.os.VibrationEffect
+import android.os.Vibrator
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -30,8 +34,10 @@ import androidx.camera.core.*
 import androidx.camera.core.ImageAnalysis.OUTPUT_IMAGE_FORMAT_RGBA_8888
 import androidx.camera.lifecycle.ProcessCameraProvider
 import androidx.core.content.ContextCompat
+import androidx.core.content.ContextCompat.getSystemService
 import androidx.fragment.app.Fragment
 import androidx.navigation.Navigation
+import org.tensorflow.lite.examples.objectdetection.MainActivity
 import org.tensorflow.lite.examples.objectdetection.ObjectDetectorHelper
 import org.tensorflow.lite.examples.objectdetection.R
 import org.tensorflow.lite.examples.objectdetection.databinding.FragmentCameraBinding
@@ -47,6 +53,8 @@ import java.util.concurrent.Executors
 class CameraFragment : Fragment(R.layout.fragment_camera), ObjectDetectorHelper.DetectorListener {
 
     private val TAG = "ObjectDetection"
+
+
 
     // ?：做 null check 後，不為空的話再執行   !!：堅持不會是空值，執行就是了
     private var _fragmentCameraBinding: FragmentCameraBinding? = null
@@ -81,9 +89,15 @@ class CameraFragment : Fragment(R.layout.fragment_camera), ObjectDetectorHelper.
     //https://ithelp.ithome.com.tw/articles/10207124
     private lateinit var cameraExecutor: ExecutorService
 
+    //find_name
+    private  var findname: String? =null
+
+
 
     override fun onResume() {
         super.onResume()
+
+
         // Make sure that all permissions are still present, since the
         // user could have removed them while the app was in paused state
         //確認fragment的權限
@@ -124,7 +138,12 @@ class CameraFragment : Fragment(R.layout.fragment_camera), ObjectDetectorHelper.
     ): View {
 
         _fragmentCameraBinding = FragmentCameraBinding.inflate(inflater, container, false)
-
+        //STT
+        val data = arguments
+        activity?.runOnUiThread {
+            Toast.makeText(requireContext(),data?.getString("String").toString(), Toast.LENGTH_SHORT).show()
+        }
+        findname = data?.getString("String").toString()
         return fragmentCameraBinding.root
     }
 
@@ -133,6 +152,12 @@ class CameraFragment : Fragment(R.layout.fragment_camera), ObjectDetectorHelper.
     @SuppressLint("MissingPermission")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        fragmentCameraBinding.button3.setOnClickListener {
+            findname = null
+        }
+
+
         /*
         fragmentCameraBinding.bottomSheetLayout.btnMain.setOnClickListener{
             objectDetectorHelper.threshold -= 0.1f
@@ -400,9 +425,18 @@ class CameraFragment : Fragment(R.layout.fragment_camera), ObjectDetectorHelper.
 
         }
 
+        if (results != null) {
+            for (result in results) {
+                if (result.categories[0].label == findname) {
+                    dovibrate()
+                }
+            }
+        }
+
 
         if (results != null && fragmentCameraBinding.btnMain.text == "Sound_Open") {
             sound_output(results)
+
         }
 
 
@@ -429,6 +463,14 @@ class CameraFragment : Fragment(R.layout.fragment_camera), ObjectDetectorHelper.
         }
 
 
+    }
+    private fun dovibrate() {
+        val vibrator = getActivity()?.getSystemService(Context.VIBRATOR_SERVICE) as Vibrator
+        if (Build.VERSION.SDK_INT >= 26) {
+            vibrator.vibrate(VibrationEffect.createOneShot(200, VibrationEffect.DEFAULT_AMPLITUDE))
+        } else {
+            vibrator.vibrate(200)
+        }
     }
 
 

@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.RelativeLayout;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.coordinatorlayout.widget.CoordinatorLayout;
@@ -24,13 +25,22 @@ public final class ActivityMainBinding implements ViewBinding {
   public final Button button1;
 
   @NonNull
+  public final Button button2;
+
+  @NonNull
   public final FragmentContainerView fragmentContainer;
 
+  @NonNull
+  public final RelativeLayout relativeLayout;
+
   private ActivityMainBinding(@NonNull CoordinatorLayout rootView, @NonNull Button button1,
-      @NonNull FragmentContainerView fragmentContainer) {
+      @NonNull Button button2, @NonNull FragmentContainerView fragmentContainer,
+      @NonNull RelativeLayout relativeLayout) {
     this.rootView = rootView;
     this.button1 = button1;
+    this.button2 = button2;
     this.fragmentContainer = fragmentContainer;
+    this.relativeLayout = relativeLayout;
   }
 
   @Override
@@ -66,13 +76,26 @@ public final class ActivityMainBinding implements ViewBinding {
         break missingId;
       }
 
+      id = R.id.button2;
+      Button button2 = ViewBindings.findChildViewById(rootView, id);
+      if (button2 == null) {
+        break missingId;
+      }
+
       id = R.id.fragment_container;
       FragmentContainerView fragmentContainer = ViewBindings.findChildViewById(rootView, id);
       if (fragmentContainer == null) {
         break missingId;
       }
 
-      return new ActivityMainBinding((CoordinatorLayout) rootView, button1, fragmentContainer);
+      id = R.id.relativeLayout;
+      RelativeLayout relativeLayout = ViewBindings.findChildViewById(rootView, id);
+      if (relativeLayout == null) {
+        break missingId;
+      }
+
+      return new ActivityMainBinding((CoordinatorLayout) rootView, button1, button2,
+          fragmentContainer, relativeLayout);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

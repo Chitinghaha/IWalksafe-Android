@@ -17,13 +17,19 @@
 package org.tensorflow.lite.examples.objectdetection
 
 
+import android.app.Activity
 import android.content.Intent
+import android.net.wifi.p2p.nsd.WifiP2pServiceRequest.newInstance
 import android.os.Build
 import android.os.Bundle
+import android.speech.RecognizerIntent
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import org.tensorflow.lite.examples.objectdetection.databinding.ActivityMainBinding
+import org.tensorflow.lite.examples.objectdetection.fragments.CameraFragment
+import java.lang.reflect.Array.newInstance
+import javax.xml.validation.SchemaFactory.newInstance
 
 /**
  * Main entry point into our app. This app follows the single-activity pattern, and all
@@ -32,6 +38,7 @@ import org.tensorflow.lite.examples.objectdetection.databinding.ActivityMainBind
 //Binding  https://ithelp.ithome.com.tw/articles/10244984
 //Binding https://xnfood.com.tw/android-databinding-mvvc/
 class MainActivity : AppCompatActivity() {
+    private val SPEECH_REQUEST_CODE = 0
 
     private lateinit var activityMainBinding: ActivityMainBinding
 
@@ -49,10 +56,13 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
+        activityMainBinding.button2.setOnClickListener{
+            displaySpeechRecognizer()
+        }
 
 
-//        //fragment init
-//        initFragment(CompassFragment())
+        //fragment init
+//        initFragment(CameraFragment())
 //
 //        //fragment change
 //        activityMainBinding.button1.setOnClickListener{
@@ -63,26 +73,67 @@ class MainActivity : AppCompatActivity() {
 //            replaceFragment(CompassFragment())
 //        }
     }
+    private fun displaySpeechRecognizer() {
+        val intent = Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH)
+        intent.putExtra(RecognizerIntent.EXTRA_PROMPT, "Please say something")
+        intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL, RecognizerIntent.LANGUAGE_MODEL_FREE_FORM)
+        intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE, "en-US")
+        intent.putExtra(RecognizerIntent.EXTRA_MAX_RESULTS, 3)
 
-    private fun initFragment(fragment: Fragment) {
-        val fragmentManager = supportFragmentManager
-        val fragmentTransition = fragmentManager.beginTransaction()
-        fragmentTransition.add(R.id.fragment_container,fragment)
-        fragmentTransition.commit()
+
+        startActivityForResult(intent, SPEECH_REQUEST_CODE)
     }
 
-    private fun replaceFragment(fragment: Fragment) {
-        val fragmentManager = supportFragmentManager
-        val fragmentTransition = fragmentManager.beginTransaction()
-        fragmentTransition.replace(R.id.fragment_container,fragment)
-        fragmentTransition.commit()
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (requestCode == SPEECH_REQUEST_CODE && resultCode == Activity.RESULT_OK) {
+            val spokenText: String? =
+                data?.getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS).let { results ->
+                    results?.get(0)
+                }
+            val bundle = Bundle()
+            // Creating the new Fragment with the name passed in.
+            val fragment = CameraFragment()
+            bundle.putString("String", spokenText)
+            fragment.arguments = bundle
+            val fragmentManager = supportFragmentManager
+            val fragmentTransition = fragmentManager.beginTransaction()
+            fragmentTransition.replace(R.id.fragment_container, fragment)
+            fragmentTransition.commit()
+
+//            Toast.makeText(this,spokenText,Toast.LENGTH_SHORT).show()
+        }
     }
+
+
+//    fun newInstance(param: String?): CameraFragment? {
+//        val fragment = CameraFragment()
+//        val args = Bundle()
+//        args.putString("name", param)
+//        fragment.setArguments(args)
+//        return fragment
+//    }
+
+//    private fun initFragment(fragment: Fragment) {
+//        val fragmentManager = supportFragmentManager
+//        val fragmentTransition = fragmentManager.beginTransaction()
+//        fragmentTransition.add(R.id.fragment_container,fragment)
+//        fragmentTransition.commit()
+//    }
+//
+//    private fun replaceFragment(fragment: Fragment) {
+//        val fragmentManager = supportFragmentManager
+//        val fragmentTransition = fragmentManager.beginTransaction()
+//        fragmentTransition.replace(R.id.fragment_container,fragment)
+//        fragmentTransition.commit()
+//    }
 
 
 
     //https://ithelp.ithome.com.tw/articles/10216949
     override fun onBackPressed() {
         Toast.makeText(this, "你確定要離開?", Toast.LENGTH_SHORT).show()
+
         if (Build.VERSION.SDK_INT == Build.VERSION_CODES.Q) {
             // Workaround for Android Q memory leak issue in IRequestFinishCallback$Stub.
             // (https://issuetracker.google.com/issues/139738913)

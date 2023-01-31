@@ -51,7 +51,7 @@ class OverlayView(context: Context?, attrs: AttributeSet?) : View(context, attrs
 
     private var bounds = Rect()
 
-    lateinit var tts:TextToSpeech
+//    lateinit var tts:TextToSpeech
 
     init {
         initPaints()

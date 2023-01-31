@@ -80,8 +80,8 @@ class CompassMainActivity : Activity(), SensorEventListener {
         currentDegree=(-degree).toFloat()
 
 
-        var right_degree= -currentDegree
-        var print = (-currentDegree).toString()
+        val right_degree= -currentDegree
+        val print = (-currentDegree).toString()
         activityCompassMainBinding.textView.setText(print)
 
         if(right_degree > 355 || right_degree<5){
