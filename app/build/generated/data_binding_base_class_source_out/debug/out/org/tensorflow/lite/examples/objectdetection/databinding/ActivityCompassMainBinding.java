@@ -21,7 +21,20 @@ public final class ActivityCompassMainBinding implements ViewBinding {
   @NonNull
   private final ConstraintLayout rootView;
 
-  @NonNull
+  /**
+   * This binding is not available in all configurations.
+   * <p>
+   * Present:
+   * <ul>
+   *   <li>layout-land/</li>
+   * </ul>
+   *
+   * Absent:
+   * <ul>
+   *   <li>layout/</li>
+   * </ul>
+   */
+  @Nullable
   public final Button button2;
 
   @NonNull
@@ -30,7 +43,7 @@ public final class ActivityCompassMainBinding implements ViewBinding {
   @NonNull
   public final TextView textView;
 
-  private ActivityCompassMainBinding(@NonNull ConstraintLayout rootView, @NonNull Button button2,
+  private ActivityCompassMainBinding(@NonNull ConstraintLayout rootView, @Nullable Button button2,
       @NonNull ImageView imgCompass, @NonNull TextView textView) {
     this.rootView = rootView;
     this.button2 = button2;
@@ -67,9 +80,6 @@ public final class ActivityCompassMainBinding implements ViewBinding {
     missingId: {
       id = R.id.button2;
       Button button2 = ViewBindings.findChildViewById(rootView, id);
-      if (button2 == null) {
-        break missingId;
-      }
 
       id = R.id.imgCompass;
       ImageView imgCompass = ViewBindings.findChildViewById(rootView, id);

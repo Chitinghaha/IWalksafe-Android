@@ -11,9 +11,11 @@ import android.os.Build
 import android.os.Bundle
 import android.os.VibrationEffect
 import android.os.Vibrator
+import android.util.Log
 import android.view.animation.Animation
 import android.view.animation.RotateAnimation
 import android.widget.ImageView
+import android.widget.Toast
 import org.tensorflow.lite.examples.objectdetection.databinding.ActivityCompassMainBinding
 
 
@@ -27,18 +29,12 @@ class CompassMainActivity : Activity(), SensorEventListener {
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        Log.d("compose", "Compass onCreate()")
         super.onCreate(savedInstanceState)
         activityCompassMainBinding = ActivityCompassMainBinding.inflate(layoutInflater)
         setContentView(activityCompassMainBinding.root)
         initData()
 
-
-        //activity change MainActivity
-        activityCompassMainBinding.button2.setOnClickListener{
-            finish()
-            val intent = Intent(this, MainActivity::class.java)
-            startActivity(intent)
-        }
 
     }
 
@@ -48,12 +44,14 @@ class CompassMainActivity : Activity(), SensorEventListener {
     }
 
     override fun onDestroy() {
+        Log.d("compose", "Compass onDestroy()")
         super.onDestroy()
         mSensorManager?.unregisterListener(this,
             mSensorManager?.getDefaultSensor(Sensor.TYPE_ORIENTATION))
     }
 
     override fun onResume() {
+        Log.d("compose", "Compass onResume()")
         super.onResume()
         @Suppress("DEPRECATION")
         mSensorManager?.registerListener(this,
@@ -102,5 +100,28 @@ class CompassMainActivity : Activity(), SensorEventListener {
 
     }
 
+    override fun onBackPressed() {
+        super.onBackPressed()
+        Log.d("compose", "Compass onBackPressed()")
+    }
 
+    override fun onRestart() {
+        super.onRestart()
+        Log.d("compose", "Compass onRestart()")
+    }
+
+    override fun onPause() {
+        super.onPause()
+        Log.d("compose", "Compass onPause()")
+    }
+
+    override fun onStop() {
+        super.onStop()
+        Log.d("compose", "Compass onStop()")
+    }
+
+    override fun onStart() {
+        super.onStart()
+        Log.d("compose", "Compass onStart()")
+    }
 }

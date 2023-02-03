@@ -18,18 +18,21 @@ package org.tensorflow.lite.examples.objectdetection
 
 
 import android.app.Activity
+import android.content.ContentValues.TAG
 import android.content.Intent
-import android.net.wifi.p2p.nsd.WifiP2pServiceRequest.newInstance
+import android.net.Uri
 import android.os.Build
 import android.os.Bundle
+import android.os.PersistableBundle
 import android.speech.RecognizerIntent
+import android.speech.tts.TextToSpeech
+import android.util.AttributeSet
+import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.fragment.app.Fragment
 import org.tensorflow.lite.examples.objectdetection.databinding.ActivityMainBinding
 import org.tensorflow.lite.examples.objectdetection.fragments.CameraFragment
-import java.lang.reflect.Array.newInstance
-import javax.xml.validation.SchemaFactory.newInstance
+import java.util.*
 
 /**
  * Main entry point into our app. This app follows the single-activity pattern, and all
@@ -37,10 +40,14 @@ import javax.xml.validation.SchemaFactory.newInstance
  */
 //Binding  https://ithelp.ithome.com.tw/articles/10244984
 //Binding https://xnfood.com.tw/android-databinding-mvvc/
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity() , TextToSpeech.OnInitListener{
     private val SPEECH_REQUEST_CODE = 0
 
     private lateinit var activityMainBinding: ActivityMainBinding
+
+    private  var activity_channel = 0
+
+    private var tts: TextToSpeech? = null
 
 
     //activity-lifecycle https://ithelp.ithome.com.tw/articles/10207640
@@ -48,17 +55,25 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         activityMainBinding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(activityMainBinding.root)
+        tts = TextToSpeech(this, this)
 
         //activity change to CompassMainActivity
         activityMainBinding.button1.setOnClickListener{
-            finish()
             val intent = Intent(this, CompassMainActivity::class.java)
             startActivity(intent)
         }
 
         activityMainBinding.button2.setOnClickListener{
+            activity_channel = 0
             displaySpeechRecognizer()
         }
+
+
+        activityMainBinding.mapbtn.setOnClickListener{
+            activity_channel = 1
+            displaySpeechRecognizer()
+        }
+        Log.d("compose", "Main onCreate()")
 
 
         //fragment init
@@ -73,6 +88,14 @@ class MainActivity : AppCompatActivity() {
 //            replaceFragment(CompassFragment())
 //        }
     }
+
+    private fun speakOut(etSpeak:String) {
+        if(tts != null) {
+            tts!!.stop()
+            tts!!.speak(etSpeak, TextToSpeech.QUEUE_FLUSH, null, null)
+        }
+    }
+
     private fun displaySpeechRecognizer() {
         val intent = Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH)
         intent.putExtra(RecognizerIntent.EXTRA_PROMPT, "Please say something")
@@ -91,19 +114,76 @@ class MainActivity : AppCompatActivity() {
                 data?.getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS).let { results ->
                     results?.get(0)
                 }
-            val bundle = Bundle()
+            if (spokenText != null) {
+                channel_funtion(spokenText)
+            }
+//            Toast.makeText(this,spokenText,Toast.LENGTH_SHORT).show()
+        }
+        Log.d("compose", "Main onActivityResult()")
+    }
+
+    private  fun channel_funtion(spokenText:String){
+        if (activity_channel == 0){
+            //Manager
+            val fragmentManager = supportFragmentManager
+            val fragmentTransition = fragmentManager.beginTransaction()
+
+            fragmentTransition.remove(CameraFragment())
+
             // Creating the new Fragment with the name passed in.
+            val bundle = Bundle()
             val fragment = CameraFragment()
             bundle.putString("String", spokenText)
             fragment.arguments = bundle
-            val fragmentManager = supportFragmentManager
-            val fragmentTransition = fragmentManager.beginTransaction()
-            fragmentTransition.replace(R.id.fragment_container, fragment)
+            fragmentTransition.add(R.id.fragment_container, fragment)
             fragmentTransition.commit()
 
-//            Toast.makeText(this,spokenText,Toast.LENGTH_SHORT).show()
         }
+        else if(activity_channel == 1){
+            speakOut(spokenText)
+            val gmmIntentUri =
+                Uri.parse("google.navigation:q=$spokenText&mode=w")
+            val mapIntent = Intent(Intent.ACTION_VIEW, gmmIntentUri)
+            mapIntent.setPackage("com.google.android.apps.maps")
+
+            // check have google map app
+            mapIntent.resolveActivity(packageManager)?.let {
+                startActivity(mapIntent)
+            }
+
+        }
+        else{
+            Toast.makeText(this,"error",Toast.LENGTH_SHORT).show()
+        }
+
+
     }
+
+    override fun onResume() {
+        super.onResume()
+        Log.d("compose", "Main onResume()")
+    }
+
+    override fun onRestart() {
+        super.onRestart()
+        Log.d("compose", "Main onRestart()")
+    }
+
+    override fun onPause() {
+        super.onPause()
+        Log.d("compose", "Main onPause()")
+    }
+
+    override fun onStop() {
+        super.onStop()
+        Log.d("compose", "Main onStop()")
+    }
+
+    override fun onStart() {
+        super.onStart()
+        Log.d("compose", "Main onStart()")
+    }
+
 
 
 //    fun newInstance(param: String?): CameraFragment? {
@@ -141,5 +221,29 @@ class MainActivity : AppCompatActivity() {
         } else {
             super.onBackPressed()
         }
+        Log.d("compose", "Main onBackPressed()")
     }
+
+    override fun onInit(p0: Int) {
+        if (p0 == TextToSpeech.SUCCESS) {
+            val result = tts!!.setLanguage(Locale.US)
+
+            if (result == TextToSpeech.LANG_MISSING_DATA || result == TextToSpeech.LANG_NOT_SUPPORTED) {
+                Log.e("TTS","The Language not supported!")
+            }
+        }
+
+    }
+
+    public override fun onDestroy() {
+        // Shutdown TTS when
+        // activity is destroyed
+        if (tts != null) {
+            tts!!.stop()
+            tts!!.shutdown()
+        }
+        super.onDestroy()
+        Log.d("compose", "Main onDestroy()")
+    }
+
 }

@@ -25,6 +25,10 @@ https://github.com/tensorflow/examples/tree/master/lite/examples
 
 ### Logcat
 * https://www.youtube.com/watch?v=OEnXX2OrvHY&ab_channel=JustimChung
+(這是舊版的)
+
+*https://www.youtube.com/watch?v=RZF5C2wTjjk&ab_channel=bennyhuo%E4%B8%8D%E6%98%AF%E7%AE%97%E5%91%BD%E7%9A%84
+(新版的)
 
 ---
 ## Kotlin 教學

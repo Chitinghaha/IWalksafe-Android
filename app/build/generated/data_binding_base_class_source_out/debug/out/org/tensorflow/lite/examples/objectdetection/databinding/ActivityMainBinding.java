@@ -31,15 +31,19 @@ public final class ActivityMainBinding implements ViewBinding {
   public final FragmentContainerView fragmentContainer;
 
   @NonNull
+  public final Button mapbtn;
+
+  @NonNull
   public final RelativeLayout relativeLayout;
 
   private ActivityMainBinding(@NonNull CoordinatorLayout rootView, @NonNull Button button1,
       @NonNull Button button2, @NonNull FragmentContainerView fragmentContainer,
-      @NonNull RelativeLayout relativeLayout) {
+      @NonNull Button mapbtn, @NonNull RelativeLayout relativeLayout) {
     this.rootView = rootView;
     this.button1 = button1;
     this.button2 = button2;
     this.fragmentContainer = fragmentContainer;
+    this.mapbtn = mapbtn;
     this.relativeLayout = relativeLayout;
   }
 
@@ -88,6 +92,12 @@ public final class ActivityMainBinding implements ViewBinding {
         break missingId;
       }
 
+      id = R.id.mapbtn;
+      Button mapbtn = ViewBindings.findChildViewById(rootView, id);
+      if (mapbtn == null) {
+        break missingId;
+      }
+
       id = R.id.relativeLayout;
       RelativeLayout relativeLayout = ViewBindings.findChildViewById(rootView, id);
       if (relativeLayout == null) {
@@ -95,7 +105,7 @@ public final class ActivityMainBinding implements ViewBinding {
       }
 
       return new ActivityMainBinding((CoordinatorLayout) rootView, button1, button2,
-          fragmentContainer, relativeLayout);
+          fragmentContainer, mapbtn, relativeLayout);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

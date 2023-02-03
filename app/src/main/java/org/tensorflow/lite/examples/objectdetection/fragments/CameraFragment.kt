@@ -50,11 +50,9 @@ import java.util.concurrent.Executors
 // fragment https://medium.com/@waynechen323/android-%E5%9F%BA%E7%A4%8E%E7%9A%84-fragment-%E4%BD%BF%E7%94%A8%E6%96%B9%E5%BC%8F-730858c12a43
 // fragment https://ithelp.ithome.com.tw/articles/10262921
 // Kotlin 繼承
-class CameraFragment : Fragment(R.layout.fragment_camera), ObjectDetectorHelper.DetectorListener {
+class CameraFragment() : Fragment(R.layout.fragment_camera), ObjectDetectorHelper.DetectorListener {
 
     private val TAG = "ObjectDetection"
-
-
 
     // ?：做 null check 後，不為空的話再執行   !!：堅持不會是空值，執行就是了
     private var _fragmentCameraBinding: FragmentCameraBinding? = null
@@ -80,6 +78,7 @@ class CameraFragment : Fragment(R.layout.fragment_camera), ObjectDetectorHelper.
     private var mp3: MediaPlayer? = null
     private var mp4: MediaPlayer? = null
     private var mp5: MediaPlayer? = null
+
     //private var results: List<Detection> = LinkedList<Detection>()
 
     // private val MutableSet = mutableSetOf<String>("cell phone", "cup", "keyboard","laptop","mouse","person","tv")
@@ -92,9 +91,22 @@ class CameraFragment : Fragment(R.layout.fragment_camera), ObjectDetectorHelper.
     //find_name
     private  var findname: String? =null
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        Log.d("compose", "fragment onCreate()")
+        super.onCreate(savedInstanceState)
+        mp = MediaPlayer.create( getContext(), R.raw.mouse)
+        mp1 = MediaPlayer.create( getContext(), R.raw.keyboard)
+        mp2 = MediaPlayer.create( getContext(), R.raw.cell_phone)
+        mp3 = MediaPlayer.create( getContext(), R.raw.cup)
+        mp4 = MediaPlayer.create( getContext(), R.raw.person)
+        mp5 = MediaPlayer.create( getContext(), R.raw.tv)
+
+    }
+
 
 
     override fun onResume() {
+        Log.d("compose", "fragment onResume()")
         super.onResume()
 
 
@@ -102,31 +114,24 @@ class CameraFragment : Fragment(R.layout.fragment_camera), ObjectDetectorHelper.
         // user could have removed them while the app was in paused state
         //確認fragment的權限
         if (!PermissionsFragment.hasPermissions(requireContext())) {
+
+            Log.d("compose","errorrrrrrrrr")
             //Navigation 用於管理 fragment
             //https://ithelp.ithome.com.tw/articles/10225937
             Navigation.findNavController(requireActivity(), R.id.fragment_container)
                 .navigate(CameraFragmentDirections.actionCameraToPermissions())
         }
-
     }
 
-    override  fun onPause(){
-        super.onPause()
-        cameraExecutor.shutdown()
-    }
-
-    override fun onStop() {
-        super.onStop()
-        cameraExecutor.shutdown()
-    }
 
     // Fragment即將被結束
     override fun onDestroyView() {
+        Log.d("compose", "fragment onDestroyView()")
         _fragmentCameraBinding = null
-        super.onDestroyView()
 
         // Shut down our background executor
         cameraExecutor.shutdown()
+        super.onDestroyView()
     }
 
 
@@ -136,8 +141,11 @@ class CameraFragment : Fragment(R.layout.fragment_camera), ObjectDetectorHelper.
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
+        Log.d("compose", "fragment onCreateView()")
 
         _fragmentCameraBinding = FragmentCameraBinding.inflate(inflater, container, false)
+
+
         //STT
         val data = arguments
         activity?.runOnUiThread {
@@ -151,6 +159,7 @@ class CameraFragment : Fragment(R.layout.fragment_camera), ObjectDetectorHelper.
     // @SuppressLint("MissingPermission") 可以禁止權限檢查
     @SuppressLint("MissingPermission")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        Log.d("compose", "fragment onViewCreated()")
         super.onViewCreated(view, savedInstanceState)
 
         fragmentCameraBinding.button3.setOnClickListener {
@@ -164,12 +173,6 @@ class CameraFragment : Fragment(R.layout.fragment_camera), ObjectDetectorHelper.
             updateControlsUi()
         }
         */
-        mp = MediaPlayer.create( getContext(), R.raw.mouse)
-        mp1 = MediaPlayer.create( getContext(), R.raw.keyboard)
-        mp2 = MediaPlayer.create( getContext(), R.raw.cell_phone)
-        mp3 = MediaPlayer.create( getContext(), R.raw.cup)
-        mp4 = MediaPlayer.create( getContext(), R.raw.person)
-        mp5 = MediaPlayer.create( getContext(), R.raw.tv)
 
         // Toast.makeText(getContext() , "Hello", Toast.LENGTH_LONG).show()
 
@@ -399,6 +402,7 @@ class CameraFragment : Fragment(R.layout.fragment_camera), ObjectDetectorHelper.
 
     // 其中一個設定發生變更時，MyActivity 就不會重新啟動，而是 MyActivity 會收到對 onConfigurationChanged() 的呼叫
     override fun onConfigurationChanged(newConfig: Configuration) {
+        Log.d("compose", "fragment onConfigurationChanged")
         super.onConfigurationChanged(newConfig)
         imageAnalyzer?.targetRotation = fragmentCameraBinding.viewFinder.display.rotation
     }
@@ -411,6 +415,7 @@ class CameraFragment : Fragment(R.layout.fragment_camera), ObjectDetectorHelper.
         imageHeight: Int,
         imageWidth: Int,
     ) {
+       // Log.d("compose", "fragment onResults()")
         activity?.runOnUiThread {
            // fragmentCameraBinding.bottomSheetLayout.inferenceTimeVal.text =
              //   String.format("%d ms", inferenceTime)
@@ -476,8 +481,36 @@ class CameraFragment : Fragment(R.layout.fragment_camera), ObjectDetectorHelper.
 
 
     override fun onError(error: String) {
+        Log.d("compose", "fragment onError()")
         activity?.runOnUiThread {
             Toast.makeText(requireContext(), error, Toast.LENGTH_SHORT).show()
         }
     }
+
+    override fun onAttach(context: Context) {
+        Log.d("compose", "fragment onAttach()")
+        super.onAttach(context)
+    }
+
+    override fun onPause() {
+        Log.d("compose", "fragment onPause()")
+        super.onPause()
+    }
+
+    override fun onDestroy() {
+        Log.d("compose", "fragment onDestroy()")
+        super.onDestroy()
+    }
+
+    override fun onStop() {
+        Log.d("compose", "fragment onStop()")
+        super.onStop()
+    }
+
+    override fun onStart() {
+        Log.d("compose", "fragment onStart()")
+        super.onStart()
+    }
 }
+
+
