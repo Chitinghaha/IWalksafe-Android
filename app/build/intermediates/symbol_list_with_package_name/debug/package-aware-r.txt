@@ -811,6 +811,7 @@ color cardview_dark_background
 color cardview_light_background
 color cardview_shadow_end_color
 color cardview_shadow_start_color
+color compass
 color design_bottom_navigation_shadow_color
 color design_default_color_primary
 color design_default_color_primary_dark
@@ -1343,6 +1344,9 @@ id bottom
 id bottom_sheet_layout
 id bounce
 id btnMain
+id button1
+id button2
+id button3
 id buttonPanel
 id cache_measures
 id camera_container
@@ -1432,6 +1436,7 @@ id ifRoom
 id ignore
 id ignoreRequest
 id image
+id imgCompass
 id inference_time_label
 id inference_time_val
 id info
@@ -1449,6 +1454,7 @@ id line3
 id linear
 id listMode
 id list_item
+id mapbtn
 id masked
 id max_results_minus
 id max_results_plus
@@ -1494,7 +1500,9 @@ id progress_circular
 id progress_horizontal
 id radio
 id ratio
+id reLayout
 id rectangles
+id relativeLayout
 id reverseSawtooth
 id right
 id right_icon
@@ -1571,6 +1579,7 @@ id text2
 id textSpacerNoButtons
 id textSpacerNoTitle
 id textStart
+id textView
 id textWatcher
 id text_input_password_toggle
 id textinput_counter
@@ -1587,7 +1596,6 @@ id title
 id titleDividerNoCustom
 id title_template
 id toggle
-id toolbar
 id top
 id topPanel
 id touch_outside
@@ -1604,7 +1612,7 @@ id uniform
 id unlabeled
 id up
 id useLogo
-id view_finder
+id viewFinder
 id view_offset_helper
 id view_tree_lifecycle_owner
 id view_tree_saved_state_registry_owner
@@ -1670,6 +1678,7 @@ layout abc_search_dropdown_item_icons_2line
 layout abc_search_view
 layout abc_select_dialog_material
 layout abc_tooltip
+layout activity_compass_main
 layout activity_main
 layout custom_dialog
 layout design_bottom_navigation_item
@@ -1687,6 +1696,7 @@ layout design_navigation_menu
 layout design_navigation_menu_item
 layout design_text_input_password_icon
 layout fragment_camera
+layout fragment_compass
 layout info_bottom_sheet
 layout mtrl_layout_snackbar
 layout mtrl_layout_snackbar_include
@@ -1700,10 +1710,15 @@ layout select_dialog_item_material
 layout select_dialog_multichoice_material
 layout select_dialog_singlechoice_material
 layout support_simple_spinner_dropdown_item
+mipmap compass
 mipmap ic_launcher
 mipmap ic_launcher_foreground
 mipmap ic_launcher_round
 navigation nav_graph
+raw beep1
+raw beep2
+raw beep3
+raw beep4
 raw cell_phone
 raw cup
 raw keyboard
@@ -1712,6 +1727,10 @@ raw mouse
 raw north
 raw person
 raw tv
+string Camera
+string Compass
+string _1
+string _2
 string abc_action_bar_home_description
 string abc_action_bar_up_description
 string abc_action_menu_overflow_description
@@ -1751,8 +1770,10 @@ string appbar_scrolling_view_behavior
 string bottom_sheet_behavior
 string character_counter_content_description
 string character_counter_pattern
+string compass
 string fab_transformation_scrim_behavior
 string fab_transformation_sheet_behavior
+string found_it
 string hide_bottom_view_on_scroll_behavior
 string label_confidence_threshold
 string label_delegate
@@ -1770,7 +1791,10 @@ string path_password_eye_mask_strike_through
 string path_password_eye_mask_visible
 string path_password_strike_through
 string search_menu_title
+string sent_massege
+string sound_close
 string status_bar_notification_info_overflow
+string todo
 style AlertDialog_AppCompat
 style AlertDialog_AppCompat_Light
 style Animation_AppCompat_Dialog

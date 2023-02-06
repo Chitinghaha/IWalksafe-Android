@@ -16,48 +16,48 @@
 package org.tensorflow.lite.examples.objectdetection.fragments
 
 import android.annotation.SuppressLint
-import android.app.Activity
+import android.content.Context
 import android.content.res.Configuration
 import android.graphics.Bitmap
 import android.media.MediaPlayer
+import android.os.Build
 import android.os.Bundle
+import android.os.VibrationEffect
+import android.os.Vibrator
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.Toast
-import androidx.camera.core.AspectRatio
-import androidx.camera.core.Camera
-import androidx.camera.core.CameraSelector
-import androidx.camera.core.ImageAnalysis
+import androidx.camera.core.*
 import androidx.camera.core.ImageAnalysis.OUTPUT_IMAGE_FORMAT_RGBA_8888
-import androidx.camera.core.ImageProxy
-import androidx.camera.core.Preview
-import androidx.camera.core.impl.utils.ContextUtil.getApplicationContext
 import androidx.camera.lifecycle.ProcessCameraProvider
 import androidx.core.content.ContextCompat
+import androidx.core.content.ContextCompat.getSystemService
 import androidx.fragment.app.Fragment
 import androidx.navigation.Navigation
 import org.tensorflow.lite.examples.objectdetection.MainActivity
-import java.util.LinkedList
-import java.util.concurrent.ExecutorService
-import java.util.concurrent.Executors
 import org.tensorflow.lite.examples.objectdetection.ObjectDetectorHelper
 import org.tensorflow.lite.examples.objectdetection.R
 import org.tensorflow.lite.examples.objectdetection.databinding.FragmentCameraBinding
 import org.tensorflow.lite.task.vision.detector.Detection
+import java.util.*
+import java.util.concurrent.ExecutorService
+import java.util.concurrent.Executors
 
 
 // fragment https://medium.com/@waynechen323/android-%E5%9F%BA%E7%A4%8E%E7%9A%84-fragment-%E4%BD%BF%E7%94%A8%E6%96%B9%E5%BC%8F-730858c12a43
 // fragment https://ithelp.ithome.com.tw/articles/10262921
 // Kotlin 繼承
-class CameraFragment : Fragment(), ObjectDetectorHelper.DetectorListener {
+class CameraFragment() : Fragment(R.layout.fragment_camera), ObjectDetectorHelper.DetectorListener {
 
     private val TAG = "ObjectDetection"
 
+    // ?：做 null check 後，不為空的話再執行   !!：堅持不會是空值，執行就是了
     private var _fragmentCameraBinding: FragmentCameraBinding? = null
 
+    // getter,setter https://www.delftstack.com/zh-tw/howto/kotlin/kotlin-set/
     private val fragmentCameraBinding
         get() = _fragmentCameraBinding!!
 
@@ -78,57 +78,22 @@ class CameraFragment : Fragment(), ObjectDetectorHelper.DetectorListener {
     private var mp3: MediaPlayer? = null
     private var mp4: MediaPlayer? = null
     private var mp5: MediaPlayer? = null
+
     //private var results: List<Detection> = LinkedList<Detection>()
 
     // private val MutableSet = mutableSetOf<String>("cell phone", "cup", "keyboard","laptop","mouse","person","tv")
 
     /** Blocking camera operations are performed using this executor */
+
+    //https://ithelp.ithome.com.tw/articles/10207124
     private lateinit var cameraExecutor: ExecutorService
 
+    //find_name
+    private  var findname: String? =null
 
-    override fun onResume() {
-        super.onResume()
-        // Make sure that all permissions are still present, since the
-        // user could have removed them while the app was in paused stateㄎ
-        if (!PermissionsFragment.hasPermissions(requireContext())) {
-            Navigation.findNavController(requireActivity(), R.id.fragment_container)
-                .navigate(CameraFragmentDirections.actionCameraToPermissions())
-        }
-    }
-
-    // Fragment即將被結束、保存
-    override fun onDestroyView() {
-        _fragmentCameraBinding = null
-        super.onDestroyView()
-
-        // Shut down our background executor
-        cameraExecutor.shutdown()
-
-    }
-
-    // 使用LayoutInflater內的inflate方法，將你所設定的布局包裝成一個view(視圖)並使用
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
-
-        _fragmentCameraBinding = FragmentCameraBinding.inflate(inflater, container, false)
-
-        return fragmentCameraBinding.root
-    }
-
-    // onViewCreated() 適合初始化 view 的狀態、觀察 liveData 或在此設置 recycler 的 adapter, viewPager2
-    // @SuppressLint("MissingPermission") 可以禁止權限檢查
-    @SuppressLint("MissingPermission")
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        /*
-        fragmentCameraBinding.bottomSheetLayout.btnMain.setOnClickListener{
-            objectDetectorHelper.threshold -= 0.1f
-            updateControlsUi()
-        }
-        */
+    override fun onCreate(savedInstanceState: Bundle?) {
+        Log.d("compose", "fragment onCreate()")
+        super.onCreate(savedInstanceState)
         mp = MediaPlayer.create( getContext(), R.raw.mouse)
         mp1 = MediaPlayer.create( getContext(), R.raw.keyboard)
         mp2 = MediaPlayer.create( getContext(), R.raw.cell_phone)
@@ -136,9 +101,80 @@ class CameraFragment : Fragment(), ObjectDetectorHelper.DetectorListener {
         mp4 = MediaPlayer.create( getContext(), R.raw.person)
         mp5 = MediaPlayer.create( getContext(), R.raw.tv)
 
+    }
+
+
+
+    override fun onResume() {
+        Log.d("compose", "fragment onResume()")
+        super.onResume()
+
+
+        // Make sure that all permissions are still present, since the
+        // user could have removed them while the app was in paused state
+        //確認fragment的權限
+        if (!PermissionsFragment.hasPermissions(requireContext())) {
+
+            Log.d("compose","errorrrrrrrrr")
+            //Navigation 用於管理 fragment
+            //https://ithelp.ithome.com.tw/articles/10225937
+            Navigation.findNavController(requireActivity(), R.id.fragment_container)
+                .navigate(CameraFragmentDirections.actionCameraToPermissions())
+        }
+    }
+
+
+    // Fragment即將被結束
+    override fun onDestroyView() {
+        Log.d("compose", "fragment onDestroyView()")
+        _fragmentCameraBinding = null
+
+        // Shut down our background executor
+        cameraExecutor.shutdown()
+        super.onDestroyView()
+    }
+
+
+    // 使用LayoutInflater內的inflate方法，將你所設定的layout包裝成一個view(視圖)並使用
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
+        Log.d("compose", "fragment onCreateView()")
+
+        _fragmentCameraBinding = FragmentCameraBinding.inflate(inflater, container, false)
+
+
+        //STT
+        val data = arguments
+        activity?.runOnUiThread {
+            Toast.makeText(requireContext(),data?.getString("String").toString(), Toast.LENGTH_SHORT).show()
+        }
+        findname = data?.getString("String").toString()
+        return fragmentCameraBinding.root
+    }
+
+    // onViewCreated() 適合初始化 view 的狀態、觀察 liveData 或在此設置 recycler 的 adapter, viewPager2
+    // @SuppressLint("MissingPermission") 可以禁止權限檢查
+    @SuppressLint("MissingPermission")
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        Log.d("compose", "fragment onViewCreated()")
+        super.onViewCreated(view, savedInstanceState)
+
+        fragmentCameraBinding.button3.setOnClickListener {
+            findname = null
+        }
+
+
+        /*
+        fragmentCameraBinding.bottomSheetLayout.btnMain.setOnClickListener{
+            objectDetectorHelper.threshold -= 0.1f
+            updateControlsUi()
+        }
+        */
+
         // Toast.makeText(getContext() , "Hello", Toast.LENGTH_LONG).show()
-
-
 
 
         objectDetectorHelper = ObjectDetectorHelper(
@@ -157,8 +193,6 @@ class CameraFragment : Fragment(), ObjectDetectorHelper.DetectorListener {
         // Attach listeners to UI control widgets
         initBottomSheetControls()
     }
-
-
 
     private fun initBottomSheetControls() {
 
@@ -332,8 +366,11 @@ class CameraFragment : Fragment(), ObjectDetectorHelper.DetectorListener {
                         }
 
                         detectObjects(image)
+                        image.close()
                     }
+
                 }
+
 
         // Must unbind the use-cases before rebinding them
         cameraProvider.unbindAll()
@@ -342,6 +379,7 @@ class CameraFragment : Fragment(), ObjectDetectorHelper.DetectorListener {
             // A variable number of use-cases can be passed here -
             // camera provides access to CameraControl & CameraInfo
             camera = cameraProvider.bindToLifecycle(this, cameraSelector, preview, imageAnalyzer)
+
 
             // Attach the viewfinder's surface provider to preview use case
             preview?.setSurfaceProvider(fragmentCameraBinding.viewFinder.surfaceProvider)
@@ -358,10 +396,13 @@ class CameraFragment : Fragment(), ObjectDetectorHelper.DetectorListener {
         val imageRotation = image.imageInfo.rotationDegrees
         // Pass Bitmap and rotation to the object detector helper for processing and detection
         objectDetectorHelper.detect(bitmapBuffer, imageRotation)
+        //prevent error："maxImages (4) has already been acquired, call #close before acquiring more."
+        image.close()
     }
 
     // 其中一個設定發生變更時，MyActivity 就不會重新啟動，而是 MyActivity 會收到對 onConfigurationChanged() 的呼叫
     override fun onConfigurationChanged(newConfig: Configuration) {
+        Log.d("compose", "fragment onConfigurationChanged")
         super.onConfigurationChanged(newConfig)
         imageAnalyzer?.targetRotation = fragmentCameraBinding.viewFinder.display.rotation
     }
@@ -374,9 +415,10 @@ class CameraFragment : Fragment(), ObjectDetectorHelper.DetectorListener {
         imageHeight: Int,
         imageWidth: Int,
     ) {
+       // Log.d("compose", "fragment onResults()")
         activity?.runOnUiThread {
-            fragmentCameraBinding.bottomSheetLayout.inferenceTimeVal.text =
-                String.format("%d ms", inferenceTime)
+           // fragmentCameraBinding.bottomSheetLayout.inferenceTimeVal.text =
+             //   String.format("%d ms", inferenceTime)
 
             // Pass necessary information to OverlayView for drawing on the canvas
             // draw box!!!
@@ -387,12 +429,25 @@ class CameraFragment : Fragment(), ObjectDetectorHelper.DetectorListener {
             )
 
         }
+
+        if (results != null) {
+            for (result in results) {
+                if (result.categories[0].label == findname) {
+                    dovibrate()
+                }
+            }
+        }
+
+
         if (results != null && fragmentCameraBinding.btnMain.text == "Sound_Open") {
             sound_output(results)
+
         }
+
 
         // Force a redraw
         fragmentCameraBinding.overlay.invalidate()
+
 
     }
     fun sound_output( detectionResults: MutableList<Detection>)
@@ -407,8 +462,6 @@ class CameraFragment : Fragment(), ObjectDetectorHelper.DetectorListener {
                 mp2?.start()
             } else if (result.categories[0].label == "cup") {
                 mp3?.start()
-            } else if (result.categories[0].label == "person" ) {
-                mp4?.start()
             } else if (result.categories[0].label == "tv" ) {
                 mp5?.start()
             }
@@ -416,10 +469,48 @@ class CameraFragment : Fragment(), ObjectDetectorHelper.DetectorListener {
 
 
     }
+    private fun dovibrate() {
+        val vibrator = getActivity()?.getSystemService(Context.VIBRATOR_SERVICE) as Vibrator
+        if (Build.VERSION.SDK_INT >= 26) {
+            vibrator.vibrate(VibrationEffect.createOneShot(200, VibrationEffect.DEFAULT_AMPLITUDE))
+        } else {
+            vibrator.vibrate(200)
+        }
+    }
+
+
 
     override fun onError(error: String) {
+        Log.d("compose", "fragment onError()")
         activity?.runOnUiThread {
             Toast.makeText(requireContext(), error, Toast.LENGTH_SHORT).show()
         }
     }
+
+    override fun onAttach(context: Context) {
+        Log.d("compose", "fragment onAttach()")
+        super.onAttach(context)
+    }
+
+    override fun onPause() {
+        Log.d("compose", "fragment onPause()")
+        super.onPause()
+    }
+
+    override fun onDestroy() {
+        Log.d("compose", "fragment onDestroy()")
+        super.onDestroy()
+    }
+
+    override fun onStop() {
+        Log.d("compose", "fragment onStop()")
+        super.onStop()
+    }
+
+    override fun onStart() {
+        Log.d("compose", "fragment onStart()")
+        super.onStart()
+    }
 }
+
+

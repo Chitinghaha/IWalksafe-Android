@@ -16,13 +16,18 @@
 
 package org.tensorflow.lite.examples.objectdetection
 
+import android.app.Service
 import android.content.Context
 import android.graphics.*
 import android.media.MediaPlayer
+import android.os.Build
+import android.os.VibrationEffect
+import android.os.Vibrator
 import android.speech.tts.TextToSpeech
 import android.util.AttributeSet
 import android.view.View
 import androidx.core.content.ContextCompat
+import androidx.core.content.ContextCompat.getSystemService
 import org.tensorflow.lite.task.vision.detector.Detection
 import java.util.*
 import kotlin.math.max
@@ -36,12 +41,17 @@ class OverlayView(context: Context?, attrs: AttributeSet?) : View(context, attrs
     private var textPaint = Paint()
 
     private var scaleFactor: Float = 1f
-    private var sound_check = "0"
+    private var beep1: MediaPlayer? = null
+    private var beep2: MediaPlayer? = null
+    private var beep3: MediaPlayer? = null
+
+
+
 
 
     private var bounds = Rect()
 
-    lateinit var tts:TextToSpeech
+//    lateinit var tts:TextToSpeech
 
     init {
         initPaints()
@@ -68,6 +78,12 @@ class OverlayView(context: Context?, attrs: AttributeSet?) : View(context, attrs
         boxPaint.color = ContextCompat.getColor(context!!, R.color.bounding_box_color)
         boxPaint.strokeWidth = 8F
         boxPaint.style = Paint.Style.STROKE
+
+        beep1 = MediaPlayer.create( getContext(), R.raw.beep1)
+        beep2 = MediaPlayer.create( getContext(), R.raw.beep2)
+        beep3 = MediaPlayer.create( getContext(), R.raw.beep4)
+
+
     }
 
 
@@ -106,19 +122,35 @@ class OverlayView(context: Context?, attrs: AttributeSet?) : View(context, attrs
 
             // Draw text for detected object
             canvas.drawText(drawableText, left, top + bounds.height(), textPaint)
+
+
+            if(result.categories[0].label == "person" ) {
+                val area = (left - right) * ( top - bottom )
+                val barea = area.toString()
+                canvas.drawText(barea, left+500, top + bounds.height(), textPaint)
+                if(area >= 2000000){
+                    beep1?.start()
+                }
+                else if(area >= 1000000){
+                    beep2?.start()
+                }
+                else if(area >= 500000){
+                    beep3?.start()
+                }
+            }
         }
     }
 
-    fun sound_output(Text_print:String)
-    {
-        tts = TextToSpeech( getContext() ,TextToSpeech.OnInitListener {
-            if(it == TextToSpeech.SUCCESS) {
-                tts.language= Locale.US
-                tts.setSpeechRate(1.0f)
-                tts!!.speak(Text_print, TextToSpeech.QUEUE_FLUSH, null,"")
-            }
-        })
-    }
+//    fun sound_output(Text_print:String)
+//    {
+//        tts = TextToSpeech( getContext() ,TextToSpeech.OnInitListener {
+//            if(it == TextToSpeech.SUCCESS) {
+//                tts.language= Locale.US
+//                tts.setSpeechRate(1.0f)
+//                tts!!.speak(Text_print, TextToSpeech.QUEUE_FLUSH, null,"")
+//            }
+//        })
+//    }
 
 
     fun setResults(
