@@ -40,22 +40,10 @@ class OverlayView(context: Context?, attrs: AttributeSet?) : View(context, attrs
 
 
     private var bounds = Rect()
-    private var mp: MediaPlayer? = null
-    private var mp1: MediaPlayer? = null
-    private var mp2: MediaPlayer? = null
-    private var mp3: MediaPlayer? = null
-    private var mp4: MediaPlayer? = null
-    private var mp5: MediaPlayer? = null
+
     lateinit var tts:TextToSpeech
 
     init {
-        mp = MediaPlayer.create( getContext(), R.raw.mouse)
-        mp1 = MediaPlayer.create( getContext(), R.raw.keyboard)
-        mp2 = MediaPlayer.create( getContext(), R.raw.cell_phone)
-        mp3 = MediaPlayer.create( getContext(), R.raw.cup)
-        mp4 = MediaPlayer.create( getContext(), R.raw.person)
-        mp5 = MediaPlayer.create( getContext(), R.raw.tv)
-
         initPaints()
     }
 
@@ -103,34 +91,6 @@ class OverlayView(context: Context?, attrs: AttributeSet?) : View(context, attrs
                 result.categories[0].label + " " +
                         String.format("%.2f", result.categories[0].score)
 
-            //sound_output(result.categories[0].label)
-
-
-            if( result.categories[0].label == "mouse" && sound_check == "Sound_Open" )
-            {
-                mp?.start()
-            }
-
-            else if(result.categories[0].label == "keyboard" && sound_check == "Sound_Open")
-            {
-                mp1?.start()
-            }
-            else if(result.categories[0].label == "cell phone" && sound_check == "Sound_Open")
-            {
-                mp2?.start()
-            }
-            else if(result.categories[0].label == "cup" && sound_check == "Sound_Open")
-            {
-                mp3?.start()
-            }
-            else if(result.categories[0].label == "person" && sound_check == "Sound_Open")
-            {
-                mp4?.start()
-            }
-            else if(result.categories[0].label == "tv" && sound_check == "Sound_Open")
-            {
-                mp5?.start()
-            }
 
             // Draw rect behind display text
             textBackgroundPaint.getTextBounds(drawableText, 0, drawableText.length, bounds)
@@ -165,9 +125,7 @@ class OverlayView(context: Context?, attrs: AttributeSet?) : View(context, attrs
         detectionResults: MutableList<Detection>,
         imageHeight: Int,
         imageWidth: Int,
-        sound: String
     ) {
-        sound_check=sound
 
         results = detectionResults
 

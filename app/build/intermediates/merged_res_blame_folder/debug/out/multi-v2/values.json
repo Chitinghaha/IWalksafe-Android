@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "C:\\lab\\iWalkSafe\\object_detect\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values\\values.xml",
+            "outputFile": "C:\\lab\\iWalkSafe_android\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values\\values.xml",
             "map": [
                 {
                     "source": "C:\\Users\\tnnd\\.gradle\\caches\\transforms-3\\d042736f8ac401eb6f10c78da3b70335\\transformed\\navigation-common-2.3.5\\res\\values\\values.xml",
@@ -40,7 +40,7 @@
                     }
                 },
                 {
-                    "source": "C:\\lab\\iWalkSafe\\object_detect\\app\\src\\main\\res\\values\\styles.xml",
+                    "source": "C:\\lab\\iWalkSafe_android\\app\\src\\main\\res\\values\\styles.xml",
                     "from": {
                         "startLines": "19,22",
                         "startColumns": "4,4",
@@ -209,6 +209,23 @@
                     }
                 },
                 {
+                    "source": "C:\\lab\\iWalkSafe_android\\app\\src\\main\\res\\values\\colors.xml",
+                    "from": {
+                        "startLines": "22,23,19,24,25,26,21,20",
+                        "startColumns": "4,4,4,4,4,4,4,4",
+                        "startOffsets": "922,980,759,1051,1096,1142,865,812",
+                        "endColumns": "57,70,52,44,45,45,56,52",
+                        "endOffsets": "975,1046,807,1091,1137,1183,917,860"
+                    },
+                    "to": {
+                        "startLines": "365,366,367,401,402,403,404,445",
+                        "startColumns": "4,4,4,4,4,4,4,4",
+                        "startOffsets": "16719,16777,16848,19235,19280,19326,19372,22070",
+                        "endColumns": "57,70,52,44,45,45,56,52",
+                        "endOffsets": "16772,16843,16896,19275,19321,19367,19424,22118"
+                    }
+                },
+                {
                     "source": "C:\\Users\\tnnd\\.gradle\\caches\\transforms-3\\9553b91410b2dd3662b2c4d5c2d3c4bb\\transformed\\recyclerview-1.0.0\\res\\values\\values.xml",
                     "from": {
                         "startLines": "30,31,32,33,34,35,36,2",
@@ -247,23 +264,6 @@
                     }
                 },
                 {
-                    "source": "C:\\lab\\iWalkSafe\\object_detect\\app\\src\\main\\res\\values\\dimens.xml",
-                    "from": {
-                        "startLines": "26,27,25,23,24,28,29,22,19,18,31",
-                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4",
-                        "startOffsets": "1073,1134,1010,902,954,1203,1275,848,770,727,1345",
-                        "endColumns": "60,68,62,51,55,71,68,53,50,42,65",
-                        "endOffsets": "1129,1198,1068,949,1005,1270,1339,897,816,765,1406"
-                    },
-                    "to": {
-                        "startLines": "529,530,531,532,533,534,535,536,670,671,778",
-                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4",
-                        "startOffsets": "27693,27754,27823,27886,27938,27994,28066,28135,36701,36752,42594",
-                        "endColumns": "60,68,62,51,55,71,68,53,50,42,65",
-                        "endOffsets": "27749,27818,27881,27933,27989,28061,28130,28184,36747,36790,42655"
-                    }
-                },
-                {
                     "source": "C:\\Users\\tnnd\\.gradle\\caches\\transforms-3\\84ebabaac5c41b5b41e47bed48076b4f\\transformed\\navigation-runtime-2.3.5\\res\\values\\values.xml",
                     "from": {
                         "startLines": "2,3,10,13",
@@ -283,42 +283,6 @@
                     }
                 },
                 {
-                    "source": "C:\\lab\\iWalkSafe\\object_detect\\app\\src\\main\\res\\values\\strings.xml",
-                    "from": {
-                        "startLines": "40,46,19,21,23,29,30,25,27,17,34,37,33,32,35,38,36",
-                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
-                        "startOffsets": "1984,2132,788,876,996,1376,1477,1115,1246,726,1698,1881,1642,1578,1763,1933,1821",
-                        "endLines": "44,51,19,22,24,29,30,26,28,17,34,37,33,32,35,38,36",
-                        "endColumns": "19,19,86,23,23,100,99,31,31,60,64,51,55,63,57,49,59",
-                        "endOffsets": "2126,2349,870,991,1110,1472,1572,1241,1371,782,1758,1928,1693,1637,1816,1978,1876"
-                    },
-                    "to": {
-                        "startLines": "2,7,819,820,822,824,825,826,828,830,838,839,840,841,842,843,844",
-                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
-                        "startOffsets": "150,297,45322,45409,45529,45648,45749,45849,45980,46110,47110,47175,47227,47283,47347,47405,47455",
-                        "endLines": "6,12,819,821,823,824,825,827,829,830,838,839,840,841,842,843,844",
-                        "endColumns": "19,19,86,23,23,100,99,31,31,60,64,51,55,63,57,49,59",
-                        "endOffsets": "292,514,45404,45524,45643,45744,45844,45975,46105,46166,47170,47222,47278,47342,47400,47450,47510"
-                    }
-                },
-                {
-                    "source": "C:\\lab\\iWalkSafe\\object_detect\\app\\src\\main\\res\\values\\colors.xml",
-                    "from": {
-                        "startLines": "22,23,19,24,25,26,21,20",
-                        "startColumns": "4,4,4,4,4,4,4,4",
-                        "startOffsets": "922,980,759,1051,1096,1142,865,812",
-                        "endColumns": "57,70,52,44,45,45,56,52",
-                        "endOffsets": "975,1046,807,1091,1137,1183,917,860"
-                    },
-                    "to": {
-                        "startLines": "365,366,367,401,402,403,404,445",
-                        "startColumns": "4,4,4,4,4,4,4,4",
-                        "startOffsets": "16719,16777,16848,19235,19280,19326,19372,22070",
-                        "endColumns": "57,70,52,44,45,45,56,52",
-                        "endOffsets": "16772,16843,16896,19275,19321,19367,19424,22118"
-                    }
-                },
-                {
                     "source": "C:\\Users\\tnnd\\.gradle\\caches\\transforms-3\\a894cc2a13cc91a9216d10aa1c3b7f06\\transformed\\navigation-fragment-2.3.5\\res\\values\\values.xml",
                     "from": {
                         "startLines": "2,3,6,9",
@@ -335,6 +299,42 @@
                         "endLines": "732,4248,4373,4719",
                         "endColumns": "56,24,24,24",
                         "endOffsets": "40257,277469,285713,310915"
+                    }
+                },
+                {
+                    "source": "C:\\lab\\iWalkSafe_android\\app\\src\\main\\res\\values\\dimens.xml",
+                    "from": {
+                        "startLines": "26,27,25,23,24,28,29,22,19,18,31",
+                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "1073,1134,1010,902,954,1203,1275,848,770,727,1345",
+                        "endColumns": "60,68,62,51,55,71,68,53,50,42,65",
+                        "endOffsets": "1129,1198,1068,949,1005,1270,1339,897,816,765,1406"
+                    },
+                    "to": {
+                        "startLines": "529,530,531,532,533,534,535,536,670,671,778",
+                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "27693,27754,27823,27886,27938,27994,28066,28135,36701,36752,42594",
+                        "endColumns": "60,68,62,51,55,71,68,53,50,42,65",
+                        "endOffsets": "27749,27818,27881,27933,27989,28061,28130,28184,36747,36790,42655"
+                    }
+                },
+                {
+                    "source": "C:\\lab\\iWalkSafe_android\\app\\src\\main\\res\\values\\strings.xml",
+                    "from": {
+                        "startLines": "40,46,19,21,23,29,30,25,27,17,34,37,33,32,35,38,36",
+                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "1984,2132,788,876,996,1376,1477,1115,1246,726,1698,1881,1642,1578,1763,1933,1821",
+                        "endLines": "44,51,19,22,24,29,30,26,28,17,34,37,33,32,35,38,36",
+                        "endColumns": "19,19,86,23,23,100,99,31,31,60,64,51,55,63,57,49,59",
+                        "endOffsets": "2126,2349,870,991,1110,1472,1572,1241,1371,782,1758,1928,1693,1637,1816,1978,1876"
+                    },
+                    "to": {
+                        "startLines": "2,7,819,820,822,824,825,826,828,830,838,839,840,841,842,843,844",
+                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "150,297,45322,45409,45529,45648,45749,45849,45980,46110,47110,47175,47227,47283,47347,47405,47455",
+                        "endLines": "6,12,819,821,823,824,825,827,829,830,838,839,840,841,842,843,844",
+                        "endColumns": "19,19,86,23,23,100,99,31,31,60,64,51,55,63,57,49,59",
+                        "endOffsets": "292,514,45404,45524,45643,45744,45844,45975,46105,46166,47170,47222,47278,47342,47400,47450,47510"
                     }
                 },
                 {

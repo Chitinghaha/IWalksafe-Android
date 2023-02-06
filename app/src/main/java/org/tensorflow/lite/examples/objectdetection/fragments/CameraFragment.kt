@@ -73,8 +73,14 @@ class CameraFragment : Fragment(), ObjectDetectorHelper.DetectorListener {
     private var cameraProvider: ProcessCameraProvider? = null
 
     private var mp: MediaPlayer? = null
+    private var mp1: MediaPlayer? = null
+    private var mp2: MediaPlayer? = null
+    private var mp3: MediaPlayer? = null
+    private var mp4: MediaPlayer? = null
+    private var mp5: MediaPlayer? = null
+    //private var results: List<Detection> = LinkedList<Detection>()
 
-    private val MutableSet = mutableSetOf<String>("cell phone", "cup", "keyboard","laptop","mouse","person","tv")
+    // private val MutableSet = mutableSetOf<String>("cell phone", "cup", "keyboard","laptop","mouse","person","tv")
 
     /** Blocking camera operations are performed using this executor */
     private lateinit var cameraExecutor: ExecutorService
@@ -106,7 +112,7 @@ class CameraFragment : Fragment(), ObjectDetectorHelper.DetectorListener {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        mp = MediaPlayer.create(requireContext() , R.raw.north)
+
         _fragmentCameraBinding = FragmentCameraBinding.inflate(inflater, container, false)
 
         return fragmentCameraBinding.root
@@ -123,8 +129,14 @@ class CameraFragment : Fragment(), ObjectDetectorHelper.DetectorListener {
             updateControlsUi()
         }
         */
+        mp = MediaPlayer.create( getContext(), R.raw.mouse)
+        mp1 = MediaPlayer.create( getContext(), R.raw.keyboard)
+        mp2 = MediaPlayer.create( getContext(), R.raw.cell_phone)
+        mp3 = MediaPlayer.create( getContext(), R.raw.cup)
+        mp4 = MediaPlayer.create( getContext(), R.raw.person)
+        mp5 = MediaPlayer.create( getContext(), R.raw.tv)
 
-       // Toast.makeText(getContext() , "Hello", Toast.LENGTH_LONG).show()
+        // Toast.makeText(getContext() , "Hello", Toast.LENGTH_LONG).show()
 
 
 
@@ -200,14 +212,20 @@ class CameraFragment : Fragment(), ObjectDetectorHelper.DetectorListener {
             }
         }
 
-        fragmentCameraBinding.bottomSheetLayout.btnMain.setOnClickListener{
+        fragmentCameraBinding.btnMain.setOnClickListener{
 
-            if(fragmentCameraBinding.bottomSheetLayout.btnMain.text == "Sound_Close")
-                fragmentCameraBinding.bottomSheetLayout.btnMain.text = "Sound_Open"
-            else
-                fragmentCameraBinding.bottomSheetLayout.btnMain.text = "Sound_Close"
+            if(fragmentCameraBinding.btnMain.text == "Sound_Close") {
+                fragmentCameraBinding.btnMain.text = "Sound_Open"
 
-            Toast.makeText(getContext() , fragmentCameraBinding.bottomSheetLayout.btnMain.text, Toast.LENGTH_LONG).show()
+            }
+
+            else {
+                fragmentCameraBinding.btnMain.text = "Sound_Close"
+            }
+
+
+
+            Toast.makeText(getContext() , fragmentCameraBinding.btnMain.text, Toast.LENGTH_LONG).show()
         }
 
 
@@ -365,13 +383,38 @@ class CameraFragment : Fragment(), ObjectDetectorHelper.DetectorListener {
             fragmentCameraBinding.overlay.setResults(
                 results ?: LinkedList<Detection>(),
                 imageHeight,
-                imageWidth,
-                fragmentCameraBinding.bottomSheetLayout.btnMain.text as String
+                imageWidth
             )
 
-            // Force a redraw
-            fragmentCameraBinding.overlay.invalidate()
         }
+        if (results != null && fragmentCameraBinding.btnMain.text == "Sound_Open") {
+            sound_output(results)
+        }
+
+        // Force a redraw
+        fragmentCameraBinding.overlay.invalidate()
+
+    }
+    fun sound_output( detectionResults: MutableList<Detection>)
+    {
+        for (result in detectionResults) {
+
+            if (result.categories[0].label == "mouse" ) {
+                mp?.start()
+            } else if (result.categories[0].label == "keyboard" ) {
+                mp1?.start()
+            } else if (result.categories[0].label == "cell phone" ) {
+                mp2?.start()
+            } else if (result.categories[0].label == "cup") {
+                mp3?.start()
+            } else if (result.categories[0].label == "person" ) {
+                mp4?.start()
+            } else if (result.categories[0].label == "tv" ) {
+                mp5?.start()
+            }
+        }
+
+
     }
 
     override fun onError(error: String) {
