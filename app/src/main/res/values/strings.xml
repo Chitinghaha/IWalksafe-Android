@@ -14,7 +14,7 @@
     ~ limitations under the License.
 -->
 <resources>
-    <string name="app_name">TFLite Object Detection</string>
+    <string name="app_name">IWalkSafe</string>
 
     <string name="alt_bottom_sheet_chevron">Bottom sheet expandable indicator</string>
 
@@ -45,6 +45,7 @@
     <string name="Camera">Camera</string>
     <string name="sent_massege">sent_massege</string>
     <string name="found_it">found_it</string>
+    <string name="google_map">Google map</string>
 
     <string-array name="delegate_spinner_titles">
         <item>CPU</item>
@@ -58,4 +59,18 @@
         <item>EfficientDet Lite1</item>
         <item>EfficientDet Lite2</item>
     </string-array>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="bed">bed</string>
+    <string name="cup">cup</string>
+    <string name="chair">chair</string>
+    <string name="buzzer">Buzzer</string>
+    <string name="person">person</string>
+    <string name="dog">dog</string>
+    <string name="cat">cat</string>
+    <string name="detect_objection">Detect Objection</string>
+    <string name="remote">remote</string>
+    <string name="laptop">laptop</string>
+    <string name="vibration">Vibration</string>
+    <string name="Open">Open</string>
 </resources>

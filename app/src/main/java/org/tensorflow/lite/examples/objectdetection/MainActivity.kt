@@ -58,14 +58,16 @@ class MainActivity : AppCompatActivity() , TextToSpeech.OnInitListener{
         tts = TextToSpeech(this, this)
 
         //activity change to CompassMainActivity
-        activityMainBinding.button1.setOnClickListener{
+        activityMainBinding.button1.setOnLongClickListener{
             val intent = Intent(this, CompassMainActivity::class.java)
             startActivity(intent)
+            true
         }
 
-        activityMainBinding.button2.setOnClickListener{
+        activityMainBinding.button2.setOnLongClickListener{
             activity_channel = 0
             displaySpeechRecognizer()
+            true
         }
 
 
@@ -89,6 +91,8 @@ class MainActivity : AppCompatActivity() , TextToSpeech.OnInitListener{
 //        }
     }
 
+
+
     private fun speakOut(etSpeak:String) {
         if(tts != null) {
             tts!!.stop()
@@ -100,7 +104,7 @@ class MainActivity : AppCompatActivity() , TextToSpeech.OnInitListener{
         val intent = Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH)
         intent.putExtra(RecognizerIntent.EXTRA_PROMPT, "Please say something")
         intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL, RecognizerIntent.LANGUAGE_MODEL_FREE_FORM)
-        intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE, "en-US")
+        intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE, "zh-TW")
         intent.putExtra(RecognizerIntent.EXTRA_MAX_RESULTS, 3)
 
 
@@ -123,6 +127,7 @@ class MainActivity : AppCompatActivity() , TextToSpeech.OnInitListener{
     }
 
     private  fun channel_funtion(spokenText:String){
+        speakOut(spokenText)
         if (activity_channel == 0){
             //Manager
             val fragmentManager = supportFragmentManager
@@ -140,7 +145,6 @@ class MainActivity : AppCompatActivity() , TextToSpeech.OnInitListener{
 
         }
         else if(activity_channel == 1){
-            speakOut(spokenText)
             val gmmIntentUri =
                 Uri.parse("google.navigation:q=$spokenText&mode=w")
             val mapIntent = Intent(Intent.ACTION_VIEW, gmmIntentUri)
@@ -226,7 +230,7 @@ class MainActivity : AppCompatActivity() , TextToSpeech.OnInitListener{
 
     override fun onInit(p0: Int) {
         if (p0 == TextToSpeech.SUCCESS) {
-            val result = tts!!.setLanguage(Locale.US)
+            val result = tts!!.setLanguage(Locale.TAIWAN)
 
             if (result == TextToSpeech.LANG_MISSING_DATA || result == TextToSpeech.LANG_NOT_SUPPORTED) {
                 Log.e("TTS","The Language not supported!")

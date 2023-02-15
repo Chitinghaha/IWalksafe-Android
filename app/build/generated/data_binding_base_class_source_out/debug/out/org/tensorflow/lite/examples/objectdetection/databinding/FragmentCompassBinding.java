@@ -4,10 +4,11 @@ package org.tensorflow.lite.examples.objectdetection.databinding;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.RelativeLayout;
+import android.widget.ImageView;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.viewbinding.ViewBinding;
 import androidx.viewbinding.ViewBindings;
 import java.lang.NullPointerException;
@@ -17,19 +18,24 @@ import org.tensorflow.lite.examples.objectdetection.R;
 
 public final class FragmentCompassBinding implements ViewBinding {
   @NonNull
-  private final RelativeLayout rootView;
+  private final ConstraintLayout rootView;
+
+  @NonNull
+  public final ImageView imgCompass;
 
   @NonNull
   public final TextView textView;
 
-  private FragmentCompassBinding(@NonNull RelativeLayout rootView, @NonNull TextView textView) {
+  private FragmentCompassBinding(@NonNull ConstraintLayout rootView, @NonNull ImageView imgCompass,
+      @NonNull TextView textView) {
     this.rootView = rootView;
+    this.imgCompass = imgCompass;
     this.textView = textView;
   }
 
   @Override
   @NonNull
-  public RelativeLayout getRoot() {
+  public ConstraintLayout getRoot() {
     return rootView;
   }
 
@@ -54,13 +60,19 @@ public final class FragmentCompassBinding implements ViewBinding {
     // This is done to optimize the compiled bytecode for size and performance.
     int id;
     missingId: {
+      id = R.id.imgCompass;
+      ImageView imgCompass = ViewBindings.findChildViewById(rootView, id);
+      if (imgCompass == null) {
+        break missingId;
+      }
+
       id = R.id.textView;
       TextView textView = ViewBindings.findChildViewById(rootView, id);
       if (textView == null) {
         break missingId;
       }
 
-      return new FragmentCompassBinding((RelativeLayout) rootView, textView);
+      return new FragmentCompassBinding((ConstraintLayout) rootView, imgCompass, textView);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

@@ -34,10 +34,8 @@ import androidx.camera.core.*
 import androidx.camera.core.ImageAnalysis.OUTPUT_IMAGE_FORMAT_RGBA_8888
 import androidx.camera.lifecycle.ProcessCameraProvider
 import androidx.core.content.ContextCompat
-import androidx.core.content.ContextCompat.getSystemService
 import androidx.fragment.app.Fragment
 import androidx.navigation.Navigation
-import org.tensorflow.lite.examples.objectdetection.MainActivity
 import org.tensorflow.lite.examples.objectdetection.ObjectDetectorHelper
 import org.tensorflow.lite.examples.objectdetection.R
 import org.tensorflow.lite.examples.objectdetection.databinding.FragmentCameraBinding
@@ -72,16 +70,20 @@ class CameraFragment() : Fragment(R.layout.fragment_camera), ObjectDetectorHelpe
     private var camera: Camera? = null
     private var cameraProvider: ProcessCameraProvider? = null
 
-    private var mp: MediaPlayer? = null
-    private var mp1: MediaPlayer? = null
-    private var mp2: MediaPlayer? = null
-    private var mp3: MediaPlayer? = null
-    private var mp4: MediaPlayer? = null
-    private var mp5: MediaPlayer? = null
+    private var mp_bed: MediaPlayer? = null
+    private var mp_chair: MediaPlayer? = null
+    private var mp_cup: MediaPlayer? = null
+    private var mp_laptop: MediaPlayer? = null
+    private var mp_remote: MediaPlayer? = null
+    private var foundsound: MediaPlayer? = null
+    private var beep1: MediaPlayer? = null
+    private var beep2: MediaPlayer? = null
+    private var beep3: MediaPlayer? = null
 
     //private var results: List<Detection> = LinkedList<Detection>()
 
-    // private val MutableSet = mutableSetOf<String>("cell phone", "cup", "keyboard","laptop","mouse","person","tv")
+    private var Objectsound = mutableSetOf<String>()
+    private var Warningsound = mutableSetOf<String>()
 
     /** Blocking camera operations are performed using this executor */
 
@@ -91,15 +93,20 @@ class CameraFragment() : Fragment(R.layout.fragment_camera), ObjectDetectorHelpe
     //find_name
     private  var findname: String? =null
 
+    private  var flage: Boolean?= false
+
     override fun onCreate(savedInstanceState: Bundle?) {
         Log.d("compose", "fragment onCreate()")
         super.onCreate(savedInstanceState)
-        mp = MediaPlayer.create( getContext(), R.raw.mouse)
-        mp1 = MediaPlayer.create( getContext(), R.raw.keyboard)
-        mp2 = MediaPlayer.create( getContext(), R.raw.cell_phone)
-        mp3 = MediaPlayer.create( getContext(), R.raw.cup)
-        mp4 = MediaPlayer.create( getContext(), R.raw.person)
-        mp5 = MediaPlayer.create( getContext(), R.raw.tv)
+        mp_bed = MediaPlayer.create( getContext(), R.raw.bed)
+        mp_chair = MediaPlayer.create( getContext(), R.raw.chair)
+        mp_cup = MediaPlayer.create( getContext(), R.raw.cup)
+        mp_laptop= MediaPlayer.create( getContext(), R.raw.computer)
+        mp_remote = MediaPlayer.create( getContext(), R.raw.remote)
+        beep1 = MediaPlayer.create( getContext(), R.raw.beep1)
+        beep2 = MediaPlayer.create( getContext(), R.raw.beep2)
+        beep3 = MediaPlayer.create( getContext(), R.raw.beep4)
+        foundsound = MediaPlayer.create( getContext(), R.raw.foundsound)
 
     }
 
@@ -248,18 +255,111 @@ class CameraFragment() : Fragment(R.layout.fragment_camera), ObjectDetectorHelpe
 
         fragmentCameraBinding.btnMain.setOnClickListener{
 
-            if(fragmentCameraBinding.btnMain.text == "Sound_Close") {
-                fragmentCameraBinding.btnMain.text = "Sound_Open"
-
+            if(fragmentCameraBinding.btnMain.text == "聲音關閉") {
+                fragmentCameraBinding.btnMain.text = "聲音開啟"
             }
 
             else {
-                fragmentCameraBinding.btnMain.text = "Sound_Close"
+                fragmentCameraBinding.btnMain.text = "聲音關閉"
             }
 
-
-
             Toast.makeText(getContext() , fragmentCameraBinding.btnMain.text, Toast.LENGTH_LONG).show()
+        }
+
+
+
+        //check box
+        fragmentCameraBinding.bottomSheetLayout.ckbBed.setOnCheckedChangeListener {_, isChecked ->
+
+            if(isChecked){//判斷框1是否被選定
+                Objectsound.add("bed")   //若選定，則將字串加該項目
+                Toast.makeText(getContext() , "床", Toast.LENGTH_LONG).show()
+            }
+            else{
+                Objectsound.remove("bed")   //若選定，則將字串加該項目
+            }
+        }
+
+        fragmentCameraBinding.bottomSheetLayout.ckbCup.setOnCheckedChangeListener {_, isChecked -> //判斷框2是否被選定
+            if(isChecked){//判斷框1是否被選定
+                Objectsound.add("cup")   //若選定，則將字串加該項目
+                Toast.makeText(getContext() ,"杯子", Toast.LENGTH_LONG).show()
+            }
+            else{
+                Objectsound.remove("cup")   //若選定，則將字串加該項目
+            }
+        }
+
+        fragmentCameraBinding.bottomSheetLayout.ckbChair.setOnCheckedChangeListener {_, isChecked -> //判斷框3是否被選定
+            if(isChecked){//判斷框1是否被選定
+                Objectsound.add("chair")   //若選定，則將字串加該項目
+                Toast.makeText(getContext() ,"椅子", Toast.LENGTH_LONG).show()
+            }
+            else{
+                Objectsound.remove("chair")   //若選定，則將字串加該項目
+            }
+
+        }
+
+        fragmentCameraBinding.bottomSheetLayout.ckbLaptop.setOnCheckedChangeListener {_, isChecked -> //判斷框3是否被選定
+            if(isChecked){//判斷框1是否被選定
+                Objectsound.add("laptop")   //若選定，則將字串加該項目
+                Toast.makeText(getContext() ,"筆電", Toast.LENGTH_LONG).show()
+            }
+            else{
+                Objectsound.remove("laptop")   //若選定，則將字串加該項目
+            }
+
+        }
+
+        fragmentCameraBinding.bottomSheetLayout.ckbRemote.setOnCheckedChangeListener {_, isChecked -> //判斷框3是否被選定
+            if(isChecked){//判斷框1是否被選定
+                Objectsound.add("remote")   //若選定，則將字串加該項目
+                Toast.makeText(getContext() ,"遙控器", Toast.LENGTH_LONG).show()
+            }
+            else{
+                Objectsound.remove("remote")   //若選定，則將字串加該項目
+            }
+
+        }
+
+
+        //warning
+        fragmentCameraBinding.bottomSheetLayout.ckbPerson.setOnCheckedChangeListener {_, isChecked -> //判斷框4是否被選定
+            if(isChecked){//判斷框1是否被選定
+                Warningsound.add("person")   //若選定，則將字串加該項目
+                Toast.makeText(getContext() ,"人", Toast.LENGTH_LONG).show()
+            }
+            else{
+                Warningsound.remove("person")   //若選定，則將字串加該項目
+            }
+
+        }
+
+        fragmentCameraBinding.bottomSheetLayout.ckbDog.setOnCheckedChangeListener {_, isChecked -> //判斷框5是否被選定
+            if(isChecked){//判斷框1是否被選定
+                Warningsound.add("dog")   //若選定，則將字串加該項目
+                Toast.makeText(getContext() ,"狗", Toast.LENGTH_LONG).show()
+            }
+            else{
+                Warningsound.remove("dog")   //若選定，則將字串加該項目
+            }
+
+        }
+
+        fragmentCameraBinding.bottomSheetLayout.ckbCat.setOnCheckedChangeListener {_, isChecked -> //判斷框6是否被選定
+            if(isChecked){//判斷框1是否被選定
+                Warningsound.add("cat")   //若選定，則將字串加該項目
+                Toast.makeText(getContext() ,"貓", Toast.LENGTH_LONG).show()
+            }
+            else{
+                Warningsound.remove("cat")   //若選定，則將字串加該項目
+            }
+
+        }
+
+        fragmentCameraBinding.bottomSheetLayout.ckb.setOnCheckedChangeListener {_, isChecked -> //判斷框6是否被選定
+            flage = isChecked
         }
 
 
@@ -368,7 +468,6 @@ class CameraFragment() : Fragment(R.layout.fragment_camera), ObjectDetectorHelpe
                         detectObjects(image)
                         image.close()
                     }
-
                 }
 
 
@@ -425,60 +524,81 @@ class CameraFragment() : Fragment(R.layout.fragment_camera), ObjectDetectorHelpe
             fragmentCameraBinding.overlay.setResults(
                 results ?: LinkedList<Detection>(),
                 imageHeight,
-                imageWidth
+                imageWidth,
+                Warningsound
             )
 
         }
 
+
+        //found object
+        when(findname){
+            "床" -> findname ="bed"
+            "椅子" -> findname = "chair"
+            "杯子" -> findname = "cup"
+            "電腦" -> findname = "laptop"
+            "遙控器" -> findname = "remote"
+            else -> null
+        }
+
+
         if (results != null) {
             for (result in results) {
                 if (result.categories[0].label == findname) {
-                    dovibrate()
+                    foundsound?.start()
+                    if(flage == true){
+                        dovibrate()
+                    }
+                    break
+                }
+            }
+        }
+
+        //sound output
+        if (results != null && fragmentCameraBinding.btnMain.text == "聲音開啟") {
+            for (result in results){
+                for(ob in Objectsound){
+                    //Toast.makeText(requireContext(),ob+"  "+result.categories[0].label, Toast.LENGTH_SHORT).show()
+                    if(ob == result.categories[0].label){
+                        sound_output(ob)
+                       // Toast.makeText(requireContext(),ob+"  "+result.categories[0].label, Toast.LENGTH_SHORT).show()
+                    }
                 }
             }
         }
 
 
-        if (results != null && fragmentCameraBinding.btnMain.text == "Sound_Open") {
-            sound_output(results)
-
-        }
-
 
         // Force a redraw
         fragmentCameraBinding.overlay.invalidate()
 
-
     }
-    fun sound_output( detectionResults: MutableList<Detection>)
+
+
+
+    fun sound_output( object_sound: String)
     {
-        for (result in detectionResults) {
-
-            if (result.categories[0].label == "mouse" ) {
-                mp?.start()
-            } else if (result.categories[0].label == "keyboard" ) {
-                mp1?.start()
-            } else if (result.categories[0].label == "cell phone" ) {
-                mp2?.start()
-            } else if (result.categories[0].label == "cup") {
-                mp3?.start()
-            } else if (result.categories[0].label == "tv" ) {
-                mp5?.start()
-            }
+        if (object_sound == "bed" ) {
+            mp_bed?.start()
+        } else if (object_sound == "chair" ) {
+            mp_chair?.start()
+        } else if (object_sound == "cup" ) {
+            mp_cup?.start()
+        } else if (object_sound == "laptop") {
+            mp_laptop?.start()
+        } else if (object_sound == "remote" ) {
+            mp_remote?.start()
         }
-
-
     }
+
     private fun dovibrate() {
         val vibrator = getActivity()?.getSystemService(Context.VIBRATOR_SERVICE) as Vibrator
         if (Build.VERSION.SDK_INT >= 26) {
-            vibrator.vibrate(VibrationEffect.createOneShot(200, VibrationEffect.DEFAULT_AMPLITUDE))
+            vibrator.vibrate(VibrationEffect.createOneShot(50, VibrationEffect.DEFAULT_AMPLITUDE))
         } else {
-            vibrator.vibrate(200)
+            vibrator.vibrate(50)
         }
     }
-
-
 
     override fun onError(error: String) {
         Log.d("compose", "fragment onError()")
@@ -512,5 +632,3 @@ class CameraFragment() : Fragment(R.layout.fragment_camera), ObjectDetectorHelpe
         super.onStart()
     }
 }
-
-

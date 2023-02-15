@@ -131,7 +131,6 @@ class ObjectDetectorHelper(
             inferenceTime,
             tensorImage.height,
             tensorImage.width)
-
     }
 
     interface DetectorListener {
