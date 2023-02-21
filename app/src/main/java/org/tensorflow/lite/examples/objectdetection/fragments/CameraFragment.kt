@@ -17,6 +17,7 @@ package org.tensorflow.lite.examples.objectdetection.fragments
 
 import android.annotation.SuppressLint
 import android.content.Context
+import android.content.Intent
 import android.content.res.Configuration
 import android.graphics.Bitmap
 import android.media.MediaPlayer
@@ -24,11 +25,13 @@ import android.os.Build
 import android.os.Bundle
 import android.os.VibrationEffect
 import android.os.Vibrator
+import android.speech.RecognizerIntent
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView
+import android.widget.Button
 import android.widget.Toast
 import androidx.camera.core.*
 import androidx.camera.core.ImageAnalysis.OUTPUT_IMAGE_FORMAT_RGBA_8888
@@ -95,6 +98,7 @@ class CameraFragment() : Fragment(R.layout.fragment_camera), ObjectDetectorHelpe
 
     private  var flage: Boolean?= false
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         Log.d("compose", "fragment onCreate()")
         super.onCreate(savedInstanceState)
@@ -107,15 +111,12 @@ class CameraFragment() : Fragment(R.layout.fragment_camera), ObjectDetectorHelpe
         beep2 = MediaPlayer.create( getContext(), R.raw.beep2)
         beep3 = MediaPlayer.create( getContext(), R.raw.beep4)
         foundsound = MediaPlayer.create( getContext(), R.raw.foundsound)
-
     }
-
 
 
     override fun onResume() {
         Log.d("compose", "fragment onResume()")
         super.onResume()
-
 
         // Make sure that all permissions are still present, since the
         // user could have removed them while the app was in paused state
@@ -169,10 +170,6 @@ class CameraFragment() : Fragment(R.layout.fragment_camera), ObjectDetectorHelpe
         Log.d("compose", "fragment onViewCreated()")
         super.onViewCreated(view, savedInstanceState)
 
-        fragmentCameraBinding.button3.setOnClickListener {
-            findname = null
-        }
-
 
         /*
         fragmentCameraBinding.bottomSheetLayout.btnMain.setOnClickListener{
@@ -203,10 +200,8 @@ class CameraFragment() : Fragment(R.layout.fragment_camera), ObjectDetectorHelpe
 
     private fun initBottomSheetControls() {
 
-
         // When clicked, lower detection score threshold floor
         fragmentCameraBinding.bottomSheetLayout.thresholdMinus.setOnClickListener {
-
             if (objectDetectorHelper.threshold >= 0.1) {
                 objectDetectorHelper.threshold -= 0.1f
                 updateControlsUi()
@@ -254,6 +249,7 @@ class CameraFragment() : Fragment(R.layout.fragment_camera), ObjectDetectorHelpe
         }
 
         fragmentCameraBinding.btnMain.setOnClickListener{
+            dovibrate()
 
             if(fragmentCameraBinding.btnMain.text == "聲音關閉") {
                 fragmentCameraBinding.btnMain.text = "聲音開啟"
@@ -264,6 +260,24 @@ class CameraFragment() : Fragment(R.layout.fragment_camera), ObjectDetectorHelpe
             }
 
             Toast.makeText(getContext() , fragmentCameraBinding.btnMain.text, Toast.LENGTH_LONG).show()
+        }
+
+
+
+        fragmentCameraBinding.btnStt.setOnClickListener{
+            dovibrate()
+            findname = null
+        }
+
+        fragmentCameraBinding.btnStt.setOnLongClickListener {
+            dovibrate()
+            displaySpeechRecognizer()
+            true
+        }
+
+        fragmentCameraBinding.mapbtn.setOnClickListener {
+            dovibrate()
+            displaySpeechRecognizer_second()
         }
 
 
@@ -572,6 +586,25 @@ class CameraFragment() : Fragment(R.layout.fragment_camera), ObjectDetectorHelpe
         // Force a redraw
         fragmentCameraBinding.overlay.invalidate()
 
+    }
+
+
+    private fun displaySpeechRecognizer() {
+        val intent = Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH)
+        intent.putExtra(RecognizerIntent.EXTRA_PROMPT, "Please say something")
+        intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL, RecognizerIntent.LANGUAGE_MODEL_FREE_FORM)
+        intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE, "zh-TW")
+        intent.putExtra(RecognizerIntent.EXTRA_MAX_RESULTS, 3)
+        activity?.startActivityForResult(intent, 0)
+    }
+
+    private fun displaySpeechRecognizer_second() {
+        val intent = Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH)
+        intent.putExtra(RecognizerIntent.EXTRA_PROMPT, "Please say something")
+        intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL, RecognizerIntent.LANGUAGE_MODEL_FREE_FORM)
+        intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE, "zh-TW")
+        intent.putExtra(RecognizerIntent.EXTRA_MAX_RESULTS, 3)
+        activity?.startActivityForResult(intent, 1)
     }
 
 

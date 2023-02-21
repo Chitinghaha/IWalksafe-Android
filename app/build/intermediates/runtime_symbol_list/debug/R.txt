@@ -1343,9 +1343,9 @@ int id bottom 0x7f090054
 int id bottom_sheet_layout 0x7f090055
 int id bounce 0x7f090056
 int id btnMain 0x7f090057
-int id button1 0x7f090058
-int id button2 0x7f090059
-int id button3 0x7f09005a
+int id btn_stt 0x7f090058
+int id button1 0x7f090059
+int id button2 0x7f09005a
 int id buttonPanel 0x7f09005b
 int id cache_measures 0x7f09005c
 int id camera_container 0x7f09005d

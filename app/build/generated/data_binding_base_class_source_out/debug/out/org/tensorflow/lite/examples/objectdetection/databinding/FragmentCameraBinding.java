@@ -28,10 +28,13 @@ public final class FragmentCameraBinding implements ViewBinding {
   public final Button btnMain;
 
   @NonNull
-  public final Button button3;
+  public final Button btnStt;
 
   @NonNull
   public final CoordinatorLayout cameraContainer;
+
+  @NonNull
+  public final Button mapbtn;
 
   @NonNull
   public final OverlayView overlay;
@@ -41,13 +44,14 @@ public final class FragmentCameraBinding implements ViewBinding {
 
   private FragmentCameraBinding(@NonNull CoordinatorLayout rootView,
       @NonNull InfoBottomSheetBinding bottomSheetLayout, @NonNull Button btnMain,
-      @NonNull Button button3, @NonNull CoordinatorLayout cameraContainer,
+      @NonNull Button btnStt, @NonNull CoordinatorLayout cameraContainer, @NonNull Button mapbtn,
       @NonNull OverlayView overlay, @NonNull PreviewView viewFinder) {
     this.rootView = rootView;
     this.bottomSheetLayout = bottomSheetLayout;
     this.btnMain = btnMain;
-    this.button3 = button3;
+    this.btnStt = btnStt;
     this.cameraContainer = cameraContainer;
+    this.mapbtn = mapbtn;
     this.overlay = overlay;
     this.viewFinder = viewFinder;
   }
@@ -92,13 +96,19 @@ public final class FragmentCameraBinding implements ViewBinding {
         break missingId;
       }
 
-      id = R.id.button3;
-      Button button3 = ViewBindings.findChildViewById(rootView, id);
-      if (button3 == null) {
+      id = R.id.btn_stt;
+      Button btnStt = ViewBindings.findChildViewById(rootView, id);
+      if (btnStt == null) {
         break missingId;
       }
 
       CoordinatorLayout cameraContainer = (CoordinatorLayout) rootView;
+
+      id = R.id.mapbtn;
+      Button mapbtn = ViewBindings.findChildViewById(rootView, id);
+      if (mapbtn == null) {
+        break missingId;
+      }
 
       id = R.id.overlay;
       OverlayView overlay = ViewBindings.findChildViewById(rootView, id);
@@ -113,7 +123,7 @@ public final class FragmentCameraBinding implements ViewBinding {
       }
 
       return new FragmentCameraBinding((CoordinatorLayout) rootView, binding_bottomSheetLayout,
-          btnMain, button3, cameraContainer, overlay, viewFinder);
+          btnMain, btnStt, cameraContainer, mapbtn, overlay, viewFinder);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

@@ -48,39 +48,20 @@
 
         <Button
             android:id="@+id/button1"
-            android:stateListAnimator="@null"
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:layout_alignParentRight="true"
             android:layout_marginRight="0dp"
-            android:background="@drawable/shape_circle"
-            android:text="@string/Compass"
+            android:background="@mipmap/compass"
+            android:stateListAnimator="@null"
             android:textColor="#FFFFFF" />
 
-        <Button
-            android:id="@+id/button2"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:layout_alignParentRight="true"
-            android:layout_below="@+id/button1"
-            android:stateListAnimator="@null"
-            android:background="@drawable/shape_circle"
-            android:text="@string/sent_massege"
-            android:textColor="#FFFFFF"/>
 
-        <Button
-            android:id="@+id/mapbtn"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:layout_alignParentRight="true"
-            android:stateListAnimator="@null"
-            android:layout_below="@+id/button2"
-            android:background="@drawable/shape_circle"
-            android:text="@string/google_map"
-            android:textColor="#FFFFFF"/>
 
 
     </RelativeLayout>
+
+
 
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

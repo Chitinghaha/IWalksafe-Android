@@ -32,38 +32,51 @@
         android:layout_height="match_parent"
         android:layout_width="match_parent" />
 
+
     <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
+
 
 
         <Button
             android:id="@+id/btnMain"
             android:layout_width="100dp"
             android:layout_height="100dp"
-            android:layout_alignParentEnd="true"
-            android:layout_marginTop="300dp"
-            android:stateListAnimator="@null"
+            android:layout_alignRight="@+id/btn_stt"
+            android:layout_marginTop="550dp"
             android:background="@drawable/shape_circle"
             android:text="@string/sound_close"
-            android:textColor="#37474F" />
+            android:textColor="#FFFFFF" />
 
         <Button
-            android:id="@+id/button3"
+            android:id="@+id/btn_stt"
             android:layout_width="100dp"
             android:layout_height="100dp"
-            android:layout_below="@+id/btnMain"
+            android:layout_marginTop="550dp"
+            android:layout_centerHorizontal="true"
+            android:background="@drawable/shape_circle"
+            android:text="@string/sent_massege"
+            android:textColor="#FFFFFF" />
+
+        <Button
+            android:id="@+id/mapbtn"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginTop="550dp"
+            android:layout_alignRight="@+id/btn_stt"
             android:layout_alignParentEnd="true"
             android:background="@drawable/shape_circle"
-            android:text="@string/found_it"
-            android:textColor="#37474F"
-            tools:ignore="TextContrastCheck" />
+            android:text="@string/google_map"
+            android:textColor="#FFFFFF" />
 
     </RelativeLayout>
 
     <include
         android:id="@+id/bottom_sheet_layout"
         layout="@layout/info_bottom_sheet" />
+
+
 
 
 

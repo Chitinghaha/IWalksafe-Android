@@ -1344,9 +1344,9 @@ id bottom
 id bottom_sheet_layout
 id bounce
 id btnMain
+id btn_stt
 id button1
 id button2
-id button3
 id buttonPanel
 id cache_measures
 id camera_container

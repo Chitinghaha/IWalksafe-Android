@@ -19,11 +19,10 @@ package org.tensorflow.lite.examples.objectdetection
 
 import android.app.Activity
 import android.content.ContentValues.TAG
+import android.content.Context
 import android.content.Intent
 import android.net.Uri
-import android.os.Build
-import android.os.Bundle
-import android.os.PersistableBundle
+import android.os.*
 import android.speech.RecognizerIntent
 import android.speech.tts.TextToSpeech
 import android.util.AttributeSet
@@ -59,22 +58,15 @@ class MainActivity : AppCompatActivity() , TextToSpeech.OnInitListener{
 
         //activity change to CompassMainActivity
         activityMainBinding.button1.setOnLongClickListener{
+            dovibrate()
             val intent = Intent(this, CompassMainActivity::class.java)
             startActivity(intent)
             true
         }
 
-        activityMainBinding.button2.setOnLongClickListener{
-            activity_channel = 0
-            displaySpeechRecognizer()
-            true
-        }
 
 
-        activityMainBinding.mapbtn.setOnClickListener{
-            activity_channel = 1
-            displaySpeechRecognizer()
-        }
+
         Log.d("compose", "Main onCreate()")
 
 
@@ -100,28 +92,40 @@ class MainActivity : AppCompatActivity() , TextToSpeech.OnInitListener{
         }
     }
 
-    private fun displaySpeechRecognizer() {
-        val intent = Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH)
-        intent.putExtra(RecognizerIntent.EXTRA_PROMPT, "Please say something")
-        intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL, RecognizerIntent.LANGUAGE_MODEL_FREE_FORM)
-        intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE, "zh-TW")
-        intent.putExtra(RecognizerIntent.EXTRA_MAX_RESULTS, 3)
-
-
-        startActivityForResult(intent, SPEECH_REQUEST_CODE)
-    }
+//    private fun displaySpeechRecognizer() {
+//        val intent = Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH)
+//        intent.putExtra(RecognizerIntent.EXTRA_PROMPT, "Please say something")
+//        intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL, RecognizerIntent.LANGUAGE_MODEL_FREE_FORM)
+//        intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE, "zh-TW")
+//        intent.putExtra(RecognizerIntent.EXTRA_MAX_RESULTS, 3)
+//
+//
+//        startActivityForResult(intent, SPEECH_REQUEST_CODE)
+//    }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
-        if (requestCode == SPEECH_REQUEST_CODE && resultCode == Activity.RESULT_OK) {
+        if (requestCode == 0 && resultCode == Activity.RESULT_OK) {
             val spokenText: String? =
                 data?.getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS).let { results ->
                     results?.get(0)
                 }
             if (spokenText != null) {
+                activity_channel = 0
                 channel_funtion(spokenText)
             }
-//            Toast.makeText(this,spokenText,Toast.LENGTH_SHORT).show()
+        }
+
+        else if(requestCode == 1 && resultCode == Activity.RESULT_OK){
+
+            val spokenText: String? =
+                data?.getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS).let { results ->
+                    results?.get(0)
+                }
+            if (spokenText != null) {
+                activity_channel = 1
+                channel_funtion(spokenText)
+            }
         }
         Log.d("compose", "Main onActivityResult()")
     }
@@ -142,8 +146,9 @@ class MainActivity : AppCompatActivity() , TextToSpeech.OnInitListener{
             fragment.arguments = bundle
             fragmentTransition.add(R.id.fragment_container, fragment)
             fragmentTransition.commit()
-
         }
+
+
         else if(activity_channel == 1){
             val gmmIntentUri =
                 Uri.parse("google.navigation:q=$spokenText&mode=w")
@@ -248,6 +253,15 @@ class MainActivity : AppCompatActivity() , TextToSpeech.OnInitListener{
         }
         super.onDestroy()
         Log.d("compose", "Main onDestroy()")
+    }
+
+    private fun dovibrate() {
+        val vibrator = getSystemService(Context.VIBRATOR_SERVICE) as Vibrator
+        if (Build.VERSION.SDK_INT >= 26) {
+            vibrator.vibrate(VibrationEffect.createOneShot(50, VibrationEffect.DEFAULT_AMPLITUDE))
+        } else {
+            vibrator.vibrate(50)
+        }
     }
 
 }
