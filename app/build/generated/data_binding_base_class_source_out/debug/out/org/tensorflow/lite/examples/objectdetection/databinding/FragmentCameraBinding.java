@@ -4,7 +4,6 @@ package org.tensorflow.lite.examples.objectdetection.databinding;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.camera.view.PreviewView;
@@ -25,16 +24,7 @@ public final class FragmentCameraBinding implements ViewBinding {
   public final InfoBottomSheetBinding bottomSheetLayout;
 
   @NonNull
-  public final Button btnMain;
-
-  @NonNull
-  public final Button btnStt;
-
-  @NonNull
   public final CoordinatorLayout cameraContainer;
-
-  @NonNull
-  public final Button mapbtn;
 
   @NonNull
   public final OverlayView overlay;
@@ -43,15 +33,11 @@ public final class FragmentCameraBinding implements ViewBinding {
   public final PreviewView viewFinder;
 
   private FragmentCameraBinding(@NonNull CoordinatorLayout rootView,
-      @NonNull InfoBottomSheetBinding bottomSheetLayout, @NonNull Button btnMain,
-      @NonNull Button btnStt, @NonNull CoordinatorLayout cameraContainer, @NonNull Button mapbtn,
+      @NonNull InfoBottomSheetBinding bottomSheetLayout, @NonNull CoordinatorLayout cameraContainer,
       @NonNull OverlayView overlay, @NonNull PreviewView viewFinder) {
     this.rootView = rootView;
     this.bottomSheetLayout = bottomSheetLayout;
-    this.btnMain = btnMain;
-    this.btnStt = btnStt;
     this.cameraContainer = cameraContainer;
-    this.mapbtn = mapbtn;
     this.overlay = overlay;
     this.viewFinder = viewFinder;
   }
@@ -90,25 +76,7 @@ public final class FragmentCameraBinding implements ViewBinding {
       }
       InfoBottomSheetBinding binding_bottomSheetLayout = InfoBottomSheetBinding.bind(bottomSheetLayout);
 
-      id = R.id.btnMain;
-      Button btnMain = ViewBindings.findChildViewById(rootView, id);
-      if (btnMain == null) {
-        break missingId;
-      }
-
-      id = R.id.btn_stt;
-      Button btnStt = ViewBindings.findChildViewById(rootView, id);
-      if (btnStt == null) {
-        break missingId;
-      }
-
       CoordinatorLayout cameraContainer = (CoordinatorLayout) rootView;
-
-      id = R.id.mapbtn;
-      Button mapbtn = ViewBindings.findChildViewById(rootView, id);
-      if (mapbtn == null) {
-        break missingId;
-      }
 
       id = R.id.overlay;
       OverlayView overlay = ViewBindings.findChildViewById(rootView, id);
@@ -123,7 +91,7 @@ public final class FragmentCameraBinding implements ViewBinding {
       }
 
       return new FragmentCameraBinding((CoordinatorLayout) rootView, binding_bottomSheetLayout,
-          btnMain, btnStt, cameraContainer, mapbtn, overlay, viewFinder);
+          cameraContainer, overlay, viewFinder);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

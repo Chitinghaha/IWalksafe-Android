@@ -1230,6 +1230,13 @@ drawable design_ic_visibility
 drawable design_ic_visibility_off
 drawable design_password_eye
 drawable design_snackbar_background
+drawable ic_baseline_audiotrack_24
+drawable ic_baseline_home_24
+drawable ic_baseline_my_location_24
+drawable ic_baseline_navigation_24
+drawable ic_baseline_search_24
+drawable ic_baseline_task_alt_24
+drawable ic_baseline_view_in_ar_24
 drawable ic_launcher_foreground
 drawable ic_minus
 drawable ic_mtrl_chip_checked_black
@@ -1258,14 +1265,17 @@ drawable tooltip_frame_dark
 drawable tooltip_frame_light
 id ALT
 id CTRL
+id Detection
 id FUNCTION
 id META
 id NO_DEBUG
+id Navigation
 id SHIFT
 id SHOW_ALL
 id SHOW_PATH
 id SHOW_PROGRESS
 id SYM
+id Sound
 id accelerate
 id accessibility_action_clickable_span
 id accessibility_custom_action_0
@@ -1343,9 +1353,6 @@ id blocking
 id bottom
 id bottom_sheet_layout
 id bounce
-id btnMain
-id btn_stt
-id button1
 id button2
 id buttonPanel
 id cache_measures
@@ -1372,6 +1379,7 @@ id clip_horizontal
 id clip_vertical
 id collapseActionView
 id compatible
+id compress
 id container
 id content
 id contentPanel
@@ -1461,7 +1469,6 @@ id line3
 id linear
 id listMode
 id list_item
-id mapbtn
 id masked
 id max_results_minus
 id max_results_plus
@@ -1476,6 +1483,7 @@ id multiply
 id nav_controller_view_tag
 id nav_graph
 id nav_host_fragment_container
+id navigation
 id navigation_header_container
 id never
 id none
@@ -1508,7 +1516,6 @@ id progress_horizontal
 id radio
 id ratio
 id rectangles
-id relativeLayout
 id reverseSawtooth
 id right
 id right_icon
@@ -1718,6 +1725,7 @@ layout select_dialog_item_material
 layout select_dialog_multichoice_material
 layout select_dialog_singlechoice_material
 layout support_simple_spinner_dropdown_item
+menu menulist
 mipmap compass
 mipmap ic_launcher
 mipmap ic_launcher_foreground
@@ -1798,6 +1806,7 @@ string found_it
 string google_map
 string hello_blank_fragment
 string hide_bottom_view_on_scroll_behavior
+string home
 string label_confidence_threshold
 string label_delegate
 string label_fps

@@ -24,42 +24,76 @@
 
 
 
-    <androidx.fragment.app.FragmentContainerView
-        android:id="@+id/fragment_container"
-        android:name="androidx.navigation.fragment.NavHostFragment"
+<!--    <androidx.fragment.app.FragmentContainerView-->
+<!--        android:id="@+id/fragment_container"-->
+<!--        android:name="androidx.navigation.fragment.NavHostFragment"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_alignParentStart="true"-->
+<!--        android:layout_alignParentTop="true"-->
+<!--        android:layout_marginStart="0dp"-->
+<!--        android:background="@android:color/transparent"-->
+<!--        android:keepScreenOn="true"-->
+<!--        android:visibility="visible"-->
+<!--        app:defaultNavHost="true"-->
+<!--        app:navGraph="@navigation/nav_graph"-->
+<!--        tools:context=".MainActivity"-->
+<!--        tools:layout="@layout/fragment_camera" />-->
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginStart="0dp"
-        android:background="@android:color/transparent"
-        android:keepScreenOn="true"
-        android:visibility="visible"
-        app:defaultNavHost="true"
-        app:navGraph="@navigation/nav_graph"
-        tools:context=".MainActivity"
-        tools:layout="@layout/fragment_camera" />
-
-    <RelativeLayout
-        android:id="@+id/relativeLayout"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:layout_anchor="@+id/relativeLayout">
-
-        <Button
-            android:id="@+id/button1"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:layout_alignParentRight="true"
-            android:layout_marginRight="0dp"
-            android:background="@mipmap/compass"
-            android:stateListAnimator="@null"
-            android:textColor="#FFFFFF" />
+        android:layout_height="match_parent">
 
 
+        <androidx.fragment.app.FragmentContainerView
+            android:id="@+id/fragment_container"
+            android:name="androidx.navigation.fragment.NavHostFragment"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            app:navGraph="@navigation/nav_graph"
+            tools:context=".MainActivity"
+            tools:layout="@layout/fragment_camera"
+            app:defaultNavHost="true"
+            android:visibility="visible"
+            android:keepScreenOn="true"
+            android:background="@android:color/transparent"
+            >
 
+        </androidx.fragment.app.FragmentContainerView>
 
-    </RelativeLayout>
+        <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:id="@+id/navigation"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@android:color/white"
+            app:labelVisibilityMode="labeled"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:menu="@menu/menulist">
+
+        </com.google.android.material.bottomnavigation.BottomNavigationView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+<!--    <RelativeLayout-->
+<!--        android:id="@+id/relativeLayout"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent"-->
+<!--        app:layout_anchor="@+id/relativeLayout">-->
+
+<!--        <Button-->
+<!--            android:id="@+id/button1"-->
+<!--            android:layout_width="100dp"-->
+<!--            android:layout_height="100dp"-->
+<!--            android:layout_alignParentRight="true"-->
+<!--            android:layout_marginRight="0dp"-->
+<!--            android:text="@string/Compass"-->
+<!--            android:stateListAnimator="@null"-->
+<!--            android:textColor="#FFFFFF" />-->
+
+<!--    </RelativeLayout>-->
 
 
 

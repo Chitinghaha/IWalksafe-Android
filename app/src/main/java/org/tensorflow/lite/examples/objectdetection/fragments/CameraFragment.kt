@@ -102,15 +102,15 @@ class CameraFragment() : Fragment(R.layout.fragment_camera), ObjectDetectorHelpe
     override fun onCreate(savedInstanceState: Bundle?) {
         Log.d("compose", "fragment onCreate()")
         super.onCreate(savedInstanceState)
-        mp_bed = MediaPlayer.create( getContext(), R.raw.bed)
-        mp_chair = MediaPlayer.create( getContext(), R.raw.chair)
-        mp_cup = MediaPlayer.create( getContext(), R.raw.cup)
-        mp_laptop= MediaPlayer.create( getContext(), R.raw.computer)
-        mp_remote = MediaPlayer.create( getContext(), R.raw.remote)
-        beep1 = MediaPlayer.create( getContext(), R.raw.beep1)
-        beep2 = MediaPlayer.create( getContext(), R.raw.beep2)
-        beep3 = MediaPlayer.create( getContext(), R.raw.beep4)
-        foundsound = MediaPlayer.create( getContext(), R.raw.foundsound)
+        mp_bed = MediaPlayer.create(context, R.raw.bed)
+        mp_chair = MediaPlayer.create(context, R.raw.chair)
+        mp_cup = MediaPlayer.create(context, R.raw.cup)
+        mp_laptop= MediaPlayer.create(context, R.raw.computer)
+        mp_remote = MediaPlayer.create(context, R.raw.remote)
+        beep1 = MediaPlayer.create(context, R.raw.beep1)
+        beep2 = MediaPlayer.create(context, R.raw.beep2)
+        beep3 = MediaPlayer.create(context, R.raw.beep4)
+        foundsound = MediaPlayer.create(context, R.raw.foundsound)
     }
 
 
@@ -135,7 +135,7 @@ class CameraFragment() : Fragment(R.layout.fragment_camera), ObjectDetectorHelpe
     // Fragment即將被結束
     override fun onDestroyView() {
         Log.d("compose", "fragment onDestroyView()")
-        _fragmentCameraBinding = null
+        //_fragmentCameraBinding = null
 
         // Shut down our background executor
         cameraExecutor.shutdown()
@@ -248,37 +248,41 @@ class CameraFragment() : Fragment(R.layout.fragment_camera), ObjectDetectorHelpe
             }
         }
 
-        fragmentCameraBinding.btnMain.setOnClickListener{
-            dovibrate()
+//        fragmentCameraBinding.btnMain.setOnClickListener{
+//           // dovibrate()
+//
+//            if(fragmentCameraBinding.btnMain.text == "聲音關閉") {
+//                fragmentCameraBinding.btnMain.text = "聲音開啟"
+//            }
+//
+//            else {
+//                fragmentCameraBinding.btnMain.text = "聲音關閉"
+//            }
+//
+//            Toast.makeText(getContext() , fragmentCameraBinding.btnMain.text, Toast.LENGTH_LONG).show()
+//        }
 
-            if(fragmentCameraBinding.btnMain.text == "聲音關閉") {
-                fragmentCameraBinding.btnMain.text = "聲音開啟"
-            }
-
-            else {
-                fragmentCameraBinding.btnMain.text = "聲音關閉"
-            }
-
-            Toast.makeText(getContext() , fragmentCameraBinding.btnMain.text, Toast.LENGTH_LONG).show()
-        }
 
 
+//        fragmentCameraBinding.btnStt.setOnClickListener{
+//            //dovibrate()
+//            findname = null
+//        }
 
-        fragmentCameraBinding.btnStt.setOnClickListener{
-            dovibrate()
-            findname = null
-        }
+//        fragmentCameraBinding.btnStt.setOnLongClickListener {
+//           // dovibrate()
+//            displaySpeechRecognizer()
+//            true
+//        }
 
-        fragmentCameraBinding.btnStt.setOnLongClickListener {
-            dovibrate()
-            displaySpeechRecognizer()
-            true
-        }
+//        fragmentCameraBinding.mapbtn.setOnClickListener {
+//           // dovibrate()
+//            displaySpeechRecognizer_second()
+//        }
 
-        fragmentCameraBinding.mapbtn.setOnClickListener {
-            dovibrate()
-            displaySpeechRecognizer_second()
-        }
+//        fragmentCameraBinding.compassbtn.setOnClickListener {
+//
+//        }
 
 
 
@@ -569,7 +573,7 @@ class CameraFragment() : Fragment(R.layout.fragment_camera), ObjectDetectorHelpe
         }
 
         //sound output
-        if (results != null && fragmentCameraBinding.btnMain.text == "聲音開啟") {
+        if (results != null ) {
             for (result in results){
                 for(ob in Objectsound){
                     //Toast.makeText(requireContext(),ob+"  "+result.categories[0].label, Toast.LENGTH_SHORT).show()
@@ -652,6 +656,7 @@ class CameraFragment() : Fragment(R.layout.fragment_camera), ObjectDetectorHelpe
 
     override fun onDestroy() {
         Log.d("compose", "fragment onDestroy()")
+
         super.onDestroy()
     }
 

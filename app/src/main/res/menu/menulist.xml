@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:title="@string/home"
+        android:id="@+id/Sound"
+        android:icon="@drawable/ic_baseline_home_24">
+    </item>
+    <item
+        android:title="@string/sent_massege"
+        android:id="@+id/Detection"
+        android:icon="@drawable/ic_baseline_view_in_ar_24">
+    </item>
+<!--    <item-->
+<!--        android:title="@string/found_it"-->
+<!--        android:id="@+id/Found"-->
+<!--        android:icon="@drawable/ic_baseline_task_alt_24">-->
+<!--    </item>-->
+    <item
+        android:title="@string/google_map"
+        android:id="@+id/Navigation"
+        android:icon="@drawable/ic_baseline_navigation_24">
+    </item>
+
+    <item
+        android:title="@string/Compass"
+        android:id="@+id/compress"
+        android:icon="@drawable/ic_baseline_my_location_24">
+    </item>
+
+</menu>

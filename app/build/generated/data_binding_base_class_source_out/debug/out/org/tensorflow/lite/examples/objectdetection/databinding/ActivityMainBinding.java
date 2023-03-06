@@ -4,14 +4,13 @@ package org.tensorflow.lite.examples.objectdetection.databinding;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.RelativeLayout;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.coordinatorlayout.widget.CoordinatorLayout;
 import androidx.fragment.app.FragmentContainerView;
 import androidx.viewbinding.ViewBinding;
 import androidx.viewbinding.ViewBindings;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import java.lang.NullPointerException;
 import java.lang.Override;
 import java.lang.String;
@@ -22,20 +21,16 @@ public final class ActivityMainBinding implements ViewBinding {
   private final CoordinatorLayout rootView;
 
   @NonNull
-  public final Button button1;
-
-  @NonNull
   public final FragmentContainerView fragmentContainer;
 
   @NonNull
-  public final RelativeLayout relativeLayout;
+  public final BottomNavigationView navigation;
 
-  private ActivityMainBinding(@NonNull CoordinatorLayout rootView, @NonNull Button button1,
-      @NonNull FragmentContainerView fragmentContainer, @NonNull RelativeLayout relativeLayout) {
+  private ActivityMainBinding(@NonNull CoordinatorLayout rootView,
+      @NonNull FragmentContainerView fragmentContainer, @NonNull BottomNavigationView navigation) {
     this.rootView = rootView;
-    this.button1 = button1;
     this.fragmentContainer = fragmentContainer;
-    this.relativeLayout = relativeLayout;
+    this.navigation = navigation;
   }
 
   @Override
@@ -65,26 +60,19 @@ public final class ActivityMainBinding implements ViewBinding {
     // This is done to optimize the compiled bytecode for size and performance.
     int id;
     missingId: {
-      id = R.id.button1;
-      Button button1 = ViewBindings.findChildViewById(rootView, id);
-      if (button1 == null) {
-        break missingId;
-      }
-
       id = R.id.fragment_container;
       FragmentContainerView fragmentContainer = ViewBindings.findChildViewById(rootView, id);
       if (fragmentContainer == null) {
         break missingId;
       }
 
-      id = R.id.relativeLayout;
-      RelativeLayout relativeLayout = ViewBindings.findChildViewById(rootView, id);
-      if (relativeLayout == null) {
+      id = R.id.navigation;
+      BottomNavigationView navigation = ViewBindings.findChildViewById(rootView, id);
+      if (navigation == null) {
         break missingId;
       }
 
-      return new ActivityMainBinding((CoordinatorLayout) rootView, button1, fragmentContainer,
-          relativeLayout);
+      return new ActivityMainBinding((CoordinatorLayout) rootView, fragmentContainer, navigation);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));
