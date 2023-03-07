@@ -67,6 +67,7 @@ project.ext.TEST_ASSETS_DIR = projectDir.toString() + '/src/androidTest/assets'
 // Download default models; if you wish to use your own models then
 // place them in the "assets" directory and comment out this line.
 apply from:'download_models.gradle'
+apply plugin: 'com.google.gms.google-services'
 
 dependencies {
     // Kotlin lang
@@ -80,6 +81,8 @@ dependencies {
     implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
     implementation 'com.google.android.material:material:1.0.0'
     implementation 'androidx.localbroadcastmanager:localbroadcastmanager:1.0.0'
+    implementation 'com.google.firebase:firebase-database:20.1.0'
+    implementation 'com.google.firebase:firebase-database-ktx:20.1.0'
 
     // Navigation library
     def nav_version = "2.3.5"

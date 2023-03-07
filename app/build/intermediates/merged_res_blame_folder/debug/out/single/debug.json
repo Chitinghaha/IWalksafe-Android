@@ -76,12 +76,12 @@
         "source": "C:\\lab\\iWalkSafe_android\\app\\src\\main\\res\\color\\selector_ic.xml"
     },
     {
-        "merged": "C:\\lab\\iWalkSafe_android\\app\\build\\intermediates\\merged_res\\debug\\raw_person.mp3.flat",
-        "source": "C:\\lab\\iWalkSafe_android\\app\\src\\main\\res\\raw\\person.mp3"
-    },
-    {
         "merged": "C:\\lab\\iWalkSafe_android\\app\\build\\intermediates\\merged_res\\debug\\layout_fragment_camera.xml.flat",
         "source": "C:\\lab\\iWalkSafe_android\\app\\src\\main\\res\\layout\\fragment_camera.xml"
+    },
+    {
+        "merged": "C:\\lab\\iWalkSafe_android\\app\\build\\intermediates\\merged_res\\debug\\raw_person.mp3.flat",
+        "source": "C:\\lab\\iWalkSafe_android\\app\\src\\main\\res\\raw\\person.mp3"
     },
     {
         "merged": "C:\\lab\\iWalkSafe_android\\app\\build\\intermediates\\merged_res\\debug\\mipmap-xhdpi_ic_launcher.png.flat",
@@ -144,12 +144,12 @@
         "source": "C:\\lab\\iWalkSafe_android\\app\\src\\main\\res\\raw\\beep3.mp3"
     },
     {
-        "merged": "C:\\lab\\iWalkSafe_android\\app\\build\\intermediates\\merged_res\\debug\\mipmap-hdpi_ic_launcher_foreground.png.flat",
-        "source": "C:\\lab\\iWalkSafe_android\\app\\src\\main\\res\\mipmap-hdpi\\ic_launcher_foreground.png"
-    },
-    {
         "merged": "C:\\lab\\iWalkSafe_android\\app\\build\\intermediates\\merged_res\\debug\\layout_fragment_compass.xml.flat",
         "source": "C:\\lab\\iWalkSafe_android\\app\\src\\main\\res\\layout\\fragment_compass.xml"
+    },
+    {
+        "merged": "C:\\lab\\iWalkSafe_android\\app\\build\\intermediates\\merged_res\\debug\\mipmap-hdpi_ic_launcher_foreground.png.flat",
+        "source": "C:\\lab\\iWalkSafe_android\\app\\src\\main\\res\\mipmap-hdpi\\ic_launcher_foreground.png"
     },
     {
         "merged": "C:\\lab\\iWalkSafe_android\\app\\build\\intermediates\\merged_res\\debug\\raw_north.mp3.flat",

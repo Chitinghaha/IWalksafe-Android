@@ -39,6 +39,8 @@ import androidx.camera.lifecycle.ProcessCameraProvider
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.navigation.Navigation
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.FirebaseDatabase
 import org.tensorflow.lite.examples.objectdetection.ObjectDetectorHelper
 import org.tensorflow.lite.examples.objectdetection.R
 import org.tensorflow.lite.examples.objectdetection.databinding.FragmentCameraBinding
@@ -84,6 +86,7 @@ class CameraFragment() : Fragment(R.layout.fragment_camera), ObjectDetectorHelpe
     private var beep3: MediaPlayer? = null
 
     //private var results: List<Detection> = LinkedList<Detection>()
+    private var AllObject = mutableSetOf("bed","chair","cup","laptop","remote","person","dog","cat")
 
     private var Objectsound = mutableSetOf<String>()
     private var Warningsound = mutableSetOf<String>()
@@ -98,6 +101,9 @@ class CameraFragment() : Fragment(R.layout.fragment_camera), ObjectDetectorHelpe
 
     private  var flage: Boolean?= false
 
+    //firebase
+    private lateinit var database: DatabaseReference
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         Log.d("compose", "fragment onCreate()")
@@ -111,6 +117,38 @@ class CameraFragment() : Fragment(R.layout.fragment_camera), ObjectDetectorHelpe
         beep2 = MediaPlayer.create(context, R.raw.beep2)
         beep3 = MediaPlayer.create(context, R.raw.beep4)
         foundsound = MediaPlayer.create(context, R.raw.foundsound)
+        database = FirebaseDatabase.getInstance().reference
+    }
+
+    private fun initButton(){
+        for( ob in AllObject){
+            database.child("Button").child(ob).get().addOnSuccessListener {
+                if(it.value == true ){
+                    when (ob) {
+                        "bed" ->{ Objectsound.add("bed")
+                            fragmentCameraBinding.bottomSheetLayout.ckbBed.isChecked = true}
+                        "chair"-> { Objectsound.add("chair")
+                            fragmentCameraBinding.bottomSheetLayout.ckbChair.isChecked = true}
+                        "cup" -> { Objectsound.add("cup")
+                            fragmentCameraBinding.bottomSheetLayout.ckbCup.isChecked = true}
+                        "laptop" ->{ Objectsound.add("laptop")
+                            fragmentCameraBinding.bottomSheetLayout.ckbLaptop.isChecked = true}
+                        "remote" ->{ Objectsound.add("remote")
+                            fragmentCameraBinding.bottomSheetLayout.ckbRemote.isChecked = true}
+                        "person" ->{ Warningsound.add("person")
+                            fragmentCameraBinding.bottomSheetLayout.ckbPerson.isChecked = true}
+                        "dog" ->{ Warningsound.add("dog")
+                            fragmentCameraBinding.bottomSheetLayout.ckbDog.isChecked = true}
+                        "cat" ->{ Warningsound.add("cat")
+                            fragmentCameraBinding.bottomSheetLayout.ckbCat.isChecked = true}
+                        else -> println("Other")
+                    }
+                }
+
+            }.addOnFailureListener {
+                Log.d("GGG", "Error getting data", it)
+            }
+        }
     }
 
 
@@ -152,6 +190,7 @@ class CameraFragment() : Fragment(R.layout.fragment_camera), ObjectDetectorHelpe
         Log.d("compose", "fragment onCreateView()")
 
         _fragmentCameraBinding = FragmentCameraBinding.inflate(inflater, container, false)
+        initButton()
 
 
         //STT
@@ -162,6 +201,9 @@ class CameraFragment() : Fragment(R.layout.fragment_camera), ObjectDetectorHelpe
         findname = data?.getString("String").toString()
         return fragmentCameraBinding.root
     }
+
+
+
 
     // onViewCreated() 適合初始化 view 的狀態、觀察 liveData 或在此設置 recycler 的 adapter, viewPager2
     // @SuppressLint("MissingPermission") 可以禁止權限檢查
@@ -197,6 +239,9 @@ class CameraFragment() : Fragment(R.layout.fragment_camera), ObjectDetectorHelpe
         // Attach listeners to UI control widgets
         initBottomSheetControls()
     }
+
+
+
 
     private fun initBottomSheetControls() {
 
@@ -263,7 +308,6 @@ class CameraFragment() : Fragment(R.layout.fragment_camera), ObjectDetectorHelpe
 //        }
 
 
-
 //        fragmentCameraBinding.btnStt.setOnClickListener{
 //            //dovibrate()
 //            findname = null
@@ -291,30 +335,36 @@ class CameraFragment() : Fragment(R.layout.fragment_camera), ObjectDetectorHelpe
 
             if(isChecked){//判斷框1是否被選定
                 Objectsound.add("bed")   //若選定，則將字串加該項目
-                Toast.makeText(getContext() , "床", Toast.LENGTH_LONG).show()
+                Toast.makeText(context, "床", Toast.LENGTH_LONG).show()
+                writeNewPost("bed", true )
             }
             else{
                 Objectsound.remove("bed")   //若選定，則將字串加該項目
+                writeNewPost("bed", false )
             }
         }
 
         fragmentCameraBinding.bottomSheetLayout.ckbCup.setOnCheckedChangeListener {_, isChecked -> //判斷框2是否被選定
             if(isChecked){//判斷框1是否被選定
                 Objectsound.add("cup")   //若選定，則將字串加該項目
-                Toast.makeText(getContext() ,"杯子", Toast.LENGTH_LONG).show()
+                Toast.makeText(context,"杯子", Toast.LENGTH_LONG).show()
+                writeNewPost("cup", true )
             }
             else{
                 Objectsound.remove("cup")   //若選定，則將字串加該項目
+                writeNewPost("cup", false )
             }
         }
 
         fragmentCameraBinding.bottomSheetLayout.ckbChair.setOnCheckedChangeListener {_, isChecked -> //判斷框3是否被選定
             if(isChecked){//判斷框1是否被選定
                 Objectsound.add("chair")   //若選定，則將字串加該項目
-                Toast.makeText(getContext() ,"椅子", Toast.LENGTH_LONG).show()
+                Toast.makeText(context,"chair", Toast.LENGTH_LONG).show()
+                writeNewPost("chair", true )
             }
             else{
-                Objectsound.remove("chair")   //若選定，則將字串加該項目
+                Objectsound.remove("chair")
+                writeNewPost("chair", false )
             }
 
         }
@@ -322,10 +372,12 @@ class CameraFragment() : Fragment(R.layout.fragment_camera), ObjectDetectorHelpe
         fragmentCameraBinding.bottomSheetLayout.ckbLaptop.setOnCheckedChangeListener {_, isChecked -> //判斷框3是否被選定
             if(isChecked){//判斷框1是否被選定
                 Objectsound.add("laptop")   //若選定，則將字串加該項目
-                Toast.makeText(getContext() ,"筆電", Toast.LENGTH_LONG).show()
+                Toast.makeText(context,"筆電", Toast.LENGTH_LONG).show()
+                writeNewPost("laptop", true )
             }
             else{
                 Objectsound.remove("laptop")   //若選定，則將字串加該項目
+                writeNewPost("laptop", false )
             }
 
         }
@@ -333,10 +385,12 @@ class CameraFragment() : Fragment(R.layout.fragment_camera), ObjectDetectorHelpe
         fragmentCameraBinding.bottomSheetLayout.ckbRemote.setOnCheckedChangeListener {_, isChecked -> //判斷框3是否被選定
             if(isChecked){//判斷框1是否被選定
                 Objectsound.add("remote")   //若選定，則將字串加該項目
-                Toast.makeText(getContext() ,"遙控器", Toast.LENGTH_LONG).show()
+                Toast.makeText(context,"遙控器", Toast.LENGTH_LONG).show()
+                writeNewPost("remote", true )
             }
             else{
                 Objectsound.remove("remote")   //若選定，則將字串加該項目
+                writeNewPost("remote", false )
             }
 
         }
@@ -346,10 +400,12 @@ class CameraFragment() : Fragment(R.layout.fragment_camera), ObjectDetectorHelpe
         fragmentCameraBinding.bottomSheetLayout.ckbPerson.setOnCheckedChangeListener {_, isChecked -> //判斷框4是否被選定
             if(isChecked){//判斷框1是否被選定
                 Warningsound.add("person")   //若選定，則將字串加該項目
-                Toast.makeText(getContext() ,"人", Toast.LENGTH_LONG).show()
+                Toast.makeText(context,"人", Toast.LENGTH_LONG).show()
+                writeNewPost("person", true )
             }
             else{
                 Warningsound.remove("person")   //若選定，則將字串加該項目
+                writeNewPost("person", false )
             }
 
         }
@@ -357,10 +413,12 @@ class CameraFragment() : Fragment(R.layout.fragment_camera), ObjectDetectorHelpe
         fragmentCameraBinding.bottomSheetLayout.ckbDog.setOnCheckedChangeListener {_, isChecked -> //判斷框5是否被選定
             if(isChecked){//判斷框1是否被選定
                 Warningsound.add("dog")   //若選定，則將字串加該項目
-                Toast.makeText(getContext() ,"狗", Toast.LENGTH_LONG).show()
+                Toast.makeText(context,"狗", Toast.LENGTH_LONG).show()
+                writeNewPost("dog", true )
             }
             else{
                 Warningsound.remove("dog")   //若選定，則將字串加該項目
+                writeNewPost("dog", false )
             }
 
         }
@@ -369,9 +427,11 @@ class CameraFragment() : Fragment(R.layout.fragment_camera), ObjectDetectorHelpe
             if(isChecked){//判斷框1是否被選定
                 Warningsound.add("cat")   //若選定，則將字串加該項目
                 Toast.makeText(getContext() ,"貓", Toast.LENGTH_LONG).show()
+                writeNewPost("cat", true )
             }
             else{
                 Warningsound.remove("cat")   //若選定，則將字串加該項目
+                writeNewPost("cat", false )
             }
 
         }
@@ -410,6 +470,29 @@ class CameraFragment() : Fragment(R.layout.fragment_camera), ObjectDetectorHelpe
                     /* no op */
                 }
             }
+    }
+
+    private fun writeNewPost(btnId: String, state: Boolean) {
+        // Create new post at /user-posts/$userid/$postid and at
+        // /posts/$postid simultaneously
+        database.child("Button").child(btnId).setValue(state)
+    }
+
+
+    private fun insertUser(btnId: String, state: Boolean ) {
+//        val user = Btn(btnId, state)
+        database.child("Button").child(btnId).setValue(state)
+    }
+
+
+    private fun find(btnId: String) {
+        database.child("Button").child(btnId).get().addOnSuccessListener {
+            Log.d("GGG", "Got value ${it.value}")
+
+
+        }.addOnFailureListener {
+            Log.d("GGG", "Error getting data", it)
+        }
     }
 
     // Update the values displayed in the bottom sheet. Reset detector.

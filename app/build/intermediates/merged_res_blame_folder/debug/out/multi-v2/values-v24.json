@@ -4,7 +4,7 @@
             "outputFile": "C:\\lab\\iWalkSafe_android\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-v24\\values-v24.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\tnnd\\.gradle\\caches\\transforms-3\\7f24bd38508b7e6990a1a2a39b603c0f\\transformed\\appcompat-1.3.1\\res\\values-v24\\values-v24.xml",
+                    "source": "C:\\Users\\tnnd\\.gradle\\caches\\transforms-3\\144f8bf5b7eafdfcc532effe19be9562\\transformed\\appcompat-1.3.1\\res\\values-v24\\values-v24.xml",
                     "from": {
                         "startLines": "2,3",
                         "startColumns": "4,4",
