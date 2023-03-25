@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "C:\\lab\\iWalkSafe_android\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-large-v4\\values-large-v4.xml",
+            "outputFile": "org.tensorflow.lite.examples.objectdetection.app-mergeDebugResources-54:/values-large-v4/values-large-v4.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\tnnd\\.gradle\\caches\\transforms-3\\144f8bf5b7eafdfcc532effe19be9562\\transformed\\appcompat-1.3.1\\res\\values-large-v4\\values-large-v4.xml",
+                    "source": "C:\\Users\\tnnd\\.gradle\\caches\\transforms-3\\21737bb9850b82afc5a8787092f47dd4\\transformed\\appcompat-1.3.1\\res\\values-large-v4\\values-large-v4.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9,10",
                         "startColumns": "4,4,4,4,4,4,4,4,4",
@@ -14,7 +14,7 @@
                     }
                 },
                 {
-                    "source": "C:\\Users\\tnnd\\.gradle\\caches\\transforms-3\\fdc82a4584f4b656b67084136ae224c3\\transformed\\material-1.0.0\\res\\values-large-v4\\values-large-v4.xml",
+                    "source": "C:\\Users\\tnnd\\.gradle\\caches\\transforms-3\\cd6a44781d40352d98813d27721737d7\\transformed\\material-1.4.0-beta01\\res\\values-large-v4\\values-large-v4.xml",
                     "from": {
                         "startLines": "2,3",
                         "startColumns": "4,4",

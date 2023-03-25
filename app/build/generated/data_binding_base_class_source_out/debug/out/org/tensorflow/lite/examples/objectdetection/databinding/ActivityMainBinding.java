@@ -6,7 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.coordinatorlayout.widget.CoordinatorLayout;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.FragmentContainerView;
 import androidx.viewbinding.ViewBinding;
 import androidx.viewbinding.ViewBindings;
@@ -18,7 +18,7 @@ import org.tensorflow.lite.examples.objectdetection.R;
 
 public final class ActivityMainBinding implements ViewBinding {
   @NonNull
-  private final CoordinatorLayout rootView;
+  private final ConstraintLayout rootView;
 
   @NonNull
   public final FragmentContainerView fragmentContainer;
@@ -26,7 +26,7 @@ public final class ActivityMainBinding implements ViewBinding {
   @NonNull
   public final BottomNavigationView navigation;
 
-  private ActivityMainBinding(@NonNull CoordinatorLayout rootView,
+  private ActivityMainBinding(@NonNull ConstraintLayout rootView,
       @NonNull FragmentContainerView fragmentContainer, @NonNull BottomNavigationView navigation) {
     this.rootView = rootView;
     this.fragmentContainer = fragmentContainer;
@@ -35,7 +35,7 @@ public final class ActivityMainBinding implements ViewBinding {
 
   @Override
   @NonNull
-  public CoordinatorLayout getRoot() {
+  public ConstraintLayout getRoot() {
     return rootView;
   }
 
@@ -72,7 +72,7 @@ public final class ActivityMainBinding implements ViewBinding {
         break missingId;
       }
 
-      return new ActivityMainBinding((CoordinatorLayout) rootView, fragmentContainer, navigation);
+      return new ActivityMainBinding((ConstraintLayout) rootView, fragmentContainer, navigation);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

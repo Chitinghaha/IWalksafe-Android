@@ -1,0 +1,89 @@
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:iconSpaceReserved="false"
+    app:isPreferenceVisible="true">
+
+    <PreferenceCategory app:title="@string/messages_header">
+
+        <EditTextPreference
+            app:key="signature"
+            app:title="@string/signature_title"
+            app:useSimpleSummaryProvider="true" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory app:title="@string/sync_header">
+
+        <SwitchPreferenceCompat
+            app:key="sync"
+            app:title="@string/sync_title" />
+
+        <SwitchPreferenceCompat
+            app:dependency="sync"
+            app:key="attachment"
+            app:summaryOff="@string/attachment_summary_off"
+            app:summaryOn="@string/attachment_summary_on"
+            app:title="@string/attachment_title" />
+
+    </PreferenceCategory>
+    <PreferenceCategory android:title="Sound Setting">
+
+        <MultiSelectListPreference
+            android:defaultValue="@array/Detect_object"
+            android:entries="@array/Detect_object"
+            android:entryValues="@array/Detect_object"
+            android:key="Do"
+            android:title="Detect object" />
+
+        <MultiSelectListPreference
+            android:defaultValue="@array/Waring_object"
+            android:entries="@array/Waring_object"
+            android:entryValues="@array/Waring_object"
+            android:key="Wo"
+            android:title="Waring object" />
+    </PreferenceCategory>
+    <PreferenceCategory android:title="Detection Setting">
+
+        <ListPreference
+            android:defaultValue="1"
+            android:entries="@array/Max_result"
+            android:entryValues="@array/Max_result"
+            android:key="Mr"
+            android:title="Max result" />
+        <ListPreference
+            android:defaultValue="1"
+            android:entries="@array/Threshold"
+            android:entryValues="@array/Threshold"
+            android:key="Ts"
+            android:title="Threshold" />
+        <ListPreference
+            android:defaultValue="1"
+            android:entries="@array/NumThreads"
+            android:entryValues="@array/NumThreads"
+            android:key="Nt"
+            android:title="Num of threads" />
+    </PreferenceCategory>
+    <PreferenceCategory android:title="Hardware &amp; Model">
+
+        <ListPreference
+            android:defaultValue="1"
+            android:entries="@array/Delegate"
+            android:entryValues="@array/Delegate"
+            android:key="Dl"
+            android:title="Delegate" />
+        <ListPreference
+            android:defaultValue="1"
+            android:entries="@array/Model"
+            android:entryValues="@array/Model"
+            android:key="Ml"
+            android:title="Model" />
+        <EditTextPreference
+            android:defaultValue="Default value"
+            android:key="edit_text_preference_1"
+            android:selectAllOnFocus="true"
+            android:singleLine="true"
+            android:title="Edit text preference" />
+    </PreferenceCategory>
+
+
+</PreferenceScreen>

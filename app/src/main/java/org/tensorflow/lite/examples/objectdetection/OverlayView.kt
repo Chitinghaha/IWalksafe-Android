@@ -118,23 +118,6 @@ class OverlayView(context: Context?, attrs: AttributeSet?) : View(context, attrs
             // Draw text for detected object
             canvas.drawText(drawableText, left, top + bounds.height(), textPaint)
 
-            for(wa in waringresult){
-                if(result.categories[0].label == wa ) {
-                    val area = (left - right) * ( top - bottom )
-                    val barea = area.toString()
-                    canvas.drawText(barea, left+500, top + bounds.height(), textPaint)
-                    if(area >= 1500000){
-                        beep1?.start()
-                    }
-                    else if(area >= 1000000){
-                        beep2?.start()
-                    }
-                    else if(area >= 500000){
-                        beep3?.start()
-                    }
-                }
-            }
-
         }
     }
 
@@ -154,13 +137,9 @@ class OverlayView(context: Context?, attrs: AttributeSet?) : View(context, attrs
         detectionResults: MutableList<Detection>,
         imageHeight: Int,
         imageWidth: Int,
-        Warningsound: MutableSet<String>,
     ) {
 
         results = detectionResults
-
-        waringresult = Warningsound
-
         // PreviewView is in FILL_START mode. So we need to scale up the bounding box to match with
         // the size that the captured images will be displayed.
         scaleFactor = max(width * 1f / imageWidth, height * 1f / imageHeight)

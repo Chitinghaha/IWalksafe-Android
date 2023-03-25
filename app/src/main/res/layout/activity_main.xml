@@ -14,7 +14,7 @@
     ~ See the License for the specific language governing permissions and
     ~ limitations under the License.
 -->
-<androidx.coordinatorlayout.widget.CoordinatorLayout
+<androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -39,9 +39,7 @@
 <!--        app:navGraph="@navigation/nav_graph"-->
 <!--        tools:context=".MainActivity"-->
 <!--        tools:layout="@layout/fragment_camera" />-->
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+
 
 
         <androidx.fragment.app.FragmentContainerView
@@ -51,9 +49,10 @@
             android:layout_height="match_parent"
             android:layout_alignParentStart="true"
             android:layout_alignParentTop="true"
+            android:layout_marginBottom="50dp"
             app:navGraph="@navigation/nav_graph"
             tools:context=".MainActivity"
-            tools:layout="@layout/fragment_camera"
+            tools:layout="@layout/fragment_home"
             app:defaultNavHost="true"
             android:visibility="visible"
             android:keepScreenOn="true"
@@ -68,14 +67,15 @@
             android:layout_height="wrap_content"
             android:background="@android:color/white"
             app:labelVisibilityMode="labeled"
+            app:itemIconTint="@drawable/selector_bottom_nav_item"
+            app:itemTextColor="@drawable/selector_bottom_nav_item"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:menu="@menu/menulist">
-
         </com.google.android.material.bottomnavigation.BottomNavigationView>
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
 
 <!--    <RelativeLayout-->
 <!--        android:id="@+id/relativeLayout"-->
@@ -98,5 +98,5 @@
 
 
 
-</androidx.coordinatorlayout.widget.CoordinatorLayout>
+
 

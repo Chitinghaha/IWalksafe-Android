@@ -1,10 +1,20 @@
 {
     "logs": [
         {
-            "outputFile": "C:\\lab\\iWalkSafe_android\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-v16\\values-v16.xml",
+            "outputFile": "org.tensorflow.lite.examples.objectdetection.app-mergeDebugResources-54:/values-v16/values-v16.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\tnnd\\.gradle\\caches\\transforms-3\\144f8bf5b7eafdfcc532effe19be9562\\transformed\\appcompat-1.3.1\\res\\values-v16\\values-v16.xml",
+                    "source": "C:\\Users\\tnnd\\.gradle\\caches\\transforms-3\\28c891f8a58e922933a46dd3b16abfa2\\transformed\\core-1.8.0\\res\\values-v16\\values-v16.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endColumns": "65",
+                        "endOffsets": "116"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\tnnd\\.gradle\\caches\\transforms-3\\21737bb9850b82afc5a8787092f47dd4\\transformed\\appcompat-1.3.1\\res\\values-v16\\values-v16.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",
@@ -20,16 +30,6 @@
                         "endLines": "6",
                         "endColumns": "12",
                         "endOffsets": "289"
-                    }
-                },
-                {
-                    "source": "C:\\Users\\tnnd\\.gradle\\caches\\transforms-3\\30c288af21d5c4aa8b25dade2ba12d39\\transformed\\core-1.6.0\\res\\values-v16\\values-v16.xml",
-                    "from": {
-                        "startLines": "2",
-                        "startColumns": "4",
-                        "startOffsets": "55",
-                        "endColumns": "65",
-                        "endOffsets": "116"
                     }
                 }
             ]

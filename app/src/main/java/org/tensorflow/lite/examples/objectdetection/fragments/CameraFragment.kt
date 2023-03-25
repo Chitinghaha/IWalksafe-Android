@@ -18,20 +18,17 @@ package org.tensorflow.lite.examples.objectdetection.fragments
 import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import android.content.res.Configuration
 import android.graphics.Bitmap
 import android.media.MediaPlayer
-import android.os.Build
 import android.os.Bundle
-import android.os.VibrationEffect
-import android.os.Vibrator
+import android.os.Looper
 import android.speech.RecognizerIntent
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.AdapterView
-import android.widget.Button
 import android.widget.Toast
 import androidx.camera.core.*
 import androidx.camera.core.ImageAnalysis.OUTPUT_IMAGE_FORMAT_RGBA_8888
@@ -39,8 +36,7 @@ import androidx.camera.lifecycle.ProcessCameraProvider
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.navigation.Navigation
-import com.google.firebase.database.DatabaseReference
-import com.google.firebase.database.FirebaseDatabase
+import androidx.preference.PreferenceManager
 import org.tensorflow.lite.examples.objectdetection.ObjectDetectorHelper
 import org.tensorflow.lite.examples.objectdetection.R
 import org.tensorflow.lite.examples.objectdetection.databinding.FragmentCameraBinding
@@ -86,10 +82,7 @@ class CameraFragment() : Fragment(R.layout.fragment_camera), ObjectDetectorHelpe
     private var beep3: MediaPlayer? = null
 
     //private var results: List<Detection> = LinkedList<Detection>()
-    private var AllObject = mutableSetOf("bed","chair","cup","laptop","remote","person","dog","cat")
 
-    private var Objectsound = mutableSetOf<String>()
-    private var Warningsound = mutableSetOf<String>()
 
     /** Blocking camera operations are performed using this executor */
 
@@ -97,57 +90,73 @@ class CameraFragment() : Fragment(R.layout.fragment_camera), ObjectDetectorHelpe
     private lateinit var cameraExecutor: ExecutorService
 
     //find_name
-    private  var findname: String? =null
+    private var findname: String? = null
 
-    private  var flage: Boolean?= false
+    lateinit var Warning_sound:MutableSet<String>
+    lateinit var selections:MutableSet<String>
+    lateinit var MaxResult:String
+    lateinit var Threshold:String
+    lateinit var NumThreads:String
+    lateinit var Delegate:String
+    lateinit var Ml:String
+
+    val ChToEn = mutableMapOf("椅子" to "chair", "床" to "bed", "電腦" to "laptop" ,"杯子" to "cup","遙控器" to "remote")
+
 
     //firebase
-    private lateinit var database: DatabaseReference
+//    private lateinit var database: DatabaseReference
+
+    //Share preference
+    private lateinit var sp : SharedPreferences
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         Log.d("compose", "fragment onCreate()")
         super.onCreate(savedInstanceState)
+
+        sp = activity?.let { PreferenceManager.getDefaultSharedPreferences(it) }!!
         mp_bed = MediaPlayer.create(context, R.raw.bed)
         mp_chair = MediaPlayer.create(context, R.raw.chair)
         mp_cup = MediaPlayer.create(context, R.raw.cup)
-        mp_laptop= MediaPlayer.create(context, R.raw.computer)
+        mp_laptop = MediaPlayer.create(context, R.raw.computer)
         mp_remote = MediaPlayer.create(context, R.raw.remote)
         beep1 = MediaPlayer.create(context, R.raw.beep1)
         beep2 = MediaPlayer.create(context, R.raw.beep2)
         beep3 = MediaPlayer.create(context, R.raw.beep4)
         foundsound = MediaPlayer.create(context, R.raw.foundsound)
-        database = FirebaseDatabase.getInstance().reference
+
+//        database = FirebaseDatabase.getInstance().reference
     }
+    private fun initSetting(){
+        Warning_sound = sp.getStringSet("Wo", null) as MutableSet<String>
+        selections = sp.getStringSet("Do", null) as MutableSet<String>
+        MaxResult = sp.getString("Mr", "1").toString()
+        Threshold = sp.getString("Ts", "0.7").toString()
+        NumThreads = sp.getString("Nt", "1").toString()
+        Delegate = sp.getString("Dl", "CPU").toString()
+        Ml = sp.getString("Ml", "mobilenetv1.tflite").toString()
+        objectDetectorHelper.maxResults = MaxResult.toInt()
+        objectDetectorHelper.threshold = Threshold.toFloat()
+        objectDetectorHelper.numThreads = NumThreads.toInt()
+        initDelegate(Delegate)
+        initModel(Ml)
 
-    private fun initButton(){
-        for( ob in AllObject){
-            database.child("Button").child(ob).get().addOnSuccessListener {
-                if(it.value == true ){
-                    when (ob) {
-                        "bed" ->{ Objectsound.add("bed")
-                            fragmentCameraBinding.bottomSheetLayout.ckbBed.isChecked = true}
-                        "chair"-> { Objectsound.add("chair")
-                            fragmentCameraBinding.bottomSheetLayout.ckbChair.isChecked = true}
-                        "cup" -> { Objectsound.add("cup")
-                            fragmentCameraBinding.bottomSheetLayout.ckbCup.isChecked = true}
-                        "laptop" ->{ Objectsound.add("laptop")
-                            fragmentCameraBinding.bottomSheetLayout.ckbLaptop.isChecked = true}
-                        "remote" ->{ Objectsound.add("remote")
-                            fragmentCameraBinding.bottomSheetLayout.ckbRemote.isChecked = true}
-                        "person" ->{ Warningsound.add("person")
-                            fragmentCameraBinding.bottomSheetLayout.ckbPerson.isChecked = true}
-                        "dog" ->{ Warningsound.add("dog")
-                            fragmentCameraBinding.bottomSheetLayout.ckbDog.isChecked = true}
-                        "cat" ->{ Warningsound.add("cat")
-                            fragmentCameraBinding.bottomSheetLayout.ckbCat.isChecked = true}
-                        else -> println("Other")
-                    }
-                }
+        objectDetectorHelper.clearObjectDetector()
 
-            }.addOnFailureListener {
-                Log.d("GGG", "Error getting data", it)
-            }
+    }
+    private  fun initDelegate(Delegate: String) {
+        when(Delegate){
+            "CPU" -> objectDetectorHelper.currentDelegate = 0
+            "GPU" -> objectDetectorHelper.currentDelegate = 1
+            "NNAPI" ->  objectDetectorHelper.currentDelegate=2
+        }
+    }
+    private  fun initModel(Ml: String) {
+        when(Ml){
+            "mobilenetv1.tflite" -> objectDetectorHelper.currentModel = 0
+            "efficientdet-lite0.tflite" -> objectDetectorHelper.currentModel = 1
+            "efficientdet-lite1.tflite" ->  objectDetectorHelper.currentModel= 2
+            "efficientdet-lite2.tflite" ->  objectDetectorHelper.currentModel= 3
         }
     }
 
@@ -161,14 +170,13 @@ class CameraFragment() : Fragment(R.layout.fragment_camera), ObjectDetectorHelpe
         //確認fragment的權限
         if (!PermissionsFragment.hasPermissions(requireContext())) {
 
-            Log.d("compose","errorrrrrrrrr")
+            Log.d("compose", "errorrrrrrrrr")
             //Navigation 用於管理 fragment
             //https://ithelp.ithome.com.tw/articles/10225937
             Navigation.findNavController(requireActivity(), R.id.fragment_container)
                 .navigate(CameraFragmentDirections.actionCameraToPermissions())
         }
     }
-
 
     // Fragment即將被結束
     override fun onDestroyView() {
@@ -190,19 +198,14 @@ class CameraFragment() : Fragment(R.layout.fragment_camera), ObjectDetectorHelpe
         Log.d("compose", "fragment onCreateView()")
 
         _fragmentCameraBinding = FragmentCameraBinding.inflate(inflater, container, false)
-        initButton()
-
 
         //STT
         val data = arguments
-        activity?.runOnUiThread {
-            Toast.makeText(requireContext(),data?.getString("String").toString(), Toast.LENGTH_SHORT).show()
-        }
         findname = data?.getString("String").toString()
+        if(findname != "null")
+         Toast.makeText(requireContext(), findname, Toast.LENGTH_SHORT).show()
         return fragmentCameraBinding.root
     }
-
-
 
 
     // onViewCreated() 適合初始化 view 的狀態、觀察 liveData 或在此設置 recycler 的 adapter, viewPager2
@@ -212,20 +215,12 @@ class CameraFragment() : Fragment(R.layout.fragment_camera), ObjectDetectorHelpe
         Log.d("compose", "fragment onViewCreated()")
         super.onViewCreated(view, savedInstanceState)
 
-
-        /*
-        fragmentCameraBinding.bottomSheetLayout.btnMain.setOnClickListener{
-            objectDetectorHelper.threshold -= 0.1f
-            updateControlsUi()
-        }
-        */
-
         // Toast.makeText(getContext() , "Hello", Toast.LENGTH_LONG).show()
-
 
         objectDetectorHelper = ObjectDetectorHelper(
             context = requireContext(),
-            objectDetectorListener = this)
+            objectDetectorListener = this
+        )
 
         // Initialize our background executor
         cameraExecutor = Executors.newSingleThreadExecutor()
@@ -236,278 +231,24 @@ class CameraFragment() : Fragment(R.layout.fragment_camera), ObjectDetectorHelpe
             setUpCamera()
         }
 
+        fragmentCameraBinding.cmSetting.setOnClickListener { goset() }
+        fragmentCameraBinding.cmFind.setOnClickListener { gobd() }
+        fragmentCameraBinding.cmDetect.setOnClickListener {  }
+
         // Attach listeners to UI control widgets
-        initBottomSheetControls()
+        initSetting()
+    }
+    private fun gobd(){
+        activity?.supportFragmentManager?.beginTransaction()
+            ?.replace(R.id.fragment_container, ObjectSettingFragment())
+            ?.commit()
     }
 
+    private  fun goset(){
+        activity?.supportFragmentManager?.beginTransaction()
+            ?.replace(R.id.fragment_container, SettingsFragment())
+            ?.commit()
 
-
-
-    private fun initBottomSheetControls() {
-
-        // When clicked, lower detection score threshold floor
-        fragmentCameraBinding.bottomSheetLayout.thresholdMinus.setOnClickListener {
-            if (objectDetectorHelper.threshold >= 0.1) {
-                objectDetectorHelper.threshold -= 0.1f
-                updateControlsUi()
-            }
-        }
-
-        // When clicked, raise detection score threshold floor
-        fragmentCameraBinding.bottomSheetLayout.thresholdPlus.setOnClickListener {
-            if (objectDetectorHelper.threshold <= 0.8) {
-                objectDetectorHelper.threshold += 0.1f
-                updateControlsUi()
-            }
-        }
-
-        // When clicked, reduce the number of objects that can be detected at a time
-        fragmentCameraBinding.bottomSheetLayout.maxResultsMinus.setOnClickListener {
-            if (objectDetectorHelper.maxResults > 1) {
-                objectDetectorHelper.maxResults--
-                updateControlsUi()
-            }
-        }
-
-        // When clicked, increase the number of objects that can be detected at a time
-        fragmentCameraBinding.bottomSheetLayout.maxResultsPlus.setOnClickListener {
-            if (objectDetectorHelper.maxResults < 5) {
-                objectDetectorHelper.maxResults++
-                updateControlsUi()
-            }
-        }
-
-        // When clicked, decrease the number of threads used for detection
-        fragmentCameraBinding.bottomSheetLayout.threadsMinus.setOnClickListener {
-            if (objectDetectorHelper.numThreads > 1) {
-                objectDetectorHelper.numThreads--
-                updateControlsUi()
-            }
-        }
-
-        // When clicked, increase the number of threads used for detection
-        fragmentCameraBinding.bottomSheetLayout.threadsPlus.setOnClickListener {
-            if (objectDetectorHelper.numThreads < 4) {
-                objectDetectorHelper.numThreads++
-                updateControlsUi()
-            }
-        }
-
-//        fragmentCameraBinding.btnMain.setOnClickListener{
-//           // dovibrate()
-//
-//            if(fragmentCameraBinding.btnMain.text == "聲音關閉") {
-//                fragmentCameraBinding.btnMain.text = "聲音開啟"
-//            }
-//
-//            else {
-//                fragmentCameraBinding.btnMain.text = "聲音關閉"
-//            }
-//
-//            Toast.makeText(getContext() , fragmentCameraBinding.btnMain.text, Toast.LENGTH_LONG).show()
-//        }
-
-
-//        fragmentCameraBinding.btnStt.setOnClickListener{
-//            //dovibrate()
-//            findname = null
-//        }
-
-//        fragmentCameraBinding.btnStt.setOnLongClickListener {
-//           // dovibrate()
-//            displaySpeechRecognizer()
-//            true
-//        }
-
-//        fragmentCameraBinding.mapbtn.setOnClickListener {
-//           // dovibrate()
-//            displaySpeechRecognizer_second()
-//        }
-
-//        fragmentCameraBinding.compassbtn.setOnClickListener {
-//
-//        }
-
-
-
-        //check box
-        fragmentCameraBinding.bottomSheetLayout.ckbBed.setOnCheckedChangeListener {_, isChecked ->
-
-            if(isChecked){//判斷框1是否被選定
-                Objectsound.add("bed")   //若選定，則將字串加該項目
-                Toast.makeText(context, "床", Toast.LENGTH_LONG).show()
-                writeNewPost("bed", true )
-            }
-            else{
-                Objectsound.remove("bed")   //若選定，則將字串加該項目
-                writeNewPost("bed", false )
-            }
-        }
-
-        fragmentCameraBinding.bottomSheetLayout.ckbCup.setOnCheckedChangeListener {_, isChecked -> //判斷框2是否被選定
-            if(isChecked){//判斷框1是否被選定
-                Objectsound.add("cup")   //若選定，則將字串加該項目
-                Toast.makeText(context,"杯子", Toast.LENGTH_LONG).show()
-                writeNewPost("cup", true )
-            }
-            else{
-                Objectsound.remove("cup")   //若選定，則將字串加該項目
-                writeNewPost("cup", false )
-            }
-        }
-
-        fragmentCameraBinding.bottomSheetLayout.ckbChair.setOnCheckedChangeListener {_, isChecked -> //判斷框3是否被選定
-            if(isChecked){//判斷框1是否被選定
-                Objectsound.add("chair")   //若選定，則將字串加該項目
-                Toast.makeText(context,"chair", Toast.LENGTH_LONG).show()
-                writeNewPost("chair", true )
-            }
-            else{
-                Objectsound.remove("chair")
-                writeNewPost("chair", false )
-            }
-
-        }
-
-        fragmentCameraBinding.bottomSheetLayout.ckbLaptop.setOnCheckedChangeListener {_, isChecked -> //判斷框3是否被選定
-            if(isChecked){//判斷框1是否被選定
-                Objectsound.add("laptop")   //若選定，則將字串加該項目
-                Toast.makeText(context,"筆電", Toast.LENGTH_LONG).show()
-                writeNewPost("laptop", true )
-            }
-            else{
-                Objectsound.remove("laptop")   //若選定，則將字串加該項目
-                writeNewPost("laptop", false )
-            }
-
-        }
-
-        fragmentCameraBinding.bottomSheetLayout.ckbRemote.setOnCheckedChangeListener {_, isChecked -> //判斷框3是否被選定
-            if(isChecked){//判斷框1是否被選定
-                Objectsound.add("remote")   //若選定，則將字串加該項目
-                Toast.makeText(context,"遙控器", Toast.LENGTH_LONG).show()
-                writeNewPost("remote", true )
-            }
-            else{
-                Objectsound.remove("remote")   //若選定，則將字串加該項目
-                writeNewPost("remote", false )
-            }
-
-        }
-
-
-        //warning
-        fragmentCameraBinding.bottomSheetLayout.ckbPerson.setOnCheckedChangeListener {_, isChecked -> //判斷框4是否被選定
-            if(isChecked){//判斷框1是否被選定
-                Warningsound.add("person")   //若選定，則將字串加該項目
-                Toast.makeText(context,"人", Toast.LENGTH_LONG).show()
-                writeNewPost("person", true )
-            }
-            else{
-                Warningsound.remove("person")   //若選定，則將字串加該項目
-                writeNewPost("person", false )
-            }
-
-        }
-
-        fragmentCameraBinding.bottomSheetLayout.ckbDog.setOnCheckedChangeListener {_, isChecked -> //判斷框5是否被選定
-            if(isChecked){//判斷框1是否被選定
-                Warningsound.add("dog")   //若選定，則將字串加該項目
-                Toast.makeText(context,"狗", Toast.LENGTH_LONG).show()
-                writeNewPost("dog", true )
-            }
-            else{
-                Warningsound.remove("dog")   //若選定，則將字串加該項目
-                writeNewPost("dog", false )
-            }
-
-        }
-
-        fragmentCameraBinding.bottomSheetLayout.ckbCat.setOnCheckedChangeListener {_, isChecked -> //判斷框6是否被選定
-            if(isChecked){//判斷框1是否被選定
-                Warningsound.add("cat")   //若選定，則將字串加該項目
-                Toast.makeText(getContext() ,"貓", Toast.LENGTH_LONG).show()
-                writeNewPost("cat", true )
-            }
-            else{
-                Warningsound.remove("cat")   //若選定，則將字串加該項目
-                writeNewPost("cat", false )
-            }
-
-        }
-
-        fragmentCameraBinding.bottomSheetLayout.ckb.setOnCheckedChangeListener {_, isChecked -> //判斷框6是否被選定
-            flage = isChecked
-        }
-
-
-
-        // When clicked, change the underlying hardware used for inference. Current options are CPU
-        // GPU, and NNAPI
-        fragmentCameraBinding.bottomSheetLayout.spinnerDelegate.setSelection(0, false)
-        fragmentCameraBinding.bottomSheetLayout.spinnerDelegate.onItemSelectedListener =
-            object : AdapterView.OnItemSelectedListener {
-                override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
-                    objectDetectorHelper.currentDelegate = p2
-                    updateControlsUi()
-                }
-
-                override fun onNothingSelected(p0: AdapterView<*>?) {
-                    /* no op */
-                }
-            }
-
-        // When clicked, change the underlying model used for object detection
-        fragmentCameraBinding.bottomSheetLayout.spinnerModel.setSelection(0, false)
-        fragmentCameraBinding.bottomSheetLayout.spinnerModel.onItemSelectedListener =
-            object : AdapterView.OnItemSelectedListener {
-                override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
-                    objectDetectorHelper.currentModel = p2
-                    updateControlsUi()
-                }
-
-                override fun onNothingSelected(p0: AdapterView<*>?) {
-                    /* no op */
-                }
-            }
-    }
-
-    private fun writeNewPost(btnId: String, state: Boolean) {
-        // Create new post at /user-posts/$userid/$postid and at
-        // /posts/$postid simultaneously
-        database.child("Button").child(btnId).setValue(state)
-    }
-
-
-    private fun insertUser(btnId: String, state: Boolean ) {
-//        val user = Btn(btnId, state)
-        database.child("Button").child(btnId).setValue(state)
-    }
-
-
-    private fun find(btnId: String) {
-        database.child("Button").child(btnId).get().addOnSuccessListener {
-            Log.d("GGG", "Got value ${it.value}")
-
-
-        }.addOnFailureListener {
-            Log.d("GGG", "Error getting data", it)
-        }
-    }
-
-    // Update the values displayed in the bottom sheet. Reset detector.
-    private fun updateControlsUi() {
-        fragmentCameraBinding.bottomSheetLayout.maxResultsValue.text =
-            objectDetectorHelper.maxResults.toString()
-        fragmentCameraBinding.bottomSheetLayout.thresholdValue.text =
-            String.format("%.2f", objectDetectorHelper.threshold)
-        fragmentCameraBinding.bottomSheetLayout.threadsValue.text =
-            objectDetectorHelper.numThreads.toString()
-
-        // Needs to be cleared instead of reinitialized because the GPU
-        // delegate needs to be initialized on the thread using it when applicable
-        objectDetectorHelper.clearObjectDetector()
-        fragmentCameraBinding.overlay.clear()
     }
 
     // Initialize CameraX, and prepare to bind the camera use cases
@@ -615,10 +356,11 @@ class CameraFragment() : Fragment(R.layout.fragment_camera), ObjectDetectorHelpe
         imageHeight: Int,
         imageWidth: Int,
     ) {
-       // Log.d("compose", "fragment onResults()")
+
+        // Log.d("compose", "fragment onResults()")
         activity?.runOnUiThread {
-           // fragmentCameraBinding.bottomSheetLayout.inferenceTimeVal.text =
-             //   String.format("%d ms", inferenceTime)
+            // fragmentCameraBinding.bottomSheetLayout.inferenceTimeVal.text =
+            //   String.format("%d ms", inferenceTime)
 
             // Pass necessary information to OverlayView for drawing on the canvas
             // draw box!!!
@@ -626,47 +368,15 @@ class CameraFragment() : Fragment(R.layout.fragment_camera), ObjectDetectorHelpe
                 results ?: LinkedList<Detection>(),
                 imageHeight,
                 imageWidth,
-                Warningsound
             )
-
         }
 
 
         //found object
-        when(findname){
-            "床" -> findname ="bed"
-            "椅子" -> findname = "chair"
-            "杯子" -> findname = "cup"
-            "電腦" -> findname = "laptop"
-            "遙控器" -> findname = "remote"
-            else -> null
-        }
-
-
-        if (results != null) {
-            for (result in results) {
-                if (result.categories[0].label == findname) {
-                    foundsound?.start()
-                    if(flage == true){
-                        dovibrate()
-                    }
-                    break
-                }
-            }
-        }
+        findname?.let { find_ob(results,it) }
 
         //sound output
-        if (results != null ) {
-            for (result in results){
-                for(ob in Objectsound){
-                    //Toast.makeText(requireContext(),ob+"  "+result.categories[0].label, Toast.LENGTH_SHORT).show()
-                    if(ob == result.categories[0].label){
-                        sound_output(ob)
-                       // Toast.makeText(requireContext(),ob+"  "+result.categories[0].label, Toast.LENGTH_SHORT).show()
-                    }
-                }
-            }
-        }
+        detectsound(results)
 
 
 
@@ -675,50 +385,49 @@ class CameraFragment() : Fragment(R.layout.fragment_camera), ObjectDetectorHelpe
 
     }
 
-
-    private fun displaySpeechRecognizer() {
-        val intent = Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH)
-        intent.putExtra(RecognizerIntent.EXTRA_PROMPT, "Please say something")
-        intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL, RecognizerIntent.LANGUAGE_MODEL_FREE_FORM)
-        intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE, "zh-TW")
-        intent.putExtra(RecognizerIntent.EXTRA_MAX_RESULTS, 3)
-        activity?.startActivityForResult(intent, 0)
-    }
-
-    private fun displaySpeechRecognizer_second() {
-        val intent = Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH)
-        intent.putExtra(RecognizerIntent.EXTRA_PROMPT, "Please say something")
-        intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL, RecognizerIntent.LANGUAGE_MODEL_FREE_FORM)
-        intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE, "zh-TW")
-        intent.putExtra(RecognizerIntent.EXTRA_MAX_RESULTS, 3)
-        activity?.startActivityForResult(intent, 1)
-    }
-
-
-
-    fun sound_output( object_sound: String)
-    {
-        if (object_sound == "bed" ) {
-            mp_bed?.start()
-        } else if (object_sound == "chair" ) {
-            mp_chair?.start()
-        } else if (object_sound == "cup" ) {
-            mp_cup?.start()
-        } else if (object_sound == "laptop") {
-            mp_laptop?.start()
-        } else if (object_sound == "remote" ) {
-            mp_remote?.start()
+    private fun find_ob(results: MutableList<Detection>?,ob_name:String){
+        if (results != null) {
+            for(result in results) {
+                if(result.categories[0].label == ChToEn[ob_name]) {
+                  foundsound?.start()
+                    break
+                }
+            }
         }
     }
 
-    private fun dovibrate() {
-        val vibrator = getActivity()?.getSystemService(Context.VIBRATOR_SERVICE) as Vibrator
-        if (Build.VERSION.SDK_INT >= 26) {
-            vibrator.vibrate(VibrationEffect.createOneShot(50, VibrationEffect.DEFAULT_AMPLITUDE))
-        } else {
-            vibrator.vibrate(50)
+
+
+
+    private fun detectsound(results: MutableList<Detection>?) {
+        if (results != null) {
+            for(result in results) {
+                for (ob in selections) {
+
+                    if(result.categories[0].label == ob) {
+                        when (ob) {
+                            "bed" -> mp_bed?.start()
+                            "chair" -> mp_chair?.start()
+                            "cup" -> mp_cup?.start()
+                            "laptop" -> mp_laptop?.start()
+                            "remote" -> mp_remote?.start()
+                            else -> println("Other")
+                        }
+                    }
+                }
+            }
         }
     }
+
+
+//    private fun dovibrate() {
+//        val vibrator = getActivity()?.getSystemService(Context.VIBRATOR_SERVICE) as Vibrator
+//        if (Build.VERSION.SDK_INT >= 26) {
+//            vibrator.vibrate(VibrationEffect.createOneShot(50, VibrationEffect.DEFAULT_AMPLITUDE))
+//        } else {
+//            vibrator.vibrate(50)
+//        }
+//    }
 
     override fun onError(error: String) {
         Log.d("compose", "fragment onError()")
@@ -751,5 +460,14 @@ class CameraFragment() : Fragment(R.layout.fragment_camera), ObjectDetectorHelpe
     override fun onStart() {
         Log.d("compose", "fragment onStart()")
         super.onStart()
+    }
+
+    private fun displaySpeechRecognizer_second() {
+        val intent = Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH)
+        intent.putExtra(RecognizerIntent.EXTRA_PROMPT, "Please say something")
+        intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL, RecognizerIntent.LANGUAGE_MODEL_FREE_FORM)
+        intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE, "zh-TW")
+        intent.putExtra(RecognizerIntent.EXTRA_MAX_RESULTS, 3)
+        activity?.startActivityForResult(intent, 0)
     }
 }

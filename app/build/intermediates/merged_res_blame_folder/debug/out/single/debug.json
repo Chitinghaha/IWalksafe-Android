@@ -1,230 +1,278 @@
 [
     {
-        "merged": "C:\\lab\\iWalkSafe_android\\app\\build\\intermediates\\merged_res\\debug\\drawable_ic_baseline_task_alt_24.xml.flat",
-        "source": "C:\\lab\\iWalkSafe_android\\app\\src\\main\\res\\drawable\\ic_baseline_task_alt_24.xml"
+        "merged": "C:\\Users\\tnnd\\.gradle\\daemon\\7.4\\org.tensorflow.lite.examples.objectdetection.app-merged_res-56:\\mipmap-hdpi_ic_launcher_round.png.flat",
+        "source": "C:\\Users\\tnnd\\.gradle\\daemon\\7.4\\org.tensorflow.lite.examples.objectdetection.app-main-58:\\mipmap-hdpi\\ic_launcher_round.png"
     },
     {
-        "merged": "C:\\lab\\iWalkSafe_android\\app\\build\\intermediates\\merged_res\\debug\\raw_cup.mp3.flat",
-        "source": "C:\\lab\\iWalkSafe_android\\app\\src\\main\\res\\raw\\cup.mp3"
+        "merged": "C:\\Users\\tnnd\\.gradle\\daemon\\7.4\\org.tensorflow.lite.examples.objectdetection.app-merged_res-56:\\xml_root_preferences.xml.flat",
+        "source": "C:\\Users\\tnnd\\.gradle\\daemon\\7.4\\org.tensorflow.lite.examples.objectdetection.app-main-58:\\xml\\root_preferences.xml"
     },
     {
-        "merged": "C:\\lab\\iWalkSafe_android\\app\\build\\intermediates\\merged_res\\debug\\drawable_ic_baseline_view_in_ar_24.xml.flat",
-        "source": "C:\\lab\\iWalkSafe_android\\app\\src\\main\\res\\drawable\\ic_baseline_view_in_ar_24.xml"
+        "merged": "C:\\Users\\tnnd\\.gradle\\daemon\\7.4\\org.tensorflow.lite.examples.objectdetection.app-merged_res-56:\\mipmap-xhdpi_ic_launcher.png.flat",
+        "source": "C:\\Users\\tnnd\\.gradle\\daemon\\7.4\\org.tensorflow.lite.examples.objectdetection.app-main-58:\\mipmap-xhdpi\\ic_launcher.png"
     },
     {
-        "merged": "C:\\lab\\iWalkSafe_android\\app\\build\\intermediates\\merged_res\\debug\\drawable_ic_baseline_search_24.xml.flat",
-        "source": "C:\\lab\\iWalkSafe_android\\app\\src\\main\\res\\drawable\\ic_baseline_search_24.xml"
+        "merged": "C:\\Users\\tnnd\\.gradle\\daemon\\7.4\\org.tensorflow.lite.examples.objectdetection.app-merged_res-56:\\raw_cup.mp3.flat",
+        "source": "C:\\Users\\tnnd\\.gradle\\daemon\\7.4\\org.tensorflow.lite.examples.objectdetection.app-main-58:\\raw\\cup.mp3"
     },
     {
-        "merged": "C:\\lab\\iWalkSafe_android\\app\\build\\intermediates\\merged_res\\debug\\mipmap-xxhdpi_ic_launcher_foreground.png.flat",
-        "source": "C:\\lab\\iWalkSafe_android\\app\\src\\main\\res\\mipmap-xxhdpi\\ic_launcher_foreground.png"
+        "merged": "C:\\Users\\tnnd\\.gradle\\daemon\\7.4\\org.tensorflow.lite.examples.objectdetection.app-merged_res-56:\\drawable_ic_baseline_search_24.xml.flat",
+        "source": "C:\\Users\\tnnd\\.gradle\\daemon\\7.4\\org.tensorflow.lite.examples.objectdetection.app-main-58:\\drawable\\ic_baseline_search_24.xml"
     },
     {
-        "merged": "C:\\lab\\iWalkSafe_android\\app\\build\\intermediates\\merged_res\\debug\\raw_keyboard.mp3.flat",
-        "source": "C:\\lab\\iWalkSafe_android\\app\\src\\main\\res\\raw\\keyboard.mp3"
+        "merged": "C:\\Users\\tnnd\\.gradle\\daemon\\7.4\\org.tensorflow.lite.examples.objectdetection.app-merged_res-56:\\layout_activity_main.xml.flat",
+        "source": "C:\\Users\\tnnd\\.gradle\\daemon\\7.4\\org.tensorflow.lite.examples.objectdetection.app-main-58:\\layout\\activity_main.xml"
     },
     {
-        "merged": "C:\\lab\\iWalkSafe_android\\app\\build\\intermediates\\merged_res\\debug\\mipmap-xxxhdpi_compass.png.flat",
-        "source": "C:\\lab\\iWalkSafe_android\\app\\src\\main\\res\\mipmap-xxxhdpi\\compass.png"
+        "merged": "C:\\Users\\tnnd\\.gradle\\daemon\\7.4\\org.tensorflow.lite.examples.objectdetection.app-merged_res-56:\\layout_fragment_object_setting.xml.flat",
+        "source": "C:\\Users\\tnnd\\.gradle\\daemon\\7.4\\org.tensorflow.lite.examples.objectdetection.app-main-58:\\layout\\fragment_object_setting.xml"
     },
     {
-        "merged": "C:\\lab\\iWalkSafe_android\\app\\build\\intermediates\\merged_res\\debug\\drawable_ic_minus.xml.flat",
-        "source": "C:\\lab\\iWalkSafe_android\\app\\src\\main\\res\\drawable\\ic_minus.xml"
+        "merged": "C:\\Users\\tnnd\\.gradle\\daemon\\7.4\\org.tensorflow.lite.examples.objectdetection.app-merged_res-56:\\raw_cell_phone.mp3.flat",
+        "source": "C:\\Users\\tnnd\\.gradle\\daemon\\7.4\\org.tensorflow.lite.examples.objectdetection.app-main-58:\\raw\\cell_phone.mp3"
     },
     {
-        "merged": "C:\\lab\\iWalkSafe_android\\app\\build\\intermediates\\merged_res\\debug\\mipmap-anydpi-v26_ic_launcher.xml.flat",
-        "source": "C:\\lab\\iWalkSafe_android\\app\\src\\main\\res\\mipmap-anydpi-v26\\ic_launcher.xml"
+        "merged": "C:\\Users\\tnnd\\.gradle\\daemon\\7.4\\org.tensorflow.lite.examples.objectdetection.app-merged_res-56:\\drawable-v24_tfl_logo.png.flat",
+        "source": "C:\\Users\\tnnd\\.gradle\\daemon\\7.4\\org.tensorflow.lite.examples.objectdetection.app-main-58:\\drawable-v24\\tfl_logo.png"
     },
     {
-        "merged": "C:\\lab\\iWalkSafe_android\\app\\build\\intermediates\\merged_res\\debug\\raw_computer.mp3.flat",
-        "source": "C:\\lab\\iWalkSafe_android\\app\\src\\main\\res\\raw\\computer.mp3"
+        "merged": "C:\\Users\\tnnd\\.gradle\\daemon\\7.4\\org.tensorflow.lite.examples.objectdetection.app-merged_res-56:\\mipmap-xxhdpi_ic_launcher.png.flat",
+        "source": "C:\\Users\\tnnd\\.gradle\\daemon\\7.4\\org.tensorflow.lite.examples.objectdetection.app-main-58:\\mipmap-xxhdpi\\ic_launcher.png"
     },
     {
-        "merged": "C:\\lab\\iWalkSafe_android\\app\\build\\intermediates\\merged_res\\debug\\mipmap-mdpi_ic_launcher_foreground.png.flat",
-        "source": "C:\\lab\\iWalkSafe_android\\app\\src\\main\\res\\mipmap-mdpi\\ic_launcher_foreground.png"
+        "merged": "org.tensorflow.lite.examples.objectdetection.app-merged_res-56:/layout_fragment_navigation_setting.xml.flat",
+        "source": "org.tensorflow.lite.examples.objectdetection.app-main-58:/layout/fragment_navigation_setting.xml"
     },
     {
-        "merged": "C:\\lab\\iWalkSafe_android\\app\\build\\intermediates\\merged_res\\debug\\raw_laptop.mp3.flat",
-        "source": "C:\\lab\\iWalkSafe_android\\app\\src\\main\\res\\raw\\laptop.mp3"
+        "merged": "C:\\Users\\tnnd\\.gradle\\daemon\\7.4\\org.tensorflow.lite.examples.objectdetection.app-merged_res-56:\\drawable-anydpi-v24_ic_launcher_foreground.xml.flat",
+        "source": "C:\\Users\\tnnd\\.gradle\\daemon\\7.4\\org.tensorflow.lite.examples.objectdetection.app-pngs-51:\\drawable-anydpi-v24\\ic_launcher_foreground.xml"
     },
     {
-        "merged": "C:\\lab\\iWalkSafe_android\\app\\build\\intermediates\\merged_res\\debug\\mipmap-xxxhdpi_ic_launcher_round.png.flat",
-        "source": "C:\\lab\\iWalkSafe_android\\app\\src\\main\\res\\mipmap-xxxhdpi\\ic_launcher_round.png"
+        "merged": "C:\\Users\\tnnd\\.gradle\\daemon\\7.4\\org.tensorflow.lite.examples.objectdetection.app-merged_res-56:\\mipmap-anydpi-v26_ic_launcher_round.xml.flat",
+        "source": "C:\\Users\\tnnd\\.gradle\\daemon\\7.4\\org.tensorflow.lite.examples.objectdetection.app-main-58:\\mipmap-anydpi-v26\\ic_launcher_round.xml"
     },
     {
-        "merged": "C:\\lab\\iWalkSafe_android\\app\\build\\intermediates\\merged_res\\debug\\raw_foundsound.mp3.flat",
-        "source": "C:\\lab\\iWalkSafe_android\\app\\src\\main\\res\\raw\\foundsound.mp3"
+        "merged": "C:\\Users\\tnnd\\.gradle\\daemon\\7.4\\org.tensorflow.lite.examples.objectdetection.app-merged_res-56:\\drawable_ic_baseline_delete_24.xml.flat",
+        "source": "C:\\Users\\tnnd\\.gradle\\daemon\\7.4\\org.tensorflow.lite.examples.objectdetection.app-main-58:\\drawable\\ic_baseline_delete_24.xml"
     },
     {
-        "merged": "C:\\lab\\iWalkSafe_android\\app\\build\\intermediates\\merged_res\\debug\\raw_tv.mp3.flat",
-        "source": "C:\\lab\\iWalkSafe_android\\app\\src\\main\\res\\raw\\tv.mp3"
+        "merged": "C:\\Users\\tnnd\\.gradle\\daemon\\7.4\\org.tensorflow.lite.examples.objectdetection.app-merged_res-56:\\navigation_nav_graph.xml.flat",
+        "source": "C:\\Users\\tnnd\\.gradle\\daemon\\7.4\\org.tensorflow.lite.examples.objectdetection.app-main-58:\\navigation\\nav_graph.xml"
     },
     {
-        "merged": "C:\\lab\\iWalkSafe_android\\app\\build\\intermediates\\merged_res\\debug\\raw_beep1.mp3.flat",
-        "source": "C:\\lab\\iWalkSafe_android\\app\\src\\main\\res\\raw\\beep1.mp3"
+        "merged": "C:\\Users\\tnnd\\.gradle\\daemon\\7.4\\org.tensorflow.lite.examples.objectdetection.app-merged_res-56:\\mipmap-xxxhdpi_ic_launcher.png.flat",
+        "source": "C:\\Users\\tnnd\\.gradle\\daemon\\7.4\\org.tensorflow.lite.examples.objectdetection.app-main-58:\\mipmap-xxxhdpi\\ic_launcher.png"
     },
     {
-        "merged": "C:\\lab\\iWalkSafe_android\\app\\build\\intermediates\\merged_res\\debug\\mipmap-xxxhdpi_ic_launcher_foreground.png.flat",
-        "source": "C:\\lab\\iWalkSafe_android\\app\\src\\main\\res\\mipmap-xxxhdpi\\ic_launcher_foreground.png"
+        "merged": "C:\\Users\\tnnd\\.gradle\\daemon\\7.4\\org.tensorflow.lite.examples.objectdetection.app-merged_res-56:\\layout_activity_compass_main.xml.flat",
+        "source": "C:\\Users\\tnnd\\.gradle\\daemon\\7.4\\org.tensorflow.lite.examples.objectdetection.app-main-58:\\layout\\activity_compass_main.xml"
     },
     {
-        "merged": "C:\\lab\\iWalkSafe_android\\app\\build\\intermediates\\merged_res\\debug\\raw_remote.mp3.flat",
-        "source": "C:\\lab\\iWalkSafe_android\\app\\src\\main\\res\\raw\\remote.mp3"
+        "merged": "C:\\Users\\tnnd\\.gradle\\daemon\\7.4\\org.tensorflow.lite.examples.objectdetection.app-merged_res-56:\\raw_chair.mp3.flat",
+        "source": "C:\\Users\\tnnd\\.gradle\\daemon\\7.4\\org.tensorflow.lite.examples.objectdetection.app-main-58:\\raw\\chair.mp3"
     },
     {
-        "merged": "C:\\lab\\iWalkSafe_android\\app\\build\\intermediates\\merged_res\\debug\\color_selector_ic.xml.flat",
-        "source": "C:\\lab\\iWalkSafe_android\\app\\src\\main\\res\\color\\selector_ic.xml"
+        "merged": "C:\\Users\\tnnd\\.gradle\\daemon\\7.4\\org.tensorflow.lite.examples.objectdetection.app-merged_res-56:\\layout_fragment_navigation_setting.xml.flat",
+        "source": "C:\\Users\\tnnd\\.gradle\\daemon\\7.4\\org.tensorflow.lite.examples.objectdetection.app-main-58:\\layout\\fragment_navigation_setting.xml"
     },
     {
-        "merged": "C:\\lab\\iWalkSafe_android\\app\\build\\intermediates\\merged_res\\debug\\layout_fragment_camera.xml.flat",
-        "source": "C:\\lab\\iWalkSafe_android\\app\\src\\main\\res\\layout\\fragment_camera.xml"
+        "merged": "C:\\Users\\tnnd\\.gradle\\daemon\\7.4\\org.tensorflow.lite.examples.objectdetection.app-merged_res-56:\\layout_fragment_navigation.xml.flat",
+        "source": "C:\\Users\\tnnd\\.gradle\\daemon\\7.4\\org.tensorflow.lite.examples.objectdetection.app-main-58:\\layout\\fragment_navigation.xml"
     },
     {
-        "merged": "C:\\lab\\iWalkSafe_android\\app\\build\\intermediates\\merged_res\\debug\\raw_person.mp3.flat",
-        "source": "C:\\lab\\iWalkSafe_android\\app\\src\\main\\res\\raw\\person.mp3"
+        "merged": "C:\\Users\\tnnd\\.gradle\\daemon\\7.4\\org.tensorflow.lite.examples.objectdetection.app-merged_res-56:\\drawable_shape_circle.xml.flat",
+        "source": "C:\\Users\\tnnd\\.gradle\\daemon\\7.4\\org.tensorflow.lite.examples.objectdetection.app-main-58:\\drawable\\shape_circle.xml"
     },
     {
-        "merged": "C:\\lab\\iWalkSafe_android\\app\\build\\intermediates\\merged_res\\debug\\mipmap-xhdpi_ic_launcher.png.flat",
-        "source": "C:\\lab\\iWalkSafe_android\\app\\src\\main\\res\\mipmap-xhdpi\\ic_launcher.png"
+        "merged": "C:\\Users\\tnnd\\.gradle\\daemon\\7.4\\org.tensorflow.lite.examples.objectdetection.app-merged_res-56:\\raw_laptop.mp3.flat",
+        "source": "C:\\Users\\tnnd\\.gradle\\daemon\\7.4\\org.tensorflow.lite.examples.objectdetection.app-main-58:\\raw\\laptop.mp3"
     },
     {
-        "merged": "C:\\lab\\iWalkSafe_android\\app\\build\\intermediates\\merged_res\\debug\\mipmap-mdpi_ic_launcher_round.png.flat",
-        "source": "C:\\lab\\iWalkSafe_android\\app\\src\\main\\res\\mipmap-mdpi\\ic_launcher_round.png"
+        "merged": "C:\\Users\\tnnd\\.gradle\\daemon\\7.4\\org.tensorflow.lite.examples.objectdetection.app-merged_res-56:\\mipmap-hdpi_ic_launcher_foreground.png.flat",
+        "source": "C:\\Users\\tnnd\\.gradle\\daemon\\7.4\\org.tensorflow.lite.examples.objectdetection.app-main-58:\\mipmap-hdpi\\ic_launcher_foreground.png"
     },
     {
-        "merged": "C:\\lab\\iWalkSafe_android\\app\\build\\intermediates\\merged_res\\debug\\layout_activity_main.xml.flat",
-        "source": "C:\\lab\\iWalkSafe_android\\app\\src\\main\\res\\layout\\activity_main.xml"
+        "merged": "C:\\Users\\tnnd\\.gradle\\daemon\\7.4\\org.tensorflow.lite.examples.objectdetection.app-merged_res-56:\\layout_fragment_home.xml.flat",
+        "source": "C:\\Users\\tnnd\\.gradle\\daemon\\7.4\\org.tensorflow.lite.examples.objectdetection.app-main-58:\\layout\\fragment_home.xml"
     },
     {
-        "merged": "C:\\lab\\iWalkSafe_android\\app\\build\\intermediates\\merged_res\\debug\\drawable_ic_baseline_home_24.xml.flat",
-        "source": "C:\\lab\\iWalkSafe_android\\app\\src\\main\\res\\drawable\\ic_baseline_home_24.xml"
+        "merged": "C:\\Users\\tnnd\\.gradle\\daemon\\7.4\\org.tensorflow.lite.examples.objectdetection.app-merged_res-56:\\layout_fragment_detect_setting.xml.flat",
+        "source": "C:\\Users\\tnnd\\.gradle\\daemon\\7.4\\org.tensorflow.lite.examples.objectdetection.app-main-58:\\layout\\fragment_detect_setting.xml"
     },
     {
-        "merged": "C:\\lab\\iWalkSafe_android\\app\\build\\intermediates\\merged_res\\debug\\raw_beep4.mp3.flat",
-        "source": "C:\\lab\\iWalkSafe_android\\app\\src\\main\\res\\raw\\beep4.mp3"
+        "merged": "C:\\Users\\tnnd\\.gradle\\daemon\\7.4\\org.tensorflow.lite.examples.objectdetection.app-merged_res-56:\\mipmap-mdpi_ic_launcher.png.flat",
+        "source": "C:\\Users\\tnnd\\.gradle\\daemon\\7.4\\org.tensorflow.lite.examples.objectdetection.app-main-58:\\mipmap-mdpi\\ic_launcher.png"
     },
     {
-        "merged": "C:\\lab\\iWalkSafe_android\\app\\build\\intermediates\\merged_res\\debug\\layout-land_activity_compass_main.xml.flat",
-        "source": "C:\\lab\\iWalkSafe_android\\app\\src\\main\\res\\layout-land\\activity_compass_main.xml"
+        "merged": "C:\\Users\\tnnd\\.gradle\\daemon\\7.4\\org.tensorflow.lite.examples.objectdetection.app-merged_res-56:\\drawable_ic_baseline_home_24.xml.flat",
+        "source": "C:\\Users\\tnnd\\.gradle\\daemon\\7.4\\org.tensorflow.lite.examples.objectdetection.app-main-58:\\drawable\\ic_baseline_home_24.xml"
     },
     {
-        "merged": "C:\\lab\\iWalkSafe_android\\app\\build\\intermediates\\merged_res\\debug\\mipmap-anydpi-v26_ic_launcher_round.xml.flat",
-        "source": "C:\\lab\\iWalkSafe_android\\app\\src\\main\\res\\mipmap-anydpi-v26\\ic_launcher_round.xml"
+        "merged": "C:\\Users\\tnnd\\.gradle\\daemon\\7.4\\org.tensorflow.lite.examples.objectdetection.app-merged_res-56:\\drawable_ic_baseline_settings_24.xml.flat",
+        "source": "C:\\Users\\tnnd\\.gradle\\daemon\\7.4\\org.tensorflow.lite.examples.objectdetection.app-main-58:\\drawable\\ic_baseline_settings_24.xml"
     },
     {
-        "merged": "C:\\lab\\iWalkSafe_android\\app\\build\\intermediates\\merged_res\\debug\\mipmap-xxhdpi_ic_launcher_round.png.flat",
-        "source": "C:\\lab\\iWalkSafe_android\\app\\src\\main\\res\\mipmap-xxhdpi\\ic_launcher_round.png"
+        "merged": "C:\\Users\\tnnd\\.gradle\\daemon\\7.4\\org.tensorflow.lite.examples.objectdetection.app-merged_res-56:\\drawable_icn_chevron_up.png.flat",
+        "source": "C:\\Users\\tnnd\\.gradle\\daemon\\7.4\\org.tensorflow.lite.examples.objectdetection.app-main-58:\\drawable\\icn_chevron_up.png"
     },
     {
-        "merged": "C:\\lab\\iWalkSafe_android\\app\\build\\intermediates\\merged_res\\debug\\mipmap-mdpi_ic_launcher.png.flat",
-        "source": "C:\\lab\\iWalkSafe_android\\app\\src\\main\\res\\mipmap-mdpi\\ic_launcher.png"
+        "merged": "C:\\Users\\tnnd\\.gradle\\daemon\\7.4\\org.tensorflow.lite.examples.objectdetection.app-merged_res-56:\\layout_info_bottom_sheet.xml.flat",
+        "source": "C:\\Users\\tnnd\\.gradle\\daemon\\7.4\\org.tensorflow.lite.examples.objectdetection.app-main-58:\\layout\\info_bottom_sheet.xml"
     },
     {
-        "merged": "C:\\lab\\iWalkSafe_android\\app\\build\\intermediates\\merged_res\\debug\\drawable_icn_chevron_up.png.flat",
-        "source": "C:\\lab\\iWalkSafe_android\\app\\src\\main\\res\\drawable\\icn_chevron_up.png"
+        "merged": "C:\\Users\\tnnd\\.gradle\\daemon\\7.4\\org.tensorflow.lite.examples.objectdetection.app-merged_res-56:\\drawable_selector_bottom_nav_item.xml.flat",
+        "source": "C:\\Users\\tnnd\\.gradle\\daemon\\7.4\\org.tensorflow.lite.examples.objectdetection.app-main-58:\\drawable\\selector_bottom_nav_item.xml"
     },
     {
-        "merged": "C:\\lab\\iWalkSafe_android\\app\\build\\intermediates\\merged_res\\debug\\raw_cell_phone.mp3.flat",
-        "source": "C:\\lab\\iWalkSafe_android\\app\\src\\main\\res\\raw\\cell_phone.mp3"
+        "merged": "C:\\Users\\tnnd\\.gradle\\daemon\\7.4\\org.tensorflow.lite.examples.objectdetection.app-merged_res-56:\\raw_mouse.mp3.flat",
+        "source": "C:\\Users\\tnnd\\.gradle\\daemon\\7.4\\org.tensorflow.lite.examples.objectdetection.app-main-58:\\raw\\mouse.mp3"
     },
     {
-        "merged": "C:\\lab\\iWalkSafe_android\\app\\build\\intermediates\\merged_res\\debug\\layout_activity_compass_main.xml.flat",
-        "source": "C:\\lab\\iWalkSafe_android\\app\\src\\main\\res\\layout\\activity_compass_main.xml"
+        "merged": "C:\\Users\\tnnd\\.gradle\\daemon\\7.4\\org.tensorflow.lite.examples.objectdetection.app-merged_res-56:\\raw_tv.mp3.flat",
+        "source": "C:\\Users\\tnnd\\.gradle\\daemon\\7.4\\org.tensorflow.lite.examples.objectdetection.app-main-58:\\raw\\tv.mp3"
     },
     {
-        "merged": "C:\\lab\\iWalkSafe_android\\app\\build\\intermediates\\merged_res\\debug\\drawable_shape_circle.xml.flat",
-        "source": "C:\\lab\\iWalkSafe_android\\app\\src\\main\\res\\drawable\\shape_circle.xml"
+        "merged": "C:\\Users\\tnnd\\.gradle\\daemon\\7.4\\org.tensorflow.lite.examples.objectdetection.app-merged_res-56:\\layout_fragment_walk_mode.xml.flat",
+        "source": "C:\\Users\\tnnd\\.gradle\\daemon\\7.4\\org.tensorflow.lite.examples.objectdetection.app-main-58:\\layout\\fragment_walk_mode.xml"
     },
     {
-        "merged": "C:\\lab\\iWalkSafe_android\\app\\build\\intermediates\\merged_res\\debug\\layout_info_bottom_sheet.xml.flat",
-        "source": "C:\\lab\\iWalkSafe_android\\app\\src\\main\\res\\layout\\info_bottom_sheet.xml"
+        "merged": "C:\\Users\\tnnd\\.gradle\\daemon\\7.4\\org.tensorflow.lite.examples.objectdetection.app-merged_res-56:\\drawable_ic_baseline_navigation_24.xml.flat",
+        "source": "C:\\Users\\tnnd\\.gradle\\daemon\\7.4\\org.tensorflow.lite.examples.objectdetection.app-main-58:\\drawable\\ic_baseline_navigation_24.xml"
     },
     {
-        "merged": "C:\\lab\\iWalkSafe_android\\app\\build\\intermediates\\merged_res\\debug\\raw_beep3.mp3.flat",
-        "source": "C:\\lab\\iWalkSafe_android\\app\\src\\main\\res\\raw\\beep3.mp3"
+        "merged": "C:\\Users\\tnnd\\.gradle\\daemon\\7.4\\org.tensorflow.lite.examples.objectdetection.app-merged_res-56:\\mipmap-xxxhdpi_compass.png.flat",
+        "source": "C:\\Users\\tnnd\\.gradle\\daemon\\7.4\\org.tensorflow.lite.examples.objectdetection.app-main-58:\\mipmap-xxxhdpi\\compass.png"
     },
     {
-        "merged": "C:\\lab\\iWalkSafe_android\\app\\build\\intermediates\\merged_res\\debug\\layout_fragment_compass.xml.flat",
-        "source": "C:\\lab\\iWalkSafe_android\\app\\src\\main\\res\\layout\\fragment_compass.xml"
+        "merged": "C:\\Users\\tnnd\\.gradle\\daemon\\7.4\\org.tensorflow.lite.examples.objectdetection.app-merged_res-56:\\raw_keyboard.mp3.flat",
+        "source": "C:\\Users\\tnnd\\.gradle\\daemon\\7.4\\org.tensorflow.lite.examples.objectdetection.app-main-58:\\raw\\keyboard.mp3"
     },
     {
-        "merged": "C:\\lab\\iWalkSafe_android\\app\\build\\intermediates\\merged_res\\debug\\mipmap-hdpi_ic_launcher_foreground.png.flat",
-        "source": "C:\\lab\\iWalkSafe_android\\app\\src\\main\\res\\mipmap-hdpi\\ic_launcher_foreground.png"
+        "merged": "C:\\Users\\tnnd\\.gradle\\daemon\\7.4\\org.tensorflow.lite.examples.objectdetection.app-merged_res-56:\\drawable_ic_baseline_task_alt_24.xml.flat",
+        "source": "C:\\Users\\tnnd\\.gradle\\daemon\\7.4\\org.tensorflow.lite.examples.objectdetection.app-main-58:\\drawable\\ic_baseline_task_alt_24.xml"
     },
     {
-        "merged": "C:\\lab\\iWalkSafe_android\\app\\build\\intermediates\\merged_res\\debug\\raw_north.mp3.flat",
-        "source": "C:\\lab\\iWalkSafe_android\\app\\src\\main\\res\\raw\\north.mp3"
+        "merged": "C:\\Users\\tnnd\\.gradle\\daemon\\7.4\\org.tensorflow.lite.examples.objectdetection.app-merged_res-56:\\mipmap-anydpi-v26_ic_launcher.xml.flat",
+        "source": "C:\\Users\\tnnd\\.gradle\\daemon\\7.4\\org.tensorflow.lite.examples.objectdetection.app-main-58:\\mipmap-anydpi-v26\\ic_launcher.xml"
     },
     {
-        "merged": "C:\\lab\\iWalkSafe_android\\app\\build\\intermediates\\merged_res\\debug\\mipmap-hdpi_ic_launcher.png.flat",
-        "source": "C:\\lab\\iWalkSafe_android\\app\\src\\main\\res\\mipmap-hdpi\\ic_launcher.png"
+        "merged": "C:\\Users\\tnnd\\.gradle\\daemon\\7.4\\org.tensorflow.lite.examples.objectdetection.app-merged_res-56:\\drawable_ic_baseline_audiotrack_24.xml.flat",
+        "source": "C:\\Users\\tnnd\\.gradle\\daemon\\7.4\\org.tensorflow.lite.examples.objectdetection.app-main-58:\\drawable\\ic_baseline_audiotrack_24.xml"
     },
     {
-        "merged": "C:\\lab\\iWalkSafe_android\\app\\build\\intermediates\\merged_res\\debug\\drawable_ic_baseline_navigation_24.xml.flat",
-        "source": "C:\\lab\\iWalkSafe_android\\app\\src\\main\\res\\drawable\\ic_baseline_navigation_24.xml"
+        "merged": "C:\\Users\\tnnd\\.gradle\\daemon\\7.4\\org.tensorflow.lite.examples.objectdetection.app-merged_res-56:\\layout_fragment_compass.xml.flat",
+        "source": "C:\\Users\\tnnd\\.gradle\\daemon\\7.4\\org.tensorflow.lite.examples.objectdetection.app-main-58:\\layout\\fragment_compass.xml"
     },
     {
-        "merged": "C:\\lab\\iWalkSafe_android\\app\\build\\intermediates\\merged_res\\debug\\mipmap-xxhdpi_ic_launcher.png.flat",
-        "source": "C:\\lab\\iWalkSafe_android\\app\\src\\main\\res\\mipmap-xxhdpi\\ic_launcher.png"
+        "merged": "C:\\Users\\tnnd\\.gradle\\daemon\\7.4\\org.tensorflow.lite.examples.objectdetection.app-merged_res-56:\\raw_north.mp3.flat",
+        "source": "C:\\Users\\tnnd\\.gradle\\daemon\\7.4\\org.tensorflow.lite.examples.objectdetection.app-main-58:\\raw\\north.mp3"
     },
     {
-        "merged": "C:\\lab\\iWalkSafe_android\\app\\build\\intermediates\\merged_res\\debug\\raw_bed.mp3.flat",
-        "source": "C:\\lab\\iWalkSafe_android\\app\\src\\main\\res\\raw\\bed.mp3"
+        "merged": "C:\\Users\\tnnd\\.gradle\\daemon\\7.4\\org.tensorflow.lite.examples.objectdetection.app-merged_res-56:\\raw_beep2.mp3.flat",
+        "source": "C:\\Users\\tnnd\\.gradle\\daemon\\7.4\\org.tensorflow.lite.examples.objectdetection.app-main-58:\\raw\\beep2.mp3"
     },
     {
-        "merged": "C:\\lab\\iWalkSafe_android\\app\\build\\intermediates\\merged_res\\debug\\drawable-anydpi-v24_ic_launcher_foreground.xml.flat",
-        "source": "C:\\lab\\iWalkSafe_android\\app\\build\\generated\\res\\pngs\\debug\\drawable-anydpi-v24\\ic_launcher_foreground.xml"
+        "merged": "C:\\Users\\tnnd\\.gradle\\daemon\\7.4\\org.tensorflow.lite.examples.objectdetection.app-merged_res-56:\\mipmap-xxxhdpi_ic_launcher_round.png.flat",
+        "source": "C:\\Users\\tnnd\\.gradle\\daemon\\7.4\\org.tensorflow.lite.examples.objectdetection.app-main-58:\\mipmap-xxxhdpi\\ic_launcher_round.png"
     },
     {
-        "merged": "C:\\lab\\iWalkSafe_android\\app\\build\\intermediates\\merged_res\\debug\\navigation_nav_graph.xml.flat",
-        "source": "C:\\lab\\iWalkSafe_android\\app\\src\\main\\res\\navigation\\nav_graph.xml"
+        "merged": "C:\\Users\\tnnd\\.gradle\\daemon\\7.4\\org.tensorflow.lite.examples.objectdetection.app-merged_res-56:\\raw_beep3.mp3.flat",
+        "source": "C:\\Users\\tnnd\\.gradle\\daemon\\7.4\\org.tensorflow.lite.examples.objectdetection.app-main-58:\\raw\\beep3.mp3"
     },
     {
-        "merged": "C:\\lab\\iWalkSafe_android\\app\\build\\intermediates\\merged_res\\debug\\drawable_ic_baseline_my_location_24.xml.flat",
-        "source": "C:\\lab\\iWalkSafe_android\\app\\src\\main\\res\\drawable\\ic_baseline_my_location_24.xml"
+        "merged": "C:\\Users\\tnnd\\.gradle\\daemon\\7.4\\org.tensorflow.lite.examples.objectdetection.app-merged_res-56:\\raw_person.mp3.flat",
+        "source": "C:\\Users\\tnnd\\.gradle\\daemon\\7.4\\org.tensorflow.lite.examples.objectdetection.app-main-58:\\raw\\person.mp3"
     },
     {
-        "merged": "C:\\lab\\iWalkSafe_android\\app\\build\\intermediates\\merged_res\\debug\\drawable-v24_tfl_logo.png.flat",
-        "source": "C:\\lab\\iWalkSafe_android\\app\\src\\main\\res\\drawable-v24\\tfl_logo.png"
+        "merged": "C:\\Users\\tnnd\\.gradle\\daemon\\7.4\\org.tensorflow.lite.examples.objectdetection.app-merged_res-56:\\drawable_ic_minus.xml.flat",
+        "source": "C:\\Users\\tnnd\\.gradle\\daemon\\7.4\\org.tensorflow.lite.examples.objectdetection.app-main-58:\\drawable\\ic_minus.xml"
     },
     {
-        "merged": "C:\\lab\\iWalkSafe_android\\app\\build\\intermediates\\merged_res\\debug\\raw_mouse.mp3.flat",
-        "source": "C:\\lab\\iWalkSafe_android\\app\\src\\main\\res\\raw\\mouse.mp3"
+        "merged": "C:\\Users\\tnnd\\.gradle\\daemon\\7.4\\org.tensorflow.lite.examples.objectdetection.app-merged_res-56:\\mipmap-hdpi_ic_launcher.png.flat",
+        "source": "C:\\Users\\tnnd\\.gradle\\daemon\\7.4\\org.tensorflow.lite.examples.objectdetection.app-main-58:\\mipmap-hdpi\\ic_launcher.png"
     },
     {
-        "merged": "C:\\lab\\iWalkSafe_android\\app\\build\\intermediates\\merged_res\\debug\\drawable_ic_baseline_audiotrack_24.xml.flat",
-        "source": "C:\\lab\\iWalkSafe_android\\app\\src\\main\\res\\drawable\\ic_baseline_audiotrack_24.xml"
+        "merged": "C:\\Users\\tnnd\\.gradle\\daemon\\7.4\\org.tensorflow.lite.examples.objectdetection.app-merged_res-56:\\raw_bed.mp3.flat",
+        "source": "C:\\Users\\tnnd\\.gradle\\daemon\\7.4\\org.tensorflow.lite.examples.objectdetection.app-main-58:\\raw\\bed.mp3"
     },
     {
-        "merged": "C:\\lab\\iWalkSafe_android\\app\\build\\intermediates\\merged_res\\debug\\mipmap-xhdpi_ic_launcher_round.png.flat",
-        "source": "C:\\lab\\iWalkSafe_android\\app\\src\\main\\res\\mipmap-xhdpi\\ic_launcher_round.png"
+        "merged": "C:\\Users\\tnnd\\.gradle\\daemon\\7.4\\org.tensorflow.lite.examples.objectdetection.app-merged_res-56:\\mipmap-xxhdpi_ic_launcher_foreground.png.flat",
+        "source": "C:\\Users\\tnnd\\.gradle\\daemon\\7.4\\org.tensorflow.lite.examples.objectdetection.app-main-58:\\mipmap-xxhdpi\\ic_launcher_foreground.png"
     },
     {
-        "merged": "C:\\lab\\iWalkSafe_android\\app\\build\\intermediates\\merged_res\\debug\\menu_menulist.xml.flat",
-        "source": "C:\\lab\\iWalkSafe_android\\app\\src\\main\\res\\menu\\menulist.xml"
+        "merged": "C:\\Users\\tnnd\\.gradle\\daemon\\7.4\\org.tensorflow.lite.examples.objectdetection.app-merged_res-56:\\raw_computer.mp3.flat",
+        "source": "C:\\Users\\tnnd\\.gradle\\daemon\\7.4\\org.tensorflow.lite.examples.objectdetection.app-main-58:\\raw\\computer.mp3"
     },
     {
-        "merged": "C:\\lab\\iWalkSafe_android\\app\\build\\intermediates\\merged_res\\debug\\raw_beep2.mp3.flat",
-        "source": "C:\\lab\\iWalkSafe_android\\app\\src\\main\\res\\raw\\beep2.mp3"
+        "merged": "C:\\Users\\tnnd\\.gradle\\daemon\\7.4\\org.tensorflow.lite.examples.objectdetection.app-merged_res-56:\\mipmap-xxhdpi_ic_launcher_round.png.flat",
+        "source": "C:\\Users\\tnnd\\.gradle\\daemon\\7.4\\org.tensorflow.lite.examples.objectdetection.app-main-58:\\mipmap-xxhdpi\\ic_launcher_round.png"
     },
     {
-        "merged": "C:\\lab\\iWalkSafe_android\\app\\build\\intermediates\\merged_res\\debug\\mipmap-xhdpi_ic_launcher_foreground.png.flat",
-        "source": "C:\\lab\\iWalkSafe_android\\app\\src\\main\\res\\mipmap-xhdpi\\ic_launcher_foreground.png"
+        "merged": "C:\\Users\\tnnd\\.gradle\\daemon\\7.4\\org.tensorflow.lite.examples.objectdetection.app-merged_res-56:\\color_selector_ic.xml.flat",
+        "source": "C:\\Users\\tnnd\\.gradle\\daemon\\7.4\\org.tensorflow.lite.examples.objectdetection.app-main-58:\\color\\selector_ic.xml"
     },
     {
-        "merged": "C:\\lab\\iWalkSafe_android\\app\\build\\intermediates\\merged_res\\debug\\mipmap-xxxhdpi_ic_launcher.png.flat",
-        "source": "C:\\lab\\iWalkSafe_android\\app\\src\\main\\res\\mipmap-xxxhdpi\\ic_launcher.png"
+        "merged": "C:\\Users\\tnnd\\.gradle\\daemon\\7.4\\org.tensorflow.lite.examples.objectdetection.app-merged_res-56:\\drawable_ic_baseline_view_in_ar_24.xml.flat",
+        "source": "C:\\Users\\tnnd\\.gradle\\daemon\\7.4\\org.tensorflow.lite.examples.objectdetection.app-main-58:\\drawable\\ic_baseline_view_in_ar_24.xml"
     },
     {
-        "merged": "C:\\lab\\iWalkSafe_android\\app\\build\\intermediates\\merged_res\\debug\\drawable_ic_plus.xml.flat",
-        "source": "C:\\lab\\iWalkSafe_android\\app\\src\\main\\res\\drawable\\ic_plus.xml"
+        "merged": "C:\\Users\\tnnd\\.gradle\\daemon\\7.4\\org.tensorflow.lite.examples.objectdetection.app-merged_res-56:\\mipmap-xxxhdpi_ic_launcher_foreground.png.flat",
+        "source": "C:\\Users\\tnnd\\.gradle\\daemon\\7.4\\org.tensorflow.lite.examples.objectdetection.app-main-58:\\mipmap-xxxhdpi\\ic_launcher_foreground.png"
     },
     {
-        "merged": "C:\\lab\\iWalkSafe_android\\app\\build\\intermediates\\merged_res\\debug\\raw_chair.mp3.flat",
-        "source": "C:\\lab\\iWalkSafe_android\\app\\src\\main\\res\\raw\\chair.mp3"
+        "merged": "C:\\Users\\tnnd\\.gradle\\daemon\\7.4\\org.tensorflow.lite.examples.objectdetection.app-merged_res-56:\\mipmap-xhdpi_ic_launcher_foreground.png.flat",
+        "source": "C:\\Users\\tnnd\\.gradle\\daemon\\7.4\\org.tensorflow.lite.examples.objectdetection.app-main-58:\\mipmap-xhdpi\\ic_launcher_foreground.png"
     },
     {
-        "merged": "C:\\lab\\iWalkSafe_android\\app\\build\\intermediates\\merged_res\\debug\\mipmap-hdpi_ic_launcher_round.png.flat",
-        "source": "C:\\lab\\iWalkSafe_android\\app\\src\\main\\res\\mipmap-hdpi\\ic_launcher_round.png"
+        "merged": "C:\\Users\\tnnd\\.gradle\\daemon\\7.4\\org.tensorflow.lite.examples.objectdetection.app-merged_res-56:\\mipmap-xhdpi_ic_launcher_round.png.flat",
+        "source": "C:\\Users\\tnnd\\.gradle\\daemon\\7.4\\org.tensorflow.lite.examples.objectdetection.app-main-58:\\mipmap-xhdpi\\ic_launcher_round.png"
+    },
+    {
+        "merged": "C:\\Users\\tnnd\\.gradle\\daemon\\7.4\\org.tensorflow.lite.examples.objectdetection.app-merged_res-56:\\layout-land_activity_compass_main.xml.flat",
+        "source": "C:\\Users\\tnnd\\.gradle\\daemon\\7.4\\org.tensorflow.lite.examples.objectdetection.app-main-58:\\layout-land\\activity_compass_main.xml"
+    },
+    {
+        "merged": "C:\\Users\\tnnd\\.gradle\\daemon\\7.4\\org.tensorflow.lite.examples.objectdetection.app-merged_res-56:\\raw_remote.mp3.flat",
+        "source": "C:\\Users\\tnnd\\.gradle\\daemon\\7.4\\org.tensorflow.lite.examples.objectdetection.app-main-58:\\raw\\remote.mp3"
+    },
+    {
+        "merged": "C:\\Users\\tnnd\\.gradle\\daemon\\7.4\\org.tensorflow.lite.examples.objectdetection.app-merged_res-56:\\raw_beep1.mp3.flat",
+        "source": "C:\\Users\\tnnd\\.gradle\\daemon\\7.4\\org.tensorflow.lite.examples.objectdetection.app-main-58:\\raw\\beep1.mp3"
+    },
+    {
+        "merged": "C:\\Users\\tnnd\\.gradle\\daemon\\7.4\\org.tensorflow.lite.examples.objectdetection.app-merged_res-56:\\menu_menulist.xml.flat",
+        "source": "C:\\Users\\tnnd\\.gradle\\daemon\\7.4\\org.tensorflow.lite.examples.objectdetection.app-main-58:\\menu\\menulist.xml"
+    },
+    {
+        "merged": "C:\\Users\\tnnd\\.gradle\\daemon\\7.4\\org.tensorflow.lite.examples.objectdetection.app-merged_res-56:\\drawable_ic_plus.xml.flat",
+        "source": "C:\\Users\\tnnd\\.gradle\\daemon\\7.4\\org.tensorflow.lite.examples.objectdetection.app-main-58:\\drawable\\ic_plus.xml"
+    },
+    {
+        "merged": "C:\\Users\\tnnd\\.gradle\\daemon\\7.4\\org.tensorflow.lite.examples.objectdetection.app-merged_res-56:\\mipmap-mdpi_ic_launcher_foreground.png.flat",
+        "source": "C:\\Users\\tnnd\\.gradle\\daemon\\7.4\\org.tensorflow.lite.examples.objectdetection.app-main-58:\\mipmap-mdpi\\ic_launcher_foreground.png"
+    },
+    {
+        "merged": "C:\\Users\\tnnd\\.gradle\\daemon\\7.4\\org.tensorflow.lite.examples.objectdetection.app-merged_res-56:\\mipmap-mdpi_ic_launcher_round.png.flat",
+        "source": "C:\\Users\\tnnd\\.gradle\\daemon\\7.4\\org.tensorflow.lite.examples.objectdetection.app-main-58:\\mipmap-mdpi\\ic_launcher_round.png"
+    },
+    {
+        "merged": "C:\\Users\\tnnd\\.gradle\\daemon\\7.4\\org.tensorflow.lite.examples.objectdetection.app-merged_res-56:\\raw_beep4.mp3.flat",
+        "source": "C:\\Users\\tnnd\\.gradle\\daemon\\7.4\\org.tensorflow.lite.examples.objectdetection.app-main-58:\\raw\\beep4.mp3"
+    },
+    {
+        "merged": "C:\\Users\\tnnd\\.gradle\\daemon\\7.4\\org.tensorflow.lite.examples.objectdetection.app-merged_res-56:\\raw_foundsound.mp3.flat",
+        "source": "C:\\Users\\tnnd\\.gradle\\daemon\\7.4\\org.tensorflow.lite.examples.objectdetection.app-main-58:\\raw\\foundsound.mp3"
+    },
+    {
+        "merged": "C:\\Users\\tnnd\\.gradle\\daemon\\7.4\\org.tensorflow.lite.examples.objectdetection.app-merged_res-56:\\layout_fragment_camera.xml.flat",
+        "source": "C:\\Users\\tnnd\\.gradle\\daemon\\7.4\\org.tensorflow.lite.examples.objectdetection.app-main-58:\\layout\\fragment_camera.xml"
+    },
+    {
+        "merged": "C:\\Users\\tnnd\\.gradle\\daemon\\7.4\\org.tensorflow.lite.examples.objectdetection.app-merged_res-56:\\drawable_ic_baseline_my_location_24.xml.flat",
+        "source": "C:\\Users\\tnnd\\.gradle\\daemon\\7.4\\org.tensorflow.lite.examples.objectdetection.app-main-58:\\drawable\\ic_baseline_my_location_24.xml"
+    },
+    {
+        "merged": "C:\\Users\\tnnd\\.gradle\\daemon\\7.4\\org.tensorflow.lite.examples.objectdetection.app-merged_res-56:\\layout_items_example.xml.flat",
+        "source": "C:\\Users\\tnnd\\.gradle\\daemon\\7.4\\org.tensorflow.lite.examples.objectdetection.app-main-58:\\layout\\items_example.xml"
     }
 ]

@@ -1,0 +1,64 @@
+<resources>
+    <!-- Reply Preference -->
+    <string-array name="reply_entries">
+        <item>Reply</item>
+        <item>Reply to all</item>
+    </string-array>
+
+    <string-array name="reply_values">
+        <item>reply</item>
+        <item>reply_all</item>
+    </string-array>
+
+    <string-array name="Detect_object">
+        <item>bed</item>
+        <item>chair</item>
+        <item>cup</item>
+        <item>laptop</item>
+        <item>remote</item>
+    </string-array>
+
+    <string-array name="Waring_object">
+        <item>person</item>
+        <item>dog</item>
+        <item>cat</item>
+    </string-array>
+
+    <string-array name="Max_result">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+    </string-array>
+
+    <string-array name="Threshold">
+        <item>0.2</item>
+        <item>0.4</item>
+        <item>0.6</item>
+        <item>0.8</item>
+    </string-array>
+
+    <string-array name="NumThreads">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+    </string-array>
+
+    <string-array name="Delegate">
+        <item>CPU</item>
+        <item>GPU</item>
+        <item>NNAPI</item>
+    </string-array>
+
+    <string-array name="Model">
+        <item>mobilenetv1.tflite</item>
+        <item>efficientdet-lite0.tflite</item>
+        <item>efficientdet-lite1.tflite</item>
+        <item>efficientdet-lite2.tflite</item>
+    </string-array>
+
+
+
+
+</resources>

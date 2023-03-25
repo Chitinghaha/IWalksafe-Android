@@ -30,6 +30,7 @@
         <activity
             android:name=".MainActivity"
             android:clearTaskOnLaunch="true"
+            android:windowSoftInputMode="adjustPan"
             android:configChanges="orientation|screenLayout|screenSize|smallestScreenSize"
             android:exported="true"
             android:icon="@mipmap/ic_launcher"

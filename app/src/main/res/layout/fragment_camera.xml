@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!--
+<?xml version="1.0" encoding="utf-8"?><!--
     ~ Copyright 2022 The TensorFlow Authors. All Rights Reserved.
     ~
     ~ Licensed under the Apache License, Version 2.0 (the "License");
@@ -14,77 +13,67 @@
     ~ See the License for the specific language governing permissions and
     ~ limitations under the License.
 -->
-<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/camera_container"
     android:layout_width="match_parent"
     android:layout_height="700dp">
 
+
+    <Button
+        android:id="@+id/cm_setting"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:background="@drawable/shape_circle"
+        android:text="@string/setting"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.9"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.81" />
+
+    <Button
+        android:id="@+id/cm_detect"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:background="@drawable/shape_circle"
+        android:text="@string/surrondding"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.81" />
+
+    <Button
+        android:id="@+id/cm_find"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:background="@drawable/shape_circle"
+        android:text="@string/ObjectFinding"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.81" />
+
     <androidx.camera.view.PreviewView
         android:id="@+id/viewFinder"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:scaleType="fillStart"/>
+        app:layout_constraintEnd_toEndOf="parent"
+        app:scaleType="fillStart"
+        tools:layout_editor_absoluteY="201dp">
+
+    </androidx.camera.view.PreviewView>
 
     <org.tensorflow.lite.examples.objectdetection.OverlayView
         android:id="@+id/overlay"
-        android:layout_height="match_parent"
-        android:layout_width="match_parent" />
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
 
 
-<!--    <RelativeLayout-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content">-->
-<!--        <Button-->
-<!--            android:id="@+id/btnMain"-->
-<!--            android:layout_width="100dp"-->
-<!--            android:layout_height="100dp"-->
-<!--            android:layout_alignRight="@+id/btn_stt"-->
-<!--            android:layout_marginTop="550dp"-->
-<!--            android:background="@drawable/shape_circle"-->
-<!--            android:text="@string/sound_close"-->
-<!--            android:textColor="#FFFFFF" />-->
-
-<!--        <Button-->
-<!--            android:id="@+id/btn_stt"-->
-<!--            android:layout_width="100dp"-->
-<!--            android:layout_height="100dp"-->
-<!--            android:layout_marginTop="550dp"-->
-<!--            android:layout_centerHorizontal="true"-->
-<!--            android:background="@drawable/shape_circle"-->
-<!--            android:text="@string/sent_massege"-->
-<!--            android:textColor="#FFFFFF" />-->
-
-<!--        <Button-->
-<!--            android:id="@+id/mapbtn"-->
-<!--            android:layout_width="100dp"-->
-<!--            android:layout_height="100dp"-->
-<!--            android:layout_marginTop="550dp"-->
-<!--            android:layout_alignRight="@+id/btn_stt"-->
-<!--            android:layout_alignParentEnd="true"-->
-<!--            android:background="@drawable/shape_circle"-->
-<!--            android:text="@string/google_map"-->
-<!--            android:textColor="#FFFFFF" />-->
-
-<!--        <Button-->
-<!--            android:id="@+id/compassbtn"-->
-<!--            android:layout_width="100dp"-->
-<!--            android:layout_height="100dp"-->
-<!--            android:layout_centerHorizontal="true"-->
-<!--            android:layout_centerVertical="true"-->
-<!--            android:background="@drawable/shape_circle"-->
-<!--            android:text="@string/Compass"-->
-<!--            android:textColor="#FFFFFF" />-->
-
-<!--    </RelativeLayout>-->
-
-    <include
-        android:id="@+id/bottom_sheet_layout"
-        layout="@layout/info_bottom_sheet" />
-
-
-
-
-
-</androidx.coordinatorlayout.widget.CoordinatorLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
