@@ -17,16 +17,15 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-kapt'
-apply plugin: "androidx.navigation.safeargs"
 apply plugin: 'de.undercouch.download'
 
 android {
-    compileSdkVersion 32
+    compileSdkVersion 33
     defaultConfig {
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         applicationId "org.tensorflow.lite.examples.objectdetection"
         minSdkVersion 21
-        targetSdkVersion 32
+        targetSdkVersion 33
         versionCode 1
         versionName "1.0.0"
     }
@@ -68,6 +67,7 @@ project.ext.TEST_ASSETS_DIR = projectDir.toString() + '/src/androidTest/assets'
 // place them in the "assets" directory and comment out this line.
 apply from:'download_models.gradle'
 apply plugin: 'com.google.gms.google-services'
+apply plugin: "androidx.navigation.safeargs.kotlin"
 
 dependencies {
     // Kotlin lang
@@ -124,4 +124,13 @@ dependencies {
     // Import the GPU delegate plugin Library for GPU inference
     implementation 'org.tensorflow:tensorflow-lite-gpu-delegate-plugin:0.4.0'
     implementation 'org.tensorflow:tensorflow-lite-gpu:2.9.0'
+
+    // Feature module Support
+    implementation("androidx.navigation:navigation-dynamic-features-fragment:$nav_version")
+
+    // Testing Navigation
+    androidTestImplementation("androidx.navigation:navigation-testing:$nav_version")
+
+    // Jetpack Compose Integration
+    implementation("androidx.navigation:navigation-compose:$nav_version")
 }

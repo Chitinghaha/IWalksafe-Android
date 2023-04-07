@@ -121,16 +121,6 @@ class OverlayView(context: Context?, attrs: AttributeSet?) : View(context, attrs
         }
     }
 
-//    fun sound_output(Text_print:String)
-//    {
-//        tts = TextToSpeech( getContext() ,TextToSpeech.OnInitListener {
-//            if(it == TextToSpeech.SUCCESS) {
-//                tts.language= Locale.US
-//                tts.setSpeechRate(1.0f)
-//                tts!!.speak(Text_print, TextToSpeech.QUEUE_FLUSH, null,"")
-//            }
-//        })
-//    }
 
 
     fun setResults(

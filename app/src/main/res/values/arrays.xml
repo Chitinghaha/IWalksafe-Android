@@ -11,17 +11,17 @@
     </string-array>
 
     <string-array name="Detect_object">
-        <item>bed</item>
-        <item>chair</item>
-        <item>cup</item>
-        <item>laptop</item>
-        <item>remote</item>
+        <item>@string/bed</item>
+        <item>@string/chair</item>
+        <item>@string/cup</item>
+        <item>@string/laptop</item>
+        <item>@string/remote</item>
     </string-array>
 
     <string-array name="Waring_object">
-        <item>person</item>
-        <item>dog</item>
-        <item>cat</item>
+        <item>@string/person</item>
+        <item>@string/dog</item>
+        <item>@string/cat</item>
     </string-array>
 
     <string-array name="Max_result">
@@ -45,6 +45,12 @@
         <item>4</item>
     </string-array>
 
+
+    <string-array name="language">
+        <item>English</item>
+        <item>Chinese</item>
+    </string-array>
+
     <string-array name="Delegate">
         <item>CPU</item>
         <item>GPU</item>
@@ -57,8 +63,6 @@
         <item>efficientdet-lite1.tflite</item>
         <item>efficientdet-lite2.tflite</item>
     </string-array>
-
-
 
 
 </resources>

@@ -18,7 +18,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/camera_container"
     android:layout_width="match_parent"
-    android:layout_height="700dp">
+    android:layout_height="match_parent">
 
     <Button
         android:id="@+id/wm_setting"
@@ -28,10 +28,10 @@
         android:text="@string/setting"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.948"
+        app:layout_constraintHorizontal_bias="0.95"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.81" />
+        app:layout_constraintVertical_bias="0.9" />
 
     <Button
         android:id="@+id/wm_compass"
@@ -41,10 +41,10 @@
         android:text="@string/compass"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.81" />
+        app:layout_constraintVertical_bias="0.9"/>
 
     <Button
         android:id="@+id/wm_navigation"
@@ -54,10 +54,10 @@
         android:text="@string/navigation"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.09"
+        app:layout_constraintHorizontal_bias="0.05"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.81" />
+        app:layout_constraintVertical_bias="0.9" />
 
 
         <androidx.camera.view.PreviewView

@@ -13,8 +13,10 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.firebase.database.DatabaseReference
 import org.tensorflow.lite.examples.objectdetection.MyAdapter
 import org.tensorflow.lite.examples.objectdetection.R
@@ -37,6 +39,9 @@ class NavigationSettingFragment : Fragment() {
 
     private lateinit var  pref : SharedPreferences
     lateinit var editor: SharedPreferences.Editor
+
+    private lateinit var activity: AppCompatActivity
+    private lateinit var chipNavigationBar: BottomNavigationView
 
     lateinit var recyclerView: RecyclerView
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -73,6 +78,9 @@ class NavigationSettingFragment : Fragment() {
             layoutManager = manager
             adapter = myAdapter
         }
+        activity = view.context as AppCompatActivity
+        chipNavigationBar = activity.findViewById<View>(R.id.navigation) as BottomNavigationView
+        chipNavigationBar.animate().translationY(chipNavigationBar.height.toFloat()).duration = 1000
 
 
         super.onViewCreated(view, savedInstanceState)
@@ -108,6 +116,11 @@ class NavigationSettingFragment : Fragment() {
             editor.remove("name")
             editor.putStringSet("name", arr)?.apply()
         }
+    }
+
+    override fun onDestroy() {
+        chipNavigationBar.animate().translationY(0F).duration = 1000
+        super.onDestroy()
     }
 
 }

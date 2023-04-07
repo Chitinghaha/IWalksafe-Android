@@ -12,8 +12,12 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
+import androidx.navigation.findNavController
+import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.firebase.database.DatabaseReference
 import org.tensorflow.lite.examples.objectdetection.MyAdapter
 import org.tensorflow.lite.examples.objectdetection.MyAdapterForObject
@@ -34,6 +38,10 @@ class ObjectSettingFragment : Fragment(R.layout.fragment_object_setting) {
     lateinit var editor: SharedPreferences.Editor
 
     lateinit var recyclerView: RecyclerView
+
+
+    private lateinit var chipNavigationBar: BottomNavigationView
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         pref = context?.getSharedPreferences("object", Context.MODE_PRIVATE)!!
@@ -58,11 +66,14 @@ class ObjectSettingFragment : Fragment(R.layout.fragment_object_setting) {
 
 
         manager= LinearLayoutManager(context)
-        myAdapter= context?.let { it1 -> MyAdapterForObject(it1, data){ index -> deltem(index)} }!!
+        myAdapter= context?.let { MyAdapterForObject(it, data,{index -> deltem(index)}) { str -> passItem(str) } }!!
         recyclerView = view.findViewById<RecyclerView>(R.id.ob_r_view).apply{
             layoutManager = manager
             adapter = myAdapter
         }
+        chipNavigationBar = (activity as AppCompatActivity).findViewById<View>(R.id.navigation) as BottomNavigationView
+        chipNavigationBar.animate().translationY(chipNavigationBar.height.toFloat()).duration = 1000
+
 
 
         super.onViewCreated(view, savedInstanceState)
@@ -90,6 +101,24 @@ class ObjectSettingFragment : Fragment(R.layout.fragment_object_setting) {
             Toast.makeText(requireContext(), "請輸入文字" , Toast.LENGTH_SHORT).show()
     }
 
+    private fun passItem(str :String) {
+//        Toast.makeText(requireContext(), str, Toast.LENGTH_SHORT).show()
+        val action = ObjectSettingFragmentDirections.actionObjectSettingFragmentToFindObjectFragment(str)
+
+        view?.findNavController()?.navigate(action)
+    }
+
+    override fun onStop() {
+        chipNavigationBar = (activity as AppCompatActivity).findViewById<View>(R.id.navigation) as BottomNavigationView
+        chipNavigationBar.animate().translationY(0F).duration = 1000
+        super.onStop()
+    }
+
+    override fun onDestroy() {
+        chipNavigationBar = (activity as AppCompatActivity).findViewById<View>(R.id.navigation) as BottomNavigationView
+        chipNavigationBar.animate().translationY(0F).duration = 1000
+        super.onDestroy()
+    }
 
     private fun deltem(index: Int) {
         if( ::myAdapter.isInitialized){

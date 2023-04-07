@@ -24,6 +24,7 @@ import androidx.camera.core.ImageAnalysis.OUTPUT_IMAGE_FORMAT_RGBA_8888
 import androidx.camera.lifecycle.ProcessCameraProvider
 import androidx.core.content.ContextCompat
 import androidx.navigation.Navigation
+import androidx.navigation.findNavController
 import androidx.preference.PreferenceManager
 import org.tensorflow.lite.examples.objectdetection.ObjectDetectorHelper
 import org.tensorflow.lite.examples.objectdetection.R
@@ -35,9 +36,8 @@ import java.util.concurrent.ExecutorService
 import java.util.concurrent.Executors
 
 
-
-
-class WalkModeFragment : Fragment(R.layout.fragment_walk_mode), ObjectDetectorHelper.DetectorListener {
+class WalkModeFragment : Fragment(R.layout.fragment_walk_mode),
+    ObjectDetectorHelper.DetectorListener {
 
     private val TAG = "ObjectDetection"
 
@@ -72,25 +72,36 @@ class WalkModeFragment : Fragment(R.layout.fragment_walk_mode), ObjectDetectorHe
     //https://ithelp.ithome.com.tw/articles/10207124
     private lateinit var cameraExecutor: ExecutorService
 
-    //find_name
-    private var findname: String? = null
 
-    lateinit var Warning_sound:MutableSet<String>
-    lateinit var selections:MutableSet<String>
-    lateinit var MaxResult:String
-    lateinit var Threshold:String
-    lateinit var NumThreads:String
-    lateinit var Delegate:String
-    lateinit var Ml:String
+    lateinit var Warning_sound: MutableSet<String>
+    lateinit var MaxResult: String
+    lateinit var Threshold: String
+    lateinit var NumThreads: String
+    lateinit var Delegate: String
+    lateinit var Ml: String
 
-    val ChToEn = mutableMapOf("椅子" to "chair", "床" to "bed", "電腦" to "laptop" ,"杯子" to "cup","遙控器" to "remote")
+
+    private val CHToEn = mutableMapOf(
+        "椅子" to "chair",
+        "床" to "bed",
+        "筆電" to "laptop",
+        "杯子" to "cup",
+        "遙控器" to "remote"
+    )
+
+    private val EnToCh = mutableMapOf(
+        "person" to "人",
+        "cat" to "貓",
+        "dog" to "狗"
+
+    )
 
 
     //firebase
 //    private lateinit var database: DatabaseReference
 
     //Share preference
-    private lateinit var sp : SharedPreferences
+    private lateinit var sp: SharedPreferences
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -104,14 +115,14 @@ class WalkModeFragment : Fragment(R.layout.fragment_walk_mode), ObjectDetectorHe
 
 //        database = FirebaseDatabase.getInstance().reference
     }
-    private fun initSetting(){
-        Warning_sound = sp.getStringSet("Wo", null) as MutableSet<String>
-        selections = sp.getStringSet("Do", null) as MutableSet<String>
-        MaxResult = sp.getString("Mr", "1").toString()
-        Threshold = sp.getString("Ts", "0.7").toString()
-        NumThreads = sp.getString("Nt", "1").toString()
-        Delegate = sp.getString("Dl", "CPU").toString()
-        Ml = sp.getString("Ml", "mobilenetv1.tflite").toString()
+
+    private fun initSetting() {
+        Warning_sound = sp.getStringSet("www", null) as MutableSet<String>
+        MaxResult = sp.getString("wm_Mr", "1").toString()
+        Threshold = sp.getString("wm_Ts", "0.7").toString()
+        NumThreads = sp.getString("wm_Nt", "1").toString()
+        Delegate = sp.getString("wm_Dl", "CPU").toString()
+        Ml = sp.getString("wm_Ml", "mobilenetv1.tflite").toString()
         objectDetectorHelper.maxResults = MaxResult.toInt()
         objectDetectorHelper.threshold = Threshold.toFloat()
         objectDetectorHelper.numThreads = NumThreads.toInt()
@@ -121,19 +132,21 @@ class WalkModeFragment : Fragment(R.layout.fragment_walk_mode), ObjectDetectorHe
         objectDetectorHelper.clearObjectDetector()
 
     }
-    private  fun initDelegate(Delegate: String) {
-        when(Delegate){
+
+    private fun initDelegate(Delegate: String) {
+        when (Delegate) {
             "CPU" -> objectDetectorHelper.currentDelegate = 0
             "GPU" -> objectDetectorHelper.currentDelegate = 1
-            "NNAPI" ->  objectDetectorHelper.currentDelegate=2
+            "NNAPI" -> objectDetectorHelper.currentDelegate = 2
         }
     }
-    private  fun initModel(Ml: String) {
-        when(Ml){
+
+    private fun initModel(Ml: String) {
+        when (Ml) {
             "mobilenetv1.tflite" -> objectDetectorHelper.currentModel = 0
             "efficientdet-lite0.tflite" -> objectDetectorHelper.currentModel = 1
-            "efficientdet-lite1.tflite" ->  objectDetectorHelper.currentModel= 2
-            "efficientdet-lite2.tflite" ->  objectDetectorHelper.currentModel= 3
+            "efficientdet-lite1.tflite" -> objectDetectorHelper.currentModel = 2
+            "efficientdet-lite2.tflite" -> objectDetectorHelper.currentModel = 3
         }
     }
 
@@ -177,10 +190,7 @@ class WalkModeFragment : Fragment(R.layout.fragment_walk_mode), ObjectDetectorHe
         _fragmentWMBinding = FragmentWalkModeBinding.inflate(inflater, container, false)
 
         //STT
-        val data = arguments
-        findname = data?.getString("String").toString()
-        if(findname != "null")
-            Toast.makeText(requireContext(), findname, Toast.LENGTH_SHORT).show()
+
         return fragmentWalkModeBinding.root
     }
 
@@ -208,34 +218,20 @@ class WalkModeFragment : Fragment(R.layout.fragment_walk_mode), ObjectDetectorHe
             setUpCamera()
         }
 
-        fragmentWalkModeBinding.wmCompass.setOnClickListener {  gocompass()  }
-        fragmentWalkModeBinding.wmNavigation.setOnClickListener { gomap() }
-        fragmentWalkModeBinding.wmSetting.setOnClickListener {  goset() }
+        fragmentWalkModeBinding.wmCompass.setOnClickListener {
+            view?.findNavController()?.navigate(R.id.action_WalkModel_to_compassFragment)
+        }
+        fragmentWalkModeBinding.wmNavigation.setOnClickListener {
+            view?.findNavController()?.navigate(R.id.action_WalkModel_to_navigationSettingFragment)
+        }
+        fragmentWalkModeBinding.wmSetting.setOnClickListener {
+            view?.findNavController()
+                ?.navigate(R.id.action_WalkModel_to_settingsForWalkModeFragment)
+        }
 
         // Attach listeners to UI control widgets
         initSetting()
 
-    }
-
-
-    private  fun goset(){
-        activity?.supportFragmentManager?.beginTransaction()
-            ?.replace(R.id.fragment_container, SettingsFragment())
-            ?.commit()
-
-    }
-
-
-    private  fun gomap(){
-        activity?.supportFragmentManager?.beginTransaction()
-            ?.replace(R.id.fragment_container, NavigationSettingFragment())
-            ?.commit()
-    }
-
-    private  fun gocompass() {
-        activity?.supportFragmentManager?.beginTransaction()
-            ?.replace(R.id.fragment_container, CompassFragment())
-            ?.commit()
     }
 
     // Initialize CameraX, and prepare to bind the camera use cases
@@ -359,12 +355,10 @@ class WalkModeFragment : Fragment(R.layout.fragment_walk_mode), ObjectDetectorHe
         }
 
 
-
-
         // Force a redraw
         fragmentWalkModeBinding.overlay.invalidate()
         //bounding box
-        DetectBoundingBox(results,Warning_sound)
+        DetectBoundingBox(results, Warning_sound)
 
     }
 
@@ -375,29 +369,28 @@ class WalkModeFragment : Fragment(R.layout.fragment_walk_mode), ObjectDetectorHe
         val scaleFactor = 1f
         if (results != null) {
             for (result in results) {
-                val boundingBox = result.boundingBox
-                val top = boundingBox.top * scaleFactor
-                val bottom = boundingBox.bottom * scaleFactor
-                val left = boundingBox.left * scaleFactor
-                val right = boundingBox.right * scaleFactor
+                EnToCh[result.categories[0].label]?.let { Log.d("compose", it) }
+                if (Warning_sound.contains(EnToCh[result.categories[0].label])) {
+                    Log.d("compose", EnToCh[result.categories[0].label].toString())
+                    val boundingBox = result.boundingBox
+                    val top = boundingBox.top * scaleFactor
+                    val bottom = boundingBox.bottom * scaleFactor
+                    val left = boundingBox.left * scaleFactor
+                    val right = boundingBox.right * scaleFactor
 
-                for (wa in Warning_sound) {
-                    if (result.categories[0].label == wa) {
-                        val area = (left - right) * (top - bottom)
-                        if (area >= 170000) {
-                            beep1?.start()
-                        } else if (area >= 100000) {
-                            beep2?.start()
-                        } else if (area >= 80000) {
-                            beep3?.start()
-                        }
+                    val area = (left - right) * (top - bottom)
+                    if (area >= 170000) {
+                        beep1?.start()
+                    } else if (area >= 100000) {
+                        beep2?.start()
+                    } else if (area >= 80000) {
+                        beep3?.start()
                     }
                 }
 
             }
         }
     }
-
 
 
     override fun onError(error: String) {

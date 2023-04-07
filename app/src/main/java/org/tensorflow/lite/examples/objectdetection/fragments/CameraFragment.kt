@@ -23,8 +23,8 @@ import android.content.res.Configuration
 import android.graphics.Bitmap
 import android.media.MediaPlayer
 import android.os.Bundle
-import android.os.Looper
 import android.speech.RecognizerIntent
+import android.speech.tts.TextToSpeech
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -36,20 +36,28 @@ import androidx.camera.lifecycle.ProcessCameraProvider
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.navigation.Navigation
+import androidx.navigation.findNavController
+import androidx.navigation.fragment.navArgs
 import androidx.preference.PreferenceManager
+import kotlinx.coroutines.*
 import org.tensorflow.lite.examples.objectdetection.ObjectDetectorHelper
 import org.tensorflow.lite.examples.objectdetection.R
 import org.tensorflow.lite.examples.objectdetection.databinding.FragmentCameraBinding
 import org.tensorflow.lite.task.vision.detector.Detection
+import java.lang.Thread.sleep
 import java.util.*
 import java.util.concurrent.ExecutorService
 import java.util.concurrent.Executors
+import kotlin.concurrent.schedule
 
 
 // fragment https://medium.com/@waynechen323/android-%E5%9F%BA%E7%A4%8E%E7%9A%84-fragment-%E4%BD%BF%E7%94%A8%E6%96%B9%E5%BC%8F-730858c12a43
 // fragment https://ithelp.ithome.com.tw/articles/10262921
 // Kotlin 繼承
-class CameraFragment() : Fragment(R.layout.fragment_camera), ObjectDetectorHelper.DetectorListener {
+class CameraFragment() : Fragment(R.layout.fragment_camera), ObjectDetectorHelper.DetectorListener,
+    TextToSpeech.OnInitListener {
+
+
 
     private val TAG = "ObjectDetection"
 
@@ -71,15 +79,8 @@ class CameraFragment() : Fragment(R.layout.fragment_camera), ObjectDetectorHelpe
     private var camera: Camera? = null
     private var cameraProvider: ProcessCameraProvider? = null
 
-    private var mp_bed: MediaPlayer? = null
-    private var mp_chair: MediaPlayer? = null
-    private var mp_cup: MediaPlayer? = null
-    private var mp_laptop: MediaPlayer? = null
-    private var mp_remote: MediaPlayer? = null
     private var foundsound: MediaPlayer? = null
-    private var beep1: MediaPlayer? = null
-    private var beep2: MediaPlayer? = null
-    private var beep3: MediaPlayer? = null
+
 
     //private var results: List<Detection> = LinkedList<Detection>()
 
@@ -89,25 +90,36 @@ class CameraFragment() : Fragment(R.layout.fragment_camera), ObjectDetectorHelpe
     //https://ithelp.ithome.com.tw/articles/10207124
     private lateinit var cameraExecutor: ExecutorService
 
-    //find_name
-    private var findname: String? = null
 
-    lateinit var Warning_sound:MutableSet<String>
-    lateinit var selections:MutableSet<String>
-    lateinit var MaxResult:String
-    lateinit var Threshold:String
-    lateinit var NumThreads:String
-    lateinit var Delegate:String
-    lateinit var Ml:String
+    private lateinit var Warning_sound: MutableSet<String>
+    private lateinit var selections: MutableSet<String>
+    private lateinit var MaxResult: String
+    private lateinit var Threshold: String
+    private lateinit var NumThreads: String
+    private lateinit var Delegate: String
+    private lateinit var Ml: String
 
-    val ChToEn = mutableMapOf("椅子" to "chair", "床" to "bed", "電腦" to "laptop" ,"杯子" to "cup","遙控器" to "remote")
+
+    private val ChToEn = mutableMapOf(
+        "chair" to "椅子",
+        "bed" to  "床" ,
+        "laptop" to  "筆電",
+        "cup" to "杯子",
+        "remote" to "遙控器"
+    )
+
+
+    val DebounceMap = mutableMapOf<String, Int>()
+    val filteredDebounceSet = mutableSetOf<String>()
+
+    private var tts: TextToSpeech? = null
 
 
     //firebase
 //    private lateinit var database: DatabaseReference
 
     //Share preference
-    private lateinit var sp : SharedPreferences
+    private lateinit var sp: SharedPreferences
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -115,48 +127,45 @@ class CameraFragment() : Fragment(R.layout.fragment_camera), ObjectDetectorHelpe
         super.onCreate(savedInstanceState)
 
         sp = activity?.let { PreferenceManager.getDefaultSharedPreferences(it) }!!
-        mp_bed = MediaPlayer.create(context, R.raw.bed)
-        mp_chair = MediaPlayer.create(context, R.raw.chair)
-        mp_cup = MediaPlayer.create(context, R.raw.cup)
-        mp_laptop = MediaPlayer.create(context, R.raw.computer)
-        mp_remote = MediaPlayer.create(context, R.raw.remote)
-        beep1 = MediaPlayer.create(context, R.raw.beep1)
-        beep2 = MediaPlayer.create(context, R.raw.beep2)
-        beep3 = MediaPlayer.create(context, R.raw.beep4)
         foundsound = MediaPlayer.create(context, R.raw.foundsound)
+        tts = TextToSpeech(context, this)
+
 
 //        database = FirebaseDatabase.getInstance().reference
     }
-    private fun initSetting(){
-        Warning_sound = sp.getStringSet("Wo", null) as MutableSet<String>
-        selections = sp.getStringSet("Do", null) as MutableSet<String>
-        MaxResult = sp.getString("Mr", "1").toString()
-        Threshold = sp.getString("Ts", "0.7").toString()
-        NumThreads = sp.getString("Nt", "1").toString()
-        Delegate = sp.getString("Dl", "CPU").toString()
-        Ml = sp.getString("Ml", "mobilenetv1.tflite").toString()
+
+    private fun initSetting() {
+        selections = sp.getStringSet("ob_Do", null) as MutableSet<String>
+        MaxResult = sp.getString("ob_Mr", "1").toString()
+        Threshold = sp.getString("ob_Ts", "0.7").toString()
+        NumThreads = sp.getString("ob_Nt", "1").toString()
+        Delegate = sp.getString("ob_Dl", "CPU").toString()
+        Ml = sp.getString("ob_Ml", "mobilenetv1.tflite").toString()
         objectDetectorHelper.maxResults = MaxResult.toInt()
         objectDetectorHelper.threshold = Threshold.toFloat()
         objectDetectorHelper.numThreads = NumThreads.toInt()
         initDelegate(Delegate)
         initModel(Ml)
-
         objectDetectorHelper.clearObjectDetector()
 
+
     }
-    private  fun initDelegate(Delegate: String) {
-        when(Delegate){
+
+
+    private fun initDelegate(Delegate: String) {
+        when (Delegate) {
             "CPU" -> objectDetectorHelper.currentDelegate = 0
             "GPU" -> objectDetectorHelper.currentDelegate = 1
-            "NNAPI" ->  objectDetectorHelper.currentDelegate=2
+            "NNAPI" -> objectDetectorHelper.currentDelegate = 2
         }
     }
-    private  fun initModel(Ml: String) {
-        when(Ml){
+
+    private fun initModel(Ml: String) {
+        when (Ml) {
             "mobilenetv1.tflite" -> objectDetectorHelper.currentModel = 0
             "efficientdet-lite0.tflite" -> objectDetectorHelper.currentModel = 1
-            "efficientdet-lite1.tflite" ->  objectDetectorHelper.currentModel= 2
-            "efficientdet-lite2.tflite" ->  objectDetectorHelper.currentModel= 3
+            "efficientdet-lite1.tflite" -> objectDetectorHelper.currentModel = 2
+            "efficientdet-lite2.tflite" -> objectDetectorHelper.currentModel = 3
         }
     }
 
@@ -199,11 +208,6 @@ class CameraFragment() : Fragment(R.layout.fragment_camera), ObjectDetectorHelpe
 
         _fragmentCameraBinding = FragmentCameraBinding.inflate(inflater, container, false)
 
-        //STT
-        val data = arguments
-        findname = data?.getString("String").toString()
-        if(findname != "null")
-         Toast.makeText(requireContext(), findname, Toast.LENGTH_SHORT).show()
         return fragmentCameraBinding.root
     }
 
@@ -231,23 +235,35 @@ class CameraFragment() : Fragment(R.layout.fragment_camera), ObjectDetectorHelpe
             setUpCamera()
         }
 
-        fragmentCameraBinding.cmSetting.setOnClickListener { goset() }
-        fragmentCameraBinding.cmFind.setOnClickListener { gobd() }
-        fragmentCameraBinding.cmDetect.setOnClickListener {  }
+        fragmentCameraBinding.cmSetting.setOnClickListener {
+            view.findNavController().navigate(R.id.action_Search_to_settingsForObjectFragment)
+        }
+        fragmentCameraBinding.cmFind.setOnClickListener {
+            view.findNavController().navigate(R.id.action_global_objectSettingFragment)
+        }
+        fragmentCameraBinding.cmDetect.setOnClickListener {
+            view.findNavController().navigate(R.id.action_Search_to_detectFragment)
+        }
+//        Toast.makeText(requireContext(), "onCreateView"+args.hi, Toast.LENGTH_SHORT).show()
 
         // Attach listeners to UI control widgets
         initSetting()
     }
-    private fun gobd(){
-        activity?.supportFragmentManager?.beginTransaction()
-            ?.replace(R.id.fragment_container, ObjectSettingFragment())
-            ?.commit()
+
+    private fun gobd() {
+        Navigation.findNavController(requireActivity(), R.id.fragment_container)
+            .navigate(R.id.objectSettingFragment)
+//        activity?.supportFragmentManager?.beginTransaction()
+//            ?.replace(R.id.fragment_container, ObjectSettingFragment())
+//            ?.commit()
     }
 
-    private  fun goset(){
-        activity?.supportFragmentManager?.beginTransaction()
-            ?.replace(R.id.fragment_container, SettingsFragment())
-            ?.commit()
+    private fun goset() {
+        Navigation.findNavController(requireActivity(), R.id.fragment_container)
+            .navigate(R.id.Setting)
+//        activity?.supportFragmentManager?.beginTransaction()
+//            ?.replace(R.id.fragment_container, SettingsFragment())
+//            ?.commit()
 
     }
 
@@ -371,63 +387,10 @@ class CameraFragment() : Fragment(R.layout.fragment_camera), ObjectDetectorHelpe
             )
         }
 
-
-        //found object
-        findname?.let { find_ob(results,it) }
-
-        //sound output
-        detectsound(results)
-
-
-
         // Force a redraw
         fragmentCameraBinding.overlay.invalidate()
-
     }
 
-    private fun find_ob(results: MutableList<Detection>?,ob_name:String){
-        if (results != null) {
-            for(result in results) {
-                if(result.categories[0].label == ChToEn[ob_name]) {
-                  foundsound?.start()
-                    break
-                }
-            }
-        }
-    }
-
-
-
-
-    private fun detectsound(results: MutableList<Detection>?) {
-        if (results != null) {
-            for(result in results) {
-                for (ob in selections) {
-
-                    if(result.categories[0].label == ob) {
-                        when (ob) {
-                            "bed" -> mp_bed?.start()
-                            "chair" -> mp_chair?.start()
-                            "cup" -> mp_cup?.start()
-                            "laptop" -> mp_laptop?.start()
-                            "remote" -> mp_remote?.start()
-                            else -> println("Other")
-                        }
-                    }
-                }
-            }
-        }
-    }
-
-
-//    private fun dovibrate() {
-//        val vibrator = getActivity()?.getSystemService(Context.VIBRATOR_SERVICE) as Vibrator
-//        if (Build.VERSION.SDK_INT >= 26) {
-//            vibrator.vibrate(VibrationEffect.createOneShot(50, VibrationEffect.DEFAULT_AMPLITUDE))
-//        } else {
-//            vibrator.vibrate(50)
-//        }
-//    }
 
     override fun onError(error: String) {
         Log.d("compose", "fragment onError()")
@@ -448,11 +411,16 @@ class CameraFragment() : Fragment(R.layout.fragment_camera), ObjectDetectorHelpe
 
     override fun onDestroy() {
         Log.d("compose", "fragment onDestroy()")
+        if (tts != null) {
+            tts!!.stop()
+            tts!!.shutdown()
+        }
 
         super.onDestroy()
     }
 
     override fun onStop() {
+
         Log.d("compose", "fragment onStop()")
         super.onStop()
     }
@@ -465,9 +433,29 @@ class CameraFragment() : Fragment(R.layout.fragment_camera), ObjectDetectorHelpe
     private fun displaySpeechRecognizer_second() {
         val intent = Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH)
         intent.putExtra(RecognizerIntent.EXTRA_PROMPT, "Please say something")
-        intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL, RecognizerIntent.LANGUAGE_MODEL_FREE_FORM)
+        intent.putExtra(
+            RecognizerIntent.EXTRA_LANGUAGE_MODEL,
+            RecognizerIntent.LANGUAGE_MODEL_FREE_FORM
+        )
         intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE, "zh-TW")
         intent.putExtra(RecognizerIntent.EXTRA_MAX_RESULTS, 3)
         activity?.startActivityForResult(intent, 0)
+    }
+
+    private fun speakOut(text: String) {
+        tts!!.speak(text, TextToSpeech.QUEUE_FLUSH, null, "")
+
+    }
+
+    override fun onInit(status: Int) {
+        if (status == TextToSpeech.SUCCESS) {
+            val result = tts!!.setLanguage(Locale.TAIWAN)
+
+            if (result == TextToSpeech.LANG_MISSING_DATA || result == TextToSpeech.LANG_NOT_SUPPORTED) {
+                Log.e("TTS", "The Language not supported!")
+            } else {
+                Log.e("TTS", "error")
+            }
+        }
     }
 }

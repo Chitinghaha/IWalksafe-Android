@@ -14,7 +14,7 @@ import androidx.recyclerview.widget.RecyclerView
 class MyAdapter(
     it1: Context,
     private val data: MutableList<String>,
-    val onClickDelete: (Int) -> Unit
+    val onClickDelete: (Int) -> Unit,
 ): RecyclerView.Adapter<MyAdapter.MyViewHolder>() {
 
     val con = it1
@@ -119,7 +119,5 @@ class MyAdapter(
     fun setItems(items:MutableList<String>){
         listdata = items
         notifyDataSetChanged()
-
-
     }
 }

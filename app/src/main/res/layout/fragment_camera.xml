@@ -18,7 +18,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/camera_container"
     android:layout_width="match_parent"
-    android:layout_height="700dp">
+    android:layout_height="match_parent">
 
 
     <Button
@@ -29,10 +29,10 @@
         android:text="@string/setting"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.9"
+        app:layout_constraintHorizontal_bias="0.95"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.81" />
+        app:layout_constraintVertical_bias="0.9" />
 
     <Button
         android:id="@+id/cm_detect"
@@ -45,7 +45,7 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.81" />
+        app:layout_constraintVertical_bias="0.9"/>
 
     <Button
         android:id="@+id/cm_find"
@@ -55,22 +55,23 @@
         android:text="@string/ObjectFinding"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.1"
+        app:layout_constraintHorizontal_bias="0.05"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.81" />
+        app:layout_constraintVertical_bias="0.9" />
 
     <androidx.camera.view.PreviewView
         android:id="@+id/viewFinder"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_marginTop="16dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:scaleType="fillStart"
-        tools:layout_editor_absoluteY="201dp">
+        app:layout_constraintTop_toTopOf="parent"
+        app:scaleType="fillStart">
 
     </androidx.camera.view.PreviewView>
 
-    <org.tensorflow.lite.examples.objectdetection.OverlayView
+        <org.tensorflow.lite.examples.objectdetection.OverlayView
         android:id="@+id/overlay"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />

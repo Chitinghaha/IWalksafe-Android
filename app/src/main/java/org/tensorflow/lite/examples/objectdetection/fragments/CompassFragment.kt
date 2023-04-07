@@ -17,7 +17,12 @@ import android.view.animation.Animation
 import android.view.animation.RotateAnimation
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
+import androidx.navigation.NavController
+import androidx.navigation.Navigation
+import com.google.android.material.bottomnavigation.BottomNavigationView
+import org.tensorflow.lite.examples.objectdetection.MainActivity
 import org.tensorflow.lite.examples.objectdetection.R
 
 // TODO: Rename parameter arguments, choose names that match
@@ -43,6 +48,10 @@ class CompassFragment : Fragment(R.layout.fragment_compass), SensorEventListener
     private var mSensorManager: SensorManager? =null
 
     private lateinit var compass:ImageView
+    private lateinit var activity: AppCompatActivity
+    private lateinit var chipNavigationBar: BottomNavigationView
+
+
 
 
 
@@ -66,6 +75,9 @@ class CompassFragment : Fragment(R.layout.fragment_compass), SensorEventListener
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         compass= view.findViewById(R.id.imgCompass)
+        activity = view.context as AppCompatActivity
+        chipNavigationBar = activity.findViewById<View>(R.id.navigation) as BottomNavigationView
+        chipNavigationBar.animate().translationY(chipNavigationBar.height.toFloat()).duration = 1000
     }
 
     override fun onCreateView(
@@ -153,6 +165,7 @@ class CompassFragment : Fragment(R.layout.fragment_compass), SensorEventListener
 
     override fun onDestroy() {
         Log.d("compose", "Compass onDestroy()")
+        chipNavigationBar.animate().translationY(0F).duration = 1000
         super.onDestroy()
         mSensorManager?.unregisterListener(this,
             mSensorManager?.getDefaultSensor(Sensor.TYPE_ORIENTATION))

@@ -67,4 +67,21 @@
     <string name="ADD">新增</string>
     <string name="ObjectFinding">尋找物件</string>
     <string name="surrondding">描述環境</string>
+
+    <string name="messages_header">訊息</string>
+    <string name="sync_header">Sync</string>
+
+    <!-- Messages Preferences -->
+    <string name="signature_title">姓名</string>
+    <string name="reply_title">Default reply action</string>
+
+    <string name="sync_title">Sync email periodically</string>
+    <string name="attachment_title">Download incoming attachments</string>
+    <string name="attachment_summary_on">Automatically download attachments for incoming emails
+    </string>
+    <string name="attachment_summary_off">Only download attachments when manually requested</string>
+
+    <string name="About">關於</string>
+    <string name="speed">語速</string>
+    <string name="language">語言</string>
 </resources>

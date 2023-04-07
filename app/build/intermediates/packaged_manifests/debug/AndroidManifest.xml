@@ -7,7 +7,7 @@
 
     <uses-sdk
         android:minSdkVersion="21"
-        android:targetSdkVersion="32" />
+        android:targetSdkVersion="33" />
     <!-- vibrator -->
     <uses-permission android:name="android.permission.VIBRATE" /> <!-- Enable instant app support -->
     <dist:module dist:instant="true" /> <!-- Declare features -->
@@ -22,7 +22,9 @@
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" /> <!-- Permission will be merged into the manifest of the hosting app. -->
+    <!-- Is required to launch foreground extraction service for targetSdkVersion 28+. -->
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
 
     <application
         android:allowBackup="true"
@@ -33,6 +35,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:taskAffinity=""
         android:testOnly="true" >
+        <activity
+            android:name="org.tensorflow.lite.examples.objectdetection.SplashScreenActivity"
+            android:exported="false" >
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
         <activity
             android:name="org.tensorflow.lite.examples.objectdetection.CompassMainActivity"
             android:exported="false" >
@@ -118,7 +127,45 @@
             <meta-data
                 android:name="androidx.lifecycle.ProcessLifecycleInitializer"
                 android:value="androidx.startup" />
+            <meta-data
+                android:name="androidx.profileinstaller.ProfileInstallerInitializer"
+                android:value="androidx.startup" />
         </provider>
+
+        <receiver
+            android:name="androidx.profileinstaller.ProfileInstallReceiver"
+            android:directBootAware="false"
+            android:enabled="true"
+            android:exported="true"
+            android:permission="android.permission.DUMP" >
+            <intent-filter>
+                <action android:name="androidx.profileinstaller.action.INSTALL_PROFILE" />
+            </intent-filter>
+        </receiver> <!-- The activities will be merged into the manifest of the hosting app. -->
+        <activity
+            android:name="com.google.android.play.core.missingsplits.PlayCoreMissingSplitsActivity"
+            android:enabled="false"
+            android:exported="false"
+            android:launchMode="singleInstance"
+            android:process=":playcore_missing_splits_activity"
+            android:stateNotNeeded="true" />
+        <activity
+            android:name="com.google.android.play.core.common.PlayCoreDialogWrapperActivity"
+            android:exported="false"
+            android:stateNotNeeded="true"
+            android:theme="@style/Theme.PlayCore.Transparent" /> <!-- The services will be merged into the manifest of the hosting app. -->
+        <service
+            android:name="com.google.android.play.core.assetpacks.AssetPackExtractionService"
+            android:enabled="false"
+            android:exported="true" >
+            <meta-data
+                android:name="com.google.android.play.core.assetpacks.versionCode"
+                android:value="11003" />
+        </service>
+        <service
+            android:name="com.google.android.play.core.assetpacks.ExtractionForegroundService"
+            android:enabled="false"
+            android:exported="false" />
     </application>
 
 </manifest>

@@ -11,13 +11,16 @@ import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.navigation.Navigation
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import org.tensorflow.lite.examples.objectdetection.fragments.CameraFragment
 
 class MyAdapterForObject(
     private val context: Context,
     private val data: MutableList<String>,
-    val onClickDelete: (Int) -> Unit
+    val onClickDelete: (Int) -> Unit,
+    val onClickPass: (String) -> Unit
 ): RecyclerView.Adapter<MyAdapterForObject.MyViewHolder>() {
 
 
@@ -50,8 +53,6 @@ class MyAdapterForObject(
     fun setItems(items:MutableList<String>){
         listdata = items
         notifyDataSetChanged()
-
-
     }
 
 
@@ -63,21 +64,24 @@ class MyAdapterForObject(
 //                    Toast.makeText(context, "按下第 ${position+ 1} 個", Toast.LENGTH_SHORT).show()
 //                    // position 從零開始的
 //                }
-        holder.itemView.setOnClickListener {
-            Toast.makeText(it.context, listdata[position] , Toast.LENGTH_SHORT).show()
-            //Manager
-            val fragmentManager = (context as AppCompatActivity).supportFragmentManager
-            val fragmentTransition = fragmentManager.beginTransaction()
+        holder.itemView.setOnClickListener {view ->
+            Toast.makeText(context, listdata[position] , Toast.LENGTH_SHORT).show()
+//            view.findNavController().navigate(R.id.action_objectSettingFragment_to_Search)
+            onClickPass(listdata[position])
 
-            fragmentTransition.remove(CameraFragment())
-
-            // Creating the new Fragment with the name passed in.
-            val bundle = Bundle()
-            val fragment = CameraFragment()
-            bundle.putString("String", listdata[position])
-            fragment.arguments = bundle
-            fragmentTransition.add(R.id.fragment_container, fragment,"A")
-            fragmentTransition.commit()
+            //Manager get 準備新技能
+//            val fragmentManager = (context as AppCompatActivity).supportFragmentManager
+//            val fragmentTransition = fragmentManager.beginTransaction()
+//
+//            fragmentTransition.remove(CameraFragment())
+//
+//            // Creating the new Fragment with the name passed in.
+//            val bundle = Bundle()
+//            val fragment = CameraFragment()
+//            bundle.putString("String", listdata[position])
+//            fragment.arguments = bundle
+//            fragmentTransition.add(R.id.fragment_container, fragment,"A")
+//            fragmentTransition.commit()
         }
     }
 }

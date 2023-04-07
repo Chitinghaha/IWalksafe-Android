@@ -95,5 +95,8 @@
     <string name="ADD">ADD</string>
     <string name="ObjectFinding">ObjectFinding</string>
     <string name="surrondding">surronding</string>
+    <string name="About">About</string>
+    <string name="speed">speed</string>
+    <string name="language">language</string>
 
 </resources>

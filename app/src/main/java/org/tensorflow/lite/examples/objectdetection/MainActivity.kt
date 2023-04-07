@@ -29,9 +29,16 @@ import android.speech.RecognizerIntent
 import android.speech.tts.TextToSpeech
 import android.util.Log
 import android.widget.Toast
+import android.widget.Toolbar
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
+import androidx.navigation.NavController
+import androidx.navigation.findNavController
+import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.ui.AppBarConfiguration
+import androidx.navigation.ui.setupWithNavController
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import org.tensorflow.lite.examples.objectdetection.databinding.ActivityMainBinding
 import org.tensorflow.lite.examples.objectdetection.fragments.*
 import java.util.*
@@ -44,6 +51,13 @@ import java.util.*
 //Binding https://xnfood.com.tw/android-databinding-mvvc/
 class MainActivity : AppCompatActivity() {
     private lateinit var activityMainBinding: ActivityMainBinding
+    private  lateinit var appBarConfiguration:AppBarConfiguration
+    private  lateinit var navHostFragment: NavHostFragment
+    private  lateinit var navController:NavController
+    private  lateinit var toolbar: Toolbar
+    private  lateinit var bottomNavView: BottomNavigationView
+
+
 
     private  var activity_channel = 0
 
@@ -53,9 +67,15 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         activityMainBinding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(activityMainBinding.root)
+        navHostFragment = supportFragmentManager.findFragmentById(R.id.fragment_container) as NavHostFragment
+        navController = navHostFragment.navController
+        appBarConfiguration = AppBarConfiguration(navController.graph)
+        activityMainBinding.toolbar.setupWithNavController(navController,appBarConfiguration)
+        activityMainBinding.navigation.setupWithNavController(navController)
 
 
         Log.d("compose", "Main onCreate()")
+
 
 
 //
@@ -69,42 +89,42 @@ class MainActivity : AppCompatActivity() {
 //        }
 
 
-        activityMainBinding.navigation.setOnNavigationItemSelectedListener {
-            val fragmentManager = supportFragmentManager
-            val fragmentTransition = fragmentManager.beginTransaction()
-
-            when(it.itemId){
-                R.id.Home -> {
-
-                    fragmentTransition.replace(R.id.fragment_container,  HomeFragment())
-                    fragmentTransition.commit()
-                }
-
-                R.id.Search-> {
-                    fragmentTransition.replace(R.id.fragment_container,  CameraFragment())
-                    fragmentTransition.commit()
-
-                }
-                R.id.WalkModel -> {
-//                    activity_channel = 0
-//                    displaySpeechRecognizer()
-
-                    fragmentTransition.replace(R.id.fragment_container, WalkModeFragment())
-                    fragmentTransition.commit()
-                }
-
-                R.id.Setting-> {
-                    fragmentTransition.replace(R.id.fragment_container, SettingsFragment())
-                    fragmentTransition.commit()
-
-                }
-
-                else ->{
-
-                }
-            }
-            true
-        }
+//        activityMainBinding.navigation.setOnNavigationItemSelectedListener {
+//            val fragmentManager = supportFragmentManager
+//            val fragmentTransition = fragmentManager.beginTransaction()
+//
+//            when(it.itemId){
+//                R.id.Home -> {
+//
+//                    fragmentTransition.replace(R.id.fragment_container,  HomeFragment())
+//                    fragmentTransition.commit()
+//                }
+//
+//                R.id.Search-> {
+//                    fragmentTransition.replace(R.id.fragment_container,  CameraFragment())
+//                    fragmentTransition.commit()
+//
+//                }
+//                R.id.WalkModel -> {
+////                    activity_channel = 0
+////                    displaySpeechRecognizer()
+//
+//                    fragmentTransition.replace(R.id.fragment_container, WalkModeFragment())
+//                    fragmentTransition.commit()
+//                }
+//
+//                R.id.Setting-> {
+//                    fragmentTransition.replace(R.id.fragment_container, SettingsFragment())
+//                    fragmentTransition.commit()
+//
+//                }
+//
+//                else ->{
+//
+//                }
+//            }
+//            true
+//        }
     }
 
 

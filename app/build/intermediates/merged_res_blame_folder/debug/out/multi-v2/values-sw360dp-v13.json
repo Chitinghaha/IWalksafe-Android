@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "org.tensorflow.lite.examples.objectdetection.app-mergeDebugResources-54:/values-sw360dp-v13/values-sw360dp-v13.xml",
+            "outputFile": "org.tensorflow.lite.examples.objectdetection.app-mergeDebugResources-72:/values-sw360dp-v13/values-sw360dp-v13.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\tnnd\\.gradle\\caches\\transforms-3\\369c9863b8f75a01934d085040950384\\transformed\\preference-1.2.0\\res\\values-sw360dp-v13\\values-sw360dp-v13.xml",
+                    "source": "C:\\Users\\tnnd\\.gradle\\caches\\transforms-3\\f4f78b507984c1aa838f673efd951ae8\\transformed\\preference-1.2.0\\res\\values-sw360dp-v13\\values-sw360dp-v13.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",
