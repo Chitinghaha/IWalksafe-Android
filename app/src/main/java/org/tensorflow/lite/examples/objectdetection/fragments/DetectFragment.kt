@@ -6,6 +6,9 @@ import android.content.Intent
 import android.content.SharedPreferences
 import android.content.res.Configuration
 import android.graphics.Bitmap
+import android.graphics.Color
+import android.graphics.Rect
+import android.graphics.RectF
 import android.media.MediaPlayer
 import android.os.Bundle
 import android.speech.RecognizerIntent
@@ -328,6 +331,33 @@ class DetectFragment :Fragment(R.layout.fragment_detect), ObjectDetectorHelper.D
         imageHeight: Int,
         imageWidth: Int,
     ) {
+        val objectRect = getObjectRect(results)
+
+        if (objectRect != null && objectRect.width() > 0 && objectRect.height() > 0) {
+            val clippedObjectRect = clipObjectRect(objectRect, imageWidth, imageHeight)
+
+            if (clippedObjectRect != null) {
+                val objectBitmap = Bitmap.createBitmap(
+                    bitmapBuffer,
+                    clippedObjectRect.left,
+                    clippedObjectRect.top,
+                    clippedObjectRect.width(),
+                    clippedObjectRect.height(),
+                    null,
+                    false
+                )
+
+                // 獲取物體範圍內的平均顏色
+                val averageColor = getAverageColor(objectBitmap)
+                val closestColorName = getClosestColorName(averageColor)
+                val rgbValues = getRGBValues(averageColor)
+
+                activity?.runOnUiThread {
+                    fragmentDetectBinding.colorTextView.text = "$closestColorName\n$rgbValues"
+                    fragmentDetectBinding.root.setBackgroundColor(averageColor)
+                }
+            }
+        }
 
         // Log.d("compose", "fragment onResults()")
         activity?.runOnUiThread {
@@ -348,6 +378,147 @@ class DetectFragment :Fragment(R.layout.fragment_detect), ObjectDetectorHelper.D
         // Force a redraw
         fragmentDetectBinding.overlay.invalidate()
     }
+
+    private fun clipObjectRect(rect: Rect, maxWidth: Int, maxHeight: Int): Rect? {
+        val left = rect.left.coerceIn(0, maxWidth - 1)
+        val top = rect.top.coerceIn(0, maxHeight - 1)
+        val right = rect.right.coerceIn(left + 1, maxWidth-1)
+        val bottom = rect.bottom.coerceIn(top + 1, maxHeight-1)
+
+        if (left >= right || top >= bottom) {
+            return null
+        }
+
+        return Rect(left, top, right, bottom)
+    }
+
+
+
+
+
+    private fun getObjectRect(results: MutableList<Detection>?): Rect? {
+        var maxBoundingBox: Rect? = null
+        var maxBoundingBoxArea = 0
+
+        results?.forEach { detection ->
+            val boundingBox = detection.boundingBox
+
+            val rect = Rect()
+            boundingBox.round(rect)
+
+            val boundingBoxArea = rect.width() * rect.height()
+
+            if (boundingBoxArea > maxBoundingBoxArea) {
+                maxBoundingBox = rect
+                maxBoundingBoxArea = boundingBoxArea
+            }
+        }
+
+        return maxBoundingBox
+    }
+
+
+
+
+
+
+
+
+
+    fun getAverageColor(bitmap: Bitmap): Int {
+        var totalRed = 0
+        var totalGreen = 0
+        var totalBlue = 0
+
+        var pixelCount = 0
+
+        for (x in 0 until bitmap.width) {
+            for (y in 0 until bitmap.height) {
+                val pixel = bitmap.getPixel(x, y)
+                val red = Color.red(pixel)
+                val green = Color.green(pixel)
+                val blue = Color.blue(pixel)
+
+                totalRed += red
+                totalGreen += green
+                totalBlue += blue
+
+                pixelCount++
+            }
+        }
+
+        val averageRed = totalRed / pixelCount
+        val averageGreen = totalGreen / pixelCount
+        val averageBlue = totalBlue / pixelCount
+
+        return Color.rgb(averageRed, averageGreen, averageBlue)
+    }
+
+    fun getClosestColorName(color: Int): String {
+        val targetColors = listOf(
+            Color.RED,
+            Color.parseColor("#FFA500"),  // 橙色
+            Color.YELLOW,
+            Color.GREEN,
+            Color.CYAN,
+            Color.BLUE,
+            Color.MAGENTA,
+            Color.BLACK,
+            Color.WHITE
+        )
+
+        var minDistance = Double.MAX_VALUE
+        var closestColorName = ""
+
+        for (targetColor in targetColors) {
+            val distance = calculateDistance(color, targetColor)
+            if (distance < minDistance) {
+                minDistance = distance
+                closestColorName = getColorName(targetColor)
+            }
+        }
+
+        return closestColorName
+    }
+
+    fun calculateDistance(color1: Int, color2: Int): Double {
+        val r1 = Color.red(color1)
+        val g1 = Color.green(color1)
+        val b1 = Color.blue(color1)
+
+        val r2 = Color.red(color2)
+        val g2 = Color.green(color2)
+        val b2 = Color.blue(color2)
+
+        val dr = r2 - r1
+        val dg = g2 - g1
+        val db = b2 - b1
+
+        return Math.sqrt(dr * dr + dg * dg + db * db.toDouble())
+    }
+
+    fun getColorName(color: Int): String {
+        return when (color) {
+            Color.RED -> "紅"
+            Color.parseColor("#FFA500") -> "橙"
+            Color.YELLOW -> "黃"
+            Color.GREEN -> "綠"
+            Color.CYAN -> "青"
+            Color.BLUE -> "藍"
+            Color.MAGENTA -> "紫"
+            Color.BLACK -> "黑"
+            Color.WHITE -> "白"
+            else -> ""
+        }
+    }
+
+    fun getRGBValues(color: Int): String {
+        val red = Color.red(color)
+        val green = Color.green(color)
+        val blue = Color.blue(color)
+        return "RGB($red, $green, $blue)"
+    }
+
 
     private fun Debounce(results: MutableList<Detection>?) {
         if (results != null) {

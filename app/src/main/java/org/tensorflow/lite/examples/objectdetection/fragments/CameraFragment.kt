@@ -57,8 +57,6 @@ import kotlin.concurrent.schedule
 class CameraFragment() : Fragment(R.layout.fragment_camera), ObjectDetectorHelper.DetectorListener,
     TextToSpeech.OnInitListener {
 
-
-
     private val TAG = "ObjectDetection"
 
     // ?：做 null check 後，不為空的話再執行   !!：堅持不會是空值，執行就是了

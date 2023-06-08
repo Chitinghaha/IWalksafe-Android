@@ -56,7 +56,20 @@
         app:layout_constraintTop_toTopOf="parent"
         app:scaleType="fillStart">
 
+
     </androidx.camera.view.PreviewView>
+
+    <TextView
+        android:id="@+id/colorTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:textColor="@android:color/white"
+        android:textSize="32sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <org.tensorflow.lite.examples.objectdetection.OverlayView
         android:id="@+id/overlay"
