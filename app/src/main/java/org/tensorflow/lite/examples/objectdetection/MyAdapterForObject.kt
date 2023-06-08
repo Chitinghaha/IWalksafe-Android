@@ -28,12 +28,12 @@ class MyAdapterForObject(
     inner class MyViewHolder(val view: View): RecyclerView.ViewHolder(view){
         fun bind(text:String , index:Int){
             val tv = view.findViewById<TextView>(R.id.textId)
-            val but = view.findViewById<Button>(R.id.btnClick)
-            but.setOnClickListener {
-                onClickDelete(index)
-//                Toast.makeText(getContext(), "按下第 ${position+ 1} 個", Toast.LENGTH_SHORT).show()
-                // position 從零開始的
-            }
+//            val but = view.findViewById<Button>(R.id.btnClick)
+//            but.setOnClickListener {
+//                onClickDelete(index)
+////                Toast.makeText(getContext(), "按下第 ${position+ 1} 個", Toast.LENGTH_SHORT).show()
+//                // position 從零開始的
+//            }
             tv.text = text
         }
     }

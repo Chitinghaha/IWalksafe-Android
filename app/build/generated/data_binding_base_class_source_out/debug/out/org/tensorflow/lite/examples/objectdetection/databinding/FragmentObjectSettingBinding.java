@@ -5,7 +5,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.FrameLayout;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -22,24 +21,16 @@ public final class FragmentObjectSettingBinding implements ViewBinding {
   private final FrameLayout rootView;
 
   @NonNull
-  public final Button obBtn;
-
-  @NonNull
   public final Button obButtonSound;
 
   @NonNull
   public final RecyclerView obRView;
 
-  @NonNull
-  public final EditText obText;
-
-  private FragmentObjectSettingBinding(@NonNull FrameLayout rootView, @NonNull Button obBtn,
-      @NonNull Button obButtonSound, @NonNull RecyclerView obRView, @NonNull EditText obText) {
+  private FragmentObjectSettingBinding(@NonNull FrameLayout rootView, @NonNull Button obButtonSound,
+      @NonNull RecyclerView obRView) {
     this.rootView = rootView;
-    this.obBtn = obBtn;
     this.obButtonSound = obButtonSound;
     this.obRView = obRView;
-    this.obText = obText;
   }
 
   @Override
@@ -69,12 +60,6 @@ public final class FragmentObjectSettingBinding implements ViewBinding {
     // This is done to optimize the compiled bytecode for size and performance.
     int id;
     missingId: {
-      id = R.id.ob_btn;
-      Button obBtn = ViewBindings.findChildViewById(rootView, id);
-      if (obBtn == null) {
-        break missingId;
-      }
-
       id = R.id.ob_buttonSound;
       Button obButtonSound = ViewBindings.findChildViewById(rootView, id);
       if (obButtonSound == null) {
@@ -87,14 +72,7 @@ public final class FragmentObjectSettingBinding implements ViewBinding {
         break missingId;
       }
 
-      id = R.id.obText;
-      EditText obText = ViewBindings.findChildViewById(rootView, id);
-      if (obText == null) {
-        break missingId;
-      }
-
-      return new FragmentObjectSettingBinding((FrameLayout) rootView, obBtn, obButtonSound, obRView,
-          obText);
+      return new FragmentObjectSettingBinding((FrameLayout) rootView, obButtonSound, obRView);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

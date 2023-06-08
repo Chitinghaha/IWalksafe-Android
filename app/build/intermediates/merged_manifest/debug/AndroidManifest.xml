@@ -33,8 +33,14 @@
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
-        android:taskAffinity=""
-        android:testOnly="true" >
+        android:taskAffinity="" >
+        <activity
+            android:name="org.tensorflow.lite.examples.objectdetection.IntroActivity"
+            android:exported="false" >
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
         <activity
             android:name="org.tensorflow.lite.examples.objectdetection.SplashScreenActivity"
             android:exported="false" >

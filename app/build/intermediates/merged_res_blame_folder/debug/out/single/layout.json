@@ -1,66 +1,62 @@
 [
     {
-        "merged": "C:\\Users\\tnnd\\.gradle\\daemon\\7.4\\org.tensorflow.lite.examples.objectdetection.app-mergeDebugResources-73:\\layout\\fragment_navigation_setting.xml",
-        "source": "C:\\Users\\tnnd\\.gradle\\daemon\\7.4\\org.tensorflow.lite.examples.objectdetection.app-main-76:\\layout\\fragment_navigation_setting.xml"
+        "merged": "org.tensorflow.lite.examples.objectdetection.app-mergeDebugResources-73:/layout/fragment_compass.xml",
+        "source": "org.tensorflow.lite.examples.objectdetection.app-main-76:/layout/fragment_compass.xml"
     },
     {
-        "merged": "C:\\Users\\tnnd\\.gradle\\daemon\\7.4\\org.tensorflow.lite.examples.objectdetection.app-mergeDebugResources-73:\\layout\\info_bottom_sheet.xml",
-        "source": "C:\\Users\\tnnd\\.gradle\\daemon\\7.4\\org.tensorflow.lite.examples.objectdetection.app-main-76:\\layout\\info_bottom_sheet.xml"
+        "merged": "org.tensorflow.lite.examples.objectdetection.app-mergeDebugResources-73:/layout/fragment_detect.xml",
+        "source": "org.tensorflow.lite.examples.objectdetection.app-main-76:/layout/fragment_detect.xml"
     },
     {
-        "merged": "C:\\Users\\tnnd\\.gradle\\daemon\\7.4\\org.tensorflow.lite.examples.objectdetection.app-mergeDebugResources-73:\\layout\\activity_main.xml",
-        "source": "C:\\Users\\tnnd\\.gradle\\daemon\\7.4\\org.tensorflow.lite.examples.objectdetection.app-main-76:\\layout\\activity_main.xml"
+        "merged": "org.tensorflow.lite.examples.objectdetection.app-mergeDebugResources-73:/layout/fragment_intro.xml",
+        "source": "org.tensorflow.lite.examples.objectdetection.app-main-76:/layout/fragment_intro.xml"
     },
     {
-        "merged": "C:\\Users\\tnnd\\.gradle\\daemon\\7.4\\org.tensorflow.lite.examples.objectdetection.app-mergeDebugResources-73:\\layout\\fragment_home.xml",
-        "source": "C:\\Users\\tnnd\\.gradle\\daemon\\7.4\\org.tensorflow.lite.examples.objectdetection.app-main-76:\\layout\\fragment_home.xml"
+        "merged": "org.tensorflow.lite.examples.objectdetection.app-mergeDebugResources-73:/layout/fragment_slapsh.xml",
+        "source": "org.tensorflow.lite.examples.objectdetection.app-main-76:/layout/fragment_slapsh.xml"
     },
     {
-        "merged": "C:\\Users\\tnnd\\.gradle\\daemon\\7.4\\org.tensorflow.lite.examples.objectdetection.app-mergeDebugResources-73:\\layout\\fragment_find_object.xml",
-        "source": "C:\\Users\\tnnd\\.gradle\\daemon\\7.4\\org.tensorflow.lite.examples.objectdetection.app-main-76:\\layout\\fragment_find_object.xml"
+        "merged": "org.tensorflow.lite.examples.objectdetection.app-mergeDebugResources-73:/layout/fragment_find_object.xml",
+        "source": "org.tensorflow.lite.examples.objectdetection.app-main-76:/layout/fragment_find_object.xml"
     },
     {
-        "merged": "C:\\Users\\tnnd\\.gradle\\daemon\\7.4\\org.tensorflow.lite.examples.objectdetection.app-mergeDebugResources-73:\\layout\\fragment_camera.xml",
-        "source": "C:\\Users\\tnnd\\.gradle\\daemon\\7.4\\org.tensorflow.lite.examples.objectdetection.app-main-76:\\layout\\fragment_camera.xml"
+        "merged": "org.tensorflow.lite.examples.objectdetection.app-mergeDebugResources-73:/layout/items_example.xml",
+        "source": "org.tensorflow.lite.examples.objectdetection.app-main-76:/layout/items_example.xml"
     },
     {
-        "merged": "C:\\Users\\tnnd\\.gradle\\daemon\\7.4\\org.tensorflow.lite.examples.objectdetection.app-mergeDebugResources-73:\\layout\\fragment_walk_mode.xml",
-        "source": "C:\\Users\\tnnd\\.gradle\\daemon\\7.4\\org.tensorflow.lite.examples.objectdetection.app-main-76:\\layout\\fragment_walk_mode.xml"
+        "merged": "org.tensorflow.lite.examples.objectdetection.app-mergeDebugResources-73:/layout/info_bottom_sheet.xml",
+        "source": "org.tensorflow.lite.examples.objectdetection.app-main-76:/layout/info_bottom_sheet.xml"
+    },
+    {
+        "merged": "org.tensorflow.lite.examples.objectdetection.app-mergeDebugResources-73:/layout/activity_compass_main.xml",
+        "source": "org.tensorflow.lite.examples.objectdetection.app-main-76:/layout/activity_compass_main.xml"
     },
     {
         "merged": "org.tensorflow.lite.examples.objectdetection.app-mergeDebugResources-73:/layout/fragment_home.xml",
         "source": "org.tensorflow.lite.examples.objectdetection.app-main-76:/layout/fragment_home.xml"
     },
     {
-        "merged": "C:\\Users\\tnnd\\.gradle\\daemon\\7.4\\org.tensorflow.lite.examples.objectdetection.app-mergeDebugResources-73:\\layout\\fragment_detect.xml",
-        "source": "C:\\Users\\tnnd\\.gradle\\daemon\\7.4\\org.tensorflow.lite.examples.objectdetection.app-main-76:\\layout\\fragment_detect.xml"
+        "merged": "org.tensorflow.lite.examples.objectdetection.app-mergeDebugResources-73:/layout/fragment_camera.xml",
+        "source": "org.tensorflow.lite.examples.objectdetection.app-main-76:/layout/fragment_camera.xml"
     },
     {
-        "merged": "C:\\Users\\tnnd\\.gradle\\daemon\\7.4\\org.tensorflow.lite.examples.objectdetection.app-mergeDebugResources-73:\\layout\\fragment_compass.xml",
-        "source": "C:\\Users\\tnnd\\.gradle\\daemon\\7.4\\org.tensorflow.lite.examples.objectdetection.app-main-76:\\layout\\fragment_compass.xml"
+        "merged": "org.tensorflow.lite.examples.objectdetection.app-mergeDebugResources-73:/layout/fragment_navigation_setting.xml",
+        "source": "org.tensorflow.lite.examples.objectdetection.app-main-76:/layout/fragment_navigation_setting.xml"
     },
     {
-        "merged": "C:\\Users\\tnnd\\.gradle\\daemon\\7.4\\org.tensorflow.lite.examples.objectdetection.app-mergeDebugResources-73:\\layout\\fragment_slapsh.xml",
-        "source": "C:\\Users\\tnnd\\.gradle\\daemon\\7.4\\org.tensorflow.lite.examples.objectdetection.app-main-76:\\layout\\fragment_slapsh.xml"
+        "merged": "org.tensorflow.lite.examples.objectdetection.app-mergeDebugResources-73:/layout/activity_main.xml",
+        "source": "org.tensorflow.lite.examples.objectdetection.app-main-76:/layout/activity_main.xml"
     },
     {
-        "merged": "C:\\Users\\tnnd\\.gradle\\daemon\\7.4\\org.tensorflow.lite.examples.objectdetection.app-mergeDebugResources-73:\\layout\\fragment_navigation.xml",
-        "source": "C:\\Users\\tnnd\\.gradle\\daemon\\7.4\\org.tensorflow.lite.examples.objectdetection.app-main-76:\\layout\\fragment_navigation.xml"
+        "merged": "org.tensorflow.lite.examples.objectdetection.app-mergeDebugResources-73:/layout/fragment_object_setting.xml",
+        "source": "org.tensorflow.lite.examples.objectdetection.app-main-76:/layout/fragment_object_setting.xml"
     },
     {
-        "merged": "C:\\Users\\tnnd\\.gradle\\daemon\\7.4\\org.tensorflow.lite.examples.objectdetection.app-mergeDebugResources-73:\\layout\\items_example.xml",
-        "source": "C:\\Users\\tnnd\\.gradle\\daemon\\7.4\\org.tensorflow.lite.examples.objectdetection.app-main-76:\\layout\\items_example.xml"
+        "merged": "org.tensorflow.lite.examples.objectdetection.app-mergeDebugResources-73:/layout/fragment_walk_mode.xml",
+        "source": "org.tensorflow.lite.examples.objectdetection.app-main-76:/layout/fragment_walk_mode.xml"
     },
     {
-        "merged": "C:\\Users\\tnnd\\.gradle\\daemon\\7.4\\org.tensorflow.lite.examples.objectdetection.app-mergeDebugResources-73:\\layout\\activity_splash_screen.xml",
-        "source": "C:\\Users\\tnnd\\.gradle\\daemon\\7.4\\org.tensorflow.lite.examples.objectdetection.app-main-76:\\layout\\activity_splash_screen.xml"
-    },
-    {
-        "merged": "C:\\Users\\tnnd\\.gradle\\daemon\\7.4\\org.tensorflow.lite.examples.objectdetection.app-mergeDebugResources-73:\\layout\\activity_compass_main.xml",
-        "source": "C:\\Users\\tnnd\\.gradle\\daemon\\7.4\\org.tensorflow.lite.examples.objectdetection.app-main-76:\\layout\\activity_compass_main.xml"
-    },
-    {
-        "merged": "C:\\Users\\tnnd\\.gradle\\daemon\\7.4\\org.tensorflow.lite.examples.objectdetection.app-mergeDebugResources-73:\\layout\\fragment_object_setting.xml",
-        "source": "C:\\Users\\tnnd\\.gradle\\daemon\\7.4\\org.tensorflow.lite.examples.objectdetection.app-main-76:\\layout\\fragment_object_setting.xml"
+        "merged": "org.tensorflow.lite.examples.objectdetection.app-mergeDebugResources-73:/layout/fragment_navigation.xml",
+        "source": "org.tensorflow.lite.examples.objectdetection.app-main-76:/layout/fragment_navigation.xml"
     }
 ]

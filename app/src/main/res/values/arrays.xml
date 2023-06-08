@@ -11,17 +11,187 @@
     </string-array>
 
     <string-array name="Detect_object">
-        <item>@string/bed</item>
-        <item>@string/chair</item>
+        <item>@string/person</item>
+        <item>@string/bicycle</item>
+        <item>@string/car</item>
+        <item>@string/motorcycle</item>
+        <item>@string/airplane</item>
+        <item>@string/bus</item>
+        <item>@string/train</item>
+        <item>@string/truck</item>
+        <item>@string/boat</item>
+        <item>@string/traffic_light</item>
+        <item>@string/fire_hydrant</item>
+        <item>@string/stop_sign</item>
+        <item>@string/parking_meter</item>
+        <item>@string/bench</item>
+        <item>@string/bird</item>
+        <item>@string/cat</item>
+        <item>@string/dog</item>
+        <item>@string/horse</item>
+        <item>@string/sheep</item>
+        <item>@string/cow</item>
+        <item>@string/elephant</item>
+        <item>@string/bear</item>
+        <item>@string/zebra</item>
+        <item>@string/giraffe</item>
+        <item>@string/backpack</item>
+        <item>@string/umbrella</item>
+        <item>@string/handbag</item>
+        <item>@string/tie</item>
+        <item>@string/suitcase</item>
+        <item>@string/frisbee</item>
+        <item>@string/skis</item>
+        <item>@string/snowboard</item>
+        <item>@string/sports_ball</item>
+        <item>@string/kite</item>
+        <item>@string/baseball_bat</item>
+        <item>@string/baseball_glove</item>
+        <item>@string/skateboard</item>
+        <item>@string/surfboard</item>
+        <item>@string/tennis_racket</item>
+        <item>@string/bottle</item>
+        <item>@string/wine_glass</item>
         <item>@string/cup</item>
+        <item>@string/fork</item>
+        <item>@string/knife</item>
+        <item>@string/spoon</item>
+        <item>@string/bowl</item>
+        <item>@string/banana</item>
+        <item>@string/apple</item>
+        <item>@string/sandwich</item>
+        <item>@string/orange</item>
+        <item>@string/broccoli</item>
+        <item>@string/carrot</item>
+        <item>@string/hot_dog</item>
+        <item>@string/pizza</item>
+        <item>@string/donut</item>
+        <item>@string/cake</item>
+        <item>@string/chair</item>
+        <item>@string/couch</item>
+        <item>@string/potted_plant</item>
+        <item>@string/bed</item>
+        <item>@string/dining_table</item>
+        <item>@string/toilet</item>
+        <item>@string/tv</item>
         <item>@string/laptop</item>
+        <item>@string/mouse</item>
         <item>@string/remote</item>
+        <item>@string/keyboard</item>
+        <item>@string/cell_phone</item>
+        <item>@string/microwave</item>
+        <item>@string/oven</item>
+        <item>@string/toaster</item>
+        <item>@string/sink</item>
+        <item>@string/refrigerator</item>
+        <item>@string/book</item>
+        <item>@string/clock</item>
+        <item>@string/vase</item>
+        <item>@string/scissors</item>
+        <item>@string/teddy_bear</item>
+        <item>@string/hair_drier</item>
+        <item>@string/toothbrush</item>
+    </string-array>
+
+
+
+
+    <string-array name="Find_object">
+        <item>@string/person</item>
+        <item>@string/bicycle</item>
+        <item>@string/car</item>
+        <item>@string/motorcycle</item>
+        <item>@string/airplane</item>
+        <item>@string/bus</item>
+        <item>@string/train</item>
+        <item>@string/truck</item>
+        <item>@string/boat</item>
+        <item>@string/traffic_light</item>
+        <item>@string/fire_hydrant</item>
+        <item>@string/stop_sign</item>
+        <item>@string/parking_meter</item>
+        <item>@string/bench</item>
+        <item>@string/bird</item>
+        <item>@string/cat</item>
+        <item>@string/dog</item>
+        <item>@string/horse</item>
+        <item>@string/sheep</item>
+        <item>@string/cow</item>
+        <item>@string/elephant</item>
+        <item>@string/bear</item>
+        <item>@string/zebra</item>
+        <item>@string/giraffe</item>
+        <item>@string/backpack</item>
+        <item>@string/umbrella</item>
+        <item>@string/handbag</item>
+        <item>@string/tie</item>
+        <item>@string/suitcase</item>
+        <item>@string/frisbee</item>
+        <item>@string/skis</item>
+        <item>@string/snowboard</item>
+        <item>@string/sports_ball</item>
+        <item>@string/kite</item>
+        <item>@string/baseball_bat</item>
+        <item>@string/baseball_glove</item>
+        <item>@string/skateboard</item>
+        <item>@string/surfboard</item>
+        <item>@string/tennis_racket</item>
+        <item>@string/bottle</item>
+        <item>@string/wine_glass</item>
+        <item>@string/cup</item>
+        <item>@string/fork</item>
+        <item>@string/knife</item>
+        <item>@string/spoon</item>
+        <item>@string/bowl</item>
+        <item>@string/banana</item>
+        <item>@string/apple</item>
+        <item>@string/sandwich</item>
+        <item>@string/orange</item>
+        <item>@string/broccoli</item>
+        <item>@string/carrot</item>
+        <item>@string/hot_dog</item>
+        <item>@string/pizza</item>
+        <item>@string/donut</item>
+        <item>@string/cake</item>
+        <item>@string/chair</item>
+        <item>@string/couch</item>
+        <item>@string/potted_plant</item>
+        <item>@string/bed</item>
+        <item>@string/dining_table</item>
+        <item>@string/toilet</item>
+        <item>@string/tv</item>
+        <item>@string/laptop</item>
+        <item>@string/mouse</item>
+        <item>@string/remote</item>
+        <item>@string/keyboard</item>
+        <item>@string/cell_phone</item>
+        <item>@string/microwave</item>
+        <item>@string/oven</item>
+        <item>@string/toaster</item>
+        <item>@string/sink</item>
+        <item>@string/refrigerator</item>
+        <item>@string/book</item>
+        <item>@string/clock</item>
+        <item>@string/vase</item>
+        <item>@string/scissors</item>
+        <item>@string/teddy_bear</item>
+        <item>@string/hair_drier</item>
+        <item>@string/toothbrush</item>
     </string-array>
 
     <string-array name="Waring_object">
         <item>@string/person</item>
         <item>@string/dog</item>
         <item>@string/cat</item>
+        <item>@string/bicycle</item>
+        <item>@string/motorcycle</item>
+        <item>@string/bus</item>
+        <item>@string/car</item>
+    </string-array>
+
+    <string-array name="Distance_object">
+        <item>@string/traffic_light</item>
+        <item>@string/stop_sign</item>
     </string-array>
 
     <string-array name="Max_result">
@@ -49,6 +219,11 @@
     <string-array name="language">
         <item>English</item>
         <item>Chinese</item>
+    </string-array>
+
+    <string-array name="sound">
+        <item>@string/beep</item>
+        <item>@string/item_name</item>
     </string-array>
 
     <string-array name="Delegate">

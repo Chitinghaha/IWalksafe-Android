@@ -25,7 +25,6 @@ public final class FindObjectFragment extends androidx.fragment.app.Fragment imp
     private java.lang.String NumThreads;
     private java.lang.String Delegate;
     private java.lang.String Ml;
-    private final java.util.Map<java.lang.String, java.lang.String> ChToEn = null;
     @org.jetbrains.annotations.NotNull()
     private final java.util.Map<java.lang.String, java.lang.Integer> DebounceMap = null;
     @org.jetbrains.annotations.NotNull()
@@ -33,6 +32,7 @@ public final class FindObjectFragment extends androidx.fragment.app.Fragment imp
     private android.speech.tts.TextToSpeech tts;
     private final androidx.navigation.NavArgsLazy args$delegate = null;
     private android.content.SharedPreferences sp;
+    private final java.util.Map<java.lang.String, java.lang.String> ChToEn = null;
     
     public FindObjectFragment() {
         super();

@@ -22,28 +22,28 @@ class MyAdapter(
     inner class MyViewHolder(val view: View): RecyclerView.ViewHolder(view){
         fun bind(text:String , index:Int){
             val tv = view.findViewById<TextView>(R.id.textId)
-            val but = view.findViewById<Button>(R.id.btnClick)
-            but.setOnClickListener {
-                onClickDelete(index)
-//                Toast.makeText(getContext(), "按下第 ${position+ 1} 個", Toast.LENGTH_SHORT).show()
-                // position 從零開始的
-            }
-            tv.text = text
-//            when(listdata[index]){
-//                "家"-> {
-//                    val gmmIntentUri =
-//                        Uri.parse("google.navigation:q=24°47'12 120°59'49&mode=w")
-//                    val mapIntent = Intent(Intent.ACTION_VIEW, gmmIntentUri)
-//                    mapIntent.setPackage("com.google.android.apps.maps")
-//
-//                    // check have google map app
-//                    view.context?.let {
-//                        mapIntent.resolveActivity(it.packageManager)?.let {
-//                            view.context.startActivity(mapIntent)
-//                        }
-//                    }
-//                }
+//            val but = view.findViewById<Button>(R.id.btnClick)
+//            but.setOnClickListener {
+//                onClickDelete(index)
+////                Toast.makeText(getContext(), "按下第 ${position+ 1} 個", Toast.LENGTH_SHORT).show()
+//                // position 從零開始的
 //            }
+            tv.text = text
+            when(listdata[index]){
+                "家"-> {
+                    val gmmIntentUri =
+                        Uri.parse("google.navigation:q=24°47'12 120°59'49&mode=w")
+                    val mapIntent = Intent(Intent.ACTION_VIEW, gmmIntentUri)
+                    mapIntent.setPackage("com.google.android.apps.maps")
+
+                    // check have google map app
+                    view.context?.let {
+                        mapIntent.resolveActivity(it.packageManager)?.let {
+                            view.context.startActivity(mapIntent)
+                        }
+                    }
+                }
+            }
         }
     }
 
@@ -64,48 +64,16 @@ class MyAdapter(
 //                }
         holder.itemView.setOnClickListener {
             Toast.makeText(it.context, listdata[position] , Toast.LENGTH_SHORT).show()
-            when(listdata[position]){
-                "家"-> {
-                    val gmmIntentUri =
-                        Uri.parse("google.navigation:q=24°47'12 120°59'49&mode=w")
-                    val mapIntent = Intent(Intent.ACTION_VIEW, gmmIntentUri)
-                    mapIntent.setPackage("com.google.android.apps.maps")
+            val str = listdata[position]
+            val gmmIntentUri =
+                Uri.parse("google.navigation:q=$str&mode=w")
+            val mapIntent = Intent(Intent.ACTION_VIEW, gmmIntentUri)
+            mapIntent.setPackage("com.google.android.apps.maps")
 
-                    // check have google map app
-                    holder.itemView.context?.let {
-                        mapIntent.resolveActivity(it.packageManager)?.let {
-                            holder.itemView.context.startActivity(mapIntent)
-                        }
-                    }
-                }
-                "故宮"->{
-
-                    val gmmIntentUri =
-                        Uri.parse("google.navigation:q=25.0937761,121.4808181&mode=w")
-                    val mapIntent = Intent(Intent.ACTION_VIEW, gmmIntentUri)
-                    mapIntent.setPackage("com.google.android.apps.maps")
-
-                    // check have google map app
-                    holder.itemView.context?.let {
-                        mapIntent.resolveActivity(it.packageManager)?.let {
-                            holder.itemView.context.startActivity(mapIntent)
-                        }
-                    }
-                }
-                else->{
-                    val str = listdata[position]
-                    val gmmIntentUri =
-                        Uri.parse("google.navigation:q=$str&mode=w")
-                    val mapIntent = Intent(Intent.ACTION_VIEW, gmmIntentUri)
-                    mapIntent.setPackage("com.google.android.apps.maps")
-
-                    // check have google map app
-                    holder.itemView.context?.let {
-                        mapIntent.resolveActivity(it.packageManager)?.let {
-                            holder.itemView.context.startActivity(mapIntent)
-                        }
-                    }
-
+            // check have google map app
+            holder.itemView.context?.let {
+                mapIntent.resolveActivity(it.packageManager)?.let {
+                    holder.itemView.context.startActivity(mapIntent)
                 }
             }
         }

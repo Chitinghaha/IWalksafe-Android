@@ -13,6 +13,13 @@
             android:key="ob_Do"
             android:title="偵測物件種類" />
 
+        <MultiSelectListPreference
+            android:defaultValue="@array/Detect_object"
+            android:entries="@array/Detect_object"
+            android:entryValues="@array/Detect_object"
+            android:key="object"
+            android:title="尋找物件種類" />
+
     </PreferenceCategory>
     <PreferenceCategory android:title="辨識設定">
         <ListPreference

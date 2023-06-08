@@ -4,6 +4,7 @@ package org.tensorflow.lite.examples.objectdetection.databinding;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
@@ -21,14 +22,18 @@ public final class FragmentHomeBinding implements ViewBinding {
   private final ConstraintLayout rootView;
 
   @NonNull
+  public final Button homeIntro;
+
+  @NonNull
   public final ImageView imageView;
 
   @NonNull
   public final TextView ivNote;
 
-  private FragmentHomeBinding(@NonNull ConstraintLayout rootView, @NonNull ImageView imageView,
-      @NonNull TextView ivNote) {
+  private FragmentHomeBinding(@NonNull ConstraintLayout rootView, @NonNull Button homeIntro,
+      @NonNull ImageView imageView, @NonNull TextView ivNote) {
     this.rootView = rootView;
+    this.homeIntro = homeIntro;
     this.imageView = imageView;
     this.ivNote = ivNote;
   }
@@ -60,6 +65,12 @@ public final class FragmentHomeBinding implements ViewBinding {
     // This is done to optimize the compiled bytecode for size and performance.
     int id;
     missingId: {
+      id = R.id.home_intro;
+      Button homeIntro = ViewBindings.findChildViewById(rootView, id);
+      if (homeIntro == null) {
+        break missingId;
+      }
+
       id = R.id.imageView;
       ImageView imageView = ViewBindings.findChildViewById(rootView, id);
       if (imageView == null) {
@@ -72,7 +83,7 @@ public final class FragmentHomeBinding implements ViewBinding {
         break missingId;
       }
 
-      return new FragmentHomeBinding((ConstraintLayout) rootView, imageView, ivNote);
+      return new FragmentHomeBinding((ConstraintLayout) rootView, homeIntro, imageView, ivNote);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

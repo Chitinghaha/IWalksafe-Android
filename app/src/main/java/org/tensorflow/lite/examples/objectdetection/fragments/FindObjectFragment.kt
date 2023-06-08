@@ -80,13 +80,7 @@ class FindObjectFragment :Fragment(), ObjectDetectorHelper.DetectorListener{
 
 //    private val args by navArgs<FindObjectFragmentArgs>()
 
-    private val ChToEn = mutableMapOf(
-        "chair" to "椅子",
-        "bed" to  "床" ,
-        "laptop" to  "筆電",
-        "cup" to "杯子",
-        "remote" to "遙控器"
-    )
+
     val DebounceMap = mutableMapOf<String, Int>()
     val filteredDebounceSet = mutableSetOf<String>()
 
@@ -415,6 +409,89 @@ class FindObjectFragment :Fragment(), ObjectDetectorHelper.DetectorListener{
         Log.d("compose", "fragment onStart()")
         super.onStart()
     }
+
+    private val ChToEn = mutableMapOf(
+        "person" to "人",
+        "bicycle" to "自行車",
+        "car" to "汽車",
+        "motorcycle" to "摩托車",
+        "airplane" to "飛機",
+        "bus" to "公車",
+        "train" to "火車",
+        "truck" to "卡車",
+        "boat" to "船",
+        "traffic light" to "紅綠燈",
+        "fire hydrant" to "消防栓",
+        "stop sign" to "停止標誌",
+        "parking meter" to "停車計時器",
+        "bench" to "長椅",
+        "bird" to "鳥",
+        "cat" to "貓",
+        "dog" to "狗",
+        "horse" to "馬",
+        "sheep" to "綿羊",
+        "cow" to "牛",
+        "elephant" to "大象",
+        "bear" to "熊",
+        "zebra" to "斑馬",
+        "giraffe" to "長頸鹿",
+        "backpack" to "背包",
+        "umbrella" to "雨傘",
+        "handbag" to "手提包",
+        "tie" to "領帶",
+        "suitcase" to "手提箱",
+        "frisbee" to "飛盤",
+        "skis" to "滑雪板",
+        "snowboard" to "滑雪板",
+        "sports ball" to "運動球",
+        "kite" to "風箏",
+        "baseball bat" to "棒球棒",
+        "baseball glove" to "棒球手套",
+        "skateboard" to "滑板",
+        "surfboard" to "衝浪板",
+        "tennis racket" to "網球拍",
+        "bottle" to "瓶子",
+        "wine glass" to "酒杯",
+        "cup" to "杯子",
+        "fork" to "叉子",
+        "knife" to "刀",
+        "spoon" to "匙",
+        "bowl" to "碗",
+        "banana" to "香蕉",
+        "apple" to "蘋果",
+        "sandwich" to "三明治",
+        "orange" to "柳橙",
+        "broccoli" to "西蘭花",
+        "carrot" to "胡蘿蔔",
+        "hot dog" to "熱狗",
+        "pizza" to "比薩餅",
+        "donut" to "甜甜圈",
+        "cake" to "蛋糕",
+        "chair" to "椅子",
+        "couch" to "沙發",
+        "potted plant" to "盆栽植物",
+        "bed" to "床",
+        "dining table" to "餐桌",
+        "toilet" to "馬桶",
+        "tv" to "電視",
+        "laptop" to "筆記型電腦",
+        "mouse" to "鼠標",
+        "remote" to "遙控器",
+        "keyboard" to "鍵盤",
+        "cell phone" to "手機",
+        "microwave" to "微波爐",
+        "oven" to "烤箱",
+        "toaster" to "烤麵包機",
+        "sink" to "水槽",
+        "refrigerator" to "冰箱",
+        "book" to "書",
+        "clock" to "時鐘",
+        "vase" to "花瓶",
+        "scissors" to "剪刀",
+        "teddy bear" to "泰迪熊",
+        "hair drier" to "吹風機",
+        "toothbrush" to "牙刷"
+    )
 
 
 }

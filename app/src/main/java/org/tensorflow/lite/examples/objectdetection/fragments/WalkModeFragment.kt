@@ -14,6 +14,7 @@ import android.content.SharedPreferences
 import android.content.res.Configuration
 import android.graphics.Bitmap
 import android.media.MediaPlayer
+import android.speech.tts.TextToSpeech
 
 import android.util.Log
 
@@ -34,10 +35,11 @@ import org.tensorflow.lite.task.vision.detector.Detection
 import java.util.*
 import java.util.concurrent.ExecutorService
 import java.util.concurrent.Executors
+import kotlin.properties.Delegates
 
 
 class WalkModeFragment : Fragment(R.layout.fragment_walk_mode),
-    ObjectDetectorHelper.DetectorListener {
+    ObjectDetectorHelper.DetectorListener,TextToSpeech.OnInitListener {
 
     private val TAG = "ObjectDetection"
 
@@ -64,6 +66,8 @@ class WalkModeFragment : Fragment(R.layout.fragment_walk_mode),
     private var beep2: MediaPlayer? = null
     private var beep3: MediaPlayer? = null
 
+    private var tts: TextToSpeech? = null
+
     //private var results: List<Detection> = LinkedList<Detection>()
 
 
@@ -73,29 +77,33 @@ class WalkModeFragment : Fragment(R.layout.fragment_walk_mode),
     private lateinit var cameraExecutor: ExecutorService
 
 
-    lateinit var Warning_sound: MutableSet<String>
-    lateinit var MaxResult: String
-    lateinit var Threshold: String
-    lateinit var NumThreads: String
+    private lateinit var Warning_sound: MutableSet<String>
+    private lateinit var Static_sound: MutableSet<String>
+    private lateinit var All_sound: MutableSet<String>
+    val DebounceMap = mutableMapOf<String, Int>()
+    val DebounceMap_D = mutableMapOf<String, Int>()
+    private lateinit var MaxResult: String
+    private lateinit var Distance: String
+    private var Dis by Delegates.notNull<Int>()
+    private lateinit var Threshold: String
+    private lateinit var NumThreads: String
     lateinit var Delegate: String
-    lateinit var Ml: String
+    private lateinit var Ml: String
+    private lateinit var Ws: String
 
-
-    private val CHToEn = mutableMapOf(
-        "椅子" to "chair",
-        "床" to "bed",
-        "筆電" to "laptop",
-        "杯子" to "cup",
-        "遙控器" to "remote"
-    )
 
     private val EnToCh = mutableMapOf(
         "person" to "人",
         "cat" to "貓",
-        "dog" to "狗"
-
+        "dog" to "狗",
+        "bicycle" to "腳踏車",
+        "motorcycle" to "摩托車",
+        "car" to "汽車",
+        "bus" to "公車",
+        "traffic light" to "紅綠燈",
+        "stop sign" to "暫停標誌",
+        "bench" to "長椅",
     )
-
 
     //firebase
 //    private lateinit var database: DatabaseReference
@@ -113,11 +121,18 @@ class WalkModeFragment : Fragment(R.layout.fragment_walk_mode),
         beep2 = MediaPlayer.create(context, R.raw.beep2)
         beep3 = MediaPlayer.create(context, R.raw.beep4)
 
+        tts = TextToSpeech(context, this)
+
 //        database = FirebaseDatabase.getInstance().reference
     }
 
     private fun initSetting() {
         Warning_sound = sp.getStringSet("www", null) as MutableSet<String>
+        Static_sound = sp.getStringSet("wdo", mutableSetOf("")) as MutableSet<String>
+        InintDebounceMap(Static_sound,Warning_sound)
+        Distance =  sp.getString("wd", "100000").toString()
+        Dis = Distance.toInt()
+        Ws =  sp.getString("ws", "嗶嗶聲").toString()
         MaxResult = sp.getString("wm_Mr", "1").toString()
         Threshold = sp.getString("wm_Ts", "0.7").toString()
         NumThreads = sp.getString("wm_Nt", "1").toString()
@@ -128,9 +143,18 @@ class WalkModeFragment : Fragment(R.layout.fragment_walk_mode),
         objectDetectorHelper.numThreads = NumThreads.toInt()
         initDelegate(Delegate)
         initModel(Ml)
-
         objectDetectorHelper.clearObjectDetector()
 
+    }
+    private fun InintDebounceMap(set: MutableSet<String>,set2: MutableSet<String>) {
+        for (name in set) {
+            DebounceMap[name] = 0 // 初始值
+        }
+        for (name in set2) {
+            DebounceMap_D[name] = 0 // 初始值
+        }
+        Log.d("compose", set.toString())
+        Log.d("compose", set2.toString())
     }
 
     private fun initDelegate(Delegate: String) {
@@ -219,14 +243,14 @@ class WalkModeFragment : Fragment(R.layout.fragment_walk_mode),
         }
 
         fragmentWalkModeBinding.wmCompass.setOnClickListener {
-            view?.findNavController()?.navigate(R.id.action_WalkModel_to_compassFragment)
+            view.findNavController().navigate(R.id.action_WalkModel_to_compassFragment)
         }
         fragmentWalkModeBinding.wmNavigation.setOnClickListener {
-            view?.findNavController()?.navigate(R.id.action_WalkModel_to_navigationSettingFragment)
+            view.findNavController().navigate(R.id.action_WalkModel_to_navigationSettingFragment)
         }
         fragmentWalkModeBinding.wmSetting.setOnClickListener {
-            view?.findNavController()
-                ?.navigate(R.id.action_WalkModel_to_settingsForWalkModeFragment)
+            view.findNavController()
+                .navigate(R.id.action_WalkModel_to_settingsForWalkModeFragment)
         }
 
         // Attach listeners to UI control widgets
@@ -358,9 +382,43 @@ class WalkModeFragment : Fragment(R.layout.fragment_walk_mode),
         // Force a redraw
         fragmentWalkModeBinding.overlay.invalidate()
         //bounding box
-        DetectBoundingBox(results, Warning_sound)
+
+        if(Ws == "嗶嗶聲") {
+            DetectBoundingBox_Beep(results, Warning_sound)
+            Debounce_Beep(results)
+
+        }
+        else if(Ws == "物件名稱"){
+            DetectBoundingBox(results, Warning_sound)
+            Debounce(results)
+        }
+        else
+        {
+            DetectBoundingBox_Beep(results, Warning_sound)
+            Debounce_Beep(results)
+        }
 
     }
+
+    private fun Debounce(results: MutableList<Detection>?) {
+        if (results != null) {
+            for (result in results) {
+                if (DebounceMap.containsKey(EnToCh[result.categories[0].label])) {
+                    if (DebounceMap[result.categories[0].label] == null)
+                        DebounceMap[result.categories[0].label]= 0
+                    Log.d("compose", result.categories[0].label)
+                    DebounceMap[result.categories[0].label] =
+                        DebounceMap[result.categories[0].label]!! + 1
+                    if (DebounceMap[result.categories[0].label]!! > 6) {
+                        DebounceMap[result.categories[0].label] = 0
+//                        beep2?.start()
+                        EnToCh[result.categories[0].label]?.let { speakOut(it) }
+                    }
+                }
+            }
+        }
+    }
+
 
     private fun DetectBoundingBox(
         results: MutableList<Detection>?,
@@ -379,11 +437,67 @@ class WalkModeFragment : Fragment(R.layout.fragment_walk_mode),
                     val right = boundingBox.right * scaleFactor
 
                     val area = (left - right) * (top - bottom)
-                    if (area >= 170000) {
-                        beep1?.start()
-                    } else if (area >= 100000) {
+                    if (area >= Dis) {
+
+                        if (DebounceMap_D.containsKey(EnToCh[result.categories[0].label])) {
+                            if (DebounceMap_D[result.categories[0].label] == null)
+                                DebounceMap_D[result.categories[0].label]= 0
+                            Log.d("compose", result.categories[0].label)
+                            DebounceMap_D[result.categories[0].label] =
+                            DebounceMap_D[result.categories[0].label]!! + 1
+                            if (DebounceMap_D[result.categories[0].label]!! > 4) {
+                                DebounceMap_D[result.categories[0].label] = 0
+                                EnToCh[result.categories[0].label]?.let { speakOut(it) }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+
+
+    private fun Debounce_Beep(results: MutableList<Detection>?) {
+        if (results != null) {
+            for (result in results) {
+                if (DebounceMap.containsKey(EnToCh[result.categories[0].label])) {
+                    if (DebounceMap[result.categories[0].label] == null)
+                        DebounceMap[result.categories[0].label]= 0
+                    Log.d("compose", result.categories[0].label)
+                    DebounceMap[result.categories[0].label] =
+                        DebounceMap[result.categories[0].label]!! + 1
+                    if (DebounceMap[result.categories[0].label]!! > 6) {
+                        DebounceMap[result.categories[0].label] = 0
                         beep2?.start()
-                    } else if (area >= 80000) {
+//                        EnToCh[result.categories[0].label]?.let { speakOut(it) }
+                    }
+                }
+            }
+        }
+    }
+    private fun DetectBoundingBox_Beep(
+        results: MutableList<Detection>?,
+        Warning_sound: MutableSet<String>
+    ) {
+        val scaleFactor = 1f
+        if (results != null) {
+            for (result in results) {
+                result.categories[0].label?.let { Log.d("compose", it) }
+                if (Warning_sound.contains(EnToCh[result.categories[0].label])) {
+                    Log.d("compose", EnToCh[result.categories[0].label].toString())
+                    val boundingBox = result.boundingBox
+                    val top = boundingBox.top * scaleFactor
+                    val bottom = boundingBox.bottom * scaleFactor
+                    val left = boundingBox.left * scaleFactor
+                    val right = boundingBox.right * scaleFactor
+
+                    val area = (left - right) * (top - bottom)
+                    if (area >= Dis*2) {
+                        beep1?.start()
+                    } else if (area >= Dis*1.5) {
+                        beep2?.start()
+                    } else if (area >= Dis) {
                         beep3?.start()
                     }
                 }
@@ -424,5 +538,20 @@ class WalkModeFragment : Fragment(R.layout.fragment_walk_mode),
     override fun onStart() {
         Log.d("compose", "fragment onStart()")
         super.onStart()
+
+    }
+    private fun speakOut(text: String) {
+        tts!!.speak(text, TextToSpeech.QUEUE_FLUSH, null, "")
+    }
+    override fun onInit(status: Int) {
+        if (status == TextToSpeech.SUCCESS) {
+            val result = tts!!.setLanguage(Locale.TAIWAN)
+
+            if (result == TextToSpeech.LANG_MISSING_DATA || result == TextToSpeech.LANG_NOT_SUPPORTED) {
+                Log.e("TTS", "The Language not supported!")
+            } else {
+                Log.e("TTS", "error")
+            }
+        }
     }
 }

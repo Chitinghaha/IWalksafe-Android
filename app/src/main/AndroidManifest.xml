@@ -20,6 +20,13 @@
         android:taskAffinity=""
         tools:ignore="AllowBackup">
         <activity
+            android:name=".IntroActivity"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
             android:name=".SplashScreenActivity"
             android:exported="false">
             <meta-data
