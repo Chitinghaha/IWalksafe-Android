@@ -123,6 +123,4 @@ class CompassMainActivity : Activity(), SensorEventListener {
         super.onStart()
         Log.d("compose", "Compass onStart()")
     }
-
-
 }

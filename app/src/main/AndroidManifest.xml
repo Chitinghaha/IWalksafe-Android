@@ -20,13 +20,26 @@
         android:taskAffinity=""
         tools:ignore="AllowBackup">
         <activity
+            android:name=".IntroActivity"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".SplashScreenActivity"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
             android:name=".CompassMainActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
-
         <activity
             android:name=".MainActivity"
             android:clearTaskOnLaunch="true"
@@ -36,6 +49,7 @@
             android:resizeableActivity="true"
             android:rotationAnimation="seamless"
             android:theme="@style/AppTheme"
+            android:windowSoftInputMode="adjustPan"
             tools:targetApi="O">
 
             <!-- Main app intent filter -->

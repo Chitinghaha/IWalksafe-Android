@@ -1,35 +1,161 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<navigation
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/permissions_fragment">
+    app:startDestination="@id/Home">
+
+    <fragment
+        android:id="@+id/WalkModel"
+        android:name="org.tensorflow.lite.examples.objectdetection.fragments.WalkModeFragment"
+        android:label="WalkModeFragment">
+        <action
+            android:id="@+id/action_WalkModel_to_compassFragment"
+            app:destination="@id/compassFragment" />
+        <action
+            android:id="@+id/action_WalkModel_to_navigationSettingFragment"
+            app:destination="@id/navigationSettingFragment"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@anim/nav_default_exit_anim" />
+        <action
+            android:id="@+id/action_WalkModel_to_settingsForWalkModeFragment"
+            app:destination="@id/settingsForWalkModeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/Setting"
+        android:name="org.tensorflow.lite.examples.objectdetection.fragments.SettingsFragment"
+        android:label="SettingsFragment" />
 
     <fragment
         android:id="@+id/permissions_fragment"
         android:name="org.tensorflow.lite.examples.objectdetection.fragments.PermissionsFragment"
-        android:label="PermissionsFragment" >
+        android:label="PermissionsFragment">
 
         <action
             android:id="@+id/action_permissions_to_camera"
-            app:destination="@id/camera_fragment"
+            app:destination="@id/Search"
             app:popUpTo="@id/permissions_fragment"
             app:popUpToInclusive="true" />
 
     </fragment>
-
     <fragment
-        android:id="@+id/camera_fragment"
+        android:id="@+id/Search"
         android:name="org.tensorflow.lite.examples.objectdetection.fragments.CameraFragment"
-        android:label="CameraFragment" >
+        android:label="CameraFragment">
 
 
         <action
             android:id="@+id/action_camera_to_permissions"
             app:destination="@id/permissions_fragment"
-            app:popUpTo="@id/camera_fragment"
-            app:popUpToInclusive="true"/>
+            app:popUpTo="@id/Search"
+            app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_camera_fragment_to_objectSettingFragment"
+            app:destination="@id/objectSettingFragment" />
 
+        <action
+            android:id="@+id/action_Search_to_detectFragment"
+            app:destination="@id/detectFragment" />
+        <action
+            android:id="@+id/action_Search_to_settingsForObjectFragment"
+            app:destination="@id/settingsForObjectFragment" />
+
+    </fragment>
+    <action
+        android:id="@+id/action_global_objectSettingFragment"
+        app:destination="@id/objectSettingFragment" />
+    <fragment
+        android:id="@+id/objectSettingFragment"
+        android:name="org.tensorflow.lite.examples.objectdetection.fragments.ObjectSettingFragment"
+        android:label="fragment_object_setting"
+        tools:layout="@layout/fragment_object_setting">
+        <action
+            android:id="@+id/action_objectSettingFragment_to_findObjectFragment"
+            app:destination="@id/findObjectFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/compassFragment"
+        android:name="org.tensorflow.lite.examples.objectdetection.fragments.CompassFragment"
+        android:label="CompassFragment">
+        <action
+            android:id="@+id/action_compassFragment_to_WalkModel"
+            app:destination="@id/WalkModel" />
+    </fragment>
+    <fragment
+        android:id="@+id/navigationSettingFragment"
+        android:name="org.tensorflow.lite.examples.objectdetection.fragments.NavigationSettingFragment"
+        android:label="fragment_navigation_setting"
+        tools:layout="@layout/fragment_navigation_setting">
+        <action
+            android:id="@+id/action_navigationSettingFragment_to_WalkModel"
+            app:destination="@id/WalkModel" />
+    </fragment>
+    <fragment
+        android:id="@+id/findObjectFragment"
+        android:name="org.tensorflow.lite.examples.objectdetection.fragments.FindObjectFragment"
+        android:label="fragment_find_object"
+        tools:layout="@layout/fragment_find_object" >
+        <argument
+            android:name="str"
+            android:defaultValue="null" />
+        <action
+            android:id="@+id/action_findObjectFragment_to_Search"
+            app:destination="@id/Search" />
+        <action
+            android:id="@+id/action_findObjectFragment_to_detectFragment"
+            app:destination="@id/detectFragment" />
+        <action
+            android:id="@+id/action_findObjectFragment_to_settingsForObjectFragment"
+            app:destination="@id/settingsForObjectFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/detectFragment"
+        android:name="org.tensorflow.lite.examples.objectdetection.fragments.DetectFragment"
+        android:label="DetectFragment" >
+        <action
+            android:id="@+id/action_detectFragment_to_objectSettingFragment"
+            app:destination="@id/objectSettingFragment" />
+        <action
+            android:id="@+id/action_detectFragment_to_Search"
+            app:destination="@id/Search" />
+        <action
+            android:id="@+id/action_detectFragment_to_settingsForObjectFragment"
+            app:destination="@id/settingsForObjectFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/settingsForObjectFragment"
+        android:name="org.tensorflow.lite.examples.objectdetection.fragments.SettingsForObjectFragment"
+        android:label="SettingsForObjectFragment" />
+    <fragment
+        android:id="@+id/settingsForWalkModeFragment"
+        android:name="org.tensorflow.lite.examples.objectdetection.fragments.SettingsForWalkModeFragment"
+        android:label="SettingsForWalkModeFragment" />
+    <fragment
+        android:id="@+id/slapshFragment"
+        android:name="org.tensorflow.lite.examples.objectdetection.fragments.SlapshFragment"
+        android:label="fragment_slapsh"
+        tools:layout="@layout/fragment_slapsh" >
+        <action
+            android:id="@+id/action_slapshFragment_to_homeFragment"
+            app:destination="@id/Home" />
+    </fragment>
+    <fragment
+        android:id="@+id/Home"
+        android:name="org.tensorflow.lite.examples.objectdetection.fragments.HomeFragment"
+        android:label="fragment_home"
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_Home_to_introFragment"
+            app:destination="@id/introFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/introFragment"
+        android:name="org.tensorflow.lite.examples.objectdetection.fragments.IntroFragment"
+        android:label="fragment_intro"
+        tools:layout="@layout/fragment_intro" >
+        <action
+            android:id="@+id/action_introFragment_to_Home"
+            app:destination="@id/Home" />
     </fragment>
 </navigation>

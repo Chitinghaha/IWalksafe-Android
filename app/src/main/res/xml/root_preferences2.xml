@@ -1,0 +1,61 @@
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:iconSpaceReserved="false"
+    app:isPreferenceVisible="true">
+
+
+    <PreferenceCategory android:title="物件設定">
+
+        <MultiSelectListPreference
+            android:defaultValue="@array/Detect_object"
+            android:entries="@array/Detect_object"
+            android:entryValues="@array/Detect_object"
+            android:key="ob_Do"
+            android:title="偵測物件種類" />
+
+        <MultiSelectListPreference
+            android:defaultValue="@array/Detect_object"
+            android:entries="@array/Detect_object"
+            android:entryValues="@array/Detect_object"
+            android:key="object"
+            android:title="尋找物件種類" />
+
+    </PreferenceCategory>
+    <PreferenceCategory android:title="辨識設定">
+        <ListPreference
+            android:defaultValue="1"
+            android:entries="@array/Max_result"
+            android:entryValues="@array/Max_result"
+            android:key="ob_Mr"
+            android:title="最多偵測物件數" />
+        <ListPreference
+            android:defaultValue="0.6"
+            android:entries="@array/Threshold"
+            android:entryValues="@array/Threshold"
+            android:key="ob_Ts"
+            android:title="辨識精確度" />
+        <ListPreference
+            android:defaultValue="1"
+            android:entries="@array/NumThreads"
+            android:entryValues="@array/NumThreads"
+            android:key="ob_Nt"
+            android:title="thread數目" />
+    </PreferenceCategory>
+    <PreferenceCategory android:title="硬體 &amp; 模型">
+
+        <ListPreference
+            android:defaultValue="1"
+            android:entries="@array/Delegate"
+            android:entryValues="@array/Delegate"
+            android:key="ob_Dl"
+            android:title="硬體調用" />
+        <ListPreference
+            android:defaultValue="1"
+            android:entries="@array/Model"
+            android:entryValues="@array/Model"
+            android:key="ob_Ml"
+            android:title="模型" />
+    </PreferenceCategory>
+
+
+</PreferenceScreen>
