@@ -4,6 +4,7 @@ package org.tensorflow.lite.examples.objectdetection.databinding;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CheckBox;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -25,10 +26,31 @@ public final class InfoBottomSheetBinding implements ViewBinding {
   public final NestedScrollView bottomSheetLayout;
 
   @NonNull
-  public final TextView inferenceTimeLabel;
+  public final CheckBox ckb;
 
   @NonNull
-  public final TextView inferenceTimeVal;
+  public final CheckBox ckbBed;
+
+  @NonNull
+  public final CheckBox ckbCat;
+
+  @NonNull
+  public final CheckBox ckbChair;
+
+  @NonNull
+  public final CheckBox ckbCup;
+
+  @NonNull
+  public final CheckBox ckbDog;
+
+  @NonNull
+  public final CheckBox ckbLaptop;
+
+  @NonNull
+  public final CheckBox ckbPerson;
+
+  @NonNull
+  public final CheckBox ckbRemote;
 
   @NonNull
   public final AppCompatImageButton maxResultsMinus;
@@ -63,18 +85,37 @@ public final class InfoBottomSheetBinding implements ViewBinding {
   @NonNull
   public final TextView thresholdValue;
 
+  @NonNull
+  public final TextView title;
+
+  @NonNull
+  public final TextView title1;
+
+  @NonNull
+  public final TextView vibration;
+
   private InfoBottomSheetBinding(@NonNull NestedScrollView rootView,
-      @NonNull NestedScrollView bottomSheetLayout, @NonNull TextView inferenceTimeLabel,
-      @NonNull TextView inferenceTimeVal, @NonNull AppCompatImageButton maxResultsMinus,
+      @NonNull NestedScrollView bottomSheetLayout, @NonNull CheckBox ckb, @NonNull CheckBox ckbBed,
+      @NonNull CheckBox ckbCat, @NonNull CheckBox ckbChair, @NonNull CheckBox ckbCup,
+      @NonNull CheckBox ckbDog, @NonNull CheckBox ckbLaptop, @NonNull CheckBox ckbPerson,
+      @NonNull CheckBox ckbRemote, @NonNull AppCompatImageButton maxResultsMinus,
       @NonNull AppCompatImageButton maxResultsPlus, @NonNull TextView maxResultsValue,
       @NonNull AppCompatSpinner spinnerDelegate, @NonNull AppCompatSpinner spinnerModel,
       @NonNull AppCompatImageButton threadsMinus, @NonNull AppCompatImageButton threadsPlus,
       @NonNull TextView threadsValue, @NonNull AppCompatImageButton thresholdMinus,
-      @NonNull AppCompatImageButton thresholdPlus, @NonNull TextView thresholdValue) {
+      @NonNull AppCompatImageButton thresholdPlus, @NonNull TextView thresholdValue,
+      @NonNull TextView title, @NonNull TextView title1, @NonNull TextView vibration) {
     this.rootView = rootView;
     this.bottomSheetLayout = bottomSheetLayout;
-    this.inferenceTimeLabel = inferenceTimeLabel;
-    this.inferenceTimeVal = inferenceTimeVal;
+    this.ckb = ckb;
+    this.ckbBed = ckbBed;
+    this.ckbCat = ckbCat;
+    this.ckbChair = ckbChair;
+    this.ckbCup = ckbCup;
+    this.ckbDog = ckbDog;
+    this.ckbLaptop = ckbLaptop;
+    this.ckbPerson = ckbPerson;
+    this.ckbRemote = ckbRemote;
     this.maxResultsMinus = maxResultsMinus;
     this.maxResultsPlus = maxResultsPlus;
     this.maxResultsValue = maxResultsValue;
@@ -86,6 +127,9 @@ public final class InfoBottomSheetBinding implements ViewBinding {
     this.thresholdMinus = thresholdMinus;
     this.thresholdPlus = thresholdPlus;
     this.thresholdValue = thresholdValue;
+    this.title = title;
+    this.title1 = title1;
+    this.vibration = vibration;
   }
 
   @Override
@@ -117,15 +161,57 @@ public final class InfoBottomSheetBinding implements ViewBinding {
     missingId: {
       NestedScrollView bottomSheetLayout = (NestedScrollView) rootView;
 
-      id = R.id.inference_time_label;
-      TextView inferenceTimeLabel = ViewBindings.findChildViewById(rootView, id);
-      if (inferenceTimeLabel == null) {
+      id = R.id.ckb;
+      CheckBox ckb = ViewBindings.findChildViewById(rootView, id);
+      if (ckb == null) {
         break missingId;
       }
 
-      id = R.id.inference_time_val;
-      TextView inferenceTimeVal = ViewBindings.findChildViewById(rootView, id);
-      if (inferenceTimeVal == null) {
+      id = R.id.ckb_bed;
+      CheckBox ckbBed = ViewBindings.findChildViewById(rootView, id);
+      if (ckbBed == null) {
+        break missingId;
+      }
+
+      id = R.id.ckb_cat;
+      CheckBox ckbCat = ViewBindings.findChildViewById(rootView, id);
+      if (ckbCat == null) {
+        break missingId;
+      }
+
+      id = R.id.ckb_chair;
+      CheckBox ckbChair = ViewBindings.findChildViewById(rootView, id);
+      if (ckbChair == null) {
+        break missingId;
+      }
+
+      id = R.id.ckb_cup;
+      CheckBox ckbCup = ViewBindings.findChildViewById(rootView, id);
+      if (ckbCup == null) {
+        break missingId;
+      }
+
+      id = R.id.ckb_dog;
+      CheckBox ckbDog = ViewBindings.findChildViewById(rootView, id);
+      if (ckbDog == null) {
+        break missingId;
+      }
+
+      id = R.id.ckb_laptop;
+      CheckBox ckbLaptop = ViewBindings.findChildViewById(rootView, id);
+      if (ckbLaptop == null) {
+        break missingId;
+      }
+
+      id = R.id.ckb_person;
+      CheckBox ckbPerson = ViewBindings.findChildViewById(rootView, id);
+      if (ckbPerson == null) {
+        break missingId;
+      }
+
+      id = R.id.ckb_remote;
+      CheckBox ckbRemote = ViewBindings.findChildViewById(rootView, id);
+      if (ckbRemote == null) {
         break missingId;
       }
 
@@ -195,10 +281,28 @@ public final class InfoBottomSheetBinding implements ViewBinding {
         break missingId;
       }
 
-      return new InfoBottomSheetBinding((NestedScrollView) rootView, bottomSheetLayout,
-          inferenceTimeLabel, inferenceTimeVal, maxResultsMinus, maxResultsPlus, maxResultsValue,
-          spinnerDelegate, spinnerModel, threadsMinus, threadsPlus, threadsValue, thresholdMinus,
-          thresholdPlus, thresholdValue);
+      id = R.id.title;
+      TextView title = ViewBindings.findChildViewById(rootView, id);
+      if (title == null) {
+        break missingId;
+      }
+
+      id = R.id.title1;
+      TextView title1 = ViewBindings.findChildViewById(rootView, id);
+      if (title1 == null) {
+        break missingId;
+      }
+
+      id = R.id.vibration;
+      TextView vibration = ViewBindings.findChildViewById(rootView, id);
+      if (vibration == null) {
+        break missingId;
+      }
+
+      return new InfoBottomSheetBinding((NestedScrollView) rootView, bottomSheetLayout, ckb, ckbBed,
+          ckbCat, ckbChair, ckbCup, ckbDog, ckbLaptop, ckbPerson, ckbRemote, maxResultsMinus,
+          maxResultsPlus, maxResultsValue, spinnerDelegate, spinnerModel, threadsMinus, threadsPlus,
+          threadsValue, thresholdMinus, thresholdPlus, thresholdValue, title, title1, vibration);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

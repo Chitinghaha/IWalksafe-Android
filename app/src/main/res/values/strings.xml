@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!--
+<?xml version="1.0" encoding="utf-8"?><!--
     ~ Copyright 2022 The TensorFlow Authors. All Rights Reserved.
     ~
     ~ Licensed under the Apache License, Version 2.0 (the "License");
@@ -15,7 +14,7 @@
     ~ limitations under the License.
 -->
 <resources>
-    <string name="app_name">TFLite Object Detection</string>
+    <string name="app_name">IWalkSafe</string>
 
     <string name="alt_bottom_sheet_chevron">Bottom sheet expandable indicator</string>
 
@@ -37,6 +36,16 @@
     <string name="label_threads">Number of Threads</string>
     <string name="label_delegate">Delegate</string>
     <string name="label_models">ML Model</string>
+    <string name="todo">TODO</string>
+    <string name="sound_close">Sound_Close</string>
+    <string name="compass">compass</string>
+    <string name="_2">2</string>
+    <string name="_1">1</string>
+    <string name="Compass">Compass</string>
+    <string name="Camera">Camera</string>
+    <string name="sent_massege">sent_massege</string>
+    <string name="found_it">found_it</string>
+    <string name="google_map">Google map</string>
 
     <string-array name="delegate_spinner_titles">
         <item>CPU</item>
@@ -50,4 +59,122 @@
         <item>EfficientDet Lite1</item>
         <item>EfficientDet Lite2</item>
     </string-array>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="bed">bed</string>
+    <string name="cup">cup</string>
+    <string name="chair">chair</string>
+    <string name="buzzer">Buzzer</string>
+    <string name="person">person</string>
+    <string name="dog">dog</string>
+    <string name="cat">cat</string>
+    <string name="detect_objection">Detect Objection</string>
+    <string name="remote">remote</string>
+    <string name="laptop">laptop</string>
+    <string name="vibration">Vibration</string>
+    <string name="Open">Open</string>
+    <string name="home">home</string>
+    <string name="search">search</string>
+    <string name="setting">setting</string>
+    <!-- Preference Titles -->
+    <string name="messages_header">Messages</string>
+    <string name="sync_header">Sync</string>
+
+    <!-- Messages Preferences -->
+    <string name="signature_title">Your signature</string>
+    <string name="reply_title">Default reply action</string>
+
+    <!-- Sync Preferences -->
+    <string name="sync_title">Sync email periodically</string>
+    <string name="attachment_title">Download incoming attachments</string>
+    <string name="attachment_summary_on">Automatically download attachments for incoming emails
+    </string>
+    <string name="attachment_summary_off">Only download attachments when manually requested</string>
+    <string name="walk_model">walk_mode</string>
+    <string name="navigation">navigation</string>
+    <string name="ADD">ADD</string>
+    <string name="ObjectFinding">ObjectFinding</string>
+    <string name="surrondding">surronding</string>
+    <string name="About">About</string>
+    <string name="speed">speed</string>
+    <string name="language">language</string>
+    <string name="car">car</string>
+    <string name="motorcycle">motorcycle</string>
+    <string name="bicycle">bicycle</string>
+    <string name="airplane">airplane</string>
+    <string name="bus">bus</string>
+    <string name="train">train</string>
+    <string name="truck">truck</string>
+    <string name="boat">boat</string>
+    <string name="traffic_light">traffic light</string>
+    <string name="fire_hydrant">fire hydrant</string>
+    <string name="stop_sign">stop sign</string>
+    <string name="parking_meter">parking meter</string>
+    <string name="bench">bench</string>
+    <string name="bird">bird</string>
+    <string name="horse">horse</string>
+    <string name="sheep">sheep</string>
+    <string name="cow">cow</string>
+    <string name="elephant">elephant</string>
+    <string name="bear">bear</string>
+    <string name="zebra">zebra</string>
+    <string name="giraffe">giraffe</string>
+    <string name="backpack">backpack</string>
+    <string name="umbrella">umbrella</string>
+    <string name="handbag">handbag</string>
+    <string name="tie">tie</string>
+    <string name="suitcase">suitcase</string>
+    <string name="frisbee">frisbee</string>
+    <string name="skis">skis</string>
+    <string name="snowboard">snowboard</string>
+    <string name="sports_ball">sports ball</string>
+    <string name="kite">kite</string>
+    <string name="baseball_bat">baseball bat</string>
+    <string name="baseball_glove">baseball glove</string>
+    <string name="skateboard">skateboard</string>
+    <string name="surfboard">surfboard</string>
+    <string name="tennis_racket">tennis racket</string>
+    <string name="bottle">bottle</string>
+    <string name="wine_glass">wine glass</string>>
+    <string name="fork">fork</string>
+    <string name="knife">knife</string>
+    <string name="spoon">spoon</string>
+    <string name="bowl">bowl</string>
+    <string name="banana">banana</string>
+    <string name="apple">apple</string>
+    <string name="sandwich">sandwich</string>
+    <string name="orange">orange</string>
+    <string name="broccoli">broccoli</string>
+    <string name="carrot">carrot</string>
+    <string name="hot_dog">hot dog</string>
+    <string name="pizza">pizza</string>
+    <string name="donut">donut</string>
+    <string name="cake">cake</string>
+    <string name="couch">couch</string>
+    <string name="potted_plant">potted plant</string>>
+    <string name="dining_table">dining table</string>
+    <string name="toilet">toilet</string>
+    <string name="tv">tv</string>
+    <string name="mouse">mouse</string>
+    <string name="keyboard">keyboard</string>
+    <string name="cell_phone">cell phone</string>
+    <string name="microwave">microwave</string>
+    <string name="oven">oven</string>
+    <string name="toaster">toaster</string>
+    <string name="sink">sink</string>
+    <string name="refrigerator">refrigerator</string>
+    <string name="book">book</string>
+    <string name="clock">clock</string>
+    <string name="vase">vase</string>
+    <string name="scissors">scissors</string>
+    <string name="teddy_bear">teddy bear</string>
+    <string name="hair_drier">hair drier</string>
+    <string name="toothbrush">toothbrush</string>
+
+    <string name="beep">beep</string>
+    <string name="item_name">item name</string>
+    <string name="cm_setting">setting</string>
+    <string name="introduction">introduction</string>
+    <string name="returnpre">return</string>
+
 </resources>

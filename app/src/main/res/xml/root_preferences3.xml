@@ -1,0 +1,76 @@
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:iconSpaceReserved="true"
+    app:isPreferenceVisible="true">
+
+    <PreferenceCategory android:title="動態物件設定">
+        <MultiSelectListPreference
+            android:defaultValue="@array/Waring_object"
+            android:entries="@array/Waring_object"
+            android:entryValues="@array/Waring_object"
+            android:key="www"
+            android:title="警示物件種類" />
+        <EditTextPreference
+            android:defaultValue="Default value"
+            android:key="wd"
+            android:selectAllOnFocus="true"
+            android:singleLine="true"
+            android:title="警示距離" />
+    </PreferenceCategory>
+
+    <PreferenceCategory android:title="靜態物件設定">
+        <MultiSelectListPreference
+            android:defaultValue="@array/Distance_object"
+            android:entries="@array/Distance_object"
+            android:entryValues="@array/Distance_object"
+            android:key="wdo"
+            android:title="警示物件種類" />
+
+    </PreferenceCategory>
+
+
+
+    <PreferenceCategory android:title="警示聲設定">
+        <ListPreference
+            android:defaultValue="1"
+            android:entries="@array/sound"
+            android:entryValues="@array/sound"
+            android:key="ws"
+            android:title="警示聲" />
+    </PreferenceCategory>
+    <PreferenceCategory android:title="辨識設定">
+        <ListPreference
+            android:defaultValue="1"
+            android:entries="@array/Max_result"
+            android:entryValues="@array/Max_result"
+            android:key="wm_Mr"
+            android:title="最多偵測物件數"  />
+        <ListPreference
+            android:defaultValue="1"
+            android:entries="@array/Threshold"
+            android:entryValues="@array/Threshold"
+            android:key="wm_Ts"
+            android:title="辨識精確度" />
+        <ListPreference
+            android:defaultValue="1"
+            android:entries="@array/NumThreads"
+            android:entryValues="@array/NumThreads"
+            android:key="wm_Nt"
+            android:title="thread數目"  />
+    </PreferenceCategory>
+    <PreferenceCategory android:title="硬體 &amp; 模型" >
+
+        <ListPreference
+            android:defaultValue="1"
+            android:entries="@array/Delegate"
+            android:entryValues="@array/Delegate"
+            android:key="wm_Dl"
+            android:title="硬體調用" />
+        <ListPreference
+            android:defaultValue="1"
+            android:entries="@array/Model"
+            android:entryValues="@array/Model"
+            android:key="wm_Ml"
+            android:title="模型" />
+    </PreferenceCategory>
+</PreferenceScreen>

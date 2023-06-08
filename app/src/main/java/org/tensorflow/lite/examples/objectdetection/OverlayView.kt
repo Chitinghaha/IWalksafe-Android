@@ -19,7 +19,6 @@ package org.tensorflow.lite.examples.objectdetection
 import android.content.Context
 import android.graphics.*
 import android.media.MediaPlayer
-import android.speech.tts.TextToSpeech
 import android.util.AttributeSet
 import android.view.View
 import androidx.core.content.ContextCompat
@@ -31,17 +30,23 @@ import kotlin.math.max
 class OverlayView(context: Context?, attrs: AttributeSet?) : View(context, attrs) {
 
     private var results: List<Detection> = LinkedList<Detection>()
+    private lateinit var waringresult: MutableSet<String>
     private var boxPaint = Paint()
     private var textBackgroundPaint = Paint()
     private var textPaint = Paint()
 
     private var scaleFactor: Float = 1f
-    private var sound_check = "0"
+    private var beep1: MediaPlayer? = null
+    private var beep2: MediaPlayer? = null
+    private var beep3: MediaPlayer? = null
+
+
+
 
 
     private var bounds = Rect()
 
-    lateinit var tts:TextToSpeech
+//    lateinit var tts:TextToSpeech
 
     init {
         initPaints()
@@ -68,6 +73,12 @@ class OverlayView(context: Context?, attrs: AttributeSet?) : View(context, attrs
         boxPaint.color = ContextCompat.getColor(context!!, R.color.bounding_box_color)
         boxPaint.strokeWidth = 8F
         boxPaint.style = Paint.Style.STROKE
+
+        beep1 = MediaPlayer.create( getContext(), R.raw.beep1)
+        beep2 = MediaPlayer.create( getContext(), R.raw.beep2)
+        beep3 = MediaPlayer.create( getContext(), R.raw.beep4)
+
+
     }
 
 
@@ -106,19 +117,10 @@ class OverlayView(context: Context?, attrs: AttributeSet?) : View(context, attrs
 
             // Draw text for detected object
             canvas.drawText(drawableText, left, top + bounds.height(), textPaint)
+
         }
     }
 
-    fun sound_output(Text_print:String)
-    {
-        tts = TextToSpeech( getContext() ,TextToSpeech.OnInitListener {
-            if(it == TextToSpeech.SUCCESS) {
-                tts.language= Locale.US
-                tts.setSpeechRate(1.0f)
-                tts!!.speak(Text_print, TextToSpeech.QUEUE_FLUSH, null,"")
-            }
-        })
-    }
 
 
     fun setResults(
@@ -128,7 +130,6 @@ class OverlayView(context: Context?, attrs: AttributeSet?) : View(context, attrs
     ) {
 
         results = detectionResults
-
         // PreviewView is in FILL_START mode. So we need to scale up the bounding box to match with
         // the size that the captured images will be displayed.
         scaleFactor = max(width * 1f / imageWidth, height * 1f / imageHeight)

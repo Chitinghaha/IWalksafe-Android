@@ -1,146 +1,322 @@
 [
     {
-        "merged": "C:\\lab\\iWalkSafe_android\\app\\build\\intermediates\\merged_res\\debug\\drawable_shape_circle.xml.flat",
-        "source": "C:\\lab\\iWalkSafe_android\\app\\src\\main\\res\\drawable\\shape_circle.xml"
+        "merged": "org.tensorflow.lite.examples.objectdetection.app-merged_res-74:/mipmap-xxhdpi_ic_launcher.png.flat",
+        "source": "org.tensorflow.lite.examples.objectdetection.app-debug-75:/mipmap-xxhdpi/ic_launcher.png"
     },
     {
-        "merged": "C:\\lab\\iWalkSafe_android\\app\\build\\intermediates\\merged_res\\debug\\raw_cup.mp3.flat",
-        "source": "C:\\lab\\iWalkSafe_android\\app\\src\\main\\res\\raw\\cup.mp3"
+        "merged": "org.tensorflow.lite.examples.objectdetection.app-merged_res-74:/drawable_ic_baseline_my_location_24.xml.flat",
+        "source": "org.tensorflow.lite.examples.objectdetection.app-main-76:/drawable/ic_baseline_my_location_24.xml"
     },
     {
-        "merged": "C:\\lab\\iWalkSafe_android\\app\\build\\intermediates\\merged_res\\debug\\mipmap-xxhdpi_ic_launcher_foreground.png.flat",
-        "source": "C:\\lab\\iWalkSafe_android\\app\\src\\main\\res\\mipmap-xxhdpi\\ic_launcher_foreground.png"
+        "merged": "org.tensorflow.lite.examples.objectdetection.app-merged_res-74:/drawable_ic_baseline_task_alt_24.xml.flat",
+        "source": "org.tensorflow.lite.examples.objectdetection.app-main-76:/drawable/ic_baseline_task_alt_24.xml"
     },
     {
-        "merged": "C:\\lab\\iWalkSafe_android\\app\\build\\intermediates\\merged_res\\debug\\raw_keyboard.mp3.flat",
-        "source": "C:\\lab\\iWalkSafe_android\\app\\src\\main\\res\\raw\\keyboard.mp3"
+        "merged": "org.tensorflow.lite.examples.objectdetection.app-merged_res-74:/layout_items_example.xml.flat",
+        "source": "org.tensorflow.lite.examples.objectdetection.app-main-76:/layout/items_example.xml"
     },
     {
-        "merged": "C:\\lab\\iWalkSafe_android\\app\\build\\intermediates\\merged_res\\debug\\layout_info_bottom_sheet.xml.flat",
-        "source": "C:\\lab\\iWalkSafe_android\\app\\src\\main\\res\\layout\\info_bottom_sheet.xml"
+        "merged": "org.tensorflow.lite.examples.objectdetection.app-merged_res-74:/drawable_ic_baseline_message_24.xml.flat",
+        "source": "org.tensorflow.lite.examples.objectdetection.app-main-76:/drawable/ic_baseline_message_24.xml"
     },
     {
-        "merged": "C:\\lab\\iWalkSafe_android\\app\\build\\intermediates\\merged_res\\debug\\drawable_ic_minus.xml.flat",
-        "source": "C:\\lab\\iWalkSafe_android\\app\\src\\main\\res\\drawable\\ic_minus.xml"
+        "merged": "org.tensorflow.lite.examples.objectdetection.app-merged_res-74:/mipmap-xhdpi_ic_launcher_round.png.flat",
+        "source": "org.tensorflow.lite.examples.objectdetection.app-debug-75:/mipmap-xhdpi/ic_launcher_round.png"
     },
     {
-        "merged": "C:\\lab\\iWalkSafe_android\\app\\build\\intermediates\\merged_res\\debug\\mipmap-anydpi-v26_ic_launcher.xml.flat",
-        "source": "C:\\lab\\iWalkSafe_android\\app\\src\\main\\res\\mipmap-anydpi-v26\\ic_launcher.xml"
+        "merged": "org.tensorflow.lite.examples.objectdetection.app-merged_res-74:/mipmap-mdpi_ic_launcher.png.flat",
+        "source": "org.tensorflow.lite.examples.objectdetection.app-debug-75:/mipmap-mdpi/ic_launcher.png"
     },
     {
-        "merged": "C:\\lab\\iWalkSafe_android\\app\\build\\intermediates\\merged_res\\debug\\mipmap-mdpi_ic_launcher_foreground.png.flat",
-        "source": "C:\\lab\\iWalkSafe_android\\app\\src\\main\\res\\mipmap-mdpi\\ic_launcher_foreground.png"
+        "merged": "org.tensorflow.lite.examples.objectdetection.app-merged_res-74:/drawable_ic_baseline_view_in_ar_24.xml.flat",
+        "source": "org.tensorflow.lite.examples.objectdetection.app-main-76:/drawable/ic_baseline_view_in_ar_24.xml"
     },
     {
-        "merged": "C:\\lab\\iWalkSafe_android\\app\\build\\intermediates\\merged_res\\debug\\mipmap-hdpi_ic_launcher_foreground.png.flat",
-        "source": "C:\\lab\\iWalkSafe_android\\app\\src\\main\\res\\mipmap-hdpi\\ic_launcher_foreground.png"
+        "merged": "org.tensorflow.lite.examples.objectdetection.app-merged_res-74:/drawable_ic_baseline_home_24.xml.flat",
+        "source": "org.tensorflow.lite.examples.objectdetection.app-main-76:/drawable/ic_baseline_home_24.xml"
     },
     {
-        "merged": "C:\\lab\\iWalkSafe_android\\app\\build\\intermediates\\merged_res\\debug\\raw_laptop.mp3.flat",
-        "source": "C:\\lab\\iWalkSafe_android\\app\\src\\main\\res\\raw\\laptop.mp3"
+        "merged": "org.tensorflow.lite.examples.objectdetection.app-merged_res-74:/layout_fragment_detect.xml.flat",
+        "source": "org.tensorflow.lite.examples.objectdetection.app-main-76:/layout/fragment_detect.xml"
     },
     {
-        "merged": "C:\\lab\\iWalkSafe_android\\app\\build\\intermediates\\merged_res\\debug\\mipmap-xxxhdpi_ic_launcher_round.png.flat",
-        "source": "C:\\lab\\iWalkSafe_android\\app\\src\\main\\res\\mipmap-xxxhdpi\\ic_launcher_round.png"
+        "merged": "org.tensorflow.lite.examples.objectdetection.app-merged_res-74:/drawable_screenshot.png.flat",
+        "source": "org.tensorflow.lite.examples.objectdetection.app-main-76:/drawable/screenshot.png"
     },
     {
-        "merged": "C:\\lab\\iWalkSafe_android\\app\\build\\intermediates\\merged_res\\debug\\raw_tv.mp3.flat",
-        "source": "C:\\lab\\iWalkSafe_android\\app\\src\\main\\res\\raw\\tv.mp3"
+        "merged": "org.tensorflow.lite.examples.objectdetection.app-merged_res-74:/raw_cup.mp3.flat",
+        "source": "org.tensorflow.lite.examples.objectdetection.app-main-76:/raw/cup.mp3"
     },
     {
-        "merged": "C:\\lab\\iWalkSafe_android\\app\\build\\intermediates\\merged_res\\debug\\raw_north.mp3.flat",
-        "source": "C:\\lab\\iWalkSafe_android\\app\\src\\main\\res\\raw\\north.mp3"
+        "merged": "org.tensorflow.lite.examples.objectdetection.app-merged_res-74:/layout_fragment_navigation_setting.xml.flat",
+        "source": "org.tensorflow.lite.examples.objectdetection.app-main-76:/layout/fragment_navigation_setting.xml"
     },
     {
-        "merged": "C:\\lab\\iWalkSafe_android\\app\\build\\intermediates\\merged_res\\debug\\mipmap-hdpi_ic_launcher.png.flat",
-        "source": "C:\\lab\\iWalkSafe_android\\app\\src\\main\\res\\mipmap-hdpi\\ic_launcher.png"
+        "merged": "org.tensorflow.lite.examples.objectdetection.app-merged_res-74:/drawable-v24_logo.png.flat",
+        "source": "org.tensorflow.lite.examples.objectdetection.app-main-76:/drawable-v24/logo.png"
     },
     {
-        "merged": "C:\\lab\\iWalkSafe_android\\app\\build\\intermediates\\merged_res\\debug\\mipmap-xxxhdpi_ic_launcher_foreground.png.flat",
-        "source": "C:\\lab\\iWalkSafe_android\\app\\src\\main\\res\\mipmap-xxxhdpi\\ic_launcher_foreground.png"
+        "merged": "org.tensorflow.lite.examples.objectdetection.app-merged_res-74:/layout_fragment_walk_mode.xml.flat",
+        "source": "org.tensorflow.lite.examples.objectdetection.app-main-76:/layout/fragment_walk_mode.xml"
     },
     {
-        "merged": "C:\\lab\\iWalkSafe_android\\app\\build\\intermediates\\merged_res\\debug\\mipmap-xxhdpi_ic_launcher.png.flat",
-        "source": "C:\\lab\\iWalkSafe_android\\app\\src\\main\\res\\mipmap-xxhdpi\\ic_launcher.png"
+        "merged": "org.tensorflow.lite.examples.objectdetection.app-merged_res-74:/layout_fragment_find_object.xml.flat",
+        "source": "org.tensorflow.lite.examples.objectdetection.app-main-76:/layout/fragment_find_object.xml"
     },
     {
-        "merged": "C:\\lab\\iWalkSafe_android\\app\\build\\intermediates\\merged_res\\debug\\color_selector_ic.xml.flat",
-        "source": "C:\\lab\\iWalkSafe_android\\app\\src\\main\\res\\color\\selector_ic.xml"
+        "merged": "org.tensorflow.lite.examples.objectdetection.app-merged_res-74:/drawable_ic_baseline_delete_24.xml.flat",
+        "source": "org.tensorflow.lite.examples.objectdetection.app-main-76:/drawable/ic_baseline_delete_24.xml"
     },
     {
-        "merged": "C:\\lab\\iWalkSafe_android\\app\\build\\intermediates\\merged_res\\debug\\drawable-anydpi-v24_ic_launcher_foreground.xml.flat",
-        "source": "C:\\lab\\iWalkSafe_android\\app\\build\\generated\\res\\pngs\\debug\\drawable-anydpi-v24\\ic_launcher_foreground.xml"
+        "merged": "org.tensorflow.lite.examples.objectdetection.app-merged_res-74:/raw_north.mp3.flat",
+        "source": "org.tensorflow.lite.examples.objectdetection.app-main-76:/raw/north.mp3"
     },
     {
-        "merged": "C:\\lab\\iWalkSafe_android\\app\\build\\intermediates\\merged_res\\debug\\navigation_nav_graph.xml.flat",
-        "source": "C:\\lab\\iWalkSafe_android\\app\\src\\main\\res\\navigation\\nav_graph.xml"
+        "merged": "org.tensorflow.lite.examples.objectdetection.app-merged_res-74:/drawable_ic_plus.xml.flat",
+        "source": "org.tensorflow.lite.examples.objectdetection.app-main-76:/drawable/ic_plus.xml"
     },
     {
-        "merged": "C:\\lab\\iWalkSafe_android\\app\\build\\intermediates\\merged_res\\debug\\layout_fragment_camera.xml.flat",
-        "source": "C:\\lab\\iWalkSafe_android\\app\\src\\main\\res\\layout\\fragment_camera.xml"
+        "merged": "org.tensorflow.lite.examples.objectdetection.app-merged_res-74:/raw_cell_phone.mp3.flat",
+        "source": "org.tensorflow.lite.examples.objectdetection.app-main-76:/raw/cell_phone.mp3"
     },
     {
-        "merged": "C:\\lab\\iWalkSafe_android\\app\\build\\intermediates\\merged_res\\debug\\raw_person.mp3.flat",
-        "source": "C:\\lab\\iWalkSafe_android\\app\\src\\main\\res\\raw\\person.mp3"
+        "merged": "org.tensorflow.lite.examples.objectdetection.app-merged_res-74:/raw_computer.mp3.flat",
+        "source": "org.tensorflow.lite.examples.objectdetection.app-main-76:/raw/computer.mp3"
     },
     {
-        "merged": "C:\\lab\\iWalkSafe_android\\app\\build\\intermediates\\merged_res\\debug\\drawable-v24_tfl_logo.png.flat",
-        "source": "C:\\lab\\iWalkSafe_android\\app\\src\\main\\res\\drawable-v24\\tfl_logo.png"
+        "merged": "org.tensorflow.lite.examples.objectdetection.app-merged_res-74:/drawable_intro.jpg.flat",
+        "source": "org.tensorflow.lite.examples.objectdetection.app-main-76:/drawable/intro.jpg"
     },
     {
-        "merged": "C:\\lab\\iWalkSafe_android\\app\\build\\intermediates\\merged_res\\debug\\mipmap-xhdpi_ic_launcher.png.flat",
-        "source": "C:\\lab\\iWalkSafe_android\\app\\src\\main\\res\\mipmap-xhdpi\\ic_launcher.png"
+        "merged": "org.tensorflow.lite.examples.objectdetection.app-merged_res-74:/layout-land_activity_compass_main.xml.flat",
+        "source": "org.tensorflow.lite.examples.objectdetection.app-main-76:/layout-land/activity_compass_main.xml"
     },
     {
-        "merged": "C:\\lab\\iWalkSafe_android\\app\\build\\intermediates\\merged_res\\debug\\mipmap-mdpi_ic_launcher_round.png.flat",
-        "source": "C:\\lab\\iWalkSafe_android\\app\\src\\main\\res\\mipmap-mdpi\\ic_launcher_round.png"
+        "merged": "org.tensorflow.lite.examples.objectdetection.app-merged_res-74:/xml_root_preferences3.xml.flat",
+        "source": "org.tensorflow.lite.examples.objectdetection.app-main-76:/xml/root_preferences3.xml"
     },
     {
-        "merged": "C:\\lab\\iWalkSafe_android\\app\\build\\intermediates\\merged_res\\debug\\raw_mouse.mp3.flat",
-        "source": "C:\\lab\\iWalkSafe_android\\app\\src\\main\\res\\raw\\mouse.mp3"
+        "merged": "org.tensorflow.lite.examples.objectdetection.app-merged_res-74:/drawable_button_selector.xml.flat",
+        "source": "org.tensorflow.lite.examples.objectdetection.app-main-76:/drawable/button_selector.xml"
     },
     {
-        "merged": "C:\\lab\\iWalkSafe_android\\app\\build\\intermediates\\merged_res\\debug\\layout_activity_main.xml.flat",
-        "source": "C:\\lab\\iWalkSafe_android\\app\\src\\main\\res\\layout\\activity_main.xml"
+        "merged": "org.tensorflow.lite.examples.objectdetection.app-merged_res-74:/layout_fragment_compass.xml.flat",
+        "source": "org.tensorflow.lite.examples.objectdetection.app-main-76:/layout/fragment_compass.xml"
     },
     {
-        "merged": "C:\\lab\\iWalkSafe_android\\app\\build\\intermediates\\merged_res\\debug\\mipmap-xhdpi_ic_launcher_round.png.flat",
-        "source": "C:\\lab\\iWalkSafe_android\\app\\src\\main\\res\\mipmap-xhdpi\\ic_launcher_round.png"
+        "merged": "org.tensorflow.lite.examples.objectdetection.app-merged_res-74:/mipmap-xxxhdpi_ic_launcher_foreground.png.flat",
+        "source": "org.tensorflow.lite.examples.objectdetection.app-debug-75:/mipmap-xxxhdpi/ic_launcher_foreground.png"
     },
     {
-        "merged": "C:\\lab\\iWalkSafe_android\\app\\build\\intermediates\\merged_res\\debug\\mipmap-anydpi-v26_ic_launcher_round.xml.flat",
-        "source": "C:\\lab\\iWalkSafe_android\\app\\src\\main\\res\\mipmap-anydpi-v26\\ic_launcher_round.xml"
+        "merged": "org.tensorflow.lite.examples.objectdetection.app-merged_res-74:/mipmap-xhdpi_ic_launcher_foreground.png.flat",
+        "source": "org.tensorflow.lite.examples.objectdetection.app-debug-75:/mipmap-xhdpi/ic_launcher_foreground.png"
     },
     {
-        "merged": "C:\\lab\\iWalkSafe_android\\app\\build\\intermediates\\merged_res\\debug\\mipmap-xxhdpi_ic_launcher_round.png.flat",
-        "source": "C:\\lab\\iWalkSafe_android\\app\\src\\main\\res\\mipmap-xxhdpi\\ic_launcher_round.png"
+        "merged": "org.tensorflow.lite.examples.objectdetection.app-merged_res-74:/drawable_ic_baseline_audiotrack_24.xml.flat",
+        "source": "org.tensorflow.lite.examples.objectdetection.app-main-76:/drawable/ic_baseline_audiotrack_24.xml"
     },
     {
-        "merged": "C:\\lab\\iWalkSafe_android\\app\\build\\intermediates\\merged_res\\debug\\mipmap-mdpi_ic_launcher.png.flat",
-        "source": "C:\\lab\\iWalkSafe_android\\app\\src\\main\\res\\mipmap-mdpi\\ic_launcher.png"
+        "merged": "org.tensorflow.lite.examples.objectdetection.app-merged_res-74:/layout_info_bottom_sheet.xml.flat",
+        "source": "org.tensorflow.lite.examples.objectdetection.app-main-76:/layout/info_bottom_sheet.xml"
     },
     {
-        "merged": "C:\\lab\\iWalkSafe_android\\app\\build\\intermediates\\merged_res\\debug\\mipmap-xhdpi_ic_launcher_foreground.png.flat",
-        "source": "C:\\lab\\iWalkSafe_android\\app\\src\\main\\res\\mipmap-xhdpi\\ic_launcher_foreground.png"
+        "merged": "org.tensorflow.lite.examples.objectdetection.app-merged_res-74:/mipmap-xxhdpi_ic_launcher_round.png.flat",
+        "source": "org.tensorflow.lite.examples.objectdetection.app-debug-75:/mipmap-xxhdpi/ic_launcher_round.png"
     },
     {
-        "merged": "C:\\lab\\iWalkSafe_android\\app\\build\\intermediates\\merged_res\\debug\\drawable_icn_chevron_up.png.flat",
-        "source": "C:\\lab\\iWalkSafe_android\\app\\src\\main\\res\\drawable\\icn_chevron_up.png"
+        "merged": "org.tensorflow.lite.examples.objectdetection.app-merged_res-74:/raw_remote.mp3.flat",
+        "source": "org.tensorflow.lite.examples.objectdetection.app-main-76:/raw/remote.mp3"
     },
     {
-        "merged": "C:\\lab\\iWalkSafe_android\\app\\build\\intermediates\\merged_res\\debug\\mipmap-xxxhdpi_ic_launcher.png.flat",
-        "source": "C:\\lab\\iWalkSafe_android\\app\\src\\main\\res\\mipmap-xxxhdpi\\ic_launcher.png"
+        "merged": "org.tensorflow.lite.examples.objectdetection.app-merged_res-74:/raw_beep3.mp3.flat",
+        "source": "org.tensorflow.lite.examples.objectdetection.app-main-76:/raw/beep3.mp3"
     },
     {
-        "merged": "C:\\lab\\iWalkSafe_android\\app\\build\\intermediates\\merged_res\\debug\\drawable_ic_plus.xml.flat",
-        "source": "C:\\lab\\iWalkSafe_android\\app\\src\\main\\res\\drawable\\ic_plus.xml"
+        "merged": "org.tensorflow.lite.examples.objectdetection.app-merged_res-74:/drawable_ic_baseline_search_24.xml.flat",
+        "source": "org.tensorflow.lite.examples.objectdetection.app-main-76:/drawable/ic_baseline_search_24.xml"
     },
     {
-        "merged": "C:\\lab\\iWalkSafe_android\\app\\build\\intermediates\\merged_res\\debug\\raw_cell_phone.mp3.flat",
-        "source": "C:\\lab\\iWalkSafe_android\\app\\src\\main\\res\\raw\\cell_phone.mp3"
+        "merged": "org.tensorflow.lite.examples.objectdetection.app-merged_res-74:/layout_fragment_navigation.xml.flat",
+        "source": "org.tensorflow.lite.examples.objectdetection.app-main-76:/layout/fragment_navigation.xml"
     },
     {
-        "merged": "C:\\lab\\iWalkSafe_android\\app\\build\\intermediates\\merged_res\\debug\\mipmap-hdpi_ic_launcher_round.png.flat",
-        "source": "C:\\lab\\iWalkSafe_android\\app\\src\\main\\res\\mipmap-hdpi\\ic_launcher_round.png"
+        "merged": "org.tensorflow.lite.examples.objectdetection.app-merged_res-74:/drawable_ic_minus.xml.flat",
+        "source": "org.tensorflow.lite.examples.objectdetection.app-main-76:/drawable/ic_minus.xml"
+    },
+    {
+        "merged": "org.tensorflow.lite.examples.objectdetection.app-merged_res-74:/drawable_ic_baseline_navigation_24.xml.flat",
+        "source": "org.tensorflow.lite.examples.objectdetection.app-main-76:/drawable/ic_baseline_navigation_24.xml"
+    },
+    {
+        "merged": "org.tensorflow.lite.examples.objectdetection.app-merged_res-74:/mipmap-xxxhdpi_ic_launcher_round.png.flat",
+        "source": "org.tensorflow.lite.examples.objectdetection.app-debug-75:/mipmap-xxxhdpi/ic_launcher_round.png"
+    },
+    {
+        "merged": "org.tensorflow.lite.examples.objectdetection.app-merged_res-74:/raw_bed.mp3.flat",
+        "source": "org.tensorflow.lite.examples.objectdetection.app-main-76:/raw/bed.mp3"
+    },
+    {
+        "merged": "org.tensorflow.lite.examples.objectdetection.app-merged_res-74:/layout_fragment_slapsh.xml.flat",
+        "source": "org.tensorflow.lite.examples.objectdetection.app-main-76:/layout/fragment_slapsh.xml"
+    },
+    {
+        "merged": "org.tensorflow.lite.examples.objectdetection.app-merged_res-74:/mipmap-xhdpi_ic_launcher.png.flat",
+        "source": "org.tensorflow.lite.examples.objectdetection.app-debug-75:/mipmap-xhdpi/ic_launcher.png"
+    },
+    {
+        "merged": "org.tensorflow.lite.examples.objectdetection.app-merged_res-74:/drawable_selector_bottom_nav_item.xml.flat",
+        "source": "org.tensorflow.lite.examples.objectdetection.app-main-76:/drawable/selector_bottom_nav_item.xml"
+    },
+    {
+        "merged": "org.tensorflow.lite.examples.objectdetection.app-merged_res-74:/navigation_nav_graph.xml.flat",
+        "source": "org.tensorflow.lite.examples.objectdetection.app-main-76:/navigation/nav_graph.xml"
+    },
+    {
+        "merged": "org.tensorflow.lite.examples.objectdetection.app-merged_res-74:/raw_mouse.mp3.flat",
+        "source": "org.tensorflow.lite.examples.objectdetection.app-main-76:/raw/mouse.mp3"
+    },
+    {
+        "merged": "org.tensorflow.lite.examples.objectdetection.app-merged_res-74:/raw_beep4.mp3.flat",
+        "source": "org.tensorflow.lite.examples.objectdetection.app-main-76:/raw/beep4.mp3"
+    },
+    {
+        "merged": "org.tensorflow.lite.examples.objectdetection.app-merged_res-74:/menu_menulist.xml.flat",
+        "source": "org.tensorflow.lite.examples.objectdetection.app-main-76:/menu/menulist.xml"
+    },
+    {
+        "merged": "org.tensorflow.lite.examples.objectdetection.app-merged_res-74:/xml_root_preferences.xml.flat",
+        "source": "org.tensorflow.lite.examples.objectdetection.app-main-76:/xml/root_preferences.xml"
+    },
+    {
+        "merged": "org.tensorflow.lite.examples.objectdetection.app-merged_res-74:/raw_laptop.mp3.flat",
+        "source": "org.tensorflow.lite.examples.objectdetection.app-main-76:/raw/laptop.mp3"
+    },
+    {
+        "merged": "org.tensorflow.lite.examples.objectdetection.app-merged_res-74:/mipmap-hdpi_ic_launcher_foreground.png.flat",
+        "source": "org.tensorflow.lite.examples.objectdetection.app-debug-75:/mipmap-hdpi/ic_launcher_foreground.png"
+    },
+    {
+        "merged": "org.tensorflow.lite.examples.objectdetection.app-merged_res-74:/drawable-anydpi-v24_ic_launcher_foreground.xml.flat",
+        "source": "org.tensorflow.lite.examples.objectdetection.app-pngs-69:/drawable-anydpi-v24/ic_launcher_foreground.xml"
+    },
+    {
+        "merged": "org.tensorflow.lite.examples.objectdetection.app-merged_res-74:/raw_tv.mp3.flat",
+        "source": "org.tensorflow.lite.examples.objectdetection.app-main-76:/raw/tv.mp3"
+    },
+    {
+        "merged": "org.tensorflow.lite.examples.objectdetection.app-merged_res-74:/drawable_ic_baseline_settings_24.xml.flat",
+        "source": "org.tensorflow.lite.examples.objectdetection.app-main-76:/drawable/ic_baseline_settings_24.xml"
+    },
+    {
+        "merged": "org.tensorflow.lite.examples.objectdetection.app-merged_res-74:/layout_fragment_home.xml.flat",
+        "source": "org.tensorflow.lite.examples.objectdetection.app-main-76:/layout/fragment_home.xml"
+    },
+    {
+        "merged": "org.tensorflow.lite.examples.objectdetection.app-merged_res-74:/drawable-v24_tfl_logo.png.flat",
+        "source": "org.tensorflow.lite.examples.objectdetection.app-main-76:/drawable-v24/tfl_logo.png"
+    },
+    {
+        "merged": "org.tensorflow.lite.examples.objectdetection.app-merged_res-74:/raw_beep1.mp3.flat",
+        "source": "org.tensorflow.lite.examples.objectdetection.app-main-76:/raw/beep1.mp3"
+    },
+    {
+        "merged": "org.tensorflow.lite.examples.objectdetection.app-merged_res-74:/mipmap-hdpi_ic_launcher_round.png.flat",
+        "source": "org.tensorflow.lite.examples.objectdetection.app-debug-75:/mipmap-hdpi/ic_launcher_round.png"
+    },
+    {
+        "merged": "org.tensorflow.lite.examples.objectdetection.app-merged_res-74:/mipmap-hdpi_ic_launcher.png.flat",
+        "source": "org.tensorflow.lite.examples.objectdetection.app-debug-75:/mipmap-hdpi/ic_launcher.png"
+    },
+    {
+        "merged": "org.tensorflow.lite.examples.objectdetection.app-merged_res-74:/mipmap-xxxhdpi_ic_launcher.png.flat",
+        "source": "org.tensorflow.lite.examples.objectdetection.app-debug-75:/mipmap-xxxhdpi/ic_launcher.png"
+    },
+    {
+        "merged": "org.tensorflow.lite.examples.objectdetection.app-merged_res-74:/raw_person.mp3.flat",
+        "source": "org.tensorflow.lite.examples.objectdetection.app-main-76:/raw/person.mp3"
+    },
+    {
+        "merged": "org.tensorflow.lite.examples.objectdetection.app-merged_res-74:/mipmap-mdpi_ic_launcher_round.png.flat",
+        "source": "org.tensorflow.lite.examples.objectdetection.app-debug-75:/mipmap-mdpi/ic_launcher_round.png"
+    },
+    {
+        "merged": "org.tensorflow.lite.examples.objectdetection.app-merged_res-74:/drawable-v24_logo2.png.flat",
+        "source": "org.tensorflow.lite.examples.objectdetection.app-main-76:/drawable-v24/logo2.png"
+    },
+    {
+        "merged": "org.tensorflow.lite.examples.objectdetection.app-merged_res-74:/layout_fragment_camera.xml.flat",
+        "source": "org.tensorflow.lite.examples.objectdetection.app-main-76:/layout/fragment_camera.xml"
+    },
+    {
+        "merged": "org.tensorflow.lite.examples.objectdetection.app-merged_res-74:/layout_fragment_object_setting.xml.flat",
+        "source": "org.tensorflow.lite.examples.objectdetection.app-main-76:/layout/fragment_object_setting.xml"
+    },
+    {
+        "merged": "org.tensorflow.lite.examples.objectdetection.app-merged_res-74:/drawable_shape_circle2.xml.flat",
+        "source": "org.tensorflow.lite.examples.objectdetection.app-main-76:/drawable/shape_circle2.xml"
+    },
+    {
+        "merged": "org.tensorflow.lite.examples.objectdetection.app-merged_res-74:/mipmap-anydpi-v26_ic_launcher.xml.flat",
+        "source": "org.tensorflow.lite.examples.objectdetection.app-debug-75:/mipmap-anydpi-v26/ic_launcher.xml"
+    },
+    {
+        "merged": "org.tensorflow.lite.examples.objectdetection.app-merged_res-74:/layout_activity_main.xml.flat",
+        "source": "org.tensorflow.lite.examples.objectdetection.app-main-76:/layout/activity_main.xml"
+    },
+    {
+        "merged": "org.tensorflow.lite.examples.objectdetection.app-merged_res-74:/xml_root_preferences2.xml.flat",
+        "source": "org.tensorflow.lite.examples.objectdetection.app-main-76:/xml/root_preferences2.xml"
+    },
+    {
+        "merged": "org.tensorflow.lite.examples.objectdetection.app-merged_res-74:/raw_beep2.mp3.flat",
+        "source": "org.tensorflow.lite.examples.objectdetection.app-main-76:/raw/beep2.mp3"
+    },
+    {
+        "merged": "org.tensorflow.lite.examples.objectdetection.app-merged_res-74:/drawable_icn_chevron_up.png.flat",
+        "source": "org.tensorflow.lite.examples.objectdetection.app-main-76:/drawable/icn_chevron_up.png"
+    },
+    {
+        "merged": "org.tensorflow.lite.examples.objectdetection.app-merged_res-74:/raw_chair.mp3.flat",
+        "source": "org.tensorflow.lite.examples.objectdetection.app-main-76:/raw/chair.mp3"
+    },
+    {
+        "merged": "org.tensorflow.lite.examples.objectdetection.app-merged_res-74:/mipmap-xxhdpi_ic_launcher_foreground.png.flat",
+        "source": "org.tensorflow.lite.examples.objectdetection.app-debug-75:/mipmap-xxhdpi/ic_launcher_foreground.png"
+    },
+    {
+        "merged": "org.tensorflow.lite.examples.objectdetection.app-merged_res-74:/raw_foundsound.mp3.flat",
+        "source": "org.tensorflow.lite.examples.objectdetection.app-main-76:/raw/foundsound.mp3"
+    },
+    {
+        "merged": "org.tensorflow.lite.examples.objectdetection.app-merged_res-74:/mipmap-xxxhdpi_compass.png.flat",
+        "source": "org.tensorflow.lite.examples.objectdetection.app-main-76:/mipmap-xxxhdpi/compass.png"
+    },
+    {
+        "merged": "org.tensorflow.lite.examples.objectdetection.app-merged_res-74:/mipmap-anydpi-v26_ic_launcher_round.xml.flat",
+        "source": "org.tensorflow.lite.examples.objectdetection.app-debug-75:/mipmap-anydpi-v26/ic_launcher_round.xml"
+    },
+    {
+        "merged": "org.tensorflow.lite.examples.objectdetection.app-merged_res-74:/raw_keyboard.mp3.flat",
+        "source": "org.tensorflow.lite.examples.objectdetection.app-main-76:/raw/keyboard.mp3"
+    },
+    {
+        "merged": "org.tensorflow.lite.examples.objectdetection.app-merged_res-74:/color_selector_ic.xml.flat",
+        "source": "org.tensorflow.lite.examples.objectdetection.app-main-76:/color/selector_ic.xml"
+    },
+    {
+        "merged": "org.tensorflow.lite.examples.objectdetection.app-merged_res-74:/layout_activity_compass_main.xml.flat",
+        "source": "org.tensorflow.lite.examples.objectdetection.app-main-76:/layout/activity_compass_main.xml"
+    },
+    {
+        "merged": "org.tensorflow.lite.examples.objectdetection.app-merged_res-74:/drawable_shape_circle.xml.flat",
+        "source": "org.tensorflow.lite.examples.objectdetection.app-main-76:/drawable/shape_circle.xml"
+    },
+    {
+        "merged": "org.tensorflow.lite.examples.objectdetection.app-merged_res-74:/layout_fragment_intro.xml.flat",
+        "source": "org.tensorflow.lite.examples.objectdetection.app-main-76:/layout/fragment_intro.xml"
+    },
+    {
+        "merged": "org.tensorflow.lite.examples.objectdetection.app-merged_res-74:/mipmap-mdpi_ic_launcher_foreground.png.flat",
+        "source": "org.tensorflow.lite.examples.objectdetection.app-debug-75:/mipmap-mdpi/ic_launcher_foreground.png"
     }
 ]

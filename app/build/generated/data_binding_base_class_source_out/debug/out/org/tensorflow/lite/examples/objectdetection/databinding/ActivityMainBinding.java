@@ -7,10 +7,10 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.widget.Toolbar;
-import androidx.coordinatorlayout.widget.CoordinatorLayout;
-import androidx.fragment.app.FragmentContainerView;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.viewbinding.ViewBinding;
 import androidx.viewbinding.ViewBindings;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import java.lang.NullPointerException;
 import java.lang.Override;
 import java.lang.String;
@@ -18,24 +18,24 @@ import org.tensorflow.lite.examples.objectdetection.R;
 
 public final class ActivityMainBinding implements ViewBinding {
   @NonNull
-  private final CoordinatorLayout rootView;
+  private final ConstraintLayout rootView;
 
   @NonNull
-  public final FragmentContainerView fragmentContainer;
+  public final BottomNavigationView navigation;
 
   @NonNull
   public final Toolbar toolbar;
 
-  private ActivityMainBinding(@NonNull CoordinatorLayout rootView,
-      @NonNull FragmentContainerView fragmentContainer, @NonNull Toolbar toolbar) {
+  private ActivityMainBinding(@NonNull ConstraintLayout rootView,
+      @NonNull BottomNavigationView navigation, @NonNull Toolbar toolbar) {
     this.rootView = rootView;
-    this.fragmentContainer = fragmentContainer;
+    this.navigation = navigation;
     this.toolbar = toolbar;
   }
 
   @Override
   @NonNull
-  public CoordinatorLayout getRoot() {
+  public ConstraintLayout getRoot() {
     return rootView;
   }
 
@@ -60,9 +60,9 @@ public final class ActivityMainBinding implements ViewBinding {
     // This is done to optimize the compiled bytecode for size and performance.
     int id;
     missingId: {
-      id = R.id.fragment_container;
-      FragmentContainerView fragmentContainer = ViewBindings.findChildViewById(rootView, id);
-      if (fragmentContainer == null) {
+      id = R.id.navigation;
+      BottomNavigationView navigation = ViewBindings.findChildViewById(rootView, id);
+      if (navigation == null) {
         break missingId;
       }
 
@@ -72,7 +72,7 @@ public final class ActivityMainBinding implements ViewBinding {
         break missingId;
       }
 
-      return new ActivityMainBinding((CoordinatorLayout) rootView, fragmentContainer, toolbar);
+      return new ActivityMainBinding((ConstraintLayout) rootView, navigation, toolbar);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

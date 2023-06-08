@@ -8,7 +8,7 @@ import android.widget.Button;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.camera.view.PreviewView;
-import androidx.coordinatorlayout.widget.CoordinatorLayout;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.viewbinding.ViewBinding;
 import androidx.viewbinding.ViewBindings;
 import java.lang.NullPointerException;
@@ -19,16 +19,19 @@ import org.tensorflow.lite.examples.objectdetection.R;
 
 public final class FragmentCameraBinding implements ViewBinding {
   @NonNull
-  private final CoordinatorLayout rootView;
+  private final ConstraintLayout rootView;
 
   @NonNull
-  public final InfoBottomSheetBinding bottomSheetLayout;
+  public final ConstraintLayout cameraContainer;
 
   @NonNull
-  public final Button btnMain;
+  public final Button cmDetect;
 
   @NonNull
-  public final CoordinatorLayout cameraContainer;
+  public final Button cmFind;
+
+  @NonNull
+  public final Button cmSetting;
 
   @NonNull
   public final OverlayView overlay;
@@ -36,21 +39,21 @@ public final class FragmentCameraBinding implements ViewBinding {
   @NonNull
   public final PreviewView viewFinder;
 
-  private FragmentCameraBinding(@NonNull CoordinatorLayout rootView,
-      @NonNull InfoBottomSheetBinding bottomSheetLayout, @NonNull Button btnMain,
-      @NonNull CoordinatorLayout cameraContainer, @NonNull OverlayView overlay,
-      @NonNull PreviewView viewFinder) {
+  private FragmentCameraBinding(@NonNull ConstraintLayout rootView,
+      @NonNull ConstraintLayout cameraContainer, @NonNull Button cmDetect, @NonNull Button cmFind,
+      @NonNull Button cmSetting, @NonNull OverlayView overlay, @NonNull PreviewView viewFinder) {
     this.rootView = rootView;
-    this.bottomSheetLayout = bottomSheetLayout;
-    this.btnMain = btnMain;
     this.cameraContainer = cameraContainer;
+    this.cmDetect = cmDetect;
+    this.cmFind = cmFind;
+    this.cmSetting = cmSetting;
     this.overlay = overlay;
     this.viewFinder = viewFinder;
   }
 
   @Override
   @NonNull
-  public CoordinatorLayout getRoot() {
+  public ConstraintLayout getRoot() {
     return rootView;
   }
 
@@ -75,20 +78,25 @@ public final class FragmentCameraBinding implements ViewBinding {
     // This is done to optimize the compiled bytecode for size and performance.
     int id;
     missingId: {
-      id = R.id.bottom_sheet_layout;
-      View bottomSheetLayout = ViewBindings.findChildViewById(rootView, id);
-      if (bottomSheetLayout == null) {
-        break missingId;
-      }
-      InfoBottomSheetBinding binding_bottomSheetLayout = InfoBottomSheetBinding.bind(bottomSheetLayout);
+      ConstraintLayout cameraContainer = (ConstraintLayout) rootView;
 
-      id = R.id.btnMain;
-      Button btnMain = ViewBindings.findChildViewById(rootView, id);
-      if (btnMain == null) {
+      id = R.id.cm_detect;
+      Button cmDetect = ViewBindings.findChildViewById(rootView, id);
+      if (cmDetect == null) {
         break missingId;
       }
 
-      CoordinatorLayout cameraContainer = (CoordinatorLayout) rootView;
+      id = R.id.cm_find;
+      Button cmFind = ViewBindings.findChildViewById(rootView, id);
+      if (cmFind == null) {
+        break missingId;
+      }
+
+      id = R.id.cm_setting;
+      Button cmSetting = ViewBindings.findChildViewById(rootView, id);
+      if (cmSetting == null) {
+        break missingId;
+      }
 
       id = R.id.overlay;
       OverlayView overlay = ViewBindings.findChildViewById(rootView, id);
@@ -96,14 +104,14 @@ public final class FragmentCameraBinding implements ViewBinding {
         break missingId;
       }
 
-      id = R.id.view_finder;
+      id = R.id.viewFinder;
       PreviewView viewFinder = ViewBindings.findChildViewById(rootView, id);
       if (viewFinder == null) {
         break missingId;
       }
 
-      return new FragmentCameraBinding((CoordinatorLayout) rootView, binding_bottomSheetLayout,
-          btnMain, cameraContainer, overlay, viewFinder);
+      return new FragmentCameraBinding((ConstraintLayout) rootView, cameraContainer, cmDetect,
+          cmFind, cmSetting, overlay, viewFinder);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

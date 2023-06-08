@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:title="@string/home"
+        android:id="@+id/Home"
+        android:icon="@drawable/ic_baseline_home_24">
+    </item>
+
+    <item
+        android:title="@string/search"
+        android:id="@+id/Search"
+        android:icon="@drawable/ic_baseline_view_in_ar_24">
+    </item>
+    <item
+        android:title="@string/walk_model"
+        android:id="@+id/WalkModel"
+        android:icon="@drawable/ic_baseline_navigation_24">
+    </item>
+<!--    <item-->
+<!--        android:title="@string/found_it"-->
+<!--        android:id="@+id/Found"-->
+<!--        android:icon="@drawable/ic_baseline_task_alt_24">-->
+<!--    </item>-->
+    <item
+        android:title="@string/setting"
+        android:id="@+id/Setting"
+        android:icon="@drawable/ic_baseline_settings_24">
+    </item>
+
+</menu>
