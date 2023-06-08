@@ -1,0 +1,52 @@
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="700dp"
+    app:iconSpaceReserved="true"
+    app:isPreferenceVisible="true">
+
+    <PreferenceCategory app:title="@string/messages_header"
+        android:icon="@drawable/ic_baseline_message_24">
+
+        <EditTextPreference
+            app:key="signature"
+            app:title="@string/signature_title"
+            app:useSimpleSummaryProvider="true" />
+        <ListPreference
+            android:defaultValue="1"
+            android:entries="@array/language"
+            android:entryValues="@array/language"
+            android:key="list_preference_1"
+            android:title="@string/language" />
+
+    </PreferenceCategory>
+    <PreferenceCategory android:title="@string/setting"
+        android:icon="@drawable/ic_baseline_settings_24">
+
+        <SeekBarPreference
+            android:key="volume"
+            android:title="@string/speed" />
+
+    </PreferenceCategory>
+    <PreferenceCategory android:title="@string/About">
+
+    </PreferenceCategory>
+
+</PreferenceScreen>
+
+
+
+    <!--    <PreferenceCategory app:title="@string/sync_header">-->
+
+    <!--        <SwitchPreferenceCompat-->
+    <!--            app:key="sync"-->
+    <!--            app:title="@string/sync_title" />-->
+
+    <!--        <SwitchPreferenceCompat-->
+    <!--            app:dependency="sync"-->
+    <!--            app:key="attachment"-->
+    <!--            app:summaryOff="@string/attachment_summary_off"-->
+    <!--            app:summaryOn="@string/attachment_summary_on"-->
+    <!--            app:title="@string/attachment_title" />-->
+
+    <!--    </PreferenceCategory>-->

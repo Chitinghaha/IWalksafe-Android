@@ -1,6 +1,6 @@
 [
     {
-        "merged": "C:\\lab\\iWalkSafe_android\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout-land\\activity_compass_main.xml",
-        "source": "C:\\lab\\iWalkSafe_android\\app\\src\\main\\res\\layout-land\\activity_compass_main.xml"
+        "merged": "org.tensorflow.lite.examples.objectdetection.app-mergeDebugResources-73:/layout-land/activity_compass_main.xml",
+        "source": "org.tensorflow.lite.examples.objectdetection.app-main-76:/layout-land/activity_compass_main.xml"
     }
 ]

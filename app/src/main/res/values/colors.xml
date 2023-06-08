@@ -24,6 +24,8 @@
     <color name="bottom_sheet_text_color">@android:color/black</color>
     <color name="icActive">#FFFFFFFF</color>
     <color name="icFocused">#DDFFFFFF</color>
-    <color name="icPressed">#AAFFFFFF</color>
+    <color name="icPressed">#4B9E9A9A</color>
     <color name="compass">#2D99EF</color>
+    <color name="bottom1">#6B6F72</color>
+    <color name="bottom2">#2E0F4C</color>
 </resources>

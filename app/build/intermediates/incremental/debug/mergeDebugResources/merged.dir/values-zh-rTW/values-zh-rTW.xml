@@ -1,0 +1,285 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:ns1="urn:oasis:names:tc:xliff:document:1.2">
+    <string-array name="delegate_spinner_titles">
+        <item>CPU</item>
+        <item>GPU</item>
+        <item>NNAPI</item>
+    </string-array>
+    <string-array name="models_spinner_titles">
+        <item>MobileNet V1</item>
+        <item>EfficientDet Lite0</item>
+        <item>EfficientDet Lite1</item>
+        <item>EfficientDet Lite2</item>
+    </string-array>
+    <plurals name="mtrl_badge_content_description">
+    <item quantity="one">%d 則新通知</item>
+    <item quantity="other">%d 則新通知</item>
+  </plurals>
+    <string name="ADD">新增</string>
+    <string name="About">關於</string>
+    <string name="Camera">物體辨識</string>
+    <string name="Compass">指南針</string>
+    <string name="ObjectFinding">尋找物件</string>
+    <string name="Open">開啟</string>
+    <string name="_1">1</string>
+    <string name="_2">2</string>
+    <string msgid="5976598919945601918" name="abc_action_bar_home_description">"瀏覽首頁"</string>
+    <string msgid="8388173803310557296" name="abc_action_bar_up_description">"向上瀏覽"</string>
+    <string msgid="3937310113216875497" name="abc_action_menu_overflow_description">"更多選項"</string>
+    <string msgid="4692188335987374352" name="abc_action_mode_done">"完成"</string>
+    <string msgid="1189761859438369441" name="abc_activity_chooser_view_see_all">"查看全部"</string>
+    <string msgid="2165779757652331008" name="abc_activitychooserview_choose_application">"選擇應用程式"</string>
+    <string msgid="4215997306490295099" name="abc_capital_off">"關閉"</string>
+    <string msgid="884982626291842264" name="abc_capital_on">"開啟"</string>
+    <string msgid="8833365367933412986" name="abc_menu_alt_shortcut_label">"Alt +"</string>
+    <string msgid="2223301931652355242" name="abc_menu_ctrl_shortcut_label">"Ctrl +"</string>
+    <string msgid="838001238306846836" name="abc_menu_delete_shortcut_label">"Delete 鍵"</string>
+    <string msgid="7986526966204849475" name="abc_menu_enter_shortcut_label">"Enter 鍵"</string>
+    <string msgid="375214403600139847" name="abc_menu_function_shortcut_label">"Fn +"</string>
+    <string msgid="4192209724446364286" name="abc_menu_meta_shortcut_label">"Meta +"</string>
+    <string msgid="4741552369836443843" name="abc_menu_shift_shortcut_label">"Shift +"</string>
+    <string msgid="5473865519181928982" name="abc_menu_space_shortcut_label">"空格鍵"</string>
+    <string msgid="6180552449598693998" name="abc_menu_sym_shortcut_label">"Sym +"</string>
+    <string msgid="5520303668377388990" name="abc_prepend_shortcut_label">"Menu +"</string>
+    <string msgid="7208076849092622260" name="abc_search_hint">"搜尋…"</string>
+    <string msgid="3741173234950517107" name="abc_searchview_description_clear">"清除查詢"</string>
+    <string msgid="693312494995508443" name="abc_searchview_description_query">"搜尋查詢"</string>
+    <string msgid="3417662926640357176" name="abc_searchview_description_search">"搜尋"</string>
+    <string msgid="1486535517437947103" name="abc_searchview_description_submit">"提交查詢"</string>
+    <string msgid="2293578557972875415" name="abc_searchview_description_voice">"語音搜尋"</string>
+    <string msgid="8875138169939072951" name="abc_shareactionprovider_share_with">"分享對象"</string>
+    <string msgid="9055268688411532828" name="abc_shareactionprovider_share_with_application">"與「<ns1:g id="APPLICATION_NAME">%s</ns1:g>」分享"</string>
+    <string msgid="1656852541809559762" name="abc_toolbar_collapse_description">"收合"</string>
+    <string name="airplane">飛機</string>
+    <string name="alt_bottom_sheet_chevron">Bottom sheet expandable indicator</string>
+    <string name="alt_bottom_sheet_max_results_button_minus">Decreasing maxium detected results
+        button</string>
+    <string name="alt_bottom_sheet_max_results_button_plus">Increasing maxium detected results
+        button</string>
+    <string name="alt_bottom_sheet_thread_button_minus">Decrease the number of threads used</string>
+    <string name="alt_bottom_sheet_thread_button_plus">Increase the number of threads used</string>
+    <string name="alt_bottom_sheet_threshold_button_minus">Decreasing threshold of detected object
+        results button</string>
+    <string name="alt_bottom_sheet_threshold_button_plus">Increasing threshold of detected object
+        results button</string>
+    <string name="app_name">IWalkSafe 盲人輔具</string>
+    <string name="apple">蘋果</string>
+    <string name="attachment_summary_off">Only download attachments when manually requested</string>
+    <string name="attachment_summary_on">Automatically download attachments for incoming emails
+    </string>
+    <string name="attachment_title">Download incoming attachments</string>
+    <string name="backpack">背包</string>
+    <string name="banana">香蕉</string>
+    <string name="baseball_bat">棒球棒</string>
+    <string name="baseball_glove">棒球手套</string>
+    <string name="bear">熊</string>
+    <string name="bed">床</string>
+    <string name="beep">嗶嗶聲</string>
+    <string name="bench">長椅</string>
+    <string name="bicycle">自行車</string>
+    <string name="bird">鳥</string>
+    <string name="boat">船</string>
+    <string name="book">書</string>
+    <string name="bottle">瓶子</string>
+    <string name="bottomsheet_action_expand_halfway">展開一半</string>
+    <string name="bowl">碗</string>
+    <string name="broccoli">西蘭花</string>
+    <string name="bus">公車</string>
+    <string name="buzzer">警報聲</string>
+    <string name="cake">蛋糕</string>
+    <string name="car">汽車</string>
+    <string name="carrot">胡蘿蔔</string>
+    <string name="cat">貓</string>
+    <string name="cell_phone">手機</string>
+    <string name="chair">椅子</string>
+    <string name="character_counter_content_description">已輸入 %1$d 個字元 (上限為 %2$d 個字元)</string>
+    <string name="character_counter_overflowed_content_description">超過字元限制 (共 %1$d 字元，上限 %2$d 字元)</string>
+    <string name="clear_text_end_icon_content_description">清除文字</string>
+    <string name="clock">時鐘</string>
+    <string msgid="406453423630273620" name="close_drawer">"關閉導覽選單"</string>
+    <string msgid="7573152094250666567" name="close_sheet">"關閉功能表"</string>
+    <string name="cm_setting">辨識設定</string>
+    <string msgid="2523291102206661146" name="common_google_play_services_enable_button">啟用</string>
+    <string msgid="227660514972886228" name="common_google_play_services_enable_text">您必須啟用 Google Play 服務，才能執行「%1$s」。</string>
+    <string msgid="5122002158466380389" name="common_google_play_services_enable_title">啟用 Google Play 服務</string>
+    <string msgid="7153882981874058840" name="common_google_play_services_install_button">安裝</string>
+    <string name="common_google_play_services_install_text">您的裝置並未安裝 Google Play 服務，因此無法執行「%1$s」。</string>
+    <string msgid="7215213145546190223" name="common_google_play_services_install_title">取得 Google Play 服務</string>
+    <string name="common_google_play_services_notification_channel_name">Google Play 服務可用性</string>
+    <string name="common_google_play_services_notification_ticker">Google Play 服務發生錯誤</string>
+    <string name="common_google_play_services_unknown_issue">「%1$s」無法存取 Google Play 服務，請再試一次。</string>
+    <string name="common_google_play_services_unsupported_text">您的裝置不支援 Google Play 服務，因此無法執行「%1$s」。</string>
+    <string msgid="6556509956452265614" name="common_google_play_services_update_button">更新</string>
+    <string msgid="9053896323427875356" name="common_google_play_services_update_text">您必須更新 Google Play 服務，才能執行「%1$s」。</string>
+    <string msgid="6006316683626838685" name="common_google_play_services_update_title">更新 Google Play 服務</string>
+    <string name="common_google_play_services_updating_text">執行「%1$s」所需的 Google Play 服務正在更新。</string>
+    <string name="common_google_play_services_wear_update_text">必須使用新版 Google Play 服務。該服務稍後就會自動更新。</string>
+    <string name="common_open_on_phone">在手機上開啟</string>
+    <string name="common_signin_button_text">登入</string>
+    <string name="common_signin_button_text_long">使用 Google 帳戶登入</string>
+    <string name="compass">指南針</string>
+    <string msgid="6083905920877235314" name="copy">"複製"</string>
+    <string name="couch">沙發</string>
+    <string name="cow">牛</string>
+    <string name="cup">杯子</string>
+    <string msgid="8038256446254964252" name="default_error_message">"輸入內容無效"</string>
+    <string name="detect_objection">門牌辨識</string>
+    <string name="dining_table">餐桌</string>
+    <string name="dog">狗</string>
+    <string name="donut">甜甜圈</string>
+    <string name="elephant">大象</string>
+    <string name="error_icon_content_description">錯誤</string>
+    <string msgid="2427401033573778270" name="expand_button_title">"進階"</string>
+    <string name="exposed_dropdown_menu_content_description">顯示下拉式選單</string>
+    <string name="fire_hydrant">消防栓</string>
+    <string name="fork">叉子</string>
+    <string name="found_it">完成</string>
+    <string name="frisbee">飛盤</string>
+    <string name="giraffe">長頸鹿</string>
+    <string name="google_map">導航</string>
+    <string name="hair_drier">吹風機</string>
+    <string name="handbag">手提包</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="home">首頁</string>
+    <string name="horse">馬</string>
+    <string name="hot_dog">熱狗</string>
+    <string name="icon_content_description">對話方塊圖示</string>
+    <string msgid="6827826412747255547" name="in_progress">"處理中"</string>
+    <string msgid="2486394087603402002" name="indeterminate">"沒有勾選也沒有取消勾選"</string>
+    <string msgid="475402237100444685" name="installation_cancelled">"已取消安裝。"</string>
+    <string msgid="863287960437940689" name="installation_failed">"無法安裝。"</string>
+    <string msgid="5968445461040787716" name="installing_module">"正在安裝模組："</string>
+    <string name="introduction">學習如何使用IWalkSafe</string>
+    <string name="item_name">物件名稱</string>
+    <string name="item_view_role_description">分頁標籤</string>
+    <string name="keyboard">鍵盤</string>
+    <string name="kite">風箏</string>
+    <string name="knife">刀</string>
+    <string name="label_confidence_threshold">Threshold</string>
+    <string name="label_delegate">Delegate</string>
+    <string name="label_fps">Frames per Second</string>
+    <string name="label_interence_time">Inference Time</string>
+    <string name="label_max_results">Max Results</string>
+    <string name="label_models">ML Model</string>
+    <string name="label_threads">Number of Threads</string>
+    <string name="language">語言</string>
+    <string name="laptop">筆電</string>
+    <string name="material_clock_toggle_content_description">選取上午或下午</string>
+    <string name="material_hour_selection">請選取時段</string>
+    <string name="material_hour_suffix">%1$s 點</string>
+    <string name="material_minute_selection">選取分鐘數</string>
+    <string name="material_minute_suffix">%1$s 分</string>
+    <string name="material_timepicker_am">AM</string>
+    <string name="material_timepicker_clock_mode_description">切換至時鐘模式來輸入時間。</string>
+    <string name="material_timepicker_hour">小時</string>
+    <string name="material_timepicker_minute">分鐘</string>
+    <string name="material_timepicker_pm">PM</string>
+    <string name="material_timepicker_select_time">選取時間</string>
+    <string name="material_timepicker_text_input_mode_description">切換至文字輸入模式來輸入時間。</string>
+    <string name="messages_header">訊息</string>
+    <string name="microwave">微波爐</string>
+    <string name="motorcycle">摩托車</string>
+    <string name="mouse">鼠標</string>
+    <string name="mtrl_badge_numberless_content_description">新通知</string>
+    <string name="mtrl_chip_close_icon_content_description">移除 %1$s</string>
+    <string name="mtrl_exceed_max_badge_number_content_description">超過 %1$d 則新通知</string>
+    <string name="mtrl_picker_a11y_next_month">變更至下個月</string>
+    <string name="mtrl_picker_a11y_prev_month">變更至上個月</string>
+    <string name="mtrl_picker_announce_current_selection">目前選取：%1$s</string>
+    <string name="mtrl_picker_confirm">@android:string/ok</string>
+    <string name="mtrl_picker_date_header_selected">%1$s</string>
+    <string name="mtrl_picker_date_header_title">選取日期</string>
+    <string name="mtrl_picker_date_header_unselected">所選日期</string>
+    <string name="mtrl_picker_day_of_week_column_header">星期幾資料欄：%1$s</string>
+    <string name="mtrl_picker_invalid_format">格式無效。</string>
+    <string name="mtrl_picker_invalid_format_example">範例：%1$s</string>
+    <string name="mtrl_picker_invalid_format_use">使用：%1$s</string>
+    <string name="mtrl_picker_invalid_range">日期範圍無效。</string>
+    <string name="mtrl_picker_navigate_to_year_description">前往 %1$s 年</string>
+    <string name="mtrl_picker_out_of_range">超出日期範圍：%1$s</string>
+    <string name="mtrl_picker_range_header_only_end_selected">開始日期 – %1$s</string>
+    <string name="mtrl_picker_range_header_only_start_selected">%1$s – 結束日期</string>
+    <string name="mtrl_picker_range_header_selected">%1$s – %2$s</string>
+    <string name="mtrl_picker_range_header_title">選取範圍</string>
+    <string name="mtrl_picker_range_header_unselected">開始日期 - 結束日期</string>
+    <string name="mtrl_picker_save">儲存</string>
+    <string name="mtrl_picker_text_input_date_hint">日期</string>
+    <string name="mtrl_picker_text_input_date_range_end_hint">結束日期</string>
+    <string name="mtrl_picker_text_input_date_range_start_hint">開始日期</string>
+    <string name="mtrl_picker_text_input_day_abbr">d</string>
+    <string name="mtrl_picker_text_input_month_abbr">m</string>
+    <string name="mtrl_picker_text_input_year_abbr">y</string>
+    <string name="mtrl_picker_toggle_to_calendar_input_mode">切換至日曆輸入模式</string>
+    <string name="mtrl_picker_toggle_to_day_selection">輕觸即可切換為選取星期幾</string>
+    <string name="mtrl_picker_toggle_to_text_input_mode">切換至文字輸入模式</string>
+    <string name="mtrl_picker_toggle_to_year_selection">輕觸即可切換為選取年份</string>
+    <string msgid="6301633601645100427" name="nav_app_bar_navigate_up_description">"向上瀏覽"</string>
+    <string msgid="7456070600745802113" name="nav_app_bar_open_drawer_description">"開啟導覽匣"</string>
+    <string name="navigation">導航</string>
+    <string msgid="542007171693138492" name="navigation_menu">"導覽選單"</string>
+    <string msgid="6610465462668679431" name="not_selected">"未選取"</string>
+    <string msgid="6573031135582639649" name="not_set">"未設定"</string>
+    <string msgid="875452955155264703" name="off">"已關閉"</string>
+    <string msgid="4702104660890557116" name="ok">"確定"</string>
+    <string msgid="8655164131929253426" name="on">"已開啟"</string>
+    <string name="orange">柳橙</string>
+    <string name="oven">烤箱</string>
+    <string name="parking_meter">停車收費碼錶</string>
+    <string name="password_toggle_content_description">顯示密碼</string>
+    <string name="person">人</string>
+    <string name="pizza">比薩餅</string>
+    <string name="potted_plant">盆栽植物</string>
+    <string msgid="6685851473431805375" name="preference_copied">"已將「<ns1:g id="SUMMARY">%1$s</ns1:g>」複製到剪貼簿。"</string>
+    <string msgid="8366783942222789124" name="progress">"進度："</string>
+    <string name="refrigerator">冰箱</string>
+    <string name="remote">遙控器</string>
+    <string name="reply_title">Default reply action</string>
+    <string msgid="1065327189183624288" name="retry">"重試"</string>
+    <string name="returnpre">返回</string>
+    <string name="sandwich">三明治</string>
+    <string name="scissors">剪刀</string>
+    <string name="search">辨識物件</string>
+    <string msgid="6264217191555673260" name="search_menu_title">"搜尋"</string>
+    <string msgid="6043586758067023" name="selected">"已選取"</string>
+    <string name="sent_massege">尋找物件</string>
+    <string name="setting">設定</string>
+    <string name="sheep">綿羊</string>
+    <string name="signature_title">姓名</string>
+    <string name="sink">水槽</string>
+    <string name="skateboard">滑板</string>
+    <string name="skis">滑雪板</string>
+    <string name="snowboard">滑雪板</string>
+    <string name="sound_close">聲音關閉</string>
+    <string name="speed">語速</string>
+    <string name="spoon">匙</string>
+    <string name="sports_ball">運動球</string>
+    <string msgid="6277540029070332960" name="status_bar_notification_info_overflow">"999+"</string>
+    <string name="stop_sign">停止標誌</string>
+    <string name="suitcase">手提箱</string>
+    <string msgid="9167775378838880170" name="summary_collapsed_preference_list">"<ns1:g id="CURRENT_ITEMS">%1$s</ns1:g>、<ns1:g id="ADDED_ITEMS">%2$s</ns1:g>"</string>
+    <string name="surfboard">衝浪板</string>
+    <string name="surrondding">描述環境</string>
+    <string name="sync_header">Sync</string>
+    <string name="sync_title">Sync email periodically</string>
+    <string msgid="1672349317127674378" name="tab">"Tab 鍵"</string>
+    <string name="teddy_bear">泰迪熊</string>
+    <string msgid="5946805113151406391" name="template_percent">"百分之 <ns1:g id="PERCENTAGE">%1$d</ns1:g>。"</string>
+    <string name="tennis_racket">網球拍</string>
+    <string name="tie">領帶</string>
+    <string name="toaster">烤麵包機</string>
+    <string name="todo">TODO</string>
+    <string name="toilet">馬桶</string>
+    <string name="toothbrush">牙刷</string>
+    <string name="traffic_light">紅綠燈</string>
+    <string name="train">火車</string>
+    <string name="truck">卡車</string>
+    <string name="tv">電視</string>
+    <string name="umbrella">雨傘</string>
+    <string msgid="3140233346420563315" name="v7_preference_off">"關閉"</string>
+    <string msgid="89551595707643515" name="v7_preference_on">"開啟"</string>
+    <string name="vase">花瓶</string>
+    <string name="vibration">震動</string>
+    <string name="walk_model">地圖模式</string>
+    <string name="wine_glass">酒杯</string>
+    <string name="zebra">斑馬</string>
+</resources>

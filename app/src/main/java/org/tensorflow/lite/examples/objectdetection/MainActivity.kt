@@ -18,21 +18,21 @@ package org.tensorflow.lite.examples.objectdetection
 
 
 import android.app.Activity
-import android.content.ContentValues.TAG
 import android.content.Intent
-import android.net.Uri
 import android.os.Build
 import android.os.Bundle
-import android.os.PersistableBundle
 import android.speech.RecognizerIntent
-import android.speech.tts.TextToSpeech
-import android.util.AttributeSet
 import android.util.Log
 import android.widget.Toast
+import android.widget.Toolbar
 import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.Fragment
+import androidx.navigation.NavController
+import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.ui.AppBarConfiguration
+import androidx.navigation.ui.setupWithNavController
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import org.tensorflow.lite.examples.objectdetection.databinding.ActivityMainBinding
-import org.tensorflow.lite.examples.objectdetection.fragments.CameraFragment
-import java.util.*
 
 /**
  * Main entry point into our app. This app follows the single-activity pattern, and all
@@ -40,14 +40,18 @@ import java.util.*
  */
 //Binding  https://ithelp.ithome.com.tw/articles/10244984
 //Binding https://xnfood.com.tw/android-databinding-mvvc/
-class MainActivity : AppCompatActivity() , TextToSpeech.OnInitListener{
-    private val SPEECH_REQUEST_CODE = 0
-
+class MainActivity : AppCompatActivity() {
     private lateinit var activityMainBinding: ActivityMainBinding
+    private  lateinit var appBarConfiguration:AppBarConfiguration
+    private  lateinit var navHostFragment: NavHostFragment
+    private  lateinit var navController:NavController
+    private  lateinit var toolbar: Toolbar
+    private  lateinit var bottomNavView: BottomNavigationView
+    private var mToast: Toast? = null
+
+
 
     private  var activity_channel = 0
-
-    private var tts: TextToSpeech? = null
 
 
     //activity-lifecycle https://ithelp.ithome.com.tw/articles/10207640
@@ -55,29 +59,17 @@ class MainActivity : AppCompatActivity() , TextToSpeech.OnInitListener{
         super.onCreate(savedInstanceState)
         activityMainBinding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(activityMainBinding.root)
-        tts = TextToSpeech(this, this)
-
-        //activity change to CompassMainActivity
-        activityMainBinding.button1.setOnClickListener{
-            val intent = Intent(this, CompassMainActivity::class.java)
-            startActivity(intent)
-        }
-
-        activityMainBinding.button2.setOnClickListener{
-            activity_channel = 0
-            displaySpeechRecognizer()
-        }
+        navHostFragment = supportFragmentManager.findFragmentById(R.id.fragment_container) as NavHostFragment
+        navController = navHostFragment.navController
+        appBarConfiguration = AppBarConfiguration(navController.graph)
+        activityMainBinding.toolbar.setupWithNavController(navController,appBarConfiguration)
+        activityMainBinding.navigation.setupWithNavController(navController)
 
 
-        activityMainBinding.mapbtn.setOnClickListener{
-            activity_channel = 1
-            displaySpeechRecognizer()
-        }
         Log.d("compose", "Main onCreate()")
 
 
-        //fragment init
-//        initFragment(CameraFragment())
+
 //
 //        //fragment change
 //        activityMainBinding.button1.setOnClickListener{
@@ -87,76 +79,109 @@ class MainActivity : AppCompatActivity() , TextToSpeech.OnInitListener{
 //        activityMainBinding.button2.setOnClickListener{
 //            replaceFragment(CompassFragment())
 //        }
+
+
+//        activityMainBinding.navigation.setOnNavigationItemSelectedListener {
+//            val fragmentManager = supportFragmentManager
+//            val fragmentTransition = fragmentManager.beginTransaction()
+//
+//            when(it.itemId){
+//                R.id.Home -> {
+//
+//                    fragmentTransition.replace(R.id.fragment_container,  HomeFragment())
+//                    fragmentTransition.commit()
+//                }
+//
+//                R.id.Search-> {
+//                    fragmentTransition.replace(R.id.fragment_container,  CameraFragment())
+//                    fragmentTransition.commit()
+//
+//                }
+//                R.id.WalkModel -> {
+////                    activity_channel = 0
+////                    displaySpeechRecognizer()
+//
+//                    fragmentTransition.replace(R.id.fragment_container, WalkModeFragment())
+//                    fragmentTransition.commit()
+//                }
+//
+//                R.id.Setting-> {
+//                    fragmentTransition.replace(R.id.fragment_container, SettingsFragment())
+//                    fragmentTransition.commit()
+//
+//                }
+//
+//                else ->{
+//
+//                }
+//            }
+//            true
+//        }
     }
 
-    private fun speakOut(etSpeak:String) {
-        if(tts != null) {
-            tts!!.stop()
-            tts!!.speak(etSpeak, TextToSpeech.QUEUE_FLUSH, null, null)
-        }
-    }
+
 
     private fun displaySpeechRecognizer() {
         val intent = Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH)
         intent.putExtra(RecognizerIntent.EXTRA_PROMPT, "Please say something")
         intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL, RecognizerIntent.LANGUAGE_MODEL_FREE_FORM)
-        intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE, "en-US")
+        intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE, "zh-TW")
         intent.putExtra(RecognizerIntent.EXTRA_MAX_RESULTS, 3)
-
-
-        startActivityForResult(intent, SPEECH_REQUEST_CODE)
+        startActivityForResult(intent, 0)
+        showToast("")
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
-        if (requestCode == SPEECH_REQUEST_CODE && resultCode == Activity.RESULT_OK) {
-            val spokenText: String? =
-                data?.getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS).let { results ->
-                    results?.get(0)
+            if (requestCode == 0 && resultCode == Activity.RESULT_OK) {
+                val spokenText: String? =
+                    data?.getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS).let { results ->
+                        results?.get(0)
+                    }
+                if (spokenText != null) {
+                    channel_funtion(spokenText)
                 }
-            if (spokenText != null) {
-                channel_funtion(spokenText)
+                Log.d("compose", "Main onActivityResult()")
             }
-//            Toast.makeText(this,spokenText,Toast.LENGTH_SHORT).show()
-        }
-        Log.d("compose", "Main onActivityResult()")
     }
 
     private  fun channel_funtion(spokenText:String){
+        //再來想辦法
+        Toast.makeText(this,spokenText,Toast.LENGTH_SHORT).show()
         if (activity_channel == 0){
-            //Manager
-            val fragmentManager = supportFragmentManager
-            val fragmentTransition = fragmentManager.beginTransaction()
-
-            fragmentTransition.remove(CameraFragment())
-
-            // Creating the new Fragment with the name passed in.
-            val bundle = Bundle()
-            val fragment = CameraFragment()
-            bundle.putString("String", spokenText)
-            fragment.arguments = bundle
-            fragmentTransition.add(R.id.fragment_container, fragment)
-            fragmentTransition.commit()
-
+            navController.navigateUp() // to clear previous navigation history
+            val args = Bundle()
+            args.putString("str", spokenText)
+            navController.navigate(R.id.findObjectFragment,args)
+//            //Manager
+//            val fragmentManager = supportFragmentManager
+//            val fragmentTransition = fragmentManager.beginTransaction()
+//
+//            fragmentTransition.remove(CameraFragment())
+//
+//            // Creating the new Fragment with the name passed in.
+//            val bundle = Bundle()
+//            val fragment = CameraFragment()
+//            bundle.putString("String", spokenText)
+//            fragment.arguments = bundle
+//            fragmentTransition.add(R.id.fragment_container, fragment,"A")
+//            fragmentTransition.commit()
         }
-        else if(activity_channel == 1){
-            speakOut(spokenText)
-            val gmmIntentUri =
-                Uri.parse("google.navigation:q=$spokenText&mode=w")
-            val mapIntent = Intent(Intent.ACTION_VIEW, gmmIntentUri)
-            mapIntent.setPackage("com.google.android.apps.maps")
 
-            // check have google map app
-            mapIntent.resolveActivity(packageManager)?.let {
-                startActivity(mapIntent)
-            }
 
-        }
         else{
             Toast.makeText(this,"error",Toast.LENGTH_SHORT).show()
         }
 
 
+    }
+
+    private fun showToast(msg: String) {
+        if (mToast == null) {
+            mToast = Toast.makeText(this, "", Toast.LENGTH_SHORT)
+        }
+        mToast!!.setText(msg)
+        mToast!!.show()
     }
 
     override fun onResume() {
@@ -194,12 +219,12 @@ class MainActivity : AppCompatActivity() , TextToSpeech.OnInitListener{
 //        return fragment
 //    }
 
-//    private fun initFragment(fragment: Fragment) {
-//        val fragmentManager = supportFragmentManager
-//        val fragmentTransition = fragmentManager.beginTransaction()
-//        fragmentTransition.add(R.id.fragment_container,fragment)
-//        fragmentTransition.commit()
-//    }
+    private fun initFragment(fragment: Fragment) {
+        val fragmentManager = supportFragmentManager
+        val fragmentTransition = fragmentManager.beginTransaction()
+        fragmentTransition.add(R.id.fragment_container,fragment)
+        fragmentTransition.commit()
+    }
 //
 //    private fun replaceFragment(fragment: Fragment) {
 //        val fragmentManager = supportFragmentManager
@@ -207,6 +232,9 @@ class MainActivity : AppCompatActivity() , TextToSpeech.OnInitListener{
 //        fragmentTransition.replace(R.id.fragment_container,fragment)
 //        fragmentTransition.commit()
 //    }
+
+
+
 
 
 
@@ -224,26 +252,19 @@ class MainActivity : AppCompatActivity() , TextToSpeech.OnInitListener{
         Log.d("compose", "Main onBackPressed()")
     }
 
-    override fun onInit(p0: Int) {
-        if (p0 == TextToSpeech.SUCCESS) {
-            val result = tts!!.setLanguage(Locale.US)
 
-            if (result == TextToSpeech.LANG_MISSING_DATA || result == TextToSpeech.LANG_NOT_SUPPORTED) {
-                Log.e("TTS","The Language not supported!")
-            }
-        }
-
-    }
 
     public override fun onDestroy() {
-        // Shutdown TTS when
-        // activity is destroyed
-        if (tts != null) {
-            tts!!.stop()
-            tts!!.shutdown()
-        }
         super.onDestroy()
         Log.d("compose", "Main onDestroy()")
     }
+//    private fun dovibrate() {
+//        val vibrator = getSystemService(Context.VIBRATOR_SERVICE) as Vibrator
+//        if (Build.VERSION.SDK_INT >= 26) {
+//            vibrator.vibrate(VibrationEffect.createOneShot(50, VibrationEffect.DEFAULT_AMPLITUDE))
+//        } else {
+//            vibrator.vibrate(50)
+//        }
+//    }
 
 }

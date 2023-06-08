@@ -34,8 +34,6 @@ class CompassMainActivity : Activity(), SensorEventListener {
         activityCompassMainBinding = ActivityCompassMainBinding.inflate(layoutInflater)
         setContentView(activityCompassMainBinding.root)
         initData()
-
-
     }
 
     private fun initData(){
@@ -88,11 +86,12 @@ class CompassMainActivity : Activity(), SensorEventListener {
     }
 
     private fun dovibrate() {
+        val pattern = longArrayOf(0, 150)
         val vibrator = getSystemService(Context.VIBRATOR_SERVICE) as Vibrator
         if (Build.VERSION.SDK_INT >= 26) {
-            vibrator.vibrate(VibrationEffect.createOneShot(200, VibrationEffect.DEFAULT_AMPLITUDE))
+            vibrator.vibrate(VibrationEffect.createOneShot(50, VibrationEffect.DEFAULT_AMPLITUDE))
         } else {
-            vibrator.vibrate(200)
+            vibrator.vibrate(50)
         }
     }
 

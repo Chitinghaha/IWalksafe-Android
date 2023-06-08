@@ -131,7 +131,6 @@ class ObjectDetectorHelper(
             inferenceTime,
             tensorImage.height,
             tensorImage.width)
-
     }
 
     interface DetectorListener {
@@ -142,6 +141,9 @@ class ObjectDetectorHelper(
             imageHeight: Int,
             imageWidth: Int
         )
+
+
+
     }
 
     companion object {
